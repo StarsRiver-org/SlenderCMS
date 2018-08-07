@@ -15,4 +15,4 @@
 * special  //专题
 * 
 * portal下有几个文件，由于数据库为空，所以几乎处于废弃状态。可以看index注释来熟悉怎么用。
-* qzxy.starsriver.club这个是测试地址
+* [这个是测试地址](qzxy.starsriver.club)
