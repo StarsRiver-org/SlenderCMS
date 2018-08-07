@@ -1,0 +1,1130 @@
+[ 2018-08-05T09:36:58+08:00 ] 127.0.0.1 127.0.0.1 GET /consoleboard/configmag.html
+[ log ] qzxy.tyut.edu.cn.testweb/consoleboard/configmag.html [运行时间：0.944907s][吞吐率：1.06req/s] [内存消耗：2,238.66kb] [文件加载：56]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'consoleboard',
+    1 => 'configmag',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\consoleboard\controller\Configmag->main[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\consoleboard\controller\Configmag.php ]
+[ info ] [ VIEW ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\/template/default\admin\configmag.html [ array (
+  0 => 'index',
+  1 => 'chunkmag',
+  2 => 'threadmag',
+  3 => 'navmag',
+  4 => 'usermag',
+  5 => 'configmag',
+  6 => 'enrollmag',
+  7 => 'other',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004012s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000638s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000281s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000185s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000171s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000200s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000142s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000304s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000169s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:36:58+08:00 ] 127.0.0.1 127.0.0.1 POST /consoleboard/configmag/logic.html
+[ log ] qzxy.tyut.edu.cn.testweb/consoleboard/configmag/logic.html [运行时间：0.115817s][吞吐率：8.63req/s] [内存消耗：2,088.92kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'consoleboard',
+    1 => 'configmag',
+    2 => 'logic',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '12',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/consoleboard/configmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+  'getconf' => 'base',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\consoleboard\controller\Configmag->logic[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\consoleboard\controller\Configmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014325s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000470s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000265s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000245s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000340s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000271s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000250s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000315s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000340s ]
+[ sql ] [ SQL ] select `name`, `data`,`descrip`, `issolid` from qzlit_config where `type`='Info' [ RunTime:0.000266s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:37:00+08:00 ] 127.0.0.1 127.0.0.1 GET /enroll/enrollmag.html
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html [运行时间：0.106192s][吞吐率：9.42req/s] [内存消耗：2,310.87kb] [文件加载：56]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/consoleboard/configmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->main[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ VIEW ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\/template/default\admin\enrollmag.html [ array (
+  0 => 'index',
+  1 => 'chunkmag',
+  2 => 'threadmag',
+  3 => 'navmag',
+  4 => 'usermag',
+  5 => 'configmag',
+  6 => 'enrollmag',
+  7 => 'other',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004092s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000678s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000295s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000264s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000221s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000244s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000181s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000233s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000191s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:37:00+08:00 ] 127.0.0.1 127.0.0.1 GET /api/getpartys
+[ log ] qzxy.tyut.edu.cn.testweb/api/getpartys [运行时间：0.042976s][吞吐率：23.27req/s] [内存消耗：1,930.13kb] [文件加载：49]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'getpartys',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] qzxy\api\controller\Getpartys->main[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\api\controller\Getpartys.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007533s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_config where name = 'party' [ RunTime:0.000606s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:37:00+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_1
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_1 [运行时间：0.096784s][吞吐率：10.33req/s] [内存消耗：2,121.25kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_1',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_1[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014011s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000614s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000507s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000281s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000237s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000440s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000260s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000349s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000299s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000365s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000235s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where (hascalled is null OR (isfaced = '-1' AND hascalled = 1)) AND `aim` = 7 limit 30 [ RunTime:0.001549s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000501s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:37:01+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_2
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_2 [运行时间：0.126632s][吞吐率：7.90req/s] [内存消耗：2,131.92kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_2',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_2[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013314s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000768s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000424s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000488s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000329s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000163s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000209s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000331s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000148s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000364s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000251s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = 7 limit 30 [ RunTime:0.000522s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000399s ]
+[ sql ] [ SQL ] select `ftime` from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = 7 order by ftime [ RunTime:0.000447s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:37:02+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_3
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_3 [运行时间：0.109639s][吞吐率：9.12req/s] [内存消耗：2,130.48kb] [文件加载：55]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_3',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_3[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013409s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000608s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000611s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000396s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000321s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000301s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000220s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000282s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000260s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000432s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000364s ]
+[ sql ] [ SQL ] select id from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=7 [ RunTime:0.000444s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=7 order by score DESC limit 0,30 [ RunTime:0.000651s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=7 order by score DESC limit 0,30 [ RunTime:0.000316s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000368s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:37:04+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_4
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_4 [运行时间：0.082709s][吞吐率：12.09req/s] [内存消耗：2,120.99kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_4',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_4[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004293s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000436s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000178s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000211s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000210s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000210s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000204s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000181s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000134s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000401s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000403s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where isenrolled = 1 AND hascalled != 3 AND isfaced = 1 AND aim = 7 order by score DESC  limit 30 [ RunTime:0.001605s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000420s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:37:04+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_2
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_2 [运行时间：0.058279s][吞吐率：17.16req/s] [内存消耗：2,131.92kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_2',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_2[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014387s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.001004s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000233s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000200s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000237s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000207s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000202s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000201s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000221s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000309s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000255s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = 7 limit 30 [ RunTime:0.001086s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000379s ]
+[ sql ] [ SQL ] select `ftime` from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = 7 order by ftime [ RunTime:0.000358s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:37:05+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_1
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_1 [运行时间：0.062895s][吞吐率：15.90req/s] [内存消耗：2,121.25kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_1',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=jgq68ch34mnus1iebtvojb8og3',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_1[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004932s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000497s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000200s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000237s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000266s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000282s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000336s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000275s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000256s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000304s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000270s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where (hascalled is null OR (isfaced = '-1' AND hascalled = 1)) AND `aim` = 7 limit 30 [ RunTime:0.001032s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000315s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:38+08:00 ] 127.0.0.1 127.0.0.1 GET /enroll/enrollmag
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag [运行时间：0.076741s][吞吐率：13.03req/s] [内存消耗：1,907.89kb] [文件加载：49]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:39+08:00 ] 127.0.0.1 127.0.0.1 GET /consoleboard/login.html
+[ log ] qzxy.tyut.edu.cn.testweb/consoleboard/login.html [运行时间：0.057762s][吞吐率：17.31req/s] [内存消耗：1,894.70kb] [文件加载：49]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'consoleboard',
+    1 => 'login',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] qzxy\consoleboard\controller\Login->main[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\consoleboard\controller\Login.php ]
+[ info ] [ VIEW ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\/template/default\admin\login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:40+08:00 ] 127.0.0.1 127.0.0.1 POST /consoleboard/login.html
+[ log ] qzxy.tyut.edu.cn.testweb/consoleboard/login.html [运行时间：0.115770s][吞吐率：8.64req/s] [内存消耗：2,116.24kb] [文件加载：57]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'consoleboard',
+    1 => 'login',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '73',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/consoleboard/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+  'method' => 'username',
+  'usermark' => 'admin',
+  'password' => 'zy8281791***',
+  'isadmin' => 'ture',
+  'button' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\consoleboard\controller\Login->main[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\consoleboard\controller\Login.php ]
+[ info ] [ VIEW ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\/template/default\admin\login.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013465s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select `uid`,`unreg`,`username`,`promise`,`salt`,`key`,`phone`,`email` from qzlit_group WHERE username = 'admin' [ RunTime:0.000507s ]
+[ sql ] [ SQL ] update qzlit_group set `lastlogin` = '201808050955', `lastip` ='127.0.0.1' where uid = '2' [ RunTime:0.002342s ]
+[ sql ] [ SQL ] INSERT INTO 
+            qzlit_log (
+                    `time`, 
+                    `ip`, 
+                    `country`,
+                    `area`,
+                    `city`,
+                    `region`, 
+                    `county`, 
+                    `target`, 
+                    `get`, 
+                    `post`, 
+                    `data`,
+                    `isp`,
+                    `func`
+            )
+            VALUES (
+                 '1533434140',
+                 '127.0.0.1', 
+                 'localhost',
+                 'localhost',
+                 'localhost',
+                 'localhost',
+                 'localhost',
+                 'consoleboard', 
+                 '', 
+                 '',
+                 'home',
+                 'localhost', 
+                 'log_in'
+            ) [ RunTime:0.002988s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:40+08:00 ] 127.0.0.1 127.0.0.1 GET /consoleboard/index.html
+[ log ] qzxy.tyut.edu.cn.testweb/consoleboard/index.html [运行时间：0.331946s][吞吐率：3.01req/s] [内存消耗：6,277.59kb] [文件加载：58]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'consoleboard',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/consoleboard/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\consoleboard\controller\Index->main[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\consoleboard\controller\Index.php ]
+[ info ] [ VIEW ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\/template/default\admin\index.html [ array (
+  0 => 'index',
+  1 => 'chunkmag',
+  2 => 'threadmag',
+  3 => 'navmag',
+  4 => 'usermag',
+  5 => 'configmag',
+  6 => 'enrollmag',
+  7 => 'other',
+  8 => 'info_article',
+  9 => 'info_visit',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003427s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000504s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000268s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000412s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000190s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000238s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000248s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000371s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000237s ]
+[ sql ] [ SQL ] select `thread_ptime` from qzlit_thread WHERE hk_mode = '2' ORDER By thread_ptime DESC [ RunTime:0.001340s ]
+[ sql ] [ SQL ] select `ore_degree` from qzlit_thread WHERE ore_degree != '' [ RunTime:0.000839s ]
+[ sql ] [ SQL ] select `ore_view` from qzlit_thread WHERE ore_view != '' [ RunTime:0.001598s ]
+[ sql ] [ SQL ] select `vid`,`time`,`target`,`data`,`func` from qzlit_log ORDER BY `time` DESC [ RunTime:0.033967s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:41+08:00 ] 127.0.0.1 127.0.0.1 GET /enroll/enrollmag.html
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html [运行时间：0.119649s][吞吐率：8.36req/s] [内存消耗：2,310.34kb] [文件加载：56]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/consoleboard/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->main[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ VIEW ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\/template/default\admin\enrollmag.html [ array (
+  0 => 'index',
+  1 => 'chunkmag',
+  2 => 'threadmag',
+  3 => 'navmag',
+  4 => 'usermag',
+  5 => 'configmag',
+  6 => 'enrollmag',
+  7 => 'other',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014325s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000517s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000387s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000280s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000352s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000296s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000300s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000333s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000529s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:42+08:00 ] 127.0.0.1 127.0.0.1 GET /api/getpartys
+[ log ] qzxy.tyut.edu.cn.testweb/api/getpartys [运行时间：0.031926s][吞吐率：31.32req/s] [内存消耗：1,929.61kb] [文件加载：49]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'getpartys',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] qzxy\api\controller\Getpartys->main[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\api\controller\Getpartys.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003429s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_config where name = 'party' [ RunTime:0.000411s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:42+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_1
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_1 [运行时间：0.054736s][吞吐率：18.27req/s] [内存消耗：2,121.25kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_1',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_1[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004452s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000480s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000188s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000270s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000284s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000258s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000183s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.002345s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000462s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000347s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000390s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where (hascalled is null OR (isfaced = '-1' AND hascalled = 1)) AND `aim` = 7 limit 30 [ RunTime:0.001843s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000372s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:43+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_2
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_2 [运行时间：0.054514s][吞吐率：18.34req/s] [内存消耗：2,132.69kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_2',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_2[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013319s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000589s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000237s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000218s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000214s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000254s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000261s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000304s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000342s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000304s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000418s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = 7 limit 30 [ RunTime:0.001045s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000385s ]
+[ sql ] [ SQL ] select `ftime` from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = 7 order by ftime [ RunTime:0.000349s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:50+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_2
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_2 [运行时间：0.060240s][吞吐率：16.60req/s] [内存消耗：2,132.69kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_2',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_2[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013152s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000680s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000315s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000275s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000271s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000282s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000251s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000359s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000315s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000374s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000266s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = 7 limit 30 [ RunTime:0.000423s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000343s ]
+[ sql ] [ SQL ] select `ftime` from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = 7 order by ftime [ RunTime:0.000291s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:51+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_3
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_3 [运行时间：0.051976s][吞吐率：19.24req/s] [内存消耗：2,130.48kb] [文件加载：55]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_3',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_3[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013920s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000592s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000229s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000242s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000230s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000236s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000216s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000316s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000243s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000304s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000352s ]
+[ sql ] [ SQL ] select id from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=7 [ RunTime:0.000281s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=7 order by score DESC limit 0,30 [ RunTime:0.000345s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=7 order by score DESC limit 0,30 [ RunTime:0.000209s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000354s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:53+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_4
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_4 [运行时间：0.052549s][吞吐率：19.03req/s] [内存消耗：2,120.99kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_4',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_4[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013355s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000603s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000296s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000307s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000283s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000348s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000265s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000437s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000369s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000274s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000222s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where isenrolled = 1 AND hascalled != 3 AND isfaced = 1 AND aim = 7 order by score DESC  limit 30 [ RunTime:0.000430s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000366s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:54+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_5
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_5 [运行时间：0.075109s][吞吐率：13.31req/s] [内存消耗：2,107.52kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_5',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_5[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013578s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000573s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000284s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000333s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000280s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000225s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000222s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000233s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000225s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000377s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000315s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where isenrolled = 1 AND hascalled = 3 AND aim = 7 [ RunTime:0.000452s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000367s ]
+
+---------------------------------------------------------------
+[ 2018-08-05T09:55:55+08:00 ] 127.0.0.1 127.0.0.1 POST /enroll/enrollmag/logic_1
+[ log ] qzxy.tyut.edu.cn.testweb/enroll/enrollmag/logic_1 [运行时间：0.052392s][吞吐率：19.09req/s] [内存消耗：2,121.25kb] [文件加载：54]
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'enroll',
+    1 => 'enrollmag',
+    2 => 'logic_1',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qzxy.tyut.edu.cn.testweb',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => '*/*',
+  'origin' => 'http://qzxy.tyut.edu.cn.testweb',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://qzxy.tyut.edu.cn.testweb/enroll/enrollmag.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'think_var=zh-cn; PHPSESSID=fmo9cfdhckk2faufmfvuuusil0',
+)
+[ info ] [ PARAM ] array (
+  'med' => 'refresh',
+  'num' => '30',
+  'page' => '1',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] qzxy\enroll\controller\Enrollmag->logic_1[ G:\WebDesigne\APMServer\web\[QZ] qzxy.tyut.edu.cn\application\enroll\controller\Enrollmag.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014494s ] mysql:dbname=qzxy_test;host=localhost;charset=utf8
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000767s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000305s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000282s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000301s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000220s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000217s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000203s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000192s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000231s ]
+[ sql ] [ SQL ] select * from qzlit_group where uid= '2' [ RunTime:0.000191s ]
+[ sql ] [ SQL ] select * from qzlit_usenroll where (hascalled is null OR (isfaced = '-1' AND hascalled = 1)) AND `aim` = 7 limit 30 [ RunTime:0.000345s ]
+[ sql ] [ SQL ] select * from qzlit_config where `name` = 'party' [ RunTime:0.000368s ]
+
+---------------------------------------------------------------

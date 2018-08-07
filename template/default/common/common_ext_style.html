@@ -1,0 +1,16 @@
+<!--[skin-css start]-->
+{if isset($_GET['from'])}
+{if $_GET['from'] == '6'}
+<?php $extcss='sztd'; ?>
+{elseif $_GET['from'] == '7'}
+<?php $extcss='gxyx'; ?>
+{elseif $_GET['from'] == '10'}
+<?php $extcss='xskj'; ?>
+{elseif $_GET['from'] == '16'}
+<?php $extcss='paxy'; ?>
+{elseif $_GET['from'] == '9'}
+<?php $extcss='xygj'; ?>
+{/if}
+{/if}
+{if isset($extcss)}<link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/{$extcss}.css"/>{/if}
+<!--[skin-css end]-->

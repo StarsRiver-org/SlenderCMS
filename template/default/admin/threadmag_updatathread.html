@@ -1,0 +1,10 @@
+<!-- 文章管理列表 -->
+{extend name="admin/frame" /}
+{block name="nav"}
+    <li class="active"><a data-target="#thread-add" data-toggle="tab" href="javascript:;">更新文章</a></li>
+{/block}
+{block name="section"}
+    <div class="tab-pane active in fade " id="thread-add">
+        {include file="common/thread_renewer" /}
+    </div>
+{/block}

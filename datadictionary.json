@@ -1,0 +1,430 @@
+{
+  "qzlit_application": {
+    "apid": [
+      "app的id"
+    ],
+    "appname": [
+      "app名字"
+    ],
+    "appurl": [
+      "app接口 url"
+    ],
+    "appdescrip": [
+      "app 描述"
+    ]
+  },
+  "qzlit_comments": {
+    "rid": [
+      "评论id"
+    ],
+    "uid": [
+      "评论者id"
+    ],
+    "ip": [
+      "评论者ip"
+    ],
+    "time": [
+      "评论时间"
+    ],
+    "rptid": [
+      "被评论文章id"
+    ],
+    "rprid": [
+      "被评论的评论id"
+    ],
+    "rpuid": [
+      "被评论的用户id"
+    ],
+    "message": [
+      "评论内容"
+    ],
+    "assistids": [
+      "点赞的人的id数组"
+    ],
+    "treadsids": [
+      "点踩的用户的id数组"
+    ],
+    "likedids": [
+      "点喜欢的用户数组"
+    ]
+  },
+  "qzlit_chunk": {
+    "id": [
+      "app的id"
+    ],
+    "chunk_name": [
+      "板块名字"
+    ],
+    "chunk_lv": [
+      "板块级别"
+    ],
+    "chunk_below": [
+      "板块的父级"
+    ],
+    "editor": [
+      "编辑者名称",
+      "json"
+    ],
+    "banner": [
+      "板块banner的图像",
+      "json"
+    ]
+  },
+  "qzlit_config": {
+    "type": [
+      "类型"
+    ],
+    "name": [
+      "首页"
+    ],
+    "data": [
+      "时区"
+    ],
+    "descrip": [
+      "描述"
+    ],
+    "updatetime": [
+      "更改时间"
+    ],
+    "issolid": [
+      "是否可删除"
+    ]
+  },
+  "qzlit_feedback": {
+    "fid": [
+      "反馈id"
+    ],
+    "name": [
+      "姓名"
+    ],
+    "ip": [
+      "反馈源IP地址"
+    ],
+    "phone": [
+      "电话"
+    ],
+    "time": [
+      "反馈时间"
+    ],
+    "email": [
+      "邮箱"
+    ]
+  },
+  "qzlit_group": {
+    "uuid": [
+      "用户id"
+    ],
+    "unreg": [
+      "停用用户0/1"
+    ],
+    "username": [
+      "用户名"
+    ],
+    "promise": [
+      "用户权限值"
+    ],
+    "pml": [
+      "细分权限"
+    ],
+    "salt": [
+      "用户密码加密用盐"
+    ],
+    "key": [
+      "用户密码加密后的key"
+    ],
+    "regtime": [
+      "注册日期"
+    ],
+    "lastlogin": [
+      "最后登陆日期"
+    ],
+    "lastip": [
+      "最后登陆ip"
+    ],
+    "phone": [
+      "手机号"
+    ],
+    "email": [
+      "电子邮箱"
+    ],
+    "name": [
+      "名字"
+    ]
+  },
+  "qzlit_nav": {
+    "id": [
+      "id"
+    ],
+    "type": [
+      "类型"
+    ],
+    "bel": [
+      "上级id"
+    ],
+    "name": [
+      "名称"
+    ],
+    "key": [
+      "识别码key"
+    ],
+    "url": [
+      "链接"
+    ],
+    "active": [
+      "是否启用"
+    ],
+    "system": [
+      "是否属于系统"
+    ]
+  },
+  "qzlit_log": {
+    "vid": [
+      "操作id"
+    ],
+    "time": [
+      "操作时间"
+    ],
+    "ip": [
+      "操作者ip"
+    ],
+    "country": [
+      "国家"
+    ],
+    "area": [
+      "南北区"
+    ],
+    "city": [
+      "城市"
+    ],
+    "region": [
+      "城区"
+    ],
+    "county": [
+      "村"
+    ],
+    "isp": [
+      "业务"
+    ],
+    "traget": [
+      "访问目标"
+    ],
+    "data": [
+      "收发数据"
+    ],
+    "fun": [
+      "操作方式"
+    ],
+    "post": [
+      "发送"
+    ],
+    "get": [
+      "获取"
+    ]
+  },
+  "qzlit_menu": {
+    "label": [
+      "标签"
+    ],
+    "content": [
+      "内容"
+    ],
+    "lurl": [
+      "url"
+    ],
+    "reorder": [
+      "不定编号"
+    ],
+    "level": [
+      "级别"
+    ]
+  },
+  "qzlit_portal": {
+    "show_id": [
+      "门户id"
+    ],
+    "chunk_id": [
+      "内容来源板块id"
+    ]
+  },
+  "qzlit_site": {
+    "id": [
+      "子站"
+    ],
+    "title": [
+      "标题"
+    ],
+    "url": [
+      "url"
+    ],
+    "keyword": [
+      "关键词"
+    ],
+    "description": [
+      "描述"
+    ]
+  },
+  "qzlit_thraed": {
+    "cuid": [
+      "文章id"
+    ],
+    "thraed_title": [
+      "标题"
+    ],
+    "theard_coverimg": [
+      "封面"
+    ],
+    "thread_context": [
+      "内容"
+    ],
+    "thread_editor": [
+      "编辑者"
+    ],
+    "thread_author": [
+      "作者"
+    ],
+    "thread_ctime": [
+      "最后修改时间"
+    ],
+    "thread_ptime": [
+      "发布时间"
+    ],
+    "thread_htime": [
+      "自定义时间"
+    ],
+    "hk_keyword": [
+      "文章关键词"
+    ],
+    "hk_descrip": [
+      "文章简介"
+    ],
+    "hk_url": [
+      "文章固定url"
+    ],
+    "hk_mode": [
+      "文章显示模式"
+    ],
+    "hk_sort": [
+      "文章所在板块id"
+    ],
+    "hk_sortclassify": [
+      "文章所在板块类型"
+    ],
+    "oer_hot": [
+      "热度"
+    ],
+    "oer_degree": [
+      "赞数"
+    ],
+    "oer_view": [
+      "访问数"
+    ]
+  },
+  "qzlit_usenroll": {
+    "id": [
+      "id"
+    ],
+    "sex": [
+      "性别"
+    ],
+    "name": [
+      "姓名"
+    ],
+    "phone": [
+      "电话"
+    ],
+    "email": [
+      "邮箱"
+    ],
+    "aim": [
+      "目标"
+    ],
+    "aim2": [
+      "目标"
+    ],
+    "college": [
+      "学院"
+    ],
+    "mj": [
+      "专业"
+    ],
+    "class": [
+      "班级"
+    ],
+    "reasion": [
+      "报名理由"
+    ],
+    "reasion2": [
+      "报名理由"
+    ],
+    "ip": [
+      "来源ip"
+    ],
+    "time": [
+      "报名时间"
+    ],
+    "ftime": [
+      "截至面试时间"
+    ],
+    "hascalled": [
+      "是否已经通知面试/被刷/录取"
+    ],
+    "score": [
+      "学生评分"
+    ],
+    "isfaced": [
+      "已经面试的"
+    ],
+    "isenrolled": [
+      "决定被录用的"
+    ],
+    "f2f": [
+      "面试官"
+    ]
+  },
+  "qzlit_visite": {
+    "vid": [
+      "操作id"
+    ],
+    "ip": [
+      "ip"
+    ],
+    "time": [
+      "时间"
+    ],
+    "target": [
+      "操作者访问目标"
+    ],
+    "data": [
+      "收发数据"
+    ],
+    "post": [
+      "发送"
+    ],
+    "get": [
+      "获取"
+    ]
+  },
+  "sms_log": {
+    "id": [
+      "操作id"
+    ],
+    "time": [
+      "发送时间"
+    ],
+    "call": [
+      "发送目标号码"
+    ],
+    "msgtplcode": [
+      "使用的模板"
+    ],
+    "stat": [
+      "收发数据"
+    ],
+    "Bizld": [
+      "阿里回执码"
+    ],
+    "Code": [
+      "阿里请求码"
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{extend name="admin/frame" /}
+
+
+{block name="nav"}
+    <li class="nav-parent show"><a><i class="icon icon-dashboard"></i>统计台</a>
+        <ul class="nav">
+            <li class="active"><a data-target="#stats-visit" data-toggle="tab" href="javascript:;" >访问统计</a></li>
+        </ul>
+    </li>
+{/block}
+{block name="section"}
+    <div class="tab-pane fade active in" id="stats-visit">
+        <div class="globle-status">
+            <div class="block">
+                <div class="tap">
+                    <i class="icon-list-alt" style="color:#42abfb;"></i>
+                    <em>今日发布/文章总量</em>
+                    <span>{$info_article['today']}/{$info_article['all']}</span>
+                </div>
+                <div class="tap">
+                    <i class="icon-line-chart" style="color: #da7741"></i>
+                    <em>总浏览次数</em>
+                    <span>{$info_visit['article']['allsite']['all'] + $info_visit['portal']['allsite']['all']}</span>
+                </div>
+                <div class="tap">
+                    <i class="icon-pie-chart" style="color: #0eba71"></i>
+                    <em>文章有效浏览次数</em>
+                    <span>{$info_article['visit']}</span>
+                </div>
+                <div class="tap">
+                    <i class="icon-heart" style="color: #eb5045"></i>
+                    <em>被喜欢次数</em>
+                    <span>{$info_article['like']}</span>
+                </div>
+            </div>
+            <div class="block">
+                <div class="card tap-big">
+                    <div class="chart-mid">
+                        <span class="title">管理员近期操作次数</span>
+                        <?php $mod = ["管理员访问","consoleboard","allsite","day","12"]; ?>
+                        {include file="admin/mod_single_count"}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="chart-big">
+                <span class="title">今日访问（时）</span>
+                <?php $mod = [["主页访问","文章浏览"],["portal","article"],["allsite","allsite"],"hour"]; ?>
+                {include file="admin/mod_double_count"}
+            </div>
+        </div>
+        <div class="card">
+            <div class="chart-big">
+                <span class="title">最近月内访问（日）</span>
+                <?php $mod = [["主页访问","文章浏览"],["portal","article"],["allsite","allsite"],"day"]; ?>
+                {include file="admin/mod_double_count"}
+            </div>
+        </div>
+        <div class="card">
+            <div class="chart-big">
+                <span class="title">一季度访问（周）</span>
+                <?php $mod = [["主页访问","文章浏览"],["portal","article"],["allsite","allsite"],"week"]; ?>
+                {include file="admin/mod_double_count"}
+            </div>
+        </div>
+        <div class="card">
+            <div class="chart-big">
+                <span class="title">一年期内访问（月）</span>
+                <?php $mod = [["主页访问","文章浏览"],["portal","article"],["allsite","allsite"],"moon"]; ?>
+                {include file="admin/mod_double_count"}
+            </div>
+        </div>
+    </div>
+{/block}

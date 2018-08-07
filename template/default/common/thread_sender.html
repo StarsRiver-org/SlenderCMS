@@ -1,0 +1,131 @@
+<link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/thread_sender.css" rel="stylesheet">
+<script type="text/javascript" src="{$Think.const.STATIC_ROOT}/js/selectFx.js"></script>
+<script type="text/javascript" src="{$Think.const.STATIC_ROOT}/lib/datetimepicker/datetimepicker.min.js"></script>
+<link href="{$Think.const.STATIC_ROOT}/lib/datetimepicker/datetimepicker.min.css" rel="stylesheet">
+<?php
+    $showspc = 0;
+    foreach($splv1 as $splb){if($splb['hpm']) $showspc = 1; break;}
+    foreach($splv2 as $splb){if($splb['hpm']) $showspc = 1; break;}
+    foreach($splv3 as $splb){if($splb['hpm']) $showspc = 1; break;}
+?>
+<div id="forum_sender">
+    <form id="threadform" enctype="multipart/form-data">
+        <input type="hidden" id="newthread" name="newthread" value="post">
+        <div class="ic">
+            <select class="lb cs-select cs-skin-border" name="threadsort" id="threadsort">
+                <optgroup label="板块">
+                <option>请选择分类</option>
+                {volist name="chunklv1" id="lv1" }
+                    {if $lv1['hpm']}<option value="{$lv1.id}">◆ {$lv1.chunk_name}</option> {/if}
+                    {volist name="chunklv2" id="lv2"}
+                        {if $lv2['chunk_below'] == $lv1['id']}
+                            {if $lv2['hpm']}<option value="{$lv2.id}">&nbsp;&nbsp;&nbsp;&nbsp;◇ {$lv2.chunk_name}</option>{/if}
+                            {volist name="chunklv3" id="lv3"}
+                                {if $lv3['chunk_below'] == $lv2['id']}
+                                     {if $lv3['hpm']}<option value="{$lv3.id}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ {$lv3.chunk_name} ]</option>{/if}
+                                {/if}
+                            {/volist}
+                        {/if}
+                    {/volist}
+                {/volist}
+                </optgroup>
+                {if $showspc}
+                <optgroup label="专题" id="sp">
+                    {volist name="splv1" id="lv1" }
+                        {if $lv1['hpm']}<option value="{$lv1.id}">◆ {$lv1.chunk_name}</option> {/if}
+                        {volist name="splv2" id="lv2"}
+                            {if $lv2['chunk_below'] == $lv1['id']}
+                                {if $lv2['hpm']}<option value="{$lv2.id}">&nbsp;&nbsp;&nbsp;&nbsp;◇ {$lv2.chunk_name}</option>{/if}
+                            {/if}
+                        {/volist}
+                    {/volist}
+                </optgroup>
+                {/if}
+            </select>
+            <select class="rb cs-select cs-skin-border" name="threadmode" id="threadmode">
+                <option value="1" selected>保存草稿</option>
+                <option value="2">直接推送</option>
+            </select>
+            <script>
+                (function () {
+                    [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
+                        new SelectFx(el);
+                    });
+                })();
+            </script>
+            <input autocomplete="off" type="text" name="title" id="title" placeholder="标题">
+        </div>
+        <script type="text/javascript" src="{$Think.STATIC_ROOT}/lib/ueditor/ueditor.parse.js"></script>
+        <script type="text/javascript" src="{$Think.STATIC_ROOT}/lib/ueditor/ueditor.config.js"></script>
+        <script type="text/javascript" src="{$Think.STATIC_ROOT}/lib/ueditor/ueditor.all.js"></script>
+        <script id="container" value="aaaaaaaaaa" name="content" type="text/plain" style="width: auto"></script>
+        <script type="text/javascript">var ue = UE.getEditor('container');ue.ready(function() {ue.setContent('');});</script>
+        <div class="infobox l">
+            <div class="ic"><b class="l">描述</b><input autocomplete="off" type="text" name="descrip" id="descrip" placeholder="描述，文章的简介，在搜索显示结果里显示的内容"></div>
+            <div id="bar"></div>
+            <div class="ic"><b class="l">关键词</b><input autocomplete="off" type="text" name="keyword" id="keyword" placeholder="关键词，用于方便搜索引擎的索引和收录"></div>
+        </div>
+        <div class="coverimg r">
+            <img src="{$Think.STATIC_ROOT}/img/common/image.png">
+            <script language="JavaScript" src="{$Think.const.STATIC_ROOT}/js/imgpreview.js"></script>
+            <input type="file" onchange="previewImage(this,1)" id="coverimg" name="coverimg">
+            <div class="preview" id="preview1"><img src="" id="imghead1" /></div>
+        </div>
+        <div id="bar"></div>
+        <div class="l ic s"><b class="l">作者</b><input type="text" name="author" id="author" placeholder="留空,作者默认为编辑者"></div>
+        <div class="l ic s"><b class="l">时间</b><input type="text" name="htime" id="datetime" placeholder="留空,默认为文章发布日期"></div>
+        <button id="submiter" class="r btn" type="button" onclick="post()">发布 \ 保存</button>
+        <div id="loading" style="display: none">
+            <img src="/static/img/common/loading.gif">
+        </div>
+    </form>
+    <script>
+        function post() {
+            $('#loading').css('display','block');
+            var data = new FormData(document.querySelector('#threadform'));
+            console.log(data);
+
+            $.ajax({
+                processData:false,
+                contentType:false,
+                cache: false,
+                url: location.href,
+                type: "POST",
+                data: data,
+                success: function (status) {
+                    $('#loading').css('display','none');
+                    new $.zui.Messager(status || '提交成功', {
+                        icon: 'bell',
+                        type: status === '成功发布,你可以继续添加或刷新页面查看结果'? 'success' :'warning',
+                        placement: 'bottom-left'
+                    }).show();
+                    if(status === '成功发布,你可以继续添加或刷新页面查看结果'){
+                        $('#title').val('');
+                        $('#descrip').val('');
+                        $('#keyword').val('');
+                        $('#coverimg').val('');
+                        $('#author').val('');
+                        $('#datetime').val('');
+                        document.querySelector('#preview1').innerHTML = '';
+                        ue.setContent('');
+                    }
+                },
+                error: function (res) {
+                    $('#loading').css('display','none');
+                    dump(res);
+                }
+            })
+        }
+        $("#datetime").datetimepicker(
+            {
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1,
+                format: "yyyy-mm-dd hh:ii"
+            });
+    </script>
+</div>

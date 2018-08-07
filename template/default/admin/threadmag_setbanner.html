@@ -1,0 +1,50 @@
+<!-- 文章管理列表 -->
+{extend name="admin/frame" /}
+{block name="nav"}
+    <li class="active"><a data-target="#s-add" data-toggle="tab" href="javascript:;">设置幻灯</a></li>
+    <li><a data-target="#b-add" data-toggle="tab" href="javascript:;">设置Banner</a></li>
+{/block}
+{block name="section"}
+    <script language="JavaScript" src="{$Think.const.STATIC_ROOT}/js/imgpreview.js"></script>
+    <div  class="tab-pane active in fade banneruploader" id="s-add">
+        <form class="banneruploader" enctype="multipart/form-data" method="post">
+            <ul>
+                <?php $inum = 0;?>
+                {volist name='slider' id='b' offset='0' length='5'}
+                    <li><span>{$inum}</span>
+                        <div class="preview" id="preview{$inum}">
+                            <img src="{if !empty($b) && $b != '/static/img/common/no-img-2.png'}{$b}{/if}" id="imghead{$inum}" />
+                        </div>
+                        <input class="hide" id="sec{$inum}" type="text" value="empty" name="sec{$inum}">
+                        <input class="imguper" type="file" onchange="previewImage(this,{$inum})"  name="b[]" title="点击上传">
+                    </li>
+                    <?php $inum += 1; ?>
+                {/volist}
+            </ul>
+            <input type="hidden" name="updata" value="yes">
+            <button class="btn btn-big btn-success">确认修改</button>
+        </form>
+    </div>
+    <div  class="tab-pane in fade banneruploader" id="b-add">
+        <form class="banneruploader" enctype="multipart/form-data" method="post">
+            <ul>
+                <li style="height: 180px; width: 720px"><span>大</span>
+                    <div class="preview" id="preview5">
+                        <img src="<?php if(!empty($banner[0]) && $banner[0] !='/static/img/common/no-img-2.png') {echo $banner[0];} ?>" id="imghead5" />
+                    </div>
+                    <input class="hide" id="sec5" type="text" value="empty" name="sec5">
+                    <input class="imguper" type="file" onchange="previewImage(this,5)"  name="b[]" title="点击上传">
+                </li>
+                <li style="height: 100px; width: 360px"><span>小</span>
+                    <div class="preview" id="preview6">
+                        <img src="<?php if(!empty($banner[1]) && $banner[1] !='/static/img/common/no-img-2.png') {echo $banner[1];} ?>" id="imghead6" />
+                    </div>
+                    <input class="hide" id="sec6" type="text" value="empty" name="sec6">
+                    <input class="imguper" type="file" onchange="previewImage(this,6)"  name="b[]" title="点击上传">
+                </li>
+            </ul>
+            <input type="hidden" name="updata" value="yes">
+            <button class="btn btn-big btn-success">确认修改</button>
+        </form>
+    </div>
+{/block}

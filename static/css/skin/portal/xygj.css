@@ -1,0 +1,485 @@
+/* 校园广角 css */
+
+/* header & footer */
+.header,
+.footer {
+    background: #5dac81 !important;
+}
+
+@media (max-width: 993px) {
+	.header .container .nav li {
+		background-color: #098044 !important;
+		border-bottom: none;
+	}
+	.header .container .nav li:hover,
+	.header .container .nav li:hover:after,
+	.header .container .nav li:hover> a {
+		background-color: #329865 !important;
+	}
+}
+
+.header .container .searchBox .qzSearch {
+    background-color: #1e7044 !important;
+    border: none;
+}
+
+.header .container .searchBox .searchMenu a {
+    color: #f2f2f2;
+}
+
+.header .container .searchBox .searchMenu a:hover {
+	color: #fee2bd !important;
+}
+.header .container .nav li .subnav a {
+	color: #565 !important;
+	background-color: #d8e8e0 !important;
+}
+.header .container .nav li .subnav a:hover {
+	background-color: #565 !important;
+	color: #d8e8e0 !important;
+}
+
+.footer .quickLink .container .leftLink>li>a,
+.footer .quickLink .container .rightLink>li>a {
+    color: #efefef !important;
+}
+
+.footer .copyright p,
+.footer .copyright p a {
+    color: #efefef !important;
+}
+
+.footer .quickLink .container .rightLink li:before {
+	color: #fff !important;
+}
+.footer .quickLink .container .rightLink li:hover:before {
+	color: #fee2bd !important;
+}
+
+.footer .quickLink .container .leftLink,
+.footer .quickLink .container .rightLink {
+	border-color: #6eb48e !important;
+}
+
+.footer .quickLink {
+	border-bottom-color: #447d5e !important;
+}
+.footer .copyright {
+	border-top-color: #74b893 !important;
+}
+
+/*article*/
+.o__main .container .listRight .listRightHead h2 {
+    border-top-color: #5dac81 !important;
+    border-left-color: #5dac81 !important;
+    color: #5dac81 !important;
+}
+
+/*banner*/
+.bannerImgBox {
+	max-width: 100%;
+}
+.bannerImgBox img {
+	margin: 0 auto;
+	height: auto;
+	width: 100%;
+	max-width: 100%;
+	
+	/* 限制最小宽度为1240px且居中显示，但是IE8表现差些，因为不支持transtorm */
+	min-width: 1240px;
+	position: relative;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+	margin-left: -50%;/* ie8 */
+	margin-left: 0rem;
+}
+/* other nav */
+.o__nav {
+    position: relative;
+	height: 60px;
+    background-color: #5dac81;
+}
+.o__nav .container {
+	width: 1240px;
+}
+.o__nav .container .navItemContainer .navItem {
+	display: inline-block;
+	margin: 0 22px;
+	width: 130px;
+	color: #eee;
+	font-size: 18px;
+	font-size: 1.8rem;
+	text-align: center;
+	line-height: 60px;
+}
+.o__nav .container .navItemContainer .navItem:hover,
+.o__nav .container .navItemContainer .navItem__now {
+	color: #fff !important;
+	background-color: #1e7044;
+	/*border-radius: 12px;*/
+	-webkit-box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, .5);
+	box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, .5);
+}
+
+/* o__main */
+.o__main {
+	background-color: #ebefed;
+}
+.o__main .container {
+	padding: 0 65.5px;
+	width: 1122px;
+	background-color: #fff;
+}
+
+.o__main .leftBox,
+.o__main .rightList {
+	display: inline-block;
+	vertical-align: top;
+}
+.o__main .leftBox {
+	width: 738px;
+}
+.o__main .rightList {
+	width: 342px;
+	height: 329px;
+    margin-left: 38px;
+	background: #e1f4e7;
+}
+/* left&full common */
+.o__main .fullBox .fullColumnName,
+.o__main .leftBox .leftColumnName {
+	padding-bottom: 11px;
+	border-bottom: 1px solid #cdcdcd;
+}
+.o__main .fullBox .fullColumnName a,
+.o__main .leftBox .leftColumnName a {
+	padding: 0 2px 11px;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	color: #1e7044 !important;
+	border-bottom: 1px solid #2a764d !important;
+}
+.o__main .fullBox .fullColumnContent,
+.o__main .leftBox .leftColumnContent {
+	margin-top: 26px;
+}
+/* rightColumnName */
+.o__main .rightList .rightListBox .rightColumnName {
+	height: 40px;
+	line-height: 40px;
+	letter-spacing: -5px;
+}
+.o__main .rightList .rightListBox .rightColumnName span {
+	font-size: 18px;
+	height: 40px;
+	display: inline-block;
+	letter-spacing: 0;
+	text-align: center;
+	font-weight: 600;
+	color: #a6c8b6;
+    cursor: pointer;
+    background: #e8f0ec;
+    width: 49.4%;
+    border: 1px solid #e1f4e7;
+}
+.o__main .rightList .rightListBox .rightColumnName .ri-current {
+	color: #1e7044 !important;
+    background: #aae3c4 !important;
+}
+
+/* rightListContent (ul & li) */
+.o__main .rightList .rightListBox .rightListContent {
+	padding: 18px 0;
+	background: #fff;
+	border: 1px solid #e1f4e7;
+    box-shadow: 0 2px 0 2px rgba(0, 0, 0, .02);
+	border-top: none;
+}
+.o__main .rightList .rightListBox .rightListContent ul li {
+	display: block;
+	margin-bottom: 12px;
+	padding-left: 22px;
+}
+.o__main .rightList .rightListBox .rightListContent ul li a {
+	position: relative;
+	padding-left: 22px;
+	font-size: 14px;
+	line-height: 16px;
+	color: #937c67;
+	font-weight: 600;
+	/*处理超出*/
+	width: max-content;
+	max-width: 260px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.o__main .rightList .rightListBox .rightListContent ul li a:before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	-webkit-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 4px;
+	height: 4px;
+	background: #539270;
+	border-radius: 2px;
+}
+.o__main .rightList .rightListBox .rightListContent ul li a:hover {
+	color: #e9482c;
+}
+
+/* xySlider */
+div.xySlider {
+	padding-top: 10px;
+	padding-bottom: 58px;
+}
+div.xySlider .rightList {
+	height: 423px;
+}
+/* sliderBox */
+.o__main .leftBox .sliderBox {
+	width: 736px;
+	height: 421px;
+	position: relative;
+    box-shadow: 0 2px 0 2px rgba(0, 0, 0, .02);
+    border: 1px solid #e1f4e7;
+}
+.o__main .leftBox .sliderBox .sliderMain {
+	display: block;
+}
+.o__main .leftBox .sliderBox .sliderMain > li > img {
+	width: 738px;
+	height: 421px;
+	background-color: #f5f5f5;
+}
+.o__main .leftBox .sliderBox .sliderMain > li > div {
+	position: absolute;
+	bottom: 0;
+	display: block;
+	height: 57px;
+	width: 736px;
+	background-color: rgba(0, 0, 0, .5);
+}
+.o__main .leftBox .sliderBox .sliderMain > li > div > a {
+	display: block;
+	line-height: 57px;
+	font-size: 16px;
+	text-align: left;
+	margin-left: 40px;
+	color: #fff;
+	
+	width: max-content;
+	max-width: 500px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*sp*/
+.o__main .leftBox .opacity {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+/*对xySlider lightslider的更改*/
+.xySlider .lSSlideOuter .lSPager.lSpg {
+	margin: 0 0;
+}
+.xySlider .lSSlideOuter .lSPager.lSpg > li a {
+	background-color: #f5f5f5;
+}
+.xySlider .lSSlideOuter .lSPager.lSpg > li:hover a,
+.xySlider .lSSlideOuter .lSPager.lSpg > li.active a {
+	background-color: #1e7044;
+}
+
+/* xyIntroduct */
+div.xyIntroduct {
+	padding-bottom: 58px;
+}
+
+/* leftCardItem */
+.o__main .leftBox .leftColumnContent .leftCardBox,
+.o__main .leftBox .leftColumnContent .leftListBox {
+	display: inline-block;
+	vertical-align: top;
+}
+.o__main .leftBox .leftColumnContent .leftListBox {
+	margin-left: 70px;
+}
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem {
+	width: 346px;
+}
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem:first-child {
+	padding-bottom: 30px;
+	border-bottom: 1px dashed #e5d5bd;
+}
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem:first-child + .leftCardItem {
+	padding-top: 30px;
+}
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem .CardCoverimg,
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem .CardIntro {
+	display: inline-block;
+	vertical-align: top;
+}
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem .CardCoverimg img {
+	width: 122px;
+	height: 94px;
+	background-color: #f5f5f5;
+}
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem .CardIntro {
+	margin-left: 18px;
+}
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem .CardIntro .Intro_tit {
+	font-size: 14px;
+	color: #000000;
+	padding-left: 4px;
+	margin-bottom: 10px;
+	/*处理超出*/
+	width: max-content;
+	max-width: 190px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.o__main .leftBox .leftColumnContent .leftCardBox .leftCardItem .CardIntro .Intro_des {
+	font-size: 12px;
+	color: #937C67;
+	width: 200px;
+	height: 66px;
+	line-height: 22px;
+	/*处理超出*/
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: pre-wrap;
+}
+/* leftListBox */
+.o__main .leftBox .leftColumnContent .leftListBox ul li {
+	display: block;
+	margin-bottom: 12px;
+	padding-left: 22px;
+}
+.o__main .leftBox .leftColumnContent .leftListBox ul li a {
+	position: relative;
+	padding-left: 22px;
+	font-weight: 600;
+	/*处理超出*/
+	width: max-content;
+	max-width: 230px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #1a1a1a;
+	font-size: 14px;
+	line-height: 20px;
+}
+.o__main .leftBox .leftColumnContent .leftListBox ul li a:hover {
+	color: #e9613a;
+}
+
+/* xyHotGazing */
+div.xyHotGazing {
+	padding-bottom: 58px;
+}
+.xyHotGazing .fullBox,
+.xyHotGazing .fullColumnContent {
+	width: 100%;
+}
+.xyHotGazing .fullColumnContent ul {
+	display: block;
+	margin-bottom: 5px;
+}
+.xyHotGazing .fullColumnContent ul li {
+	display: inline-block;
+}
+.xyHotGazing .fullColumnContent ul li .GalleryItem {
+	width: 200px;
+	height: 178px;
+}
+.xyHotGazing .fullColumnContent ul li .GalleryItem a img {
+	display: block;
+    max-width: 200px;
+    max-height: 150px;
+	width: 200px;
+    height: 150px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+.xyHotGazing .fullColumnContent ul li .GalleryItem .GalleryItem_des {
+    margin-top: 12px;
+    display: block;
+    text-align: center;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #4a4a51;
+}
+.xyHotGazing .fullColumnContent ul li .GalleryItem:hover .GalleryItem_des {
+	color: #C6151C;
+}
+
+/*.sliderItem_7 */
+div.xyPioneer,
+div.xyTeacher,
+div.xyGoodBook {
+	padding-bottom: 58px;
+}
+.sliderItem_7 .fullBox,
+.sliderItem_7 .fullColumnContent {
+	width: 100%;
+}
+.sliderItem_7 .fullColumnContent ul {
+	display: block;
+	margin-bottom: 5px;
+}
+.sliderItem_7 .fullColumnContent ul li {
+	display: inline-block;
+}
+.sliderItem_7 .fullColumnContent ul li .GalleryItem {
+	width: 120px;
+}
+.sliderItem_7 .fullColumnContent ul li .GalleryItem a img {
+	display: block;
+    max-width: 120px;
+    max-height: 170px;
+	width: 120px;
+    height: 170px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+.sliderItem_7 .fullColumnContent ul li .GalleryItem .GalleryItem_des {
+    margin-top: 12px;
+    display: block;
+    text-align: center;
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #4a4a51;
+}
+.sliderItem_7 .fullColumnContent ul li .GalleryItem:hover .GalleryItem_des {
+	color: #C6151C;
+}
+/* sp for sliderItem_7 & xyHotGazing */
+.sliderItem_7 .lSSlideOuter .lSPager.lSpg>li.active a,
+.sliderItem_7 .lSSlideOuter .lSPager.lSpg>li:hover a,
+.xyHotGazing .lSSlideOuter .lSPager.lSpg>li.active a,
+.xyHotGazing .lSSlideOuter .lSPager.lSpg>li:hover a {
+    background-color: #6eb48e;
+}

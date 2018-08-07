@@ -1,0 +1,44 @@
+<?php
+
+namespace qzxy\portal\Controller;
+use qzxy\Base;
+use qzxy\Log;
+use qzxy\Chunk;
+use qzxy\Thread;
+use think\Controller;
+
+class Gxyx extends Controller{
+    public function main(){
+        Log::visit("portal","gxyx","");
+        $chunk = [
+            'id'         =>   7,
+            'name'       =>   '清泽心雨 - 国学研习',
+            'template'   =>   'portal/gxyx/gxyx',
+        ];
+        $this->loader($chunk['id']);
+        $this->assign([
+            'title' => $chunk['name'],
+            'base' => Base::baseinfo(),
+        ]);
+        return view($chunk['template']);
+    }
+
+    public function loader($chunkid){
+        $threadlist = Thread::loadlist([
+            'top'=>7,
+            'new'=>26,
+            'start'=>27,
+            'dictionary'=>28,
+            'history'=>29,
+            'websource'=>30,
+            'civilize'=>31,
+            'forum'=>32,
+            'dispute'=>33,
+            'cr'=>34
+        ]);
+        $this->assign([
+            'threadlist' => $threadlist,
+            'banners' => Chunk::loadbanner($chunkid),
+        ]);
+    }
+}

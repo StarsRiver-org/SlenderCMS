@@ -1,0 +1,42 @@
+{extend name="special/frame"/}
+
+{block name="style"}
+    <link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/special/subreadlist.css"/>
+{/block}
+{block name="js"}
+    <script type="text/javascript">
+        function setFocus(x)
+        {
+            document.getElementById(x).style.background="#fff9fa"
+        }
+        function setBlur(x)
+        {
+            document.getElementById(x).style.background="#65080a"
+        }
+    </script>
+{/block}
+{block name="banner"}
+    <img src="{$banners.banner.0}" />
+{/block}
+{block name="body"}
+    <div class="subreadlist">
+        <ul class="subreadlist_container">
+            {if !empty($threadlist)}
+            {foreach name='threadlist' key='name' item='list'}
+                {if !empty($list)}
+                <li>
+                <span class='spname'>{$name}</span>
+                {volist name='list' id='t' offset='0' length='10'}
+                <div class="list" id="list">
+                    <a href="/threads/view?id={$t.id}"><span><img src="{$t.coverimg}"></span></a>
+                    <a href="/threads/view?id={$t.id}" class="subtitle">{$t.title}</a>
+                    <a href="/threads/view?id={$t.id}" class="subtext">{$t.descrip}</a>
+                </div>
+                {/volist}
+                </li>
+                {/if}
+            {/foreach}
+            {/if}
+        </ul>
+    </div>
+{/block}

@@ -1,0 +1,435 @@
+<!-- 文章管理列表 -->
+{extend name="admin/frame" /}
+{block name="nav"}
+    <li class="nav-parent show" ><a><i class="icon icon-file"></i>板块管理</a>
+        <ul class="nav">
+            <li class="active"><a data-target="#chunk-all" data-toggle="tab" href="javascript:;" >当前板块</a></li>
+            <li><a data-target="#chunk-comb" data-toggle="tab" href="javascript:;" >合并板块</a></li>
+        </ul>
+    </li>
+    <li class="nav-parent show" ><a><i class="icon icon-file"></i>专题管理</a>
+        <ul class="nav">
+            <li><a data-target="#special-all" data-toggle="tab" href="javascript:;" >当前专题</a></li>
+        </ul>
+    </li>
+{/block}
+{block name="section"}
+    <div class="tab-pane fade active in" id="chunk-all">
+        <div class="panel-group" id="chunk" aria-multiselectable="true">
+            <div class="modal fade" id="addmainchunk">
+                <div class="modal-dialog">
+                    <form class="modal-content" id="add_mainchunk" method="post">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                            <h4 class="modal-title">{$Think.lang.chunk_add}</h4>
+                        </div>
+                        <div class="modal-body chunk_input">
+                            <input type="hidden" name="add_chunk" value="lv1">
+                            <cite>板块名称：</cite><input type="text" name="chunk_name">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <button type="button"  data-toggle="modal" data-target="#addmainchunk" style="margin-bottom:12px"  class="btn btn-success w">{$Think.lang.chunk_add}</button>
+
+            {volist name="chunklv1" id="lv1" empty="没有板块"}
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="chunk{$lv1.id}">
+                        <a class="panel-title" href="#{$lv1.id}" data-toggle="collapse" data-parent="#chunk" >
+                            #{$lv1.id} &nbsp;{$lv1.chunk_name}
+                        </a>
+                        <button type="button" class="btn btn-sm btn-danger r" data-toggle="modal" data-target="#del{$lv1.id}">{$Think.lang.del}</button>
+                        <button class="btn btn-sm btn-success r"  data-toggle="modal" data-target="#rename{$lv1.id}" >重命名</button>
+                        <div class="modal fade" id="del{$lv1.id}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header text-danger">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                        <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                    </div>
+                                    <form class="modal-footer" method="post">
+                                        <input type="hidden" name="del_chunk" value="{$lv1.id}">
+                                        <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
+                                        <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="rename{$lv1.id}">
+                            <div class="modal-dialog">
+                                <form class="modal-content" method="post">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                        <h4 class="modal-title">{$Think.lang.changename}</h4>
+                                    </div>
+                                    <div class="modal-body chunk_input">
+                                        <input type="hidden" name="chunk_rename" value="{$lv1.id}">
+                                        <cite>新名称:</cite><input type="text" name="new_name" value="{$lv1.chunk_name}">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="{$lv1.id}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs chunk_li">
+                                {volist name="chunklv2" id="lv2"}
+                                    {if $lv2['chunk_below'] == $lv1['id']}
+                                        <li>
+                                            <a class="tip_contaner" data-tab href="#{$lv2.id}">(#{$lv2.id}) {$lv2.chunk_name}
+                                                <span>
+                                                    <button style="width: 60px;"  data-toggle="modal" data-target="#rename{$lv2.id}" >重命名</button>
+                                                    <button style="width: 40px;" data-toggle="modal" data-target="#del{$lv2.id}" class="danger">删除</button>
+                                                </span>
+                                            </a>
+                                            <div class="modal fade" id="rename{$lv2.id}">
+                                                <div class="modal-dialog">
+                                                    <form class="modal-content" method="post">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                                            <h4 class="modal-title">{$Think.lang.changename}</h4>
+                                                        </div>
+                                                        <div class="modal-body chunk_input">
+                                                            <input type="hidden" name="chunk_rename" value="{$lv2.id}">
+                                                            <cite>新名称:</cite><input type="text" name="new_name" value="{$lv2.chunk_name}">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="del{$lv2.id}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header text-danger">
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                                            <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                                        </div>
+                                                        <form class="modal-footer" method="post">
+                                                            <input type="hidden" name="del_chunk" value="{$lv2.id}">
+                                                            <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
+                                                            <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {/if}
+                                {/volist}
+                                <li>
+                                    <button type="button"  data-toggle="modal" data-target="#addto_{$lv1.id}"  class="do">{$Think.lang.chunk_addchild}</button>
+                                    <div class="modal fade" id="addto_{$lv1.id}">
+                                        <div class="modal-dialog">
+                                            <form class="modal-content" method="post">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                                    <h4 class="modal-title">{$Think.lang.chunk_add}</h4>
+                                                </div>
+                                                <div class="modal-body chunk_input">
+                                                    <input type="hidden" name="add_chunk" value="lv2">
+                                                    <input type="hidden" name="chunk_below" value="{$lv1.id}">
+                                                    <cite>子板块名称：</cite><input type="text" name="chunk_name">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="tab-content chunk_content">
+                                {volist name="chunklv2" id="lv2"}
+                                    {if $lv2['chunk_below'] == $lv1['id']}
+                                        <div class="tab-pane" id="{$lv2.id}">
+                                            {volist name="chunklv3" id="lv3"}
+                                                {if $lv3['chunk_below'] == $lv2['id']}
+                                                    <a class="tip_contaner" id="{$lv3.id}">(#{$lv3.id}) {$lv3.chunk_name}
+                                                        <span>
+                                                            <button style="width: 60px;"  data-toggle="modal" data-target="#rename{$lv3.id}" >重命名</button>
+                                                            <button style="width: 40px;" data-toggle="modal" data-target="#del{$lv3.id}" class="danger">删除</button>
+                                                        </span>
+                                                    </a>
+                                                    <div class="modal fade" id="rename{$lv3.id}">
+                                                        <div class="modal-dialog">
+                                                            <form class="modal-content" method="post">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                                                    <h4 class="modal-title">{$Think.lang.changename}</h4>
+                                                                </div>
+                                                                <div class="modal-body chunk_input">
+                                                                    <input type="hidden" name="chunk_rename" value="{$lv3.id}">
+                                                                    <cite>新名称：</cite><input type="text" name="new_name" value="{$lv3.chunk_name}">
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="del{$lv3.id}">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header text-danger">
+                                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                                                    <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                                                </div>
+                                                                <form class="modal-footer" method="post">
+                                                                    <input type="hidden" name="del_chunk" value="{$lv3.id}">
+                                                                    <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
+                                                                    <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {/if}
+                                            {/volist}
+                                            <button type="button"  data-toggle="modal" data-target="#addto_{$lv2.id}"  class="do">{$Think.lang.newsort}</button>
+                                            <div class="modal fade" id="addto_{$lv2.id}">
+                                                <div class="modal-dialog">
+                                                    <form class="modal-content" method="post">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                                            <h4 class="modal-title">{$Think.lang.chunk_add}</h4>
+                                                        </div>
+                                                        <div class="modal-body chunk_input">
+                                                            <input type="hidden" name="add_chunk" value="lv3">
+                                                            <input type="hidden" name="chunk_below" value="{$lv2.id}">
+                                                            <cite>分类名称</cite><input type="text" name="chunk_name">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/if}
+                                {/volist}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {/volist}
+        </div>
+    </div>
+    <div class="tab-pane fade" id="chunk-comb">
+        <div class="alert alert-warning">
+            {$Think.lang.chunkinfo}
+        </div>
+        <form method="post" class="chunk_comb">
+            <div class="cclock">
+                <cite>将</cite>
+                <select name="chunk_becomb">
+                    {volist name="chunklv1" id="lv1" empty="没有板块"}
+                    <option value="{$lv1.id}">◆ {$lv1.chunk_name}</option>
+                    {volist name="chunklv2" id="lv2"}
+                    {if $lv2['chunk_below'] == $lv1['id']}
+                    <option value="{$lv2.id}">&nbsp;&nbsp;&nbsp;&nbsp;◇ {$lv2.chunk_name}</option>
+                    {volist name="chunklv3" id="lv3"}
+                    {if $lv3['chunk_below'] == $lv2['id']}
+                    <option value="{$lv3.id}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ {$lv3.chunk_name} ]</option>
+                    {/if}
+                    {/volist}
+                    {/if}
+                    {/volist}
+                    {/volist}
+                </select>
+            </div>
+            <div class="cclock">
+                <cite>并入</cite>
+                <select name="chunk_comber">
+                    {volist name="chunklv1" id="lv1" empty="没有板块"}
+                    <option value="{$lv1.id}">◆ {$lv1.chunk_name}</option>
+                    {volist name="chunklv2" id="lv2"}
+                    {if $lv2['chunk_below'] == $lv1['id']}
+                    <option value="{$lv2.id}">&nbsp;&nbsp;&nbsp;&nbsp;◇ {$lv2.chunk_name}</option>
+                    {volist name="chunklv3" id="lv3"}
+                    {if $lv3['chunk_below'] == $lv2['id']}
+                    <option value="{$lv3.id}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ {$lv3.chunk_name} ]</option>
+                    {/if}
+                    {/volist}
+                    {/if}
+                    {/volist}
+                    {/volist}
+                </select>
+            </div>
+            <button class="conbinebtn btn-danger" type="submit">合并</button>
+        </form>
+    </div>
+    <div class="tab-pane fade" id="special-all">
+        <div class="alert alert-danger">
+            你可以直接往专题中添加文章，也可以在专题内创建分类后加文章
+        </div><br>
+        <div class="row" id="multiDroppableContainer">
+            <div class="col-sm-4">
+                <div class="panel newsp">
+                    <div class="panel-body special-body" style="height: 237px; text-align: center; line-height: 40px">
+                        <div class="modal fade" id="addmainsp">
+                            <div class="modal-dialog">
+                                <form class="modal-content" id="add_mainsp" method="post">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                        <h4 class="modal-title">添加专题</h4>
+                                    </div>
+                                    <div class="modal-body chunk_input">
+                                        <input type="hidden" name="type" value="1">
+                                        <input type="hidden" name="add_chunk" value="lv1">
+                                        <cite>专题名称：</cite><input type="text" name="chunk_name">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <a href="javascript:;" data-toggle="modal" data-target="#addmainsp" class="list-group-item">新增专题</a>
+                    </div>
+                </div>
+            </div>
+            {volist name='splv1' id='lv1'}
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel-heading sp-head">
+                        #{$lv1['id']}&nbsp;&nbsp;{$lv1['chunk_name']}
+                        <a class="r icon-picture" href="/consoleboard/threadmag/setbanner/{$lv1.id}"></a>
+                        <a class="r icon-plus" href="javascript:;" data-toggle="modal" data-target="#sp_{$lv1['chunk_name']}_a"></a>
+                        <a class="r icon-user" href="javascript:;" data-toggle="modal" data-target="#sp_{$lv1['chunk_name']}_u"></a>
+                        <a class="r icon-edit" href="javascript:;" data-toggle="modal" data-target="#sp_{$lv1['chunk_name']}_n"></a>
+                        <a class="icon-trash" href="javascript:;" data-toggle="modal" data-target="#sp_{$lv1['chunk_name']}_d"></a>
+                        <div class="modal fade" id="sp_{$lv1['chunk_name']}_a">
+                            <div class="modal-dialog">
+                                <form class="modal-content" method="post">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                        <h4 class="modal-title">添加分类</h4>
+                                    </div>
+                                    <div class="modal-body chunk_input">
+                                        <input type="hidden" name="type" value="1">
+                                        <input type="hidden" name="add_chunk" value="lv2">
+                                        <input type="hidden" name="chunk_below" value="{$lv1['id']}">
+                                        <cite>分类名称：</cite><input type="text" name="chunk_name">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="sp_{$lv1['chunk_name']}_n">
+                            <div class="modal-dialog">
+                                <form class="modal-content" method="post">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                        <h4 class="modal-title">{$Think.lang.changename}</h4>
+                                    </div>
+                                    <div class="modal-body chunk_input">
+                                        <input type="hidden" name="type" value="1">
+                                        <input type="hidden" name="chunk_rename" value="{$lv1.id}">
+                                        <cite>新名称：</cite><input type="text" name="new_name" value="{$lv1.chunk_name}">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="sp_{$lv1['chunk_name']}_d">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header text-danger">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                        <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                    </div>
+                                    <form class="modal-footer" method="post">
+                                        <input type="hidden" name="del_chunk" value="{$lv1.id}">
+                                        <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
+                                        <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body special-body" style="height: 200px; text-align: center; line-height: 40px">
+                        {volist name='splv2' id='lv2'}
+                        {if $lv2['chunk_below'] == $lv1['id']}
+                        <div class="list-group-item">
+                            #{$lv2['id']}&nbsp;&nbsp;{$lv2['chunk_name']}
+                            <a class="r icon-user hide" href="javascript:;" data-toggle="modal" data-target="#sp_{$lv2['chunk_name']}_u"></a>
+                            <a class="r icon-edit" href="javascript:;" data-toggle="modal" data-target="#sp_{$lv2['chunk_name']}_n"></a>
+                            <a class="icon-trash" href="javascript:;" data-toggle="modal" data-target="#sp_{$lv2['chunk_name']}_d"></a>
+                            <div class="modal fade" id="sp_{$lv2['chunk_name']}_n">
+                                <div class="modal-dialog">
+                                    <form class="modal-content" method="post">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                            <h4 class="modal-title">{$Think.lang.changename}</h4>
+                                        </div>
+                                        <div class="modal-body chunk_input">
+                                            <input type="hidden" name="type" value="1">
+                                            <input type="hidden" name="chunk_rename" value="{$lv2.id}">
+                                            <cite>新名称：</cite><input type="text" name="new_name" value="{$lv2.chunk_name}">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="sp_{$lv2['chunk_name']}_d">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header text-danger">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                            <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                        </div>
+                                        <form class="modal-footer" method="post">
+                                            <input type="hidden" name="del_chunk" value="{$lv2.id}">
+                                            <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
+                                            <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/if}
+                        {/volist}
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    </div>
+{/block}

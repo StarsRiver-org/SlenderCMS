@@ -1,0 +1,86 @@
+<!-- 用户管理列表 -->
+{extend name="admin/frame" /}
+{block name="nav"}
+    <script>
+        var appm = {$appm};
+        var refreshtemp = '';
+    </script>
+    <li class="active"><a href="#sample" data-toggle="tab" ><i class="icon icon-th"></i>概览</a></li>
+    <li class="nav-parent show">
+        <a href="#" data-target="#creator" data-toggle="tab"><i class="icon icon-user"></i>用户组</a>
+        <ul class="nav">
+            <li><a href="#creator" data-toggle="tab" onclick="PageInit.refreshud('1');">站长组</a></li>
+            <li><a href="#admin" data-toggle="tab" onclick="PageInit.refreshud('2');">管理组</a></li>
+            <li><a href="#editor" data-toggle="tab" onclick="PageInit.refreshud('3');">文案组</a></li>
+            <li><a href="#user" data-toggle="tab" onclick="PageInit.refreshud('4');">普通用户</a></li>
+        </ul>
+    </li>
+{/block}
+{block name="section"}
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/admin-usermag.css?b4f" rel="stylesheet">
+    <script src="{$Think.const.STATIC_ROOT}/js/admin/usermag.js"></script>
+
+    <div class="tab-pane fade active in" id="sample">
+        <div class="sub-nav">
+            <button class="glass btn btn-primary r" onclick="UserInfoMag.reguser('#adduser')">添加用户</button>
+            <h4 class="text text-success">本日注册：<b id="usernum_reginday"></b></h4>
+            <h4 class="text text-warning">当月注册：<b id="usernum_reginmon"></b></h4>
+            <div class="cover"></div>
+        </div>
+        <hr>
+        <div class="alert alert-success margin-5">
+            用户被禁用后将不能登陆后台进行操作。 管理员账户不能操作其他同级别的账号，但是可以修改自己的信息。
+        </div>
+        <div href="#creator" data-toggle="tab" class="glass h-block bg-danger margin-5" onclick="PageInit.refreshud('1');">
+            <h2 ><i class="icon-1x icon-adjust"></i>创始人/副站长：<b id="usernum_creator"></b></h2>
+            <p>网站最高权力者，拥有所有权限</p>
+        </div>
+        <div href="#admin" data-toggle="tab" class="glass h-block bg-warning margin-5" onclick="PageInit.refreshud('2');">
+            <h2><i class="icon-1x icon-eye-open "></i>管理员：<b id="usernum_admin"></b></h2>
+            <p>网站管理员，不同等级的管理员拥有不同权限，可以管理网站大大小小事务，无权删除用户信息</p>
+        </div>
+        <div href="#editor" data-toggle="tab" class="glass h-block bg-primary margin-5" onclick="PageInit.refreshud('3');">
+            <h2><i class="icon-1x icon-edit "></i>编辑：<b id="usernum_editor"></b></h2>
+            <p>网站编辑员，通过更新"管理板块"权限可以让对应账户拥有管理板块的能力。"管理板块"的权限值为板块ID，如果要为用户添加多个板块的管理权，板块ID之间需要用逗号隔开。</p>
+        </div>
+        <div href="#user" data-toggle="tab" class="glass h-block bg-success margin-5" onclick="PageInit.refreshud('4');">
+            <h2><i class="icon-1x icon-user"></i>普通注册用户：<b id="usernum_cuser"></b></h2>
+            <p>一般注册用户，用户可浏览和发言，下载网站内的文件</p>
+        </div>
+    </div>
+
+
+
+    <div class="tab-pane fade" id="creator">
+        <h2>主要策划人员</h2>
+        <div id="ud_list_1">
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="admin">
+        <h2>管理员</h2>
+        <div id="ud_list_2">
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="editor">
+        <h2>编辑</h2>
+        <div id="ud_list_3">
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="user">
+        <h2>注册用户</h2>
+        <div id="ud_list_4">
+        </div>
+    </div>
+    {include file="admin/usermag_modal"}
+    <div class="loading">
+        <img src="{$Think.const.STATIC_ROOT}/img/common/loading.gif">
+    </div>
+
+<script>
+    PageInit.refrashnum();
+</script>
+
+{/block}

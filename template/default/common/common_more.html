@@ -1,0 +1,63 @@
+{extend name="common/frame" /}
+
+{block name="style"}
+    {include file="common/common_ext_bn" /}
+    {include file="common/common_ext_style" /}
+    <link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/search/main.css"/>
+    <style>.morePage .searchResult {display: none;}</style>
+{/block}
+
+{block name="body"}
+<div class="morePage">
+    <section class="o__main">
+        <div class="o__main">
+            <div class="container" style="padding: 0 0 0 30px">
+                <div class="listContent">
+                    {if $thread_list}
+                        {volist name="thread_list" id="thread"}
+                        <div class="listContentItem">
+                            <span class="coverimg"><img src="{$thread.coverimg}"></span>
+                            <h3 class="itemTitle"><a href="/threads/view?id={$thread['id']}{if isset($_GET['from'])}&from={$_GET['from']}{/if}">{$thread['title']}</a></h3>
+                            <div class="itemInfo">{$thread['descrip']}</div>
+                            <div class="itemInfoFooter">
+                                <span>{$thread['time']}</span>
+                                <span>阅读量：{$thread['view']}</span>
+                            </div>
+                        </div>
+                        {/volist}
+                    {else}
+                    <div style="
+                        text-align: center;
+                        font-size: 30px;
+                        color: #e0e0e0;
+                        line-height: 50px;
+                        padding: 238px 0;
+                        border: 2px dashed;
+                        margin: 40px 10px;
+                        background: #f9f9f9;
+                    ">该区域还未被探索。。。</div>
+                    {/if}
+                </div>
+                <div class="listRight clearfloat">
+                    <div class="listRightHead">
+                        <h2>最新发布</h2>
+                        <a href="#" class="formore">更多</a>
+                    </div>
+                    <div class="listRightContent">
+                        {volist name="new" id="new"}
+                        <div class="listRightItem">
+                            <a href="/threads/view?id={$new['id']}{if isset($_GET['from'])}&from={$_GET['from']}{/if}" class="listRightItem__coverimg"><img src="{$new['coverimg']}" alt=""></a>
+                            <div class="listRightItem__content">
+                                <a href="/threads/view?id={$new['id']}{if isset($_GET['from'])}&from={$_GET['from']}{/if}" class="listRightItem__tit">{$new['title']}</a>
+                                <span class="listRightItem__date">{$new['time']}</span>
+                            </div>
+                        </div>
+                        {/volist}
+                    </div>
+                </div>
+                {$multipage}
+            </div>
+        </div>
+    </section>
+</div>
+{/block}

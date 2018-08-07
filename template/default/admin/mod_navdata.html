@@ -1,0 +1,21 @@
+<?php
+    $item = [];
+    if (!empty($snav)){
+        $item = $snav;
+    } else {
+        $item = $nav;
+    }
+?>
+<input data-id     type="hidden" name="id[]" value="{$item.id}">
+<input data-bel    type="hidden" name="bel[]" value="{$item.bel}">
+<input data-type   type="hidden" name="type[]" value="{$item.type}">
+<input data-del    type="checkbox" name="del[]" {if $item['system']}disabled{/if}>
+<input data-order  type="text" name="order[]" value="{$item.order}">
+<input data-active type="checkbox" name="active[]" {if $item['active']}checked{/if}>
+<input data-name   type="text" name="name[]" value="{$item.name}">
+<input data-key    type="text" name="key[]" value="{$item.key}">
+<input data-url    type="text" name="url[]" value="{$item.url}" {if $item['system']}disabled{/if}>
+<input data-blank  type="checkbox" name="blank[]" {if $item['blank']}checked{/if}>
+<?php
+    $snav = [];
+?>

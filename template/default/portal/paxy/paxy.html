@@ -1,0 +1,238 @@
+<!--使用通用模板-->
+{extend name="portal/frame" /}
+
+<!--特殊样式-->
+{block name="style"}
+<link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/paxy.css"/>
+<link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/lightSlider.min.css">
+{/block}
+
+<!--js模块-->
+{block name="js"}
+<script src="{$Think.const.STATIC_ROOT}/js/jquery.js"></script>
+<script src="{$Think.const.STATIC_ROOT}/js/lightslider.min.js"></script>
+<!--[if lte IE 9]>
+<script src="{$Think.const.STATIC_ROOT}/js/portal/respond.src.js" type="text/javascript" charset="utf-8"></script>
+<![endif]-->
+<!--[if lte IE 8]>
+<script src="{$Think.const.STATIC_ROOT}/js/portal/mobileMenu(forIE8).js" charset="utf-8"></script>
+<![endif]-->
+{/block}
+
+<!--主体部分-->
+{block name="body"}
+{include file="portal/paxy/paxy_bn" /}
+    <div class="o__main">
+    	<div class="paxy">
+    		<div class="container">
+    			<section class="paSlider">
+    				<div class="paSlider">
+    					<div class="leftBox">
+    						<div class="sliderBox">
+    							<ul class="sliderMain">
+                                    {if isset($threadlist['safe'])}
+                                    <?php $safenum = 0; ?>
+                                        {volist name="threadlist.safe" id="t"}
+                                            {if $safenum<=6 && $t['coverimg'] !== '/static/img/common/no-img-1.svg'}
+                                                <?php $safenum +=1; ?>
+                                                <li>
+                                                    <img src="{$t.coverimg}" />
+                                                    <div>
+                                                        <a href="/threads/view?id={$t.id}&from=16">{$t.title}</a>
+                                                    </div>
+                                                </li>
+                                            {/if}
+                                        {/volist}
+                                    {/if}
+                                </ul>
+                                <script>
+                                $(document).ready(function() {
+                                    $('.sliderMain').lightSlider({
+                                        gallery: false,
+                                        item: 1,
+                                        slideMargin: 0,
+                                        speed: 1000,
+                                        pause: 5000,
+                                        auto: true,
+                                        loop: true,
+                                        mode: 'slide',
+                                    });
+                                    $('.lSPager').addClass('opacity');
+                                });
+                                </script>
+    						</div>
+    					</div>
+    					<div class="rightList">
+    						<div class="rightListBox">
+    							<div class="rightColumnName">
+									<a>安全动态</a>
+								</div>
+								<div class="rightListContent">
+									<ul>
+                                        {if isset($threadlist['safe'])}
+                                        <?php $safenum = 0; ?>
+                                        {volist name="threadlist.safe" id="t"}
+                                            {if $safenum<=6 && $t['coverimg'] == '/static/img/common/no-img-1.svg'}
+                                                <?php $safenum += 1 ; ?>
+                                                <li><a href="/threads/view?id={$t.id}&from=16">{$t.title}</a></li>
+                                            {/if}
+                                        {/volist}
+                                        {/if}
+									</ul>
+								</div>
+    						</div>
+    					</div>
+    				</div>
+    			</section>
+    			<section class="paEating">
+    				<div class="paEating">
+    					<div class="leftBox">
+                            <div class="leftColumnName">
+                                <a>饮食卫生></a>
+                            </div>
+                            <div class="leftColumnContent">
+                                <div class="leftCardBox">
+                                    {if isset($threadlist['food'])}
+                                    {volist name="threadlist.food" id="t" offset="0" length="2"}
+                                    <div class="leftCardItem">
+                                        <a href="/threads/view?id={$t.id}&from=16" class="CardCoverimg"><img src="{$t.coverimg}" alt=""></a>
+                                        <div class="CardIntro">
+                                            <a href="/threads/view?id={$t.id}&from=16" class="Intro_tit">{$t.title}</a>
+                                            <a href="/threads/view?id={$t.id}&from=16" class="Intro_des">{$t.descrip}</a>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                    {/if}
+                                </div>
+                                <div class="leftCardBox">
+                                    {if isset($threadlist['food'])}
+                                    {volist name="threadlist.food" id="t" offset="2" length="2"}
+                                    <div class="leftCardItem">
+                                        <a href="/threads/view?id={$t.id}&from=16" class="CardCoverimg"><img src="{$t.coverimg}" alt=""></a>
+                                        <div class="CardIntro">
+                                            <a href="/threads/view?id={$t.id}&from=16" class="Intro_tit">{$t.title}</a>
+                                            <a href="/threads/view?id={$t.id}&from=16" class="Intro_des">{$t.descrip}</a>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rightList">
+                            <div class="rightListBox" id="changeColumn-1">
+                                <div class="rightColumnName">
+                                    <span class="ri-current">安全法规</span>
+                                    <span>网络安全</span>
+                                </div>
+                                <div class="rightListContent">
+                                    <ul style="display: block;">
+                                        {if isset($threadlist['rule'])}
+                                        {volist name="threadlist.rule" id="t" offset="0" length="10"}
+                                        <li><a href="/threads/view?id={$t.id}&from=16">{$t.title}</a></li>
+                                        {/volist}
+                                        {/if}
+                                    </ul>
+                                    <ul style="display: none;">
+                                        {if isset($threadlist['web'])}
+                                        {volist name="threadlist.web" id="t" offset="0" length="10"}
+                                        <li><a href="/threads/view?id={$t.id}&from=16">{$t.title}</a></li>
+                                        {/volist}
+                                        {/if}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    				</div>
+    			</section>
+    			<section class="paTransporting">
+    				<div class="paTransporting">
+    					<div class="leftBox">
+                            <div class="leftColumnName">
+                                <a>交通旅行></a>
+                            </div>
+                            <div class="leftColumnContent">
+                                <div class="leftCardBox">
+                                    {if isset($threadlist['translation'])}
+                                    {volist name="threadlist.translation" id="t" offset="0" length="2"}
+                                    <div class="leftCardItem">
+                                        <a href="/threads/view?id={$t.id}&from=16" class="CardCoverimg"><img src="{$t.coverimg}" alt=""></a>
+                                        <div class="CardIntro">
+                                            <a href="/threads/view?id={$t.id}&from=16" class="Intro_tit">{$t.title}</a>
+                                            <a href="/threads/view?id={$t.id}&from=16" class="Intro_des">{$t.descrip}</a>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                    {/if}
+                                </div>
+                                <div class="leftCardBox">
+                                    {if isset($threadlist['translation'])}
+                                    {volist name="threadlist.translation" id="t" offset="2" length="2"}
+                                    <div class="leftCardItem">
+                                        <a href="/threads/view?id={$t.id}&from=16" class="CardCoverimg"><img src="{$t.coverimg}" alt=""></a>
+                                        <div class="CardIntro">
+                                            <a href="/threads/view?id={$t.id}&from=16" class="Intro_tit">{$t.title}</a>
+                                            <a href="/threads/view?id={$t.id}&from=16" class="Intro_des">{$t.descrip}</a>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rightList">
+                            <div class="rightListBox" id="changeColumn-2">
+                                <div class="rightColumnName">
+                                    <span class="ri-current">消防演练</span>
+                                    <span>自救自护</span>
+                                </div>
+                                <div class="rightListContent">
+                                    <ul style="display: block;">
+                                        {if isset($threadlist['fire'])}
+                                        {volist name="threadlist.fire" id="t" offset="0" length="10"}
+                                        <li><a href="/threads/view?id={$t.id}&from=16">{$t.title}</a></li>
+                                        {/volist}
+                                        {/if}
+                                    </ul>
+                                    <ul style="display: none;">
+                                        {if isset($threadlist['selfsave'])}
+                                        {volist name="threadlist.selfsave" id="t" offset="0" length="10"}
+                                        <li><a href="/threads/view?id={$t.id}&from=16">{$t.title}</a></li>
+                                        {/volist}
+                                        {/if}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    				</div>
+    			</section>
+    		</div>
+    	</div>
+    </div>
+    <script>
+	    window.onload = function() {
+	        var xySliderChange__1 = document.getElementById('changeColumn-1');
+	        var xySliderChange_1_Span = xySliderChange__1.getElementsByTagName('span');
+	        var xySliderChange_1_Ul = xySliderChange__1.getElementsByTagName('ul');
+	        var xySliderChange__2 = document.getElementById('changeColumn-2');
+	        var xySliderChange_2_Span = xySliderChange__2.getElementsByTagName('span');
+	        var xySliderChange_2_Ul = xySliderChange__2.getElementsByTagName('ul');
+
+	        function changeColumn(arrSpan, arrUl) {
+	            for (var i = 0; i < arrSpan.length; i++) {
+	                arrSpan[i].index = i;
+	                arrSpan[i].onclick = function() {
+	                    for (var j = 0; j < arrSpan.length; j++) {
+	                        arrSpan[j].className = '';
+	                        arrUl[j].style.display = 'none';
+	                    }
+	                    this.className = 'ri-current';
+	                    arrUl[this.index].style.display = 'block';
+	                }
+	            }
+	        }
+	        changeColumn(xySliderChange_1_Span, xySliderChange_1_Ul);
+	        changeColumn(xySliderChange_2_Span, xySliderChange_2_Ul);
+	    }
+    </script>
+{/block}

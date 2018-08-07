@@ -1,0 +1,11 @@
+    <footer class="copyright">Powerd By UED Team</footer>
+</body>
+<script>
+    $('.menu .nav').on('click', function() {
+        var $this = $(this);
+        $('.menu .nav .active').removeClass('active');
+        $this.closest('li').addClass('active');
+        $this.closest('.nav-parent').addClass('show ');
+    });
+</script>
+</html>

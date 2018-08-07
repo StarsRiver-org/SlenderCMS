@@ -1,0 +1,21 @@
+<div class="banner">
+    <div class="bannerImgBox">
+        <img src="{$banners.banner.0}"/>
+    </div>
+</div>
+<nav class="o__nav">
+    <div class="o__nav">
+        <div class="container">
+            <div class="navItemContainer">
+                <a href="/portal/paxy.html" class="navItem {if empty($_GET['cid'])}navItem__now{/if} ">首页</a>
+                <a href="/threads/more?from=16&cid=52" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 52}navItem__now{/if} ">安全法规</a>
+                <a href="/threads/more?from=16&cid=53" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 53}navItem__now{/if} ">生活百科</a>
+                <a href="/threads/more?from=16&cid=54" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 54}navItem__now{/if} ">网络安全</a>
+                <a href="/threads/more?from=16&cid=55" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 55}navItem__now{/if} ">交通旅行</a>
+                <a href="/threads/more?from=16&cid=56" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 56}navItem__now{/if} ">饮食卫生</a>
+                <a href="/threads/more?from=16&cid=57" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 57}navItem__now{/if} ">自救自护</a>
+                <a href="/threads/more?from=16&cid=58" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 58}navItem__now{/if} ">消防演练</a>
+            </div>
+        </div>
+    </div>
+</nav>

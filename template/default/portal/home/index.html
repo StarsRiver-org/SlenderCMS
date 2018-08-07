@@ -1,0 +1,246 @@
+<!--使用通用模板-->
+{extend name="portal/frame" /}
+
+<!--特殊样式-->
+{block name="style"}
+    <link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/home.css" />
+{/block}
+
+<!--js模块-->
+{block name="js"}
+    <!--[if lte IE 9]>
+    <script src="{$Think.const.STATIC_ROOT}/js/portal/respond.src.js" type="text/javascript" charset="utf-8"></script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <script src="{$Think.const.STATIC_ROOT}/js/portal/mobileMenu(forIE8).js" charset="utf-8"></script>
+    <![endif]-->
+{/block}
+
+<!--主体部分-->
+{block name="body"}
+    <section class="Slider">
+        <div class="Slider">
+            <div id="img-box" class="img-box">
+                <!--用transition做的透明度过渡-->
+                {if isset($banners['slider'])}
+                {volist name="banners.slider" id="t" length='5'}
+                <div class="Slider-box"><a href="#"><img src="{$t}"/></a></div>
+                {/volist}{/if}
+            </div>
+            <div class="arrow-box">
+                <div id="arrowl" class="arrow-item arrow-l transition__opc__3s"></div>
+                <div id="arrowr" class="arrow-item arrow-r transition__opc__3s"></div>
+            </div>
+            <div id="pointsbox" class="Slider-pointsbox">
+                <span class="now"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <script src="{$Think.const.STATIC_ROOT}/js/portal/showPicture.js"></script>
+    </section>
+
+    <section class="qzNews">
+        <!-- 清泽要闻  (qzNews) -->
+        <div class="qzNews">
+            <div class="container">
+               <div class="columnContainer">
+                    <div class="columnName">
+                        <a>新闻聚焦</a>
+                        <a class="more" href="/threads/more?cid=17">更多<span></span></a>
+                    </div>
+                    <ul class="newsContainer">
+                        <?php $k = 0; ?>
+                        {if isset($xwjj)}
+                        {volist name="xwjj" id="t" length="5"}
+                            <li class="newsItem">
+                                <a href="/threads/view?id={$t.id}" class="newsItem_tit">{$t.title}</a>
+                                <span class="newsItem_date">{$t.time}</span>
+                            </li>
+                        {/volist}
+                        {/if}
+                    </ul>
+                </div>
+                <div class="columnContainer">
+                    <div class="columnName">
+                        <a>清泽要闻</a>
+                        <a class="more" href="/threads/more?cid=2">更多<span></span></a>
+                    </div>
+                    <ul class="newsContainer">
+                        <?php $k = 0; ?>
+                        {if isset($new)}
+                        {volist name="new" id="t" length="5"}
+                            <li class="newsItem">
+                                <a href="/threads/view?id={$t.id}" class="newsItem_tit">{$t.title}</a>
+                                <span class="newsItem_date">{$t.time}</span>
+                            </li>
+                        {/volist}
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main">
+        <div class="container">
+            <section class="qzMessage clearfloat">
+                <!-- 信息中心 (qzMessage) -->
+                <div class="qzMessage clearfloat">
+                    <div class="columnName">
+                        <a>信息中心</a>
+                        <a class="more" href="/threads/more?cid=3">更多<span></span></a>
+                    </div>
+                    <div class="columnContainer">
+                        <?php $k = 0; ?>
+                        {if isset($info)}
+                        {volist name="info" id="info" length="5"}
+                                <div class="messageItem">
+                                    <div class="messageItem_date">
+                                        <span><?php echo date('m',$info['timestamp']) ?>月</span>
+                                        <span><?php echo date('d',$info['timestamp']) ?></span>
+                                    </div>
+                                    <div class="messageItem_msg">
+                                        <a href="/threads/view?id={$info.id}">{$info.title}</a>
+                                        <span class="messageItem_icon" style="background: url('{$Think.const.STATIC_ROOT}/img/portal/home/tower.png') no-repeat"></span>
+                                    </div>
+                                </div>
+                        {/volist}
+                        {/if}
+                    </div>
+                </div>
+            </section>
+
+            <section class="qzSubject clearfloat">
+                <!-- 清泽专题 (qzSubject)-->
+                <div class="qzSubject clearfloat">
+                    <div class="columnName">
+                        <a href="#">清泽专题</a>
+                    </div>
+                    <div class="columnContainer">
+                        <?php $k = 0; ?>
+                        {if isset($sp)}
+                        {volist name="sp" id="topic" length="4"}
+                            <a href="/threads/view?id={$topic.id}" class="subjectItem">
+                                <img src="{$topic.coverimg}" />
+                            </a>
+                        {/volist}
+                        {/if}
+                    </div>
+                </div>
+            </section>
+
+            <section class="qzVideo clearfloat">
+                <!-- 清泽微视 (qzVideo)-->
+                <div class="qzVideo clearfloat">
+                    <div class="columnName">
+                        <a href="#">清泽微视</a>
+                    </div>
+                    <div class="columnContainer">
+                        <div class="videoNews">
+                            <a href="//v.tyut.edu.cn" class="videoNews_pic" target="_blank">
+                                <img src="{$Think.const.STATIC_ROOT}/img/common/qzws.jpg"/>
+                                <span class="playButton"></span>
+                                <h5>清泽微视</h5>
+                            </a>
+                        </div>
+
+                        <div class="service">
+                            <a href="http://qgzx.tyut.edu.cn/" class="qgzx">
+                                <div class="serviceItem qgzx">
+                                    <img src="{$Think.const.STATIC_ROOT}/img/portal/home/work-study.png"/>
+                                    <h3>勤工助学</h3>
+                                </div>
+                            </a>
+                            <a href="http://qgzx.tyut.edu.cn/sqa/admincdab/login.jsp" class="szcp">
+                                <div class="serviceItem szcp">
+                                    <img src="{$Think.const.STATIC_ROOT}/img/portal/home/quality.png"/>
+                                    <h3>素质测评</h3>
+                                </div>
+                            </a>
+                            <a href="http://202.207.240.187/psy/" class="xlcc">
+                                <div class="serviceItem xlcc">
+                                    <img src="{$Think.const.STATIC_ROOT}/img/portal/home/psychological.png"/>
+                                    <h3>心理测查</h3>
+                                </div>
+                            </a>
+                            <a href="http://qzxy.tyut.edu.cn/qzxy/2013/zizhuxt/" class="jzxt">
+                                <div class="serviceItem jzxt">
+                                    <img src="{$Think.const.STATIC_ROOT}/img/portal/home/reward.png"/>
+                                    <h3>奖助系统</h3>
+                                </div>
+                            </a>
+                            <a href="http://link.tyut.edu.cn/" class="xyyx">
+                                <div class="serviceItem xyyx">
+                                    <img src="{$Think.const.STATIC_ROOT}/img/portal/home/school-mail.png"/>
+                                    <h3>校园邮箱</h3>
+                                </div>
+                            </a>
+                            <a href="http://jwc.tyut.edu.cn/jxzl/xl.htm" class="xl">
+                                <div class="serviceItem xl">
+                                    <img src="{$Think.const.STATIC_ROOT}/img/portal/home/calendar.png"/>
+                                    <h3>校历</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <section class="qzSights">
+        <!-- 校园风光 (qzSights) -->
+        <div class="qzSights">
+            <div class="container">
+                <div class="columnName">
+                    <a href="#">校园风光</a>
+                </div>
+                <div class="columnContainer">
+                    <a href="#">
+                        <div class="sightsItem">
+                            <img src="{$Think.const.DATA_ROOT}/catch/portal/home/01.png">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="sightsItem">
+                            <img src="{$Think.const.DATA_ROOT}/catch/portal/home/02.png">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="sightsItem">
+                            <img src="{$Think.const.DATA_ROOT}/catch/portal/home/03.png">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="sightsItem">
+                            <img src="{$Think.const.DATA_ROOT}/catch/portal/home/04.png">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="sightsItem">
+                            <img src="{$Think.const.DATA_ROOT}/catch/portal/home/05.png">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="sightsItem">
+                            <img src="{$Think.const.DATA_ROOT}/catch/portal/home/06.png">
+                        </div>
+                    </a>
+                    <a href="#" class="last">
+                        <div class="sightsItem">
+                            <img src="{$Think.const.DATA_ROOT}/catch/portal/home/07.png">
+                        </div>
+                    </a>
+                    <a href="#" class="last">
+                        <div class="sightsItem">
+                            <img src="{$Think.const.DATA_ROOT}/catch/portal/home/08.png">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{/block}

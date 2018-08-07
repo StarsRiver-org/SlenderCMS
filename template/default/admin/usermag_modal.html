@@ -1,0 +1,55 @@
+<div class="modal fade" id="adduser">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+            <h4 class="modal-title">添加用户</h4>
+        </div>
+        <form class="userinfoform"></form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" onclick="UserInfoMag.saveuserinfo('#adduser')" >保存</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="user_info_setting">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+            <h4 class="modal-title">用户信息更新</h4>
+        </div>
+        <form class="userinfoform margin-5"></form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger l btn-deluser" onclick="UserInfoMag.deluser(this)">删除用户 [小心-不可恢复]</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" onclick="UserInfoMag.saveuserinfo('#user_info_setting')">保存</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="user_pml_setting">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">权限管理</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">注意：输入框输入多个值时的内要用<i style="font-weight: 700; text-decoration: underline !important;text-shadow: 0 1px 1px rgba(0,0,0,.1)"> 英文逗号 </i>隔开。<br/>按钮变为浅色时表示用户没有该权限，深色图标表示为用户的固有权限不能改动。灰色按钮为无权使用。</div>
+                <br>
+                <div id="user-pms">
+                    <em>通用权限</em>
+                    <div class="user-pm">
+                    </div>
+                    <em>管理权限</em>
+                    <div class="admin-pm">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="Pmlmag.saveuserpml('#user_pml_setting')" >保存</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+{extend name="portal/frame" /}
+
+{block name="style"}
+    {include file="common/common_ext_style" /}
+    {if isset($extcss)}<link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/{$extcss}.css"/>{/if}
+    <link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/common_article.css"/>
+{/block}
+
+{block name="js"}
+
+{/block}
+
+{block name="body"}
+    <!--div class="banner">
+        <div class="bannerImgBox">
+            <img src="{$Think.const.STATIC_ROOT}/img/portal/rdnm/rdnm__banner.png"/>
+        </div>
+    </div-->
+    <section class="o__main">
+        <div class="o__main">
+            <div class="container">
+                <div class="listContent">
+                    <div class="listContentItem">
+                        <div class="article-header">
+                            <img class="listContentItem__coverimg" src="{$thread.coverimg}" alt="{$thread.title}">
+                            <div href="#" class="listContentItem__tit">
+                                <span class="title">{$thread.title}</span>
+                                <div class="listContentItem__info">
+                                    <span class="listContentItem__date">{$thread.time}</span>
+                                    <span class="listContentItem__read">阅读量：{$thread.view}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listContentItem__content">
+                            <div class="listContentItem__msg">
+                                <div class="msg__container">
+                                    <div>{$thread.content}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="listRight clearfloat">
+                    <div class="listRightHead">
+                        <h2>最新发布</h2>
+                    </div>
+                    <div class="listRightContent">
+                        {volist name="new" id="new"}
+                        <div class="listRightItem">
+                            <a href="/threads/view?id={$new.id}" class="listRightItem__coverimg"><img src="{$new.coverimg}" alt="{$new.descrip}"></a>
+                            <div class="listRightItem__content">
+                                <a href="/threads/view?id={$new.id}" class="listRightItem__tit">{$new.title}</a>
+                                <span class="listRightItem__date">{$new.time}</span>
+                            </div>
+                        </div>
+                        {/volist}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{/block}
+

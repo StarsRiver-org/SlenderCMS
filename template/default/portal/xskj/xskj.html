@@ -1,0 +1,267 @@
+<!--使用通用模板-->
+{extend name="portal/frame" /}
+
+<!--特殊样式-->
+{block name="style"}
+<link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/skin/portal//xskj.css">
+<link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/lightSlider.min.css">
+{/block}
+
+<!--js模块-->
+{block name="js"}
+<!--[if lte IE 8]>
+<script src="{$Think.const.STATIC_ROOT}/js/portal/mobileMenu(forIE8).js" charset="utf-8"></script>
+<![endif]-->
+<script src="{$Think.const.STATIC_ROOT}/js/lightslider.min.js"></script>
+{/block}
+
+<!--主体部分-->
+{block name="body"}
+{include file="portal/xskj/xskj_bn" /}
+    <div class="o__main">
+    	<div class="xskj">
+    		<div class="container">
+    			<section class="xsSlider">
+    				<div class="xsSlider">
+    					<div class="leftBox">
+    						<div class="sliderBox">
+    							<ul class="sliderMain">
+                                    {if isset($threadlist['new'])}
+                                    {volist name="threadlist.new" id="t" offset="0" length="5"}
+                                    <li>
+                                        <img src="{$t.coverimg}" />
+                                        <div>
+                                            <a href="/threads/view?id={$t.id}&from=10">{$t.title}</a>
+                                        </div>
+                                    </li>
+                                    {/volist}
+                                    {/if}
+                                </ul>
+                                <script>
+                                $(document).ready(function() {
+                                    $('.sliderMain').lightSlider({
+                                        gallery: false,
+                                        item: 1,
+                                        slideMargin: 0,
+                                        speed: 1000,
+                                        pause: 5000,
+                                        auto: true,
+                                        loop: true,
+                                        mode: 'slide',
+                                    });
+                                    $('.lSPager').addClass('opacity');
+                                });
+                                </script>
+    						</div>
+    					</div>
+    					<div class="rightList">
+    						<div class="rightListBox">
+    							<div class="rightColumnName">
+									<a>通知公告</a>
+								</div>
+								<div class="rightListContent">
+									<ul>
+                                        {if isset($threadlist['notice'])}
+                                        {volist name="threadlist.notice" id="t" offset="0" length="13"}
+										<li><a href="/threads/view?id={$t.id}&from=10">{$t.title}</a></li>
+                                        {/volist}
+                                        {/if}
+									</ul>
+								</div>
+    						</div>
+    					</div>
+    				</div>
+    			</section>
+				<section class="xsCompetition">
+					<div class="xsCompetition">
+						<div class="leftBox">
+							<div class="leftColumnName">
+								<a href="#">科技竞赛></a>
+							</div>
+							<div class="leftColumnContent">
+								<div class="leftCardBox">
+									<div class="leftCardItem">
+										<div class="leftCardName">
+											<a href="/threads/more?from=10&cid=64">A类竞赛></a>
+										</div>
+										{if isset($threadlist['kjjs1'])}
+											{volist name="threadlist.kjjs1" id="t" offset="0" length="1"}
+											<a href="/threads/view?id={$t.id}&from=10" class="CardCoverimg"><img src="{$t.coverimg}" alt="{$t.title}"></a>
+											<div class="CardIntro">
+												<a href="/threads/view?id={$t.id}&from=10" class="Intro_tit">{$t.title}</a>
+												<a href="/threads/view?id={$t.id}&from=10" class="Intro_des">{$t.descrip}</a>
+											</div>
+											{/volist}
+										{/if}
+									</div>
+									<div class="leftListBox">
+										<ul>
+											{if isset($threadlist['kjjs1'])}
+											{volist name="threadlist.kjjs1" id="t" offset="1" length="4"}
+											<li><a href="/threads/view?id={$t.id}&from=10">{$t.title}</a></li>
+											{/volist}
+											{/if}
+										</ul>
+									</div>
+								</div>
+								<div class="leftCardBox">
+									<div class="leftCardItem">
+										<div class="leftCardName">
+											<a href="/threads/more?from=10&cid=65">B类竞赛></a>
+										</div>
+										{if isset($threadlist['kjjs2'])}
+										{volist name="threadlist.kjjs2" id="t" offset="0" length="1"}
+										<a href="/threads/view?id={$t.id}&from=10" class="CardCoverimg"><img src="{$t.coverimg}" alt="{$t.title}"></a>
+										<div class="CardIntro">
+											<a href="/threads/view?id={$t.id}&from=10" class="Intro_tit">{$t.title}</a>
+											<a href="/threads/view?id={$t.id}&from=10" class="Intro_des">{$t.descrip}</a>
+										</div>
+										{/volist}
+										{/if}
+									</div>
+									<div class="leftListBox">
+										<ul>
+											{if isset($threadlist['kjjs2'])}
+											{volist name="threadlist.kjjs2" id="t" offset="1" length="4"}
+											<li><a href="/threads/view?id={$t.id}&from=10">{$t.title}</a></li>
+											{/volist}
+											{/if}
+										</ul>
+									</div>
+								</div>
+								<div class="leftCardBox">
+									<div class="leftCardItem">
+										<div class="leftCardName">
+											<a href="/threads/more?from=10&cid=66">C类竞赛></a>
+										</div>
+										{if isset($threadlist['kjjs3'])}
+										{volist name="threadlist.kjjs3" id="t" offset="0" length="1"}
+										<a href="/threads/view?id={$t.id}&from=10" class="CardCoverimg"><img src="{$t.coverimg}" alt="{$t.title}"></a>
+										<div class="CardIntro">
+											<a href="/threads/view?id={$t.id}&from=10" class="Intro_tit">{$t.title}</a>
+											<a href="/threads/view?id={$t.id}&from=10" class="Intro_des">{$t.descrip}</a>
+										</div>
+										{/volist}
+										{/if}
+									</div>
+									<div class="leftListBox">
+										<ul>
+											{if isset($threadlist['kjjs3'])}
+											{volist name="threadlist.kjjs3" id="t" offset="1" length="4"}
+											<li><a href="/threads/view?id={$t.id}&from=10">{$t.title}</a></li>
+											{/volist}
+											{/if}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="rightList">
+							<div class="rightListBox">
+								<div class="rightColumnName">
+									<a>清泽小讲堂</a>
+								</div>
+								<div class="rightListContent">
+									{if isset($threadlist['qzxjt'])}
+									{volist name="threadlist.qzxjt" id="t" offset="0" length="1"}
+									<div class="rightListImg">
+										<img src="{$t.coverimg}" alt="">
+										<div>
+											<a href="/threads/view?id={$t.id}&from=10">{$t.title}</a>
+										</div>
+									</div>
+									{/volist}
+									{/if}
+									<ul>
+										{if isset($threadlist['qzxjt'])}
+										{volist name="threadlist.qzxjt" id="t" offset="1" length="4"}
+										<li><a href="/threads/view?id={$t.id}&from=10">{$t.title}</a></li>
+										{/volist}
+										{/if}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+    			<section class="xsBaseConstruction">
+    				<div class="xsBaseConstruction">
+    					<div class="fullBox">
+    						<div class="fullColumnName">
+                                <a>基地建设</a>
+                            </div>
+                            <div class="fullColumnContent">
+								{if isset($threadlist['jdjs'])}
+								{volist name="threadlist.jdjs" id="t" offset="0" length="5"}
+                            	<div class="fullShowItem">
+                            		<a href="/threads/view?id={$t.id}&from=10"><img src="{$t.coverimg}"></a>
+                                    <a href="/threads/view?id={$t.id}&from=10" class="GalleryItem_tit">{$t.title}</a>
+                                    <a href="/threads/view?id={$t.id}&from=10" class="GalleryItem_des">{$t.descrip}</a>
+                            	</div>
+								{/volist}{/if}
+                            </div>
+    					</div>
+    				</div>
+    			</section>
+    			<section class="xsAchievements">
+    				<div class="xsAchievements">
+    					<div class="fullBox">
+    						<div class="fullColumnName">
+                                <a>科技成果</a>
+                            </div>
+                            <div class="fullColumnContent">
+								{if isset($threadlist['kjcg'])}
+								{volist name="threadlist.kjcg" id="t" offset="0" length="5"}
+                            	<div class="fullShowItem">
+                            		<a href="/threads/view?id={$t.id}&from=10"><img src="{$t.coverimg}"></a>
+                                    <a href="/threads/view?id={$t.id}&from=10" class="GalleryItem_tit">{$t.title}</a>
+                                    <a href="/threads/view?id={$t.id}&from=10" class="GalleryItem_des">{$t.descrip}</a>
+                            	</div>
+								{/volist}{/if}
+                            </div>
+    					</div>
+    				</div>
+    			</section>
+    			<section class="xsPeople">
+    				<div class="xsPeople">
+    					<div class="fullBox">
+    						<div class="fullColumnName">
+                                <a>风云人物</a>
+                            </div>
+							<div class="fullColumnContent">
+								<div>
+									{if isset($threadlist['fyrw'])}
+									{volist name="threadlist.fyrw" id="t" offset="0" length="5"}
+									<div class="fullShowItem">
+										<a href="/threads/view?id={$t.id}&from=10"><img src="{$t.coverimg}" alt="5"></a>
+										<a href="/threads/view?id={$t.id}&from=10" class="GalleryItem_tit">{$t.title}</a>
+									</div>
+									{/volist}{/if}
+								</div>
+							</div>
+    					</div>
+    				</div>
+    			</section>
+    			<section class="xsTeacher">
+    				<div class="xsTeacher">
+    					<div class="fullBox">
+    						<div class="fullColumnName">
+                                <a>师资队伍</a>
+                            </div>
+							<div class="fullColumnContent">
+								{if isset($threadlist['szdw'])}
+								{volist name="threadlist.szdw" id="t" offset="0" length="5"}
+								<div class="fullShowItem">
+									<a href="/threads/view?id={$t.id}&from=10"><img src="{$t.coverimg}"></a>
+									<a href="/threads/view?id={$t.id}&from=10" class="GalleryItem_tit">{$t.title}</a>
+								</div>
+								{/volist}
+								{/if}
+							</div>
+    					</div>
+    				</div>
+    			</section>
+    		</div>
+    	</div>
+    </div>
+{/block}

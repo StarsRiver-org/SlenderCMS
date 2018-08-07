@@ -1,0 +1,279 @@
+/* other nav */
+.o__nav {
+    height: 60px;
+    background-color: #891619;
+}
+.o__nav .container .navItemContainer .navItem {
+    display: inline-block;
+    margin: 0 12px;
+    width: 125px;
+    color: #fff;
+    font-size: 18px;
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 60px;
+}
+.o__nav .container .navItemContainer .navItem:hover,
+.o__nav .container .navItemContainer .navItem__now {
+    background-color: #65080a;
+}
+
+/* other main */
+.o__main,
+.o__main .container,
+.o__main .container .listContent,
+.o__main .container .listRight {
+    height: auto;
+}
+
+.o__main .container {
+    background-color: #fff;
+}
+
+.o__main img {
+    /*background-color: #fa8185;*/
+    background-color: #f5f5f5;
+}
+/*限定宽度*/
+.o__main .container,
+.o__nav .container {
+    width: 1240px !important;
+    overflow: hidden;
+    padding-bottom: 40px;
+}
+
+/*banner*/
+.banner {
+    background: #e7e5d9;
+}
+.banner .bannerImgBox {
+    max-width: 100%;
+}
+.banner .bannerImgBox img {
+    margin: 0 auto;
+    height: auto;
+    width: 100%;
+    
+    /* 限制最小宽度为1000px且居中显示，但是IE8表现差些，因为不支持transtorm */
+	min-width: 1000px;
+	position: relative;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+	margin-left: -50%;/* ie8 */
+	margin-left: 0rem;
+}
+
+/* listContent */
+.o__main .container .listContent {
+    margin-left: 1%;
+    width: 68%;
+    display: inline-block;
+}
+
+.o__main .container .listContent .listContentItem {
+    margin-top: 40px;
+    margin-right:20px;
+    padding-bottom: 40px;
+    padding-left: 20px
+    border-bottom: 1px solid #e2e5e2;
+}
+
+.o__main .container .listContent .listContentItem .listContentItem__coverimg,
+.o__main .container .listContent .listContentItem .listContentItem__content {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.o__main .container .listContent .listContentItem .listContentItem__content {
+    vertical-align: top;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    display:block;
+}
+
+.o__main .container .listContent .listContentItem .listContentItem__content img {
+    max-width: 80%;
+    text-align: center;
+    height: auto;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.o__main .container .listContent .listContentItem .listContentItem__coverimg,
+.o__main .container .listContent .listContentItem .listContentItem__coverimg img {
+    max-width: 200px;
+    max-height: 150px;
+    width: 100%;
+    height: 150px;
+    float: left;
+}
+
+.o__main .container .listContent .listContentItem .listContentItem__tit {
+    display:inline-block;
+    float: left;
+    padding-left: 20px;
+    height: 150px;
+    position: relative;
+    width: 570px;
+}
+.article-header{
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+}
+.o__main .container .listContent .listContentItem .listContentItem__tit .title {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-size: 2.2rem;
+    height: 57.6px;
+    color: #4c4c4c;
+    
+}
+
+.o__main .container .listContent .listContentItem .listContentItem__tit:hover {
+    color: #891619;
+}
+
+.o__main .container .listContent .listContentItem .listContentItem__tit .listContentItem__info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.o__main .container .listContent .listContentItem .listContentItem__tit .listContentItem__info  > span {
+    font-size: 14px;
+    font-size: 1.4rem;
+    color: #c6c6c6;
+    display: inline-block;
+}
+
+
+.o__main .container .listContent .listContentItem .listContentItem__tit .listContentItem__info .listContentItem__read{
+    float: right;
+}
+.o__main .container .listContent .listContentItem .listContentItem__content .listContentItem__msg {
+    display: block;
+    margin-bottom: 14px;
+    /* 字 */
+    line-height: 24px;
+    line-height: 2.4rem;
+    letter-spacing: 1.5px;
+    color: #808080;
+}
+.o__main .container .listContent .listContentItem .listContentItem__content .listContentItem__msg .msg__container {
+    position: relative;
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-orient: vertical;
+    /* Safari、Opera 以及 Chrome */
+    display:-webkit-box;
+    -webkit-box-orient: vertical;
+    /* W3C */
+    display:box;
+    box-orient: vertical;
+    
+    font-size: 50px;
+    padding-top: 5px;
+}
+.o__main .container .listContent .listContentItem .listContentItem__content .listContentItem__msg .msg__container div {
+    display: inline;
+    vertical-align: top;
+    font-size: 16px;
+    font-size: 1.6rem;
+    position: relative;
+    z-index: 5;
+}
+
+.o__main .container .listContent .listContentItem .listContentItem__content .listContentItem__msg .msg__container div img {
+    max-width: 80%;/* 本来是width */
+    height: auto;
+    display: inline-block;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* listRight */
+.o__main .container .listRight {
+    float: right;
+    /*width: 30%;*/
+    margin-right: 0;
+    display: inline-block;
+    border-left: 2px solid #eee;
+}
+
+.o__main .container .listRight .listRightHead {
+    height: 55px;
+    line-height: 55px;
+    background-color: #fff;
+}
+
+.o__main .container .listRight .listRightHead h2:after {
+    content: '...';
+    float: right;
+    margin-right: 18px;
+    font-size: 22px;
+}
+
+.o__main .container .listRight .listRightHead h2 {
+    padding-left: 20px;
+    font-size: 20px;
+    font-size: 2rem;
+    color: #b71c1c;
+    border-left: 2px solid #c91111;
+    margin-left: -2px;
+}
+
+.o__main .container .listRight .listRightContent .listRightItem {
+    margin-top: 4px;
+    margin-left: 4px;
+    padding: 4px;
+    background-color: #fff;
+}
+
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__coverimg,
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content {
+    display: inline-block;
+}
+
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__coverimg,
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__coverimg img {
+    max-width: 122px;
+    height: 82px;
+    width: 100%;
+}
+
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content {
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content .listRightItem__tit {
+    display: block;
+    margin-top: 4px;
+    width: 190px;
+    line-height: 24px;
+    line-height: 2.4rem;
+    font-size: 18px;
+    font-size: 1.8rem;
+
+    /* 强行保留两行 */
+    max-height: 48px;
+    max-height: 4.8rem;
+    overflow: hidden;
+}
+
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content .listRightItem__tit:hover {
+    color: #891619;
+}
+
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content .listRightItem__date {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    font-size: 1.4rem;
+    color: #8d8d8d;
+}
