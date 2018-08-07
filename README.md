@@ -10,6 +10,8 @@
 * 整合了阿里云短信发送功能
 
 # 模块
-* consoleboard
-* portal
+* consoleboard //后台
+* portal  //门户
+* special  //专题
+* 
  **portal下有几个文件，由于数据库为空，所以几乎处于废弃状态。可以看index注释来熟悉怎么用。
