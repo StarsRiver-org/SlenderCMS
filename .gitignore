@@ -1,0 +1,11 @@
+/composer.json
+/composer.lock
+/tests/
+/data/catch/
+/config/
+/.idea/
+/.git/
+/runtime/
+/public/
+/thinkphp/
+/vendor/
