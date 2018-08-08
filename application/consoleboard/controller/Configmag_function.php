@@ -44,7 +44,7 @@
             return Qhelp::json_en([
                 'Stat' => 'OK',
                 'Message' => $name.' 》 值已恢复默认',
-                'Data' => $rd[0]['df'],
+                'Data' => htmlspecialchars_decode($rd[0]['df']),
             ]);
         }
 
