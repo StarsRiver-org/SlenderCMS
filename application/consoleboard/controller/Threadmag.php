@@ -24,7 +24,8 @@ class Threadmag extends Controller {
             'chunklv3' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 3")),
             'splv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 1")),
             'splv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2")),
-            'splv3' => [],]);
+            'splv3' => [],
+        ]);
     }
 
     public function main() {

@@ -92,7 +92,7 @@ class User extends Controller {
             if (!empty($name) || !empty($email) || !empty($phone)) {
                 if(!empty($_POST['upuser']) && empty($password)){
                     if($renew_pm){
-                        Db::execute("update qzlit_group set `pml` = '" . $pml . "' where uid = '" . $_POST['upuser'] . "'");
+                        Db::execute("update qzlit_group set `pml` = '$pml' where uid = '" . $_POST['upuser'] . "'");
                     }
                     Db::execute("update qzlit_group set `username` = '" . $username . "', `promise`= '" . $promise . "', `phone`='" . $phone . "', `email`='" . $email . "', `name`='" . $name . "', `party`='" . $party . "' where uid = '" . $_POST['upuser'] . "'");
                     Log::visit("consoleboard","manageuser","renew_".$username);
@@ -207,14 +207,8 @@ class User extends Controller {
     /* 检查用户权限 */
     public static function has_pm($pname,$data = 0){
         $ud = self::ufetch();
-
-        if(empty($ud)){
-           return 0;
-        }
-
+        if(empty($ud)){return 0;}
         $upm = $ud['pm'];
-
-
         /*----------------------------------------
          *  纯值依赖的判断，用于网站通行
          * */
@@ -227,11 +221,9 @@ class User extends Controller {
                 default: return 0;
             }
         }
-
         /*----------------------------------------
          *  细分权限判断
          * */
-
         /* 用户的细分权限值 *//* 获取细分权限对应的最小权限值和固有权限值 */
         $res = $ud['pml'][$pname];
         $pm_min = self::$pml_setting[$pname]['pmin'];
@@ -240,37 +232,19 @@ class User extends Controller {
         switch ($pname) {
             /* 普通用户 */
             case 'site_visite': /*浏览网站*/
-                return ($res['value'] || $upm >= $pm_min) ? 1 : 0;
-                break;
             case 'thread_visite':/*浏览文章*/
-                return ($res['value'] || $upm >= $pm_min) ? 1 : 0;
-                break;
             case 'thread_subscrib':/*评论*/
-                return ($res['value'] || $upm >= $pm_min) ? 1 : 0;
-                break;
             case 'user_subscrip':/*评论用户*/
                 return ($res['value'] || $upm >= $pm_min) ? 1 : 0;
                 break;
 
             /*管理员*/
             case 'sms_use':/*使用短信权力*/
-                return (($res['value'] && $upm >= $pm_min) || $upm >= $pm_std) ? 1 : 0;
-                break;
             case 'enroll_use':/*参与报名管理权力*/
-                return (($res['value'] && $upm >= $pm_min) || $upm >= $pm_std) ? 1 : 0;
-                break;
             case 'config_mag':/*配置管理*/
-                return (($res['value'] && $upm >= $pm_min) || $upm >= $pm_std) ? 1 : 0;
-                break;
             case 'user_mag':/*用户管理*/
-                return (($res['value'] && $upm >= $pm_min) || $upm >= $pm_std) ? 1 : 0;
-                break;
             case 'nav_mag':/*导航管理*/
-                return (($res['value'] && $upm >= $pm_min) || $upm >= $pm_std) ? 1 : 0;
-                break;
             case 'thread_mag':/*文章管理*/
-                return (($res['value'] && $upm >= $pm_min) || $upm >= $pm_std) ? 1 : 0;
-                break;
             case 'chunk_mag':/*板块管理*/
                 return (($res['value'] && $upm >= $pm_min) || $upm >= $pm_std) ? 1 : 0;
                 break;
@@ -283,10 +257,10 @@ class User extends Controller {
                     $tes = []; /* keep foreach to run normarly */
                     $tes = array_merge($tes,explode(',',$res['value']));
                     foreach ($tes as  $v){
-                        $cs = Filter::sample(Db::query("select id from qzlit_chunk where chunk_below = $v" ),'id');
+                        $cs = Filter::sample(Db::query("select id from qzlit_chunk where chunk_below = '“”".$v."'"),'id');
                         $tes = array_merge($tes,$cs);
                         foreach ($cs as $v2){
-                            $cs2 = Filter::sample(Db::query("select id from qzlit_chunk where chunk_below = $v2" ),'id');
+                            $cs2 = Filter::sample(Db::query("select id from qzlit_chunk where chunk_below = '".$v2."'" ),'id');
                             $tes = array_merge($tes,$cs2);
                         }
                     }
@@ -326,7 +300,7 @@ class User extends Controller {
             return Qhelp::json_en(['Stat' => 'error', 'Message' => '参数不合法']);
         }
         // 防止篡改ID导致的权限错乱
-        if($upm = Db::query("select `promise` from qzlit_group where uid= $uid")){
+        if($upm = Db::query("select `promise` from qzlit_group where uid= '".$uid."'")){
             $upm = $upm[0]['promise'];
         } else {
             return Qhelp::json_en(['Stat' => 'error', 'Message' => '用户不存在']);
@@ -358,33 +332,35 @@ class User extends Controller {
             }
         }
 
-        foreach($pml as $key => $value){
-            if(!in_array($key,$pml_keys)){
+        foreach ($pml as $key => $value) {
+            if (!in_array($key, $pml_keys)) {
                 return Qhelp::json_en(['Stat' => 'error', 'Message' => '保存超时，请刷新页面后在进行操作']);
             }
-            if(preg_match("/[\'a-zA-Z.。:：;；*?？·~‘’`!@#$%^&+=)(《》<>{}]|\]|\[|\/|\\\|\"|\|/",$pml[$key]['value'])){
+            if (preg_match("/[\'a-zA-Z.。:：;；*?？·~‘’`!@#$%^&+=)(《》<>{}]|\]|\[|\/|\\\|\"|\|/", $pml[$key]['value'])) {
                 return Qhelp::json_en(['Stat' => 'error', 'Message' => '输入的文本内容不规范，请重写填写']);
             }
 
+            /* 格式化权限数据内容 */
             $pml[$key]['token'] = $key;
             $pml[$key]['type'] = self::$pml_setting[$key]['type'];
             $pml[$key]['name'] = self::$pml_setting[$key]['name'];
-            $pml[$key]['sort'] = self::$pml_setting[$key]['pmin'] < 700 ? 'user' :  'admin';
-            $pml[$key]['value'] = str_replace('，',',',$pml[$key]['value']);
+            $pml[$key]['sort'] = self::$pml_setting[$key]['pmin'] < 700 ? 'user' : 'admin';
+            $pml[$key]['value'] = str_replace('，', ',', $pml[$key]['value']);
 
-            if($upm < self::$pml_setting[$key]['pmin'] ){
+            /* 判断固有权限 */
+            if ($upm < self::$pml_setting[$key]['pmin']) {
                 $pml[$key]['solid'] = true;
                 $pml[$key]['value'] = self::$pml_setting[$key]['type'] == 'boolean' ? false : '';
-            } elseif ($upm >= self::$pml_setting[$key]['psolid'] ){
+            } elseif ($upm >= self::$pml_setting[$key]['psolid']) {
                 $pml[$key]['solid'] = true;
                 $pml[$key]['value'] = self::$pml_setting[$key]['type'] == 'boolean' ? true : '';
             }
         }
 
         // 存储权限设置
-        $pml_json = htmlspecialchars(Qhelp::json_en($pml),ENT_QUOTES);
-        Db::execute("update qzlit_group set `pml` = '".$pml_json."' where uid = $uid");
-        Log::visit("consoleboard","manageuser","setpml_".$uid);
+        $pml_json = htmlspecialchars(Qhelp::json_en($pml), ENT_QUOTES);
+        Db::execute("update qzlit_group set `pml` = '" . $pml_json . "' where uid = '" . $uid . "'");
+        Log::visit("consoleboard", "manageuser", "setpml_" . $uid);
         return Qhelp::json_en(['Stat' => 'OK', 'Message' => '保存成功']);
     }
 }
