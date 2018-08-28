@@ -2,7 +2,7 @@
 给学校做的网站-我的第一个个人项目
 
 #主要目录结构
-www  WEB部署目录（或者子目录）
+WEB程序目录
 ├─application           应用目录
 │  ├─common             公共模块目录（可以更改）
 │  ├─module_name        模块目录
