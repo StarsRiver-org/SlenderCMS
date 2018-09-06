@@ -36,12 +36,15 @@ class More extends Controller{
         }
 
         if(!empty($chunklist['chunk_lv2'])){
-            $chr['头条'] = $chunkid;
             foreach ($chunklist['chunk_lv2'] as $v) {
                 $chr[$v['chunk_name']] = $v['id'];
             }
-            $threadlist = Thread::loadlist($chr, 6);
         }
+
+        $chr['头条'] = $chunkid;
+
+        $threadlist = Thread::loadlist($chr, 6);
+
         $this->assign([
             'threadlist' => $threadlist,
             'banners' => Chunk::loadbanner($chunkid),
