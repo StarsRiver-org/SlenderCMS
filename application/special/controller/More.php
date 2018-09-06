@@ -35,15 +35,13 @@ class More extends Controller{
             $this->error('内容不存在');
         }
 
-        if(empty($chunklist['chunk_lv2'])){
-            $this->error('内容不合法');
+        if(!empty($chunklist['chunk_lv2'])){
+            $chr['头条'] = $chunkid;
+            foreach ($chunklist['chunk_lv2'] as $v) {
+                $chr[$v['chunk_name']] = $v['id'];
+            }
+            $threadlist = Thread::loadlist($chr, 6);
         }
-
-        $chr['头条'] = $chunkid;
-        foreach ($chunklist['chunk_lv2'] as $v) {
-            $chr[$v['chunk_name']] = $v['id'];
-        }
-        $threadlist = Thread::loadlist($chr, 6);
         $this->assign([
             'threadlist' => $threadlist,
             'banners' => Chunk::loadbanner($chunkid),
