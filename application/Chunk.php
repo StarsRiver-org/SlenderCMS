@@ -7,18 +7,22 @@ use think\Db;
 
 
 class Chunk extends Controller {
-    /* 内部使用，无需安全性检验 */
+    /* 用于外部时注意对 $chunkid 合法性校验 */
     static function getchunk_lv($chunkid) {
-        return Db::query("select chunk_lv from qzlit_chunk WHERE id = '" . $chunkid . "'")[0]['chunk_lv'];
+        $res = Db::query("select chunk_lv from qzlit_chunk WHERE id = '" . $chunkid . "'");
+        if(!empty($res)){
+            return $res[0]['chunk_lv'];
+        }
+        return 0;
     }
 
-    /* 内部使用，无需安全性检验 */
+    /* 用于外部时注意对 $chunkid 合法性校验 */
     static function getchunk($chunkid) {
         $res = Db::query("select * from qzlit_chunk WHERE id = '" . $chunkid . "'");
         return $res ? $res[0] : '' ;
     }
 
-    /* 需要使用于用户交互时注意安全性验证 */
+    /* 用于外部时注意对 $chunkid 合法性校验 */
     static function loadchunk($chunkid) {
         $chunk = [];
         if (Chunk::getchunk_lv($chunkid) == 1) {
@@ -38,7 +42,7 @@ class Chunk extends Controller {
         return $chunk;
     }
 
-    /* 需要使用于用户交互时注意安全性验证 */
+    /* 用于外部时注意对 $chunkid 合法性校验 */
     static function loadthread($chunkid, $face_to_user = false) {
         /*！对数据库读取进行限制*/
         if($face_to_user){
@@ -92,7 +96,8 @@ class Chunk extends Controller {
         return $threadlist;
     }
 
-    /* 需要使用于用户交互时注意安全性验证 */
+    /* 加载板块的幻灯和横幅 */
+    /* 用于外部时注意对 $chunkid 合法性校验 */
     static function loadbanner($chunkid) {
         $num = 10; /*最多10*/
         $arr = [];
@@ -104,5 +109,22 @@ class Chunk extends Controller {
             'slider' => [$arr[0],$arr[1],$arr[2],$arr[3],$arr[4]],
             'banner' => [$arr[5],$arr[6]],
         ];
+    }
+
+    static function load_specials($cks) {
+        $arr = [];
+        foreach ($cks as $value){
+            $chck = self::getchunk($value);
+            if(!empty($chck)){
+                $imgs = self::loadbanner($value);
+                $arr[] = [
+                    "id" => $chck['id'],
+                    "name" => $chck['chunk_name'],
+                    "banner" => $imgs['banner'],
+                    "slider" =>  $imgs['slider'],
+                ];
+            }
+        }
+        return $arr;
     }
 }

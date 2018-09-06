@@ -122,11 +122,11 @@
                     <div class="columnContainer">
                         <?php $k = 0; ?>
                         {if isset($sp)}
-                        {volist name="sp" id="topic" length="4"}
-                            <a href="/threads/view?id={$topic.id}" class="subjectItem">
-                                <img src="{$topic.coverimg}" />
-                            </a>
-                        {/volist}
+                            {volist name="sp" id="t" length="4"}
+                                <a href="/special/more?sid={$t.id}" class="subjectItem">
+                                    <img src="{$t.banner[1]}" />
+                                </a>
+                            {/volist}
                         {/if}
                     </div>
                 </div>

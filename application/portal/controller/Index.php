@@ -44,16 +44,16 @@ class Index extends Controller{
             'top'=>1,
             'new'=>2,
             'info'=>3,
-            'sp'=>4,
             'xwjj'=>17
         ]);
 
         $this->assign([
             'new' => isset($threadlist['new']) ? $threadlist['new'] : [],
             'info' => isset($threadlist['info']) ? $threadlist['info'] : [],
-            'sp' => isset($threadlist['sp']) ? $threadlist['sp'] : [],
+            'sp' => Chunk::load_specials([85,68,71,81]), //这里的id是专题 id
             'xwjj' => isset($threadlist['xwjj']) ? $threadlist['xwjj'] : [],
             'banners' => Chunk::loadbanner($chunkid),
         ]);
     }
+
 }
