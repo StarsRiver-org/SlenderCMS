@@ -5,7 +5,11 @@ namespace qzxy;
 class Curl {
     public static function post($url = '', $post_data = array()) {
         if (empty($url) || empty($post_data)) {
-            return false;
+            return Qhelp::json_en([
+				'Stat' => 'error',
+				'Message' => '请求错误或内容不完整',
+				"Data" => [],
+			]);
         }
         $o = "";
         foreach ( $post_data as $k => $v )
@@ -14,7 +18,14 @@ class Curl {
         }
         $post_data = substr($o,0,-1);
 
-        $postUrl = $url;
+        if(substr($url,0,4) == 'http'){
+            $postUrl = $url;
+        } else {
+            $reqtype = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https:' : 'http:';
+            $reqsls = substr($url,0,2) == '//' ? '' : '//';
+            $postUrl = $reqtype.$reqsls.$url;
+        }
+
         $curlPost = $post_data;
 
         $cookie = '';
