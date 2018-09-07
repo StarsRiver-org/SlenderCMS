@@ -4,7 +4,7 @@
 
 # 使用说明
 * 运行安装程序（SITE/install）
-* 修改config/config.php 全局常量SITE为你的域名值。（请不要写http: 或 https:,如 //www.youdomain.com）
+* 修改config/config.php 全局常量SITE为你的域名值。（请不要写http: 或 https:,以//开始。如 //youdomain.com）
 
 # 功能
 * 仅仅是一个简单。。。的内容管理网站
