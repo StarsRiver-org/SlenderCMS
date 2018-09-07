@@ -12,7 +12,7 @@ class Index extends Controller{
 
         $HOME_PAGE = "portal";
 
-        header('Location: '.SITE.'/'.$HOME_PAGE.'.html');
+        header('Location:'.SITE.'/'.$HOME_PAGE.'.html');
         exit;
     }
 }
