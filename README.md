@@ -1,5 +1,5 @@
-# QzxyWebsite
-给学校做的网站-我的第一个个人项目
+# QzxyWebsite 基于thinkphp5.2
+给学校做的网站-CMS管理系统-我的第一个个人项目
 结构目录请看thinkphp(稍微不一样)
 
 # 使用说明
