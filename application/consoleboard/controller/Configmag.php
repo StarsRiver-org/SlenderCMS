@@ -4,6 +4,7 @@
     use think\Controller;
     use qzxy\User;
     use qzxy\Qhelp;
+    use qzxy\Config;
     use think\Db;
 
     class Configmag extends Controller{
@@ -28,9 +29,10 @@
 
             if(!empty($_POST['getconf'])){
                 switch ($_POST['getconf']){
-                    case 'base': return Configmag_function::getconf('Info') ;break;
-                    case 'sms': return Configmag_function::getconf('SmsService') ;break;
-                    case 'oth': return Configmag_function::getconf('Pm') ;break;
+                    case 'base': return Config::getconf('Info') ;break;
+                    case 'enroll': return Config::getconf('Enroll') ;break;
+                    case 'sms': return Config::getconf('SmsService') ;break;
+                    case 'oth': return Config::getconf('Pm') ;break;
                 }
             }
 

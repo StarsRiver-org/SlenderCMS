@@ -48,15 +48,5 @@
             ]);
         }
 
-        static function getconf($data){
-            $res = Db::query("select `name`, `data`,`descrip`, `issolid` from qzlit_config where `type`='".$data."'");
-            return Qhelp::json_en([
-                'Stat'=> 'OK',
-                'Message' => '配置成功读取',
-                'Data' => $res
-            ]);
-        }
-
-
     }
     

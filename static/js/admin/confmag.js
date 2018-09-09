@@ -4,7 +4,9 @@ var Confio = {
         var html = '<ul class="conf-list">';
         for (x in arr){
 
-            var datalen = arr[x].data.replace(/[^\u0000-\u00ff]/g,"aa").length;
+            arr[x].data = arr[x].data ? arr[x].data : '';
+
+            var datalen = arr[x].data ? arr[x].data.replace(/[^\u0000-\u00ff]/g,"aa").length : 0;
             var dataser = '';
             if(arr[x].data === 'on' || arr[x].data === 'off' ){
                 dataser = '<p><input id="conf_'+ arr[x].name +'" data-type="" type="checkbox" class="hidden" '+ (arr[x].data === 'on' ? 'checked ' : '') + (arr[x].issolid ? 'disabled' : '') +'><label for="conf_'+ arr[x].name + '">OFF</label></p>';
