@@ -27,10 +27,15 @@
             $smsconfig = self::getSmsConfig201807151515();
             if($smsconfig['ServiceStat'] == 'on'){
                 if(!empty($_POST['phone']) && !empty($_POST['msgdat'])){
+
+                    if(empty($_POST['msgtpl'])){
+                        return Qhelp::json_en(['Stat' => 'error', 'Message' => '未填写短信模板']);
+                    }
+
                     $mobile = abs((int)$_POST['phone']);
                     $msgdat = $_POST['msgdat'];
                     $moblen = strlen($mobile);
-                    $msgtpl = Qhelp::receive('msgtpl', $smsconfig['SmsTemplateCode']);
+                    $msgtpl = Qhelp::receive('msgtpl', '');
 
                     if($moblen == 11 || $moblen == 15){
                         require_once __DIR__.'/../../../extend/alsms/vendor/autoload.php';   //载入API
