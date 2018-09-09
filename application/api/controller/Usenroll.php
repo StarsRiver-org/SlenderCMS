@@ -18,11 +18,14 @@
             }
 
 
-            $starttime = Config::getconf('Enroll','startdate');
-            $endtime = Config::getconf('Enroll','enddate');
+            $starttime = Qhelp::json_de(Config::getconf('Enroll','startdate'))['Data'];
+            $endtime = Qhelp::json_de(Config::getconf('Enroll','enddate'))['Data'];
+            if(!Qhelp::chk_pint($starttime) || !Qhelp::chk_pint($endtime) || strlen($starttime) != 8 || strlen($starttime) != 8){
+                return Qhelp::json_en(['Stat' => 'error', "Message" => '服务器配置出错！']);
+            }
 
             $starttime = mktime(0,0,0,substr($starttime,4,2),substr($starttime,6,2),substr($starttime,0,4));
-            $endtime = mktime(0,0,0,substr($endtime,4,2),substr($endtime,6,2),substr($endtime,0,4));
+            $endtime = mktime(23,59,59,substr($endtime,4,2),substr($endtime,6,2),substr($endtime,0,4));
             $time = time();
 
             if($endtime <= $starttime){
@@ -129,7 +132,6 @@
                     'aim2' => $_POST['aim2']
                 ]
             ]);
-
 
         }
     }
