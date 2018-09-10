@@ -161,41 +161,41 @@ var Sms = {
                     var eul = document.createElement('ul');
                     var data = JSON.parse(result).Data;
                     var elih = '<li class="item">' +
-                        ((logicURL === 'logic_4' || logicURL === 'logic_5' || logicURL === 'logic_3') ? '<i class="back">祥</i>' : '') +
-                        (logicURL === 'logic_4' ? '<i class="back">X</i>' : '') +
+                        ((logicURL === 'logic_4' || logicURL === 'logic_6' || logicURL === 'logic_5' || logicURL === 'logic_3') ? '<i class="back">祥</i>' : '') +
+                        ((logicURL === 'logic_4') ? '<i class="back">X</i>' : '') +
                         (logicURL === 'logic_2' ? '<i class="back">面</i>' : '') +
                         '<i class="chk text-success bold" style="font-weight: 700">'+ data.length +'</i>' +
                         '<i class="name ">姓名</i>' +
                         '<i class="sex ">性别</i>' +
-                        (logicURL === 'logic_3' ? '<i class="sex ">打分</i>' : '') +
+                        ((logicURL === 'logic_3' || logicURL === 'logic_6' || logicURL === 'logic_4') ? '<i class="sex ">打分</i>' : '') +
                         '<i class="college ">学院</i>' +
                         '<i class="major ">专业</i>' +
-                        ((logicURL !== 'logic_3' && logicURL !== 'logic_4') ? '<i class="class">班级</i>' : '') +
-                        ((logicURL !== 'logic_3' && logicURL !== 'logic_4') ? '<i class="aim">志愿1</i>' : '') +
-                        ((logicURL !== 'logic_3' && logicURL !== 'logic_4') ? '<i class="aim">志愿2</i>' : '') +
+                        ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="class">班级</i>' : '') +
+                        ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim">志愿1</i>' : '') +
+                        ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim">志愿2</i>' : '') +
                         '<i class="phone">电话</i>' +
-                        ((logicURL === 'logic_1' || logicURL === 'logic_3' || logicURL === 'logic_4') ? ('<i class="stat">'+ (logicURL === 'logic_3' ? '处理状态' : '发送状态') + '</i>') : '') +
-                        ((logicURL === 'logic_3' || logicURL === 'logic_4') ? '<i class="sug">面试官意见</i>' : '') +
+                        ((logicURL === 'logic_1' || logicURL === 'logic_3' || logicURL === 'logic_4' || logicURL === 'logic_6') ? ('<i class="stat">'+ (logicURL === 'logic_3' ? '处理状态' : '发送状态') + '</i>') : '') +
+                        ((logicURL === 'logic_3' || logicURL === 'logic_4' || logicURL === 'logic_6') ? '<i class="sug">面试官意见</i>' : '') +
                         (logicURL === 'logic_2' ? '<i class="sug">面试时间</i>' : '') +
                         '</li>';
 
                     for (i in data) {
                         var eli = '<li class="item '+ (((logicURL === 'logic_1' && data[i].hascalled === 1) || (logicURL === 'logic_2' && data[i].hascalled === 2)) ? 'highlight-absence' : '') +'" id="uid_' + data[i].id + '">' +
-                            ((logicURL === 'logic_4' || logicURL === 'logic_5' || logicURL === 'logic_3') ? '<i class="back icon-folder-open-alt" onclick="Enfuc.watch()"></i>' : '' )+
-                            (logicURL === 'logic_4' ? '<i class="back icon-collapse-alt" onclick="Enfuc.unenroll()"></i>' : '' )+
+                            ((logicURL === 'logic_4' || logicURL === 'logic_6' || logicURL === 'logic_5' || logicURL === 'logic_3') ? '<i class="back icon-folder-open-alt" onclick="Enfuc.watch()"></i>' : '' )+
+                            ((logicURL === 'logic_4') ? '<i class="back icon-collapse-alt" onclick="Enfuc.unenroll()"></i>' : '' )+
                             (logicURL === 'logic_2' ? '<i class="back icon-coffee" onclick="Enfuc.f2f.open()"></i>' : '' )+
                             '<i class="chk"><input id="' + data[i].id + '" type="checkbox"></i>' +
                             '<i class="name ">' + data[i].name + '</i>' +
                             '<i class="sex">' + data[i].sex + '</i>' +
-                            (logicURL === 'logic_3' ? '<i class="sex ">' + data[i].score + '</i>' : '') +
+                            ((logicURL === 'logic_3' || logicURL === 'logic_6' || logicURL === 'logic_4') ? '<i class="sex ">' + data[i].score + '</i>' : '') +
                             '<i class="college">' + data[i].college + '</i>' +
                             '<i class="major">' + data[i].major + '</i>' +
-                            ((logicURL !== 'logic_3' && logicURL !== 'logic_4') ? '<i class="class">' + data[i].class + '</i>' : '') +
-                            ((logicURL !== 'logic_3' && logicURL !== 'logic_4') ? '<i class="aim" title="' + data[i].reasion + '">' + data[i].aim + '</i>' : '') +
-                            ((logicURL !== 'logic_3' && logicURL !== 'logic_4') ? '<i class="aim" title="' + data[i].reasion2 + '">' + data[i].aim2 + '</i>' : '') +
+                            ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="class">' + data[i].class + '</i>' : '') +
+                            ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim" title="' + data[i].reasion + '">' + data[i].aim + '</i>' : '') +
+                            ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim" title="' + data[i].reasion2 + '">' + data[i].aim2 + '</i>' : '') +
                             '<i class="phone">' + data[i].phone + '</i>' +
-                            ((logicURL === 'logic_1' || logicURL === 'logic_3' || logicURL === 'logic_4') ? '<i class="stat"></i>' : '') +
-                            ((logicURL === 'logic_3' || logicURL === 'logic_4') ? '<i class="sug">' + data[i].sug + '</i>' : '') +
+                            ((logicURL === 'logic_1' || logicURL === 'logic_3' || logicURL === 'logic_4' || logicURL === 'logic_6') ? '<i class="stat"></i>' : '') +
+                            ((logicURL === 'logic_3' || logicURL === 'logic_4' || logicURL === 'logic_6') ? '<i class="sug">' + data[i].sug + '</i>' : '') +
                             (logicURL === 'logic_2' ? '<i class="sug">' + data[i].ftime + '</i>' : '') +
                             '</li>';
 

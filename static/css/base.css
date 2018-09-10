@@ -4451,6 +4451,26 @@ pre code {
 }
 
 
+.nav > li > span {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.nav > li > span > a {
+    line-height: 42px;
+    height: 42px;
+    padding: 0 10px;
+    display: inline-block;
+    background: rgba(0,0,0,.05);
+    box-shadow: inset 2px 0 3px rgba(0,0,0,.1);
+}
+
+.nav > li > span > a:hover {
+    background: #b80000;
+    color: #fff;
+}
+
+
 .nav > li.disabled > a {
     color: #ddd
 }

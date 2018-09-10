@@ -95,6 +95,21 @@
             return Qhelp::json_en(['Stat' => 'error', 'Message' => '参数不足，无法理解行为']);
         }
 
+        /* 录取未通过通知管理 */ // OK
+        public function logic_6(){
+            if(!empty($_POST['med'])){
+                switch ($_POST['med']){
+                    case 'refresh':
+                        return Enrollmag_function6::refresh(@$_POST['num']);
+                        break;
+                    case 'sendsms':
+                        return Enrollmag_function6::send(@$_POST["id"], @$_POST["phone"],@$_POST['msgtpl'],@$_POST['msgdat']);
+                        break;
+                }
+            }
+            return Qhelp::json_en(['Stat' => 'error', 'Message' => '参数不足，无法理解行为']);
+        }
+
         /* 录取查看 */ //OK
         public function logic_5(){
             return Enrollmag_function5::refresh();

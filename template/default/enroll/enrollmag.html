@@ -9,7 +9,11 @@
     <li class="nav-parent show"><a><i class="icon icon-file"></i>录取管理控制台</a>
         <ul class="nav">
             <li><a data-target="#enroll_act" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_act');">录取筛选管理</a></li>
-            <li><a data-target="#enroll_ener" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_ener');">录取通知发送</a></li>
+            <li><a data-target="#enroll_ener" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_ener');">录取通知发送</a>
+                <span class="">
+                <a data-target="#enroll_del" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_del');"><i class="icon-ban-circle"></i></a>
+                </span>
+            </li>
             <li><a data-target="#enroll_mmb" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_mmb');">已录取成员</a></li>
         </ul>
     </li>
@@ -19,7 +23,10 @@
     <script src="{$Think.const.STATIC_ROOT}/lib/datetimepicker/datetimepicker.min.js"></script>
     <link href="{$Think.const.STATIC_ROOT}/css/skin/admin-enroll.css" rel="stylesheet">
     <script src="{$Think.const.STATIC_ROOT}/js/admin/enroll.js"></script>
+
+
     <div class="tab-pane fade active in" id="enroll_fs" data-url="logic_1" style="height:100%">
+        <span class="title">通知短信发送控制台</span>
         <div class="datatable">
             <div class="datahead"></div>
             <div class="datalist"></div>
@@ -47,10 +54,8 @@
             </div>
         </div>
     </div>
-
-
-
     <div class="tab-pane fade" id="enroll_mag" data-url="logic_2" style="height:100%">
+        <span class="title">面试控制台</span>
         <div class="tokenthumb"></div>
         <div class="datatable">
             <div class="datahead"></div>
@@ -113,9 +118,8 @@
             </div>
         </div>
     </div>
-
-
     <div class="tab-pane fade" id="enroll_act" data-url="logic_3" style="height:100%">
+        <span class="title">录取筛选</span>
         <div class="datatable">
             <div class="datahead"></div>
             <div class="datalist"></div>
@@ -136,6 +140,33 @@
         </div>
     </div>
     <div class="tab-pane fade" id="enroll_ener" data-url="logic_4" style="height:100%">
+        <span class="title">录用短信通知</span>
+        <div class="datatable">
+            <div class="datahead"></div>
+            <div class="datalist"></div>
+            <div class="loading" style="display: none"><img src="{$Think.const.STATIC_ROOT}/img/common/loading.gif"></div>
+        </div>
+        <div class="input-group">
+            <div class="solid-area" style="width: 168px;">
+                <em class="title">短信动态参数</em>
+                <input class="cls" placeholder="部门">
+            </div>
+            <div class="solid-area" style="width: 168px;">
+                <em class="title">其他</em>
+                <input class="msgtpl" placeholder="短信模板编号">
+                <input class="perpage" type="number" placeholder="每页数据量(0~99)">
+            </div>
+            <div class="solid-area btn-group">
+                <button class="submit">提 交</button>
+            </div>
+            <div class="solid-area btn-group">
+                <button class="select_all">全选</button>
+                <button class="unselect_all">全不选</button>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="enroll_del" data-url="logic_6" style="height:100%">
+        <span class="title">面试未通过短信通知（未添加到录取名单的人都会在这里显示）</span>
         <div class="datatable">
             <div class="datahead"></div>
             <div class="datalist"></div>
@@ -190,7 +221,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="modal_next">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -207,7 +237,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="modal_smsdata_uc">
         <div class="modal-dialog">
             <div class="modal-content">

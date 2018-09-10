@@ -202,6 +202,13 @@ div{
         min-width: 800px;
     }
 
+    .tab-pane > .title{
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+
 /*登出按钮*/
     .admin_exit {
         height: 50px;
@@ -1068,3 +1075,4 @@ tr > td > .icon-cogs {
     background: #ff665f;
     color: #fff;
 }
+
