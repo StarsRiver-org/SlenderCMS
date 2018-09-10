@@ -246,12 +246,12 @@ var Sms = {
             whr = ctn.querySelector('.where')   ? ctn.querySelector('.where').value : '',
             ape = ctn.querySelector('.aphone')  ? ctn.querySelector('.aphone').value : '',
             qq =  ctn.querySelector('.qq')      ? ctn.querySelector('.qq').value : '',
-            link =  ctn.querySelector('.link')      ? ctn.querySelector('.link').value : '',
+            link = 'enroll/enroll',
             msgtpl = ctn.querySelector('.msgtpl').value;
 
         if(
             ((!cls || !tsr || !whr || !ape) && logicURL === 'logic_1') ||
-            ((!cls || !qq) && logicURL === 'logic_4')
+            (!cls && logicURL === 'logic_4')
         ){
             $('#modal_smsdata_uc').modal('show');
             return 0;
