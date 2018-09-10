@@ -106,7 +106,7 @@ namespace qzxy\enroll\controller;
                     }
 
                     if(empty($taim)){
-                        Db::execute("delete from qzlit_usenroll where id = $id");
+                        Db::execute("update qzlit_usenroll set hascalled = 1, isfaced = 1, isenrolled = '-1', f2f = '-1', ftime = '-1', aim = '-1', aim2 = '-1' where id = $id");
                         return Qhelp::json_en(['Stat' => 'OK', 'Message' => '已移除，再也看不到了哦']);
                     }
                     $pn = Enrollmag::getpartyname($res[0]['aim']);

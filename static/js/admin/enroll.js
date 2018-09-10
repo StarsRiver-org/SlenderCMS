@@ -246,6 +246,7 @@ var Sms = {
             whr = ctn.querySelector('.where')   ? ctn.querySelector('.where').value : '',
             ape = ctn.querySelector('.aphone')  ? ctn.querySelector('.aphone').value : '',
             qq =  ctn.querySelector('.qq')      ? ctn.querySelector('.qq').value : '',
+            link =  ctn.querySelector('.link')      ? ctn.querySelector('.link').value : '',
             msgtpl = ctn.querySelector('.msgtpl').value;
 
         if(
@@ -270,6 +271,7 @@ var Sms = {
                     "where": whr,
                     "phone": ape,
                     "qq": qq,
+                    "link": link,
                 });
 
                 var form = document.createElement('form');
@@ -453,7 +455,7 @@ var Enfuc = {
                         partyselector += '<hr style="margin:10px 50px 10px 0;">' +
                             '<label for="party_0" class="radio" style="width: 100% ">' +
                             '    <span class="radio-bg"></span>' +
-                            '    <input type="radio" name="party" id="party_0" value="0" ' + (uif.aim2 === '' ? ' checked' : '') +'/> 不再进行转移（将从库中移除该面试者）' +
+                            '    <input type="radio" name="party" id="party_0" value="0" ' + (uif.aim2 === '' ? ' checked' : '') +'/> 直接拒接（将从库中移除该面试者）' +
                             '    <span class="radio-on"></span>' +
                             '</label><br>';
 

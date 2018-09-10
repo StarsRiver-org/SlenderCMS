@@ -13,7 +13,7 @@ class Config extends Controller{
         } else {
             $res = Db::query("select `data` from qzlit_config where `type`='".$type."' AND `name`='".$name."' ");
             if(!empty($res)){
-                $res = $res[0]['data'];
+                $res = htmlspecialchars_decode($res[0]['data']);
             }
         }
 

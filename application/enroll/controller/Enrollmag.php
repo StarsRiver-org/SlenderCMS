@@ -22,7 +22,7 @@
 
         public function main() {
             $this->assign(['enrollmag' => 'active',]);
-            return view('admin/enrollmag');
+            return view('enroll/enrollmag');
         }
 
         /* 面试通知发送 */ //OK
