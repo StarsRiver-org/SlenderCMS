@@ -1,0 +1,16 @@
+.preview {
+    width: 240px;
+    height: 320px;
+    overflow: hidden;
+    background: none;
+    vertical-align: top;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    padding: 0;
+    margin: 0 auto;
+    margin-top: -20px;
+    display: block;
+}
+
+.solid-80{
+    height: 80px;
+}
