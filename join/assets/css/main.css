@@ -10,6 +10,9 @@
     margin-top: -20px;
     display: block;
 }
+.preview img{
+    width: 100%;
+}
 
 .solid-80{
     height: 80px;
