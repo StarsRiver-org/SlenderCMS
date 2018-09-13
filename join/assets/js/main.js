@@ -47,10 +47,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     /* 初始化表单中部门信息 */
-
+    loadparty();
     function loadparty(){
         loading();
-        $('#alert').modal('hide');
+
         $.ajax(ApiUrl + '/api/getpartys', {
             method: 'GET',
             data: '',
@@ -70,11 +70,14 @@ window.addEventListener('DOMContentLoaded', function () {
                 var res = {};
                 res.Message = '页面加载失败,即将重新加载';
                 alert(res);
-                setTimeout(loadparty,3000);
+                setTimeout(function () {
+                    $('#alert').modal('hide');
+                    $('.modal-backdrop').remove();
+                },3000);
+                setTimeout(loadparty,4000);
             }
         });
     }
-    loadparty();
 
 
     /* 裁剪头像行为 */
