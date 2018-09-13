@@ -47,22 +47,35 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     /* 初始化表单中部门信息 */
-    $.ajax(ApiUrl + '/api/getpartys', {
-        method: 'GET',
-        data: '',
-        success: function (res) {
-            let partys = JSON.parse(res);
-            console.log(partys);
-            let html = '<option disabled selected>请选择部门</option>';
-            for (i in partys){
-                html += '<option value="'+ i +'">'+partys[i]+'</option>';
+
+    function loadparty(){
+        loading();
+        $('#alert').modal('hide');
+        $.ajax(ApiUrl + '/api/getpartys', {
+            method: 'GET',
+            data: '',
+            success: function (res) {
+                loading('stop');
+                let partys = JSON.parse(res);
+                let html = '<option disabled selected value="0">请选择部门</option>';
+                for (i in partys){
+                    html += '<option value="'+ i +'">'+partys[i]+'</option>';
+                }
+                let aim = document.querySelectorAll('[datatype="aim"]');
+                for (x in aim){
+                    aim[x].innerHTML = html;
+                }
+            },
+            error: function () {
+                var res = {};
+                res.Message = '页面加载失败,即将重新加载';
+                alert(res);
+                setTimeout(loadparty,3000);
             }
-            let aim = document.querySelectorAll('[datatype="aim"]');
-            for (x in aim){
-                aim[x].innerHTML = html;
-            }
-        },
-    });
+        });
+    }
+    loadparty();
+
 
     /* 裁剪头像行为 */
     document.getElementById('crop').addEventListener('click', function () {
@@ -79,9 +92,10 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     /* 数据提交行为 */
-    document.getElementById('poster').addEventListener('click', function () {
+    document.getElementById('poster').addEventListener('click',poston);
+    function poston() {
         let Data = new FormData(document.querySelector('form'));
-        if(canvas){
+        if (canvas) {
             canvas.toBlob(function (blob) {
                 Data.append('avatar', blob, 'avatar.jpg');
                 post(Data);
@@ -89,16 +103,22 @@ window.addEventListener('DOMContentLoaded', function () {
         } else {
             post(Data);
         }
-    });
+    }
 
     /* 数据提交方法 */
     function post(Data) {
+        $('#poster').attr("disabled",true);
+        document.getElementById('poster').removeEventListener('click',poston);
+        loading();
         $.ajax(ApiUrl + '/api/usenroll', {
             method: 'POST',
             data: Data,
             processData: false,
             contentType: false,
             success: function (res) {
+                document.getElementById('poster').addEventListener('click',poston);
+                $('#poster').attr("disabled",false);
+                loading('stop');
                 let resp = JSON.parse(res);
                 if(resp === 'OK'){
                     document.querySelector('form').reset();
@@ -107,6 +127,9 @@ window.addEventListener('DOMContentLoaded', function () {
             },
             error: function (res) {
                 //document.querySelector('body').innerHTML = res.responseText;  //用于调试
+                document.getElementById('poster').addEventListener('click',poston);
+                $('#poster').attr("disabled",false);
+                loading('stop');
                 let resp = {
                     Stat:'error',
                     Message:'网络错误或找不到服务器',
@@ -120,6 +143,15 @@ window.addEventListener('DOMContentLoaded', function () {
     function alert(res) {
         document.querySelector('#alert .modal-body').innerHTML = res.Message;
         $('#alert').modal('show');
+    }
+    /* 返回消息提示方法 */
+    function loading(res) {
+        var loader = $('.loading');
+        if(!res){
+            loader.addClass('on')
+        } else {
+            loader.removeClass('on')
+        }
     }
 
 });
