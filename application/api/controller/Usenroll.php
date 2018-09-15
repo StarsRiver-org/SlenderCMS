@@ -58,7 +58,6 @@
             }
 
             $rrep = Db::query("select * from qzlit_usenroll where phone = '".$_POST['phone']."'");
-
             if(!empty($rrep)){
                 return Qhelp::json_en(['Stat' => 'error', "Message" => '你已经报名过了，请耐心等待结果']);
             }
@@ -127,7 +126,7 @@
                 )
             ");
 
-            if(!empty($res)){
+            if(!empty($dbres)){
                 return Qhelp::json_en([
                     'Stat' => 'OK',
                     "Message" => '报名成功,请耐心等待短信通知',

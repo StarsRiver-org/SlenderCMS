@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', function () {
         cropper,
         canvas;
 
-    /* 初始化图片上传功能 */
+    /* ImageUpload init */
     input.addEventListener('change', function (e) {
         let files = e.target.files;
         let done = function (url) {
@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    /* 初始化控制弹窗 */
+    /* Image crop init */
     $modal.on('shown.bs.modal', function () {
         cropper = new Cropper(image, {
             aspectRatio: 3 / 4,
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    /* 初始化表单中部门信息 */
+    /* Party List init */
     loadparty();
     function loadparty(){
         loading();
@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    /* 裁剪头像行为 */
+    /* Croper Worker */
     document.getElementById('crop').addEventListener('click', function () {
         $modal.modal('hide');
         if (cropper) {
