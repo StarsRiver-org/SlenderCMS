@@ -14,6 +14,7 @@
         public function _initialize(){
 
             new \qzxy\consoleboard\controller\Init();
+
             if(!User::has_pm('enroll_use')) {
                 $this->error('操作错误，您未获得该操作权限');
                 return null;
@@ -21,7 +22,12 @@
         }
 
         public function main() {
-            $this->assign(['enrollmag' => 'active',]);
+            $this->assign([
+                'enrollmag' => 'active',
+                'enall' => count(Db::query("select id from qzlit_usenroll")),
+                'en' => count(Db::query("select id from qzlit_usenroll where `aim` = '".User::ufetch()['party']."'")),
+                'en2' => count(Db::query("select id from qzlit_usenroll where `aim2` = '".User::ufetch()['party']."'"))
+            ]);
             return view('enroll/enrollmag');
         }
 
