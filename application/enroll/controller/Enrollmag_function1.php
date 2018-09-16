@@ -52,7 +52,7 @@
                     $hascalled = $res[0]["hascalled"] == 1 ? 2 : 1;
 
                     if(json_decode($smsres,true)['Message'] == 'OK'){
-                        $ftime = Qhelp::json_de($msgtpl)['time'];
+                        $ftime = Qhelp::json_de($msgdat)['time'];
                         Db::execute("update qzlit_usenroll set hascalled = $hascalled, isenrolled = 0, isfaced = 0, f2f = '".User::ufetch()['uid']."', ftime = '".htmlspecialchars($ftime,ENT_QUOTES)."' where id = $id");
                     }
 

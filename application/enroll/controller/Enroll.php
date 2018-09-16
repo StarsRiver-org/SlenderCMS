@@ -49,7 +49,11 @@
                 return Qhelp::json_en(['Stat' => 'error', 'Message' => '未找到报名信息',]);
             } else {
                 if(empty($res[0]['isfaced']) || empty($res[0]['hascalled'])){
-                    return Qhelp::json_en(['Stat' => 'error', 'Message' => '请耐心等待面试通知',]);
+                    return Qhelp::json_en(['Stat' => 'OK', 'Message' => '请耐心等待面试通知',]);
+                }
+
+                if(!empty($res[0]['hascalled']) && empty($res[0]['isfaced'])){
+                    return Qhelp::json_en(['Stat' => 'OK', 'Message' => '面试通知已经发送,请在'.$res[0]['ftime'].'在学生活动中心参加面试，具体地点请查看短信']);
                 }
 
                 if($res[0]['isenrolled'] == '-1'){
