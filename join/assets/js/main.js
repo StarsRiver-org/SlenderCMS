@@ -50,12 +50,12 @@ window.addEventListener('DOMContentLoaded', function () {
     loadparty();
     function loadparty(){
         loading();
-
         $.ajax(ApiUrl + '/api/getpartys', {
             method: 'GET',
             data: '',
             success: function (res) {
                 loading('stop');
+                loadcampus();
                 let partys = JSON.parse(res);
                 let html = '<option disabled selected value="0">请选择部门</option>';
                 for (i in partys){
@@ -75,6 +75,37 @@ window.addEventListener('DOMContentLoaded', function () {
                     $('.modal-backdrop').remove();
                 },3000);
                 setTimeout(loadparty,4000);
+            }
+        });
+    }
+
+    /* Campus List init */
+    function loadcampus(){
+        loading();
+        $.ajax(ApiUrl + '/api/getcampus', {
+            method: 'GET',
+            data: '',
+            success: function (res) {
+                loading('stop');
+                let partys = JSON.parse(res);
+                let html = '<option disabled selected value="0">请选择校区</option>';
+                for (i in partys){
+                    html += '<option value="'+ i +'">'+partys[i]+'</option>';
+                }
+                let aim = document.querySelectorAll('[datatype="campus"]');
+                for (x in aim){
+                    aim[x].innerHTML = html;
+                }
+            },
+            error: function () {
+                var res = {};
+                res.Message = '页面加载失败,即将重新加载';
+                alert(res);
+                setTimeout(function () {
+                    $('#alert').modal('hide');
+                    $('.modal-backdrop').remove();
+                },3000);
+                setTimeout(loadcampus,4000);
             }
         });
     }

@@ -16,10 +16,17 @@
                 return Enrollmag::chk_pty();
             }
 
+            if(!empty($_POST['campus']) && !Qhelp::chk_pint($_POST['campus'])){
+                return Qhelp::json_en([
+                    'Stat' => 'OK',
+                    'Message' => '校区数据类型错误',
+                ]);
+            }
+            $cps = Qhelp::receive('campus','');
             $aim = User::ufetch()['party'];
 
             $num = (int)$num < 10 ? 10 : ((int)$num > 99 ? 99 : (int)$num) ;
-            $res = Db::query("select * from qzlit_usenroll where isenrolled = 1 AND hascalled != 3 AND isfaced = 1 AND aim = $aim order by score DESC  limit $num");
+            $res = Db::query("select * from qzlit_usenroll where ".(!empty($cps) ? "campus = $cps AND" : "")." isenrolled = 1 AND hascalled != 3 AND isfaced = 1 AND aim = $aim order by score DESC  limit $num");
 
             return Qhelp::json_en([
                 'Stat' => 'OK',

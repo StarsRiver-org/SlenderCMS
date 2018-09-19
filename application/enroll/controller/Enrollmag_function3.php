@@ -15,20 +15,27 @@
                 return Enrollmag::chk_pty();
             }
 
+            if(!empty($_POST['campus']) && !Qhelp::chk_pint($_POST['campus'])){
+                return Qhelp::json_en([
+                    'Stat' => 'OK',
+                    'Message' => '校区数据类型错误',
+                ]);
+            }
+            $cps = Qhelp::receive('campus','');
             $aim = User::ufetch()['party'];
 
             $page = (!empty($page) && Qhelp::chk_pint($page)) ? $page : 1;
             $perpage = (int)$perpage < 10 ? 10 : ((int)$perpage > 99 ? 99 : (int)$perpage);
-            $count = count(Db::query("select id from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim"));
+            $count = count(Db::query("select id from qzlit_usenroll WHERE ".(!empty($cps) ? "campus = $cps AND" : "")." `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim"));
             $pages = ceil($count/$perpage);
             $from = ($page-1)*$perpage - 1 >=0 ? ($page-1)*$perpage : 0 ;
 
 
-            $res = Db::query("select * from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit ".(int)$from.",".(int)$perpage);
+            $res = Db::query("select * from qzlit_usenroll WHERE ".(!empty($cps) ? "campus = $cps AND" : "")." `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit ".(int)$from.",".(int)$perpage);
             if(empty($res)){
                 $from = 0 ;
                 $page = 1;
-                $res = Db::query("select * from qzlit_usenroll WHERE `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit ".(int)$from.",".(int)$perpage);
+                $res = Db::query("select * from qzlit_usenroll WHERE ".(!empty($cps) ? "campus = $cps AND" : "")." `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit ".(int)$from.",".(int)$perpage);
             }
 
             return Qhelp::json_en([

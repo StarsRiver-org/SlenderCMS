@@ -70,6 +70,9 @@
             }
 
 
+            if (empty($_POST['campus']) || !Qhelp::chk_pint($_POST['campus'])) {
+                return Qhelp::json_en(['Stat' => 'error', "Message" => '请选区你所居住的校区']);
+            }
             if (empty($_POST['college'])) {
                 return Qhelp::json_en(['Stat' => 'error', "Message" => '请问你的福利院是哪个？']);
             }
@@ -99,6 +102,7 @@
                     `email`,
                     `aim`,
                     `aim2`,
+                    `campus`,
                     `studentid`,
                     `college`,
                     `major`,
@@ -115,6 +119,7 @@
                      '" . Qhelp::receive('email','') ."',
                      '" . $_POST['aim'] . "',
                      '" . Qhelp::receive('aim2','') ."',
+                     '" . $_POST['campus'] . "',
                      '" . $_POST['studentid'] . "',
                      '" . Qhelp::receive('college','') . "',
                      '" . Qhelp::receive('major','') . "',

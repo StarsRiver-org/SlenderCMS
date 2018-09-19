@@ -5,7 +5,7 @@
  * 使用前首先要定义服务器接口，以及接口入口。
  *
  * 基础结构 ： （依赖于主体的 id【surface】 值进行操作，可同时加载多个操作台）
- *
+ * <select data-type="campus" name="campus"></select>
  * <div id="surface" data-url="logic">
  *     <div class="datatable">
  *          <div class="datahead"></div>
@@ -40,9 +40,23 @@
  */
 
 partys = '';
+campus = '';
 $.ajaxSettings.async = false;
 $.get(SiteUrl + '/api/getpartys',function(result){partys = JSON.parse(result)});
+$.get(SiteUrl + '/api/getcampus',function(result){campus = JSON.parse(result)});
 $.ajaxSettings.async = true;
+
+initcampus();
+function initcampus(){
+    var cphtml = '<option selected value="0">全部</option>';
+    for (i in campus) {
+        cphtml += '<option value="' + i + '">' + campus[i] + '</option>';
+    }
+    var campussl = document.querySelectorAll('[data-type="campus"]');
+    for (x in campussl) {
+        campussl[x].innerHTML = cphtml;
+    }
+}
 
 var Chk = {
     chkall: function (obj) {
@@ -70,6 +84,8 @@ var Chk = {
 };
 
 var Sms = {
+    campus: 0,
+
     page: 1,
 
     vol: 0,
@@ -93,11 +109,14 @@ var Sms = {
             submit = ctn.querySelector(".submit"),
             selecter = ctn.querySelector(".select_all"),
             unselecter = ctn.querySelector(".unselect_all"),
+            campusslect = document.querySelector('[data-type="campus"]'),
             that = this;
 
         if(perpage){perpage.onblur= function () {Sms.init(obj);};}
         if(selecter){selecter.onclick = function(){Chk.chkall(obj)};}
         if(unselecter){unselecter.onclick = function(){Chk.unchkall(obj)};}
+
+        /* 规定按钮类型 短信发送和筛选通过 */
         if(submit){
             switch (logicURL){
                 case 'logic_3':
@@ -108,6 +127,14 @@ var Sms = {
                     submit.innerHTML = '提 交';
                     submit.onclick = function(){Sms.sendsms(obj)};
             }
+        }
+
+        /* 校区选择 */
+        if(campusslect){
+            campusslect.onchange = function () {
+                that.campus = campusslect.options[campusslect.selectedIndex].value;
+                Sms.init(obj)
+            };
         }
 
         loading.style.display = "";
@@ -123,7 +150,8 @@ var Sms = {
                 med: 'refresh',
                 num: num ? (num < 10 ? 10 : (num > 99 ? 99 : num)) : 30,
                 page: that.page ? that.page : 1,
-                token: that.token ? that.token : ''
+                token: that.token ? that.token : '',
+                campus: that.campus ? that.campus : ''
             },
             success: function (result) {
                 if(JSON.parse(result).Stat === 'OK'){
