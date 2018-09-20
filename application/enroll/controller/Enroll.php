@@ -53,7 +53,7 @@ class Enroll extends Controller {
             }
 
             if(!empty($res[0]['hascalled']) && ($res[0]['hascalled'] == 1 || $res[0]['hascalled'] == 2) && empty($res[0]['isfaced'])){
-                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '面试通知已经发送,请在'.$res[0]['ftime'].',到学生活动中心参加面试，具体地点请查看短信或面试官的告知']);
+                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '面试通知已经发送，请在'.$res[0]['ftime'].',到短信或面试官通知的指定地点参加面试。']);
             }
 
             if($res[0]['isenrolled'] == '-1'){
