@@ -202,6 +202,7 @@ var Sms = {
                         '<i class="name ">姓名</i>' +
                         '<i class="sex ">性别</i>' +
                         ((logicURL === 'logic_3' || logicURL === 'logic_6' || logicURL === 'logic_4') ? '<i class="sex ">打分</i>' : '') +
+                        '<i class="college ">校区</i>' +
                         '<i class="college ">学院</i>' +
                         '<i class="major ">专业</i>' +
                         ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="class">班级</i>' : '') +
@@ -222,6 +223,7 @@ var Sms = {
                             '<i class="name ">' + data[i].name + '</i>' +
                             '<i class="sex">' + data[i].sex + '</i>' +
                             ((logicURL === 'logic_3' || logicURL === 'logic_6' || logicURL === 'logic_4') ? '<i class="sex ">' + data[i].score + '</i>' : '') +
+                            '<i class="college">' + campus[data[i].campus] + '</i>' +
                             '<i class="college">' + data[i].college + '</i>' +
                             '<i class="major">' + data[i].major + '</i>' +
                             ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="class">' + data[i].class + '</i>' : '') +
