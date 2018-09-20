@@ -6,7 +6,7 @@ use qzxy\Qhelp;
 use think\Db;
 
 class Config extends Controller{
-    static function getconf($type,$name = 0){
+    static function getconf($type,$name = 0,$only = false){
 
         if(empty($name)){
             $res = Db::query("select `name`, `data`,`descrip`, `issolid` from qzlit_config where `type`='".$type."'");
@@ -27,7 +27,6 @@ class Config extends Controller{
             return Qhelp::json_en([
                 'Stat'=> 'error',
                 'Message' => '没有相关配置',
-                'Data' => $res
             ]);
         }
     }

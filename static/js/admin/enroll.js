@@ -96,6 +96,8 @@ var Sms = {
 
     token: '',
 
+    ftcap: '',
+
     init: function (obj) {
         var ctn = document.querySelector(obj),
             logicURL = ctn.getAttribute('data-url'),
@@ -151,6 +153,7 @@ var Sms = {
                 num: num ? (num < 10 ? 10 : (num > 99 ? 99 : num)) : 30,
                 page: that.page ? that.page : 1,
                 token: that.token ? that.token : '',
+                ftcap: that.ftcap ? that.ftcap : '',
                 campus: that.campus ? that.campus : ''
             },
             success: function (result) {
@@ -172,11 +175,14 @@ var Sms = {
                         for (var t = 0; t < tokens.length; t++){
                             var temp = document.createElement('a');
                             var tk = tokens[t];
-                            temp.className = 'token' + (that.token === tk ? ' active' : '');
-                            temp.id = 't_'+t;
-                            temp.innerHTML = tk;
+                            temp.className = 'token' + ((that.token == tk.ft && that.ftcap == tk.cpid) ? ' active' : '');
+                            temp.setAttribute('data-time',tk.ft);
+                            temp.setAttribute('data-camp',tk.cp);
+                            temp.setAttribute('data-cpid',tk.cpid);
+                            temp.innerHTML = '【' + tk.cp + '】' + tk.ft;
                             temp.onclick = function () {
-                                that.token = this.innerHTML;
+                                that.token = this.getAttribute('data-time');
+                                that.ftcap = this.getAttribute('data-cpid');
                                 Sms.init(obj);
                             };
                             tokenthumb.appendChild(temp);
@@ -414,6 +420,7 @@ var Enfuc = {
     f2f: {
 
         token:'',
+        ftcap:'',
 
         initftime : function (fm) {
             var tag = document.querySelector('#ftime_list');
@@ -428,15 +435,20 @@ var Enfuc = {
                     if(tokens.Stat !== 'error'){
                         for (t in tokens){
                             var temp = document.createElement('a');
-                            temp.className = 'token' + (that.token === tokens[t] ? ' active' : '');
-                            temp.id = 't_'+t;
-                            temp.innerHTML = tokens[t];
+                            var tk = tokens[t];
+                            temp.className = 'token' + ((that.token == tk.ft && that.ftcap == tk.cpid) ? ' active' : '');
+                            temp.setAttribute('data-time',tk.ft);
+                            temp.setAttribute('data-camp',tk.cp);
+                            temp.setAttribute('data-cpid',tk.cpid);
+                            temp.innerHTML = '【' + tk.cp + '】' + tk.ft;
                             temp.onclick = function () {
                                 if($(this).hasClass('active')){
                                     that.token = '';
+                                    that.ftcap = '';
                                     $(this.parentNode.querySelectorAll('a')).removeClass('active');
                                 } else {
-                                    that.token = this.innerHTML;
+                                    that.token = this.getAttribute('data-time');
+                                    that.ftcap = this.getAttribute('data-cpid');
                                     $(this.parentNode.querySelectorAll('a')).removeClass('active');
                                     $(this).addClass('active');
                                 }

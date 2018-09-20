@@ -2,6 +2,7 @@
 
  namespace qzxy\enroll\controller;
 
+    use qzxy\Config;
     use qzxy\File;
     use qzxy\Qhelp;
     use qzxy\User;
@@ -51,7 +52,7 @@
             if(!empty($_POST['med'])){
                 switch ($_POST['med']){
                     case 'refresh':
-                        return Enrollmag_function2::refresh(@$_POST['num'],@$_POST['token']);
+                        return Enrollmag_function2::refresh(@$_POST['num']);
                         break;
                     case 'pass':
                         return Enrollmag_function2::pass(@$_POST["id"], @$_POST["phone"], @$_POST["score"],@$_POST["sug"]);
@@ -177,12 +178,21 @@
 
         /* 获取某部门的面试时间点 */
         static function getftime($m){
+            $campus = Qhelp::json_de(Qhelp::json_de(Config::getconf('Info','campus'))['Data']);
             if(Qhelp::chk_pint($m) && $m > 0){
-                $tce = Db::query("select `ftime` from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = $m order by ftime " );
+                $tce = Db::query("select `ftime`,`campus` from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = $m order by ftime " );
                 $ftimes = [];
                 foreach ($tce as $value){
-                    if(!empty($value['ftime']) && !in_array($value['ftime'],$ftimes)){
-                        $ftimes[] = $value['ftime'];
+                    if(!empty($value['ftime']) && !in_array([
+                            'cp' => $campus[$value['campus']],
+                            'cpid' => $value['campus'],
+                            'ft' => $value['ftime']
+                        ],$ftimes)){
+                        $ftimes[] = [
+                            'cp' => $campus[$value['campus']],
+                            'cpid' => $value['campus'],
+                            'ft' => $value['ftime']
+                        ];
                     }
                 }
                 if(!empty($_GET['JSON'])) {

@@ -11,7 +11,7 @@ namespace qzxy\enroll\controller;
 
     class Enrollmag_function2 extends Controller {
 
-        static function refresh($num = 30,$token = ''){
+        static function refresh($num = 30){
 
             if(Enrollmag::chk_pty()){
                 return Enrollmag::chk_pty();
@@ -27,8 +27,8 @@ namespace qzxy\enroll\controller;
             $aim = User::ufetch()['party'];
 
             $num =  (int)$num < 10 ? 10 : ((int)$num > 99 ? 99 : (int)$num) ;
-            if(!empty($token)){
-                $res = Db::query("select * from qzlit_usenroll where ".(!empty($cps) ? "campus = $cps AND" : "")." (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = $aim AND `ftime` = '".$token."' limit ".$num);
+            if(!empty($_POST['token']) && !empty($_POST['ftcap'])){
+                $res = Db::query("select * from qzlit_usenroll where ".(!empty($cps) ? "campus = $cps AND" : "")." (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = $aim AND `ftime` = '".Qhelp::receive('token')."' AND `campus` = '".(int)$_POST['ftcap']."' limit ".$num);
             } else {
                 $res = Db::query("select * from qzlit_usenroll where ".(!empty($cps) ? "campus = $cps AND" : "")." (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = $aim limit ".$num);
             }
