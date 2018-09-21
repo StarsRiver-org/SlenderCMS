@@ -111,7 +111,7 @@ namespace qzxy\enroll\controller;
                     if($taim == $res[0]["aim"]){
                         return Qhelp::json_en(['Stat' => 'error', 'Message' => '禁止转让给自己部门']);
                     }
-                    if($res[0]["hascalled"]){
+                    if($res[0]["hascalled"] == 3 && $res[0]["isenrolled"] == 1){
                         return Qhelp::json_en(['Stat' => 'error', 'Message' => '对象已被录用，无法进行该操作']);
                     }
 
@@ -119,6 +119,7 @@ namespace qzxy\enroll\controller;
                         Db::execute("update qzlit_usenroll set hascalled = 1, isfaced = 1, isenrolled = '-1', f2f = '-1', ftime = '-1', aim = '-1', aim2 = '-1' where id = $id");
                         return Qhelp::json_en(['Stat' => 'OK', 'Message' => '已移除，再也看不到了哦']);
                     }
+
                     $pn = Enrollmag::getpartyname($res[0]['aim']);
                     if(empty($ont)){
                         Db::execute("update qzlit_usenroll set hascalled = null, isfaced = null, isenrolled = null, f2f = null, ftime = '".htmlspecialchars(Qhelp::dss($ont),ENT_QUOTES)."', aim = $taim, aim2 = '', sug = '转移自".$pn."' where id = $id");
