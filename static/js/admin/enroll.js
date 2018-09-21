@@ -206,8 +206,8 @@ var Sms = {
                         '<i class="college ">学院</i>' +
                         '<i class="major ">专业</i>' +
                         ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="class">班级</i>' : '') +
-                        ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim">志愿1</i>' : '') +
-                        ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim">志愿2</i>' : '') +
+                        ((logicURL !== 'logic_2' && logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim">志愿1</i>' : '') +
+                        ((logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim">志愿2</i>' : '') +
                         '<i class="phone">电话</i>' +
                         ((logicURL === 'logic_1' || logicURL === 'logic_3' || logicURL === 'logic_4' || logicURL === 'logic_6') ? ('<i class="stat">'+ (logicURL === 'logic_3' ? '处理状态' : '发送状态') + '</i>') : '') +
                         ((logicURL === 'logic_3' || logicURL === 'logic_4' || logicURL === 'logic_6') ? '<i class="sug">面试官意见</i>' : '') +
@@ -227,8 +227,8 @@ var Sms = {
                             '<i class="college">' + data[i].college + '</i>' +
                             '<i class="major">' + data[i].major + '</i>' +
                             ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="class">' + data[i].class + '</i>' : '') +
-                            ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim" title="' + data[i].reasion + '">' + data[i].aim + '</i>' : '') +
-                            ((logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim" title="' + data[i].reasion2 + '">' + data[i].aim2 + '</i>' : '') +
+                            ((logicURL !== 'logic_2' && logicURL !== 'logic_3' && logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim" title="' + data[i].reasion + '">' + data[i].aim + '</i>' : '') +
+                            ((logicURL !== 'logic_4' && logicURL !== 'logic_6') ? '<i class="aim" title="' + data[i].reasion2 + '">' + data[i].aim2 + '</i>' : '') +
                             '<i class="phone">' + data[i].phone + '</i>' +
                             ((logicURL === 'logic_1' || logicURL === 'logic_3' || logicURL === 'logic_4' || logicURL === 'logic_6') ? '<i class="stat"></i>' : '') +
                             ((logicURL === 'logic_3' || logicURL === 'logic_4' || logicURL === 'logic_6') ? '<i class="sug">' + data[i].sug + '</i>' : '') +
@@ -395,6 +395,19 @@ var Enfuc = {
                 var data = JSON.parse(res);
                 var uif = data.Data;
                 if(data.Stat === 'OK'){
+                    var uif = data.Data;
+                    var partyselector = '';
+                    for (key in partys) {
+                        if(partys[key] !== uif.aim){
+                            partyselector += '' +
+                                '<label for="party_'+key+'" class="radio">' +
+                                '    <span class="radio-bg"></span>' +
+                                '    <input type="radio" name="party" id="party_'+key+'" value="'+key+'"'+ (uif.aim2 === partys[key] ? ' checked' : '') +' />' + partys[key] +
+                                '    <span class="radio-on"></span>' +
+                                '</label>';
+                        }
+                    }
+
                     var modal = document.querySelector('#enrollerinfo');
                     modal.querySelector('.e_pho').src = uif.photo;
                     modal.querySelector('.e_name').innerHTML = uif.name;
@@ -404,7 +417,52 @@ var Enfuc = {
                     modal.querySelector('.e_cls').innerHTML = uif.class;
                     modal.querySelector('.e_reasion').innerHTML = uif.reasion;
                     modal.querySelector('.e_sug').innerHTML = uif.sug;
-                    $('#enrollerinfo').modal('show');
+                    modal.querySelector('.turn_aim').innerHTML = partyselector;
+                    modal.querySelector('.turn_confirm').onclick = function(){
+                        var party = modal.querySelector('.turn_aim input:checked');
+                        $.ajax(  SiteUrl + "/enroll/enrollmag/logic_2",{
+                            type:'POST',
+                            data:{
+                                med : 'turn',
+                                id : id,
+                                phone : ph,
+                                party : party.value,
+                            },
+                            success:function (res) {
+                                var resp = JSON.parse(res);
+                                if(resp.Stat === 'OK'){
+                                    $('#f2f').modal('hide');
+                                    var line = $('#uid_'+id);
+                                    line.addClass('fadeout');
+                                    line.removeClass('active');
+                                    document.querySelector('#enroll_act .datahead .chk').innerHTML -= 1;
+                                    setTimeout(function () {
+                                        line.remove();
+                                    },600);
+
+                                }
+                                new $.zui.Messager(resp.Message, {
+                                    type:resp.Stat === 'OK' ? 'success' : 'warning',
+                                    placement: 'bottom-left'
+                                }).show();
+                            },
+                            error:function (res) {
+                                dump(res)
+                            }
+                        });
+                    };
+                    var tabs = modal.querySelectorAll('.nav-tabs li');
+                    $(tabs[0]).addClass('active');
+                    $(tabs[1]).removeClass('active');
+
+                    var tct = modal.querySelectorAll('.tab-pane');
+                    $(tct[0]).addClass('active');
+                    $(tct[1]).removeClass('active');
+
+                    $('#enrollerinfo').modal({
+                        show:true,
+                        moveable:true
+                    });
                 } else {
                     new $.zui.Messager(data.Message, {
                         type:'warning',
@@ -425,7 +483,7 @@ var Enfuc = {
         ftcap:'',
 
         initftime : function (fm) {
-            var tag = document.querySelector('#ftime_list');
+            var tag = document.querySelector('#f2f .ftime_list');
             var that = this;
 
             $.ajax(SiteUrl + "/enroll/enrollmag/getftime/" + fm + '?JSON=1',{
@@ -475,9 +533,7 @@ var Enfuc = {
                 },
                 type:'POST',
                 success: function (res) {
-
                     var data = JSON.parse(res);
-
                     if(data.Stat === 'OK'){
                         var uif = data.Data;
                         var partyselector = '';
@@ -489,9 +545,9 @@ var Enfuc = {
                                     '    <input type="radio" name="party" onclick="Enfuc.f2f.initftime('+key+')" id="party_'+key+'" value="'+key+'"'+ (uif.aim2 === partys[key] ? ' checked' : '') +' />' + partys[key] +
                                     '    <span class="radio-on"></span>' +
                                     '</label>';
-                            }
-                            if(partys[key] === uif.aim2){
-                                that.initftime(key);
+                                if(partys[key] === uif.aim2){
+                                    that.initftime(key);
+                                }
                             }
                         }
                         partyselector += '<hr style="margin:10px 50px 10px 0;">' +
@@ -511,10 +567,10 @@ var Enfuc = {
                         modal.querySelector('.e_reasion').innerHTML = uif.reasion;
                         modal.querySelector('.e_score').value = uif.score;
                         modal.querySelector('.e_sug').value = uif.sug;
-                        modal.querySelector('#turn_aim').innerHTML = partyselector;
-                        modal.querySelector('#turn_confirm').onclick = function(){Enfuc.f2f.turn(id,ph);};
-                        modal.querySelector('#pass_confirm').onclick = function(){Enfuc.f2f.pass(id,ph);};
-                        modal.querySelector('#absence_confirm').onclick = function(){Enfuc.f2f.absence(id,ph);};
+                        modal.querySelector('.turn_aim').innerHTML = partyselector;
+                        modal.querySelector('.turn_confirm').onclick = function(){Enfuc.f2f.turn(id,ph);};
+                        modal.querySelector('.pass_confirm').onclick = function(){Enfuc.f2f.pass(id,ph);};
+                        modal.querySelector('.absence_confirm').onclick = function(){Enfuc.f2f.absence(id,ph);};
                         modal.querySelector('#abs-btn-lock').checked = '';
 
                         var tabs = modal.querySelectorAll('.nav-tabs li');
@@ -580,7 +636,7 @@ var Enfuc = {
         },
 
         turn: function (id,phone) {
-            var party = document.querySelector('#f2f #turn_aim input:checked');
+            var party = document.querySelector('#f2f .turn_aim input:checked');
             var that = this;
             $.ajax(  SiteUrl + "/enroll/enrollmag/logic_2",{
                 type:'POST',

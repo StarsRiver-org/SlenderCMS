@@ -79,57 +79,6 @@
             <em class="title">显示数量</em>
             <input class="perpage" type="number" placeholder="每页数据量(0~99)">
         </div>
-        <div class="modal fade" id="f2f">
-            <div class="modal-dialog" style="width: 720px">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                        <h4 class="modal-title">面试控制台</h4>
-                    </div>
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-target="#e_info" data-toggle="tab">面试面板</a></li>
-                        <li><a data-target="#e_trun" data-toggle="tab">转部门</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="e_info">
-                            <div class="modal-body" style="padding: 0">
-                                <div class="cp e_info" style="padding: 15px">
-                                    <img class="e_pho" src="">
-                                    <div><i>姓名</i><span class="e_name"></span></div>
-                                    <div><i>性别</i><span class="e_sex"></span></div>
-                                    <div><i>学院</i><span class="e_col"></span></div>
-                                    <div><i>专业</i><span class="e_spe"></span></div>
-                                    <div><i>班级</i><span class="e_cls"></span></div>
-                                    <div><i>报名理由</i><br><span class="e_reasion"></span></div>
-                                </div>
-                                <div class="fp">
-                                    <div><i>评分(0~1000)：</i><input type="number" class="e_score" placeholder="评分,不只是一百分" ></div>
-                                    <div><i>意见：</i><textarea class="e_sug" style="height: 120px;" placeholder="面试官意见"></textarea></div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" class="btn btn-primary" id="pass_confirm">保存</button>
-                                <input id="abs-btn-lock" type="checkbox" class="btn-lock btn btn-danger" style="float: left">
-                                <label for="abs-btn-lock" class="icon-lock" style="float: left;"></label>
-                                <button type="button" class="btn btn-danger" style="float: left" id="absence_confirm">缺席？？</button>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="e_trun">
-                            <div class="modal-body">
-                                <p class="alert alert-info">转移后的面试者可以等待下一轮其他部门的面试通知。<br>或者从下面选取对应部门的面试时间段，让面试者在那个时间前往面试。</p>
-                                <div id="ftime_list" style="padding: 0 36px;"></div>
-                                <div id="turn_aim" style="padding-left: 50px"></div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" class="btn btn-primary" id="turn_confirm">确定</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="tab-pane fade" id="enroll_act" data-url="logic_3" style="height:100%">
         <span class="title">录取筛选</span>
@@ -212,24 +161,94 @@
         </div>
     </div>
 
+    <div class="modal fade" id="f2f">
+        <div class="modal-dialog" style="width: 720px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                    <h4 class="modal-title">面试控制台</h4>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-target="#e_info" data-toggle="tab">面试面板</a></li>
+                    <li><a data-target="#e_trun" data-toggle="tab">转部门</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="e_info">
+                        <div class="modal-body" style="padding: 0">
+                            <div class="cp e_info" style="padding: 15px">
+                                <img class="e_pho" src="">
+                                <div><i>姓名</i><span class="e_name"></span></div>
+                                <div><i>性别</i><span class="e_sex"></span></div>
+                                <div><i>学院</i><span class="e_col"></span></div>
+                                <div><i>专业</i><span class="e_spe"></span></div>
+                                <div><i>班级</i><span class="e_cls"></span></div>
+                                <div><i>报名理由</i><br><span class="e_reasion"></span></div>
+                            </div>
+                            <div class="fp">
+                                <div><i>评分(0~1000)：</i><input type="number" class="e_score" placeholder="评分,不只是一百分" ></div>
+                                <div><i>意见：</i><textarea class="e_sug" style="height: 120px;" placeholder="面试官意见"></textarea></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary pass_confirm">保存</button>
+                            <input id="abs-btn-lock" type="checkbox" class="btn-lock btn btn-danger" style="float: left">
+                            <label for="abs-btn-lock" class="icon-lock" style="float: left;"></label>
+                            <button type="button" class="btn btn-danger absence_confirm" style="float: left" >缺席？？</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="e_trun">
+                        <div class="modal-body">
+                            <p class="alert alert-info">转移后的面试者可以等待下一轮其他部门的面试通知。<br>或者从下面选取对应部门的面试时间段，让面试者在那个时间前往面试。</p>
+                            <div class="ftime_list" style="padding: 0 36px;"></div>
+                            <div class="turn_aim" style="padding-left: 50px"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary turn_confirm" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="enrollerinfo">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="width: 720px">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
                     <h4 class="modal-title"><span class="e_name"></span> 的信息</h4>
                 </div>
-                <div class="modal-body e_info">
-                    <img class="e_pho" src="">
-                    <i>性别</i><span class="e_sex"></span>
-                    <i>学院</i><span class="e_col"></span>
-                    <i>专业</i><span class="e_spe"></span>
-                    <i>班级</i><span class="e_cls"></span>
-                    <i>报名理由</i><span class="e_reasion"></span>
-                    <i>面试官意见</i><span class="e_sug"></span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-target="#e_info2" data-toggle="tab">资料</a></li>
+                    <li><a data-target="#e_trun2" data-toggle="tab">转部门</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="e_info2">
+                        <div class="modal-body e_info">
+                        <img class="e_pho" src="">
+                        <i>性别</i><span class="e_sex"></span>
+                        <i>学院</i><span class="e_col"></span>
+                        <i>专业</i><span class="e_spe"></span>
+                        <i>班级</i><span class="e_cls"></span>
+                        <i>报名理由</i><span class="e_reasion"></span>
+                        <i>面试官意见</i><span class="e_sug"></span>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="e_trun2">
+                        <div class="modal-body">
+                            <p class="alert alert-danger">转移后的面试者可以等待下一轮其他部门的面试通知。</p>
+                            <div class="ftime_list" style="padding: 0 36px;"></div>
+                            <div class="turn_aim" style="padding-left: 50px"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary turn_confirm" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

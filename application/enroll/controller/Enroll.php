@@ -18,14 +18,14 @@ class Enroll extends Controller {
     public function check() {
 
         $qqlist = [
-            1 => '98987546',  //运营
-            2 => '98987546',  //卡乐坊
-            3 => '98987546',  //新闻中心
-            4 => '98987546',  //清泽微视
-            5 => '98987546',  //综合媒体
-            6 => '98987546',  //公关
-            7 => '98987546',  //UED
-            8 => '98987546',  //蓝之青
+            1 => '',  //运营
+            2 => '',  //卡乐坊
+            3 => '720127750',  //新闻中心
+            4 => '',  //清泽微视
+            5 => '',  //综合媒体
+            6 => '',  //公关
+            7 => '714187909',  //UED
+            8 => '',  //蓝之青
         ];
 
         $plist = Qhelp::json_de(Config::getconf('Info','party'))['Data'];
@@ -64,7 +64,7 @@ class Enroll extends Controller {
                 return Qhelp::json_en(['Stat' => 'OK', 'Message' => '面试官们正在深思熟虑中，请耐心等待',]);
             }
 
-            if($res[0]['isenrolled'] == 1){
+            if($res[0]['isfaced'] == 1 && $res[0]['isenrolled'] == 1){
                 $party = Qhelp::json_de($plist)[$res[0]['aim']];
                 $qq = $qqlist[$res[0]['aim']];
                 return Qhelp::json_en(['Stat' => 'OK', 'Message' => '恭喜你，你顺利地通过了【'.$party.'】的面试。接下来请加入QQ群【'.$qq.'】,在那里你将和其他小伙伴们与我们一同学习']);
