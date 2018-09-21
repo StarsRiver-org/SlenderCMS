@@ -111,6 +111,9 @@ namespace qzxy\enroll\controller;
                     if($taim == $res[0]["aim"]){
                         return Qhelp::json_en(['Stat' => 'error', 'Message' => '禁止转让给自己部门']);
                     }
+                    if($res[0]["hascalled"]){
+                        return Qhelp::json_en(['Stat' => 'error', 'Message' => '对象已被录用，无法进行该操作']);
+                    }
 
                     if(empty($taim)){
                         Db::execute("update qzlit_usenroll set hascalled = 1, isfaced = 1, isenrolled = '-1', f2f = '-1', ftime = '-1', aim = '-1', aim2 = '-1' where id = $id");
