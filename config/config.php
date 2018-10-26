@@ -2,7 +2,7 @@
 
 /* 网站地址配置 */
     define('SITE','');
-    define('SHASH','5f5a0ecbb31ef7860c8d8aec79a23777');
+    define('SHASH','5f5a0ecbb31ef7860c8d8aec79a23777'); //请手动修改本随机码作为api通信密匙。
     define('STATIC_ROOT', SITE.'/static');
     define('DATA_ROOT', SITE.'/data');
     define('ADDON_ROOT','http:'.SITE.'/application/addons');

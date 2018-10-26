@@ -1,23 +1,23 @@
 <?php
     // 直接引用设置
-    define( 'DB_host' ,'localhost');
-    define( 'DB_user' ,'root');
-    define( 'DB_name' ,'qzxy_test');
-    define( 'DB_pass' ,'zy8281791***');
-    define( 'DB_perfix' ,'qzlit_');
+    define( 'DB_host' ,'');
+    define( 'DB_user' ,'');
+    define( 'DB_name' ,'');
+    define( 'DB_pass' ,'');
+    define( 'DB_perfix' ,'');
     define( 'DB_haset' ,'utf8');
 
     return [
         // 数据库类型
-        'type'            => 'mysql',
+        'type'            => '',
         // 服务器地址
-        'hostname'        => 'localhost',
+        'hostname'        => '',
         // 数据库名
-        'database'        => 'qzxy_test',
+        'database'        => '',
         // 用户名
-        'username'        => 'root',
+        'username'        => '',
         // 密码
-        'password'        => 'zy8281791***',
+        'password'        => '',
         // 端口
         'hostport'        => '',
         // 连接dsn
@@ -27,7 +27,7 @@
         // 数据库编码默认采用utf8
         'charset'         => 'utf8',
         // 数据库表前缀
-        'prefix'          => 'qzlit_',
+        'prefix'          => '',
         // 数据库调试模式
         'debug'           => true,
         // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
