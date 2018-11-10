@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2018-09-19 21:28:09
+Date: 2018-11-10 23:17:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -360,3 +360,31 @@ CREATE TABLE `sms_log` (
 INSERT INTO `sms_log` VALUES ('1', '1531640174', '15536368637', 'SMS_139239203', 'OK', '759309831640173854^0', '45F5DB2A-3355-4CA9-B5CE-A4CA3EC1478E');
 INSERT INTO `sms_log` VALUES ('2', '1531654837', '13233177025', 'SMS_139239203', 'OK', '614420031654836935^0', '416458FB-8F8F-4D39-AEA3-AAD558148F2E');
 INSERT INTO `sms_log` VALUES ('3', '1531654859', '15536368637', 'SMS_139239203', 'OK', '996909431654859770^0', '46BDA6C4-DBE3-42CB-9943-DE7E73C14EE9');
+
+-- ----------------------------
+-- Table structure for tool_quesbank
+-- ----------------------------
+DROP TABLE IF EXISTS `tool_quesbank`;
+CREATE TABLE `tool_quesbank` (
+  `year` text,
+  `course` text,
+  `chapter` text,
+  `type` text,
+  `ques` text,
+  `ans` longtext,
+  `note` text,
+  `A` text,
+  `B` text,
+  `C` text,
+  `D` text,
+  `E` text,
+  `F` text,
+  `G` text,
+  `H` text,
+  `I` text,
+  `J` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tool_quesbank
+-- ----------------------------

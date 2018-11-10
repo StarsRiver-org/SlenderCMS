@@ -6,7 +6,6 @@ use qzxy\Config;
 use qzxy\Qhelp;
 use think\Controller;
 use think\Db;
-use think\response\Json;
 
 
 class Enroll extends Controller {
@@ -17,15 +16,16 @@ class Enroll extends Controller {
 
     public function check() {
 
+	/* 号码顺序按部门顺序来填写 */
         $qqlist = [
-            1 => '',  //运营
-            2 => '',  //卡乐坊
-            3 => '720127750',  //新闻中心
-            4 => '',  //清泽微视
-            5 => '',  //综合媒体
-            6 => '',  //公关
-            7 => '714187909',  //UED
-            8 => '',  //蓝之青
+            1 => '904254887',  //--运营
+            2 => '879014365',  //--卡乐坊
+            3 => '720127750',  //--新闻中心
+            4 => '721406851',  //--清泽微视
+            5 => '639848200',  //--综合媒体
+            6 => '906648423',  //--公关
+            7 => '906733977',  //--UED
+            8 => '906759599',  //--蓝之青
         ];
 
         $plist = Qhelp::json_de(Config::getconf('Info','party'))['Data'];
@@ -48,28 +48,33 @@ class Enroll extends Controller {
         if(empty($res)){
             return Qhelp::json_en(['Stat' => 'error', 'Message' => '未找到报名信息',]);
         } else {
-            if(empty($res[0]['isfaced']) && empty($res[0]['hascalled'])){
-                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '请耐心等待面试通知',]);
+
+            if($res[0]['isenrolled'] == '-1'){
+                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '抱歉，你未通过面试',]);
+            }
+
+            if($res[0]['isfaced'] == 1 && $res[0]['isenrolled'] == 1){
+                if($res[0]['hascalled'] == 3){
+                    $party = Qhelp::json_de($plist)[$res[0]['aim']];
+                    $qq = $qqlist[$res[0]['aim']];
+					if(!empty($qq)){
+						return Qhelp::json_en(['Stat' => 'OK', 'Message' => '恭喜你，你顺利地通过了【'.$party.'】的面试。接下来请加入QQ群【'.$qq.'】,在那里你将和其他小伙伴们与我们一同学习']);
+					}
+                    return Qhelp::json_en(['Stat' => 'OK', 'Message' => '恭喜你，你顺利地通过了【'.$party.'】的面试。但是群聊还没准备好，请联系'.$party.'的学长或3小时后再查']);
+                } else {
+                    return Qhelp::json_en(['Stat' => 'OK', 'Message' => '面试官们正在深思熟虑中，请耐心等待',]);
+                }
             }
 
             if(!empty($res[0]['hascalled']) && ($res[0]['hascalled'] == 1 || $res[0]['hascalled'] == 2) && empty($res[0]['isfaced'])){
                 return Qhelp::json_en(['Stat' => 'OK', 'Message' => '面试通知已经发送，请在'.$res[0]['ftime'].',到短信或面试官通知的指定地点参加面试。']);
             }
 
-            if($res[0]['isenrolled'] == '-1'){
-                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '抱歉，你未通过面试',]);
+            if(empty($res[0]['isfaced']) && empty($res[0]['hascalled'])){
+                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '请耐心等待面试通知',]);
             }
 
-            if($res[0]['isfaced'] == 1 && $res[0]['isenrolled'] == 0){
-                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '面试官们正在深思熟虑中，请耐心等待',]);
-            }
-
-            if($res[0]['isfaced'] == 1 && $res[0]['isenrolled'] == 1){
-                $party = Qhelp::json_de($plist)[$res[0]['aim']];
-                $qq = $qqlist[$res[0]['aim']];
-                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '恭喜你，你顺利地通过了【'.$party.'】的面试。接下来请加入QQ群【'.$qq.'】,在那里你将和其他小伙伴们与我们一同学习']);
-            }
-            return 0;
+            return Qhelp::json_en(['Stat' => 'OK', 'Message' => '请耐心等待面试结果的公布',]);
         }
     }
 }
