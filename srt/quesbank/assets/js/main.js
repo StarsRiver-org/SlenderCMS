@@ -20,8 +20,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 more.className = '';
                 end.className = 'hide';
                 nothing.className = 'hide';
-                /*滚动更新页面*/
-                /*
+
                 $(document).off('scroll');
                 setTimeout(function () {
                     $(document).scroll(function() {
@@ -30,8 +29,6 @@ window.addEventListener('DOMContentLoaded', function () {
                         }
                     });
                 },datalength);
-
-                */
                 break;
             case 'end' :
                 more.className = 'hide';
