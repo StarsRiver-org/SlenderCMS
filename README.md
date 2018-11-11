@@ -27,4 +27,9 @@
 * special  //专题
 * enroll //面试
 * portal下有几个文件，由于数据库为空，所以几乎处于废弃状态。可以看index注释来熟悉怎么用。
+
+* 异步模块
+* application下API组件里是一些公共接口，可以做一些简单的功能。本地化的小App放在 srt文件夹内，每一个文件夹都是单独的小应用，文件夹内包含有全部需要的文件，没有交叉链接，可以随意调整位置。
+   * userenroll 对应 srt/join
+   * quesbank 对应 srt/quesbank
 * [这个是测试地址](http://qzxy.starsriver.club)
