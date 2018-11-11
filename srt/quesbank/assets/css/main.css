@@ -216,6 +216,9 @@ select{
     #qlist .qi .ques {
         font-size: 14px;
     }
+    #qlist .qi .ques i{
+        font-size: 14px;
+    }
     .input{
         line-height: 26px;
     }
