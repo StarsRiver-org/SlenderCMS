@@ -144,7 +144,7 @@ window.addEventListener('DOMContentLoaded', function () {
     /* 请求数据 */
     function post() {
         if(!(sKlv === sK.value && sClv === $(sC).val() && sYlv === $(sY).val() && sPlv === $(sP).val() && sTlv === $(sT).val())) {
-            page = 0;
+            page = 0; //自动加载和索引条件改变后清屏
             sKlv = sK.value;
             sClv = $(sC).val();
             sYlv = $(sY).val();
@@ -165,13 +165,26 @@ window.addEventListener('DOMContentLoaded', function () {
                 makeSelect(sY,data.years,'请选择年度');
                 makeSelect(sP,data.chapters,'全部章节',1);
                 makeSelect(sT,data.type,'全部题型',1);
-                if(data.ques.length > 0){
-                    if(page === 0){quseList.innerHTML = '';}
-                    for(item in data.ques){quseList.innerHTML += makeQust(data.ques[item])}
+                if (data.ques.length > 0) {
+                    if (page === 0) {
+                        quseList.innerHTML = '';
+                    }
+                    for (item in data.ques) {
+                        quseList.innerHTML += makeQust(data.ques[item])
+                    }
+                    if (data.ques.length < datalength) {
+                        state('end');
+                    } else {
+                        state('more');
+                    }
                     page++;
-                    if(data.ques.length < datalength){state('end');} else {state('more');}
                 } else {
-                    if(page === 0 ){state('nothing');} else {state('end');}
+                    if (page === 0) {
+                        quseList.innerHTML = '';
+                        state('nothing');
+                    } else {
+                        state('end');
+                    }
                 }
                 loading('stop');
             },
