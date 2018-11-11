@@ -26,14 +26,19 @@ select{
     padding: 10px;
     background: #fff;
     font-size: 0;
+    border-radius: 0 0 6px 6px;
 }
 .start{
+    width: 100%;
+    margin: 10px 0 0 0;
     text-align: center;
     font-size: 32px;
     line-height: 49px;
     background: #fff;
-    padding: 120px 20px;
+    padding: 90px 20px;
     color: #e0e0e0;
+    box-sizing: border-box;
+    border-radius: 6px;
 }
 
 .kw{
@@ -96,10 +101,11 @@ select{
 }
 #qlist .qi {
     width: 100%;
+    margin: 10px 0 0 0;
     box-sizing: border-box;
     padding: 15px;
-    margin-top: 5px;
     background: #fff;
+    border-radius: 6px;
 }
 
 #qlist .qi .ques {
@@ -175,7 +181,6 @@ select{
     border-radius: 4px;
     color: #045a7b;
 }
-
 #qlist .qi .ans .ask {
     line-height: 20px;
     text-indent: 1.2em;
@@ -183,9 +188,9 @@ select{
 
 
 #state div {
-    display: block;
     width: 100%;
-    margin-top: 5px;
+    margin: 10px 0;
+    display: block;
     background: #fff;
     color: #666;
     font-size: 14px;
@@ -194,6 +199,7 @@ select{
     padding: 0 20px;
     box-sizing: border-box;
     cursor: pointer;
+    border-radius: 6px;
 }
 #state #nothing,
 #state #end {
@@ -213,6 +219,12 @@ select{
     .kw{
         width: calc(100% - 80px);
     }
+    .start,
+    #state div,
+    #qlist .qi {
+        width: calc(100% - 20px);
+        margin: 10px 10px 0 10px;
+    }
     #qlist .qi .ques {
         font-size: 14px;
     }
@@ -221,6 +233,7 @@ select{
     }
     .input{
         line-height: 26px;
+        width: 45%;
     }
     .input label{
         width: 40px;
@@ -229,7 +242,11 @@ select{
     .input select, .input input{
         width: calc(100% - 40px);
         height: 26px;
-        padding: 0 3px;
+        padding: 0 10px;
+        background: #fff;
+    }
+    #state div{
+        margin: 10px;
     }
 }
 
