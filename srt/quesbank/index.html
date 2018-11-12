@@ -26,21 +26,22 @@
 		</form>
 
 		<div id="qlist">
-			<p class="start">在上面填入匹配信息即可查询已有的题库内容</p>
-
 		</div>
 		<div id="state">
 			<div id="fail" class="hide">加载失败,重新加载？</div>
 			<div id="more" class="hide">加载更多</div>
 			<div id="end" class="hide">已经到底了</div>
 			<div id="nothing" class="hide">补充索引信息，查询更多内容</div>
-		</div>
-		<div class="loading">
-			<div class="loader JS_on">
-				<span class="binary"></span>
-				<span class="binary"></span>
-				<span class="getting-there">...加载中...</span>
+			<div id="loadon" class="hide" style="line-height: 0; padding: 5px 0 6px 0">
+				<section class="line-scale-pulse-out-rapid">
+				  <div></div>
+				  <div></div>
+				  <div></div>
+				  <div></div>
+				  <div></div>
+				</section>
 			</div>
+			<p id="start" class="hide">在上面填入匹配信息即可查询已有的题库内容</p>
 		</div>
 	</div>
 </body>

@@ -3,7 +3,10 @@ window.addEventListener('DOMContentLoaded', function () {
     form = document.querySelector('form');
     end = document.querySelector('#end');
     nothing = document.querySelector('#nothing');
+    loadon = document.querySelector('#loadon');
+    start = document.querySelector('#start');
     more = document.querySelector('#more');
+    fail =  document.querySelector('#fail');
     sK = document.querySelector('[name="key"]');
     sC = document.querySelector('[name="course"]');
     sY = document.querySelector('[name="year"]');
@@ -20,7 +23,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 more.className = '';
                 end.className = 'hide';
                 nothing.className = 'hide';
-
+                loadon.className = 'hide';
+                fail.className = 'hide';
                 $(document).off('scroll');
                 setTimeout(function () {
                     $(document).scroll(function() {
@@ -30,24 +34,50 @@ window.addEventListener('DOMContentLoaded', function () {
                     });
                 },datalength);
                 break;
+            case 'load' :
+                more.className = 'hide';
+                end.className = 'hide';
+                loadon.className = '';
+                nothing.className = 'hide';
+                fail.className = 'hide';
+                start.className = 'hide';
+                $(document).off('scroll');
+                break;
             case 'end' :
                 more.className = 'hide';
                 end.className = '';
                 nothing.className = 'hide';
+                loadon.className = 'hide';
+                fail.className = 'hide';
+                start.className = 'hide';
                 $(document).off('scroll');
                 break;
             case 'nothing' :
                 more.className = 'hide';
                 end.className = 'hide';
+                loadon.className = 'hide';
                 nothing.className = '';
+                fail.className = 'hide';
+                start.className = 'hide';
                 $(document).off('scroll');
                 break;
             case 'error' :
                 more.className = 'hide';
                 end.className = 'hide';
+                loadon.className = 'hide';
                 nothing.className = 'hide';
+                start.className = 'hide';
+                fail.className = '';
                 $(document).off('scroll');
                 break;
+            default:
+                more.className = 'hide';
+                end.className = 'hide';
+                loadon.className = 'hide';
+                nothing.className = 'hide';
+                fail.className = 'hide';
+                start.className = '';
+                $(document).off('scroll');
         }
     }
 
@@ -103,7 +133,7 @@ window.addEventListener('DOMContentLoaded', function () {
     /* 初始化信息 */
     ot = 0; //刷新超时次数
     function init(){
-        loading();
+        state('load');
         $.ajax(ApiUrl + '/api/quesbank', {
             method: 'post',
             data: new FormData(form),
@@ -121,14 +151,14 @@ window.addEventListener('DOMContentLoaded', function () {
                 sT.addEventListener('change',post);
                 sK.addEventListener('change',post);
                 more.addEventListener('click',post);
-                loading('stop');
+                state('');
             },
             error: function () {
                 if (ot < 5) {
                     ot++;
                     setTimeout(init, 1000);
                 } else {
-                    loading('fail');
+                    state('fail');
                 }
             }
         });
@@ -151,64 +181,48 @@ window.addEventListener('DOMContentLoaded', function () {
             sPlv = $(sP).val();
             sTlv = $(sT).val();
         }
-        loading();
-        PData = new FormData(form);
-        PData.append('page', page);
-        $.ajax(ApiUrl + '/api/quesbank', {
-            method: 'POST',
-            data: PData,
-            processData: false,
-            contentType: false,
-            success: function (res) {
-                let data = JSON.parse(res).Data;
-                makeSelect(sC,data.courses,'请选择课程');
-                makeSelect(sY,data.years,'请选择年度');
-                makeSelect(sP,data.chapters,'全部章节',1);
-                makeSelect(sT,data.type,'全部题型',1);
-                if (data.ques.length > 0) {
-                    if (page === 0) {
-                        quseList.innerHTML = '';
-                    }
-                    for (item in data.ques) {
-                        quseList.innerHTML += makeQust(data.ques[item])
-                    }
-                    if (data.ques.length < datalength) {
-                        state('end');
+        state('load');
+        setTimeout(function () {
+            PData = new FormData(form);
+            PData.append('page', page);
+            $.ajax(ApiUrl + '/api/quesbank', {
+                method: 'POST',
+                data: PData,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    let data = JSON.parse(res).Data;
+                    makeSelect(sC,data.courses,'请选择课程');
+                    makeSelect(sY,data.years,'请选择年度');
+                    makeSelect(sP,data.chapters,'全部章节',1);
+                    makeSelect(sT,data.type,'全部题型',1);
+                    if (data.ques.length > 0) {
+                        if (page === 0) {
+                            quseList.innerHTML = '';
+                        }
+                        for (item in data.ques) {
+                            quseList.innerHTML += makeQust(data.ques[item])
+                        }
+                        if (data.ques.length < datalength) {
+                            state('end');
+                        } else {
+                            state('more');
+                        }
+                        page++;
                     } else {
-                        state('more');
+                        if (page === 0) {
+                            quseList.innerHTML = '';
+                            state('nothing');
+                        } else {
+                            state('end');
+                        }
                     }
-                    page++;
-                } else {
-                    if (page === 0) {
-                        quseList.innerHTML = '';
-                        state('nothing');
-                    } else {
-                        state('end');
-                    }
-                }
-                loading('stop');
-            },
-            error: function () {
-                loading('fail');
-            },
-        });
-    }
-
-    /* 返回提示 */
-    function loading(res) {
-        let loader = $('.loading');
-        let fail =  $('#fail');
-        if(!res){
-            loader.addClass('on');
-            fail.addClass('hide');
-            fail.click();
-        } else {
-            loader.removeClass('on');
-            if(res === 'fail'){
-                fail.removeClass('hide');
-                fail.click(function(){init();});
-            }
-        }
+                },
+                error: function () {
+                    state('fail');
+                },
+            });
+        },300)
     }
     init();
 });
