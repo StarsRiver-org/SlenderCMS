@@ -175,11 +175,13 @@ window.addEventListener('DOMContentLoaded', function () {
     function post() {
         if(!(sKlv === sK.value && sClv === $(sC).val() && sYlv === $(sY).val() && sPlv === $(sP).val() && sTlv === $(sT).val())) {
             page = 0; //自动加载和索引条件改变后清屏
+            quseList.innerHTML = '';
             sKlv = sK.value;
             sClv = $(sC).val();
             sYlv = $(sY).val();
             sPlv = $(sP).val();
             sTlv = $(sT).val();
+
         }
         state('load');
         setTimeout(function () {
@@ -197,9 +199,6 @@ window.addEventListener('DOMContentLoaded', function () {
                     makeSelect(sP,data.chapters,'全部章节',1);
                     makeSelect(sT,data.type,'全部题型',1);
                     if (data.ques.length > 0) {
-                        if (page === 0) {
-                            quseList.innerHTML = '';
-                        }
                         for (item in data.ques) {
                             quseList.innerHTML += makeQust(data.ques[item])
                         }
@@ -211,7 +210,6 @@ window.addEventListener('DOMContentLoaded', function () {
                         page++;
                     } else {
                         if (page === 0) {
-                            quseList.innerHTML = '';
                             state('nothing');
                         } else {
                             state('end');
