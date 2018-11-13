@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 start.className = 'hide';
                 $(document).off('scroll');
                 break;
-            case 'error' :
+            case 'fail' :
                 more.className = 'hide';
                 end.className = 'hide';
                 loadon.className = 'hide';
@@ -151,6 +151,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 sT.addEventListener('change',post);
                 sK.addEventListener('change',post);
                 more.addEventListener('click',post);
+                fail.addEventListener('click',init);
                 state('');
             },
             error: function () {
