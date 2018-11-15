@@ -33,3 +33,5 @@
    * userenroll 对应 srt/join
    * quesbank 对应 srt/quesbank
 * [这个是测试地址](http://qzxy.starsriver.club)
+## quesbank说明
+这个模块没有数据导入功能，建议通过excel格式的题库进行导入。如果有需求的可以联系我来补充这个功能。
