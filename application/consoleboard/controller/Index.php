@@ -1,4 +1,13 @@
 <?php
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *      CreateDate:   2017-06-13
+ *
+ */
     namespace qzxy\consoleboard\controller;
     use qzxy\Log;
     use qzxy\User;

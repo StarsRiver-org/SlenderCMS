@@ -1,3 +1,12 @@
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *      CreateDate:   2018-09-12
+ *
+ */
 //面试查询
 jQuery(document).ready(function() {
 	$('.contact-form form').submit(function(e) {

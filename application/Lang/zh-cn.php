@@ -1,5 +1,14 @@
 <?php
-    /*语言使用方法： 直接在html页面中使用 {$Think.lang.语言} 进行引用*/
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *      CreateDate:   2017-08-05
+ *
+ */
+/*语言使用方法： 直接在html页面中使用 {$Think.lang.语言} 进行引用*/
   return [
         'webname' => '清泽心雨',
         'power' => '技术支持由 UED团队 提供',

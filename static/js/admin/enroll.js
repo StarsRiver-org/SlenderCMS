@@ -1,3 +1,12 @@
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *      CreateDate:   2018-07-12
+ *
+ */
 /*
  * Sms 与 Chk 的使用方法
  * 本函数仅适用与报名系统的短信发送

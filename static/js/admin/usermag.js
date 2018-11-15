@@ -1,3 +1,12 @@
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *      CreateDate:   2018-08-05
+ *
+ */
 partys = '';
 $.ajaxSettings.async = false;
 $.get(SiteUrl + '/api/getpartys',function(result){partys = JSON.parse(result)});

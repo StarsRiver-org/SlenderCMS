@@ -1,5 +1,13 @@
 <?php
-
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *      CreateDate:   2018-07-15
+ *
+ */
  namespace qzxy\enroll\controller;
 
     use qzxy\Config;
