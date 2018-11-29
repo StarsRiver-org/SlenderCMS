@@ -10,7 +10,8 @@
 
 # 使用说明
 * 初次使用，请更新vender（composer）之后运行 ://yoursite/install进程来初始化程序。
-* 修改config/config.php 全局常量SITE为你的域名值。（请不要写http: 或 https:,以//开始。如 //youdomain.com）
+* 修改config/config.php 全局常量SITE为你的域名值。（请不要写http: 或 https:,  以//开始。如 //www.youdomain.com）
+ * 尽量不要使用 192.168.*** 或者 localhost作为域名值。当然你可以这么做，只是会出现一些不可预料的问题。
 
 # 功能
 * 仅仅是一个简单。。。的内容管理网站
