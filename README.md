@@ -33,3 +33,11 @@
    * userenroll 对应 srt/join
    * quesbank 对应 srt/quesbank
 * [这个是测试地址](http://qzxy.starsriver.club)
+
+
+* 接口形式
+	'Stat' => 'OK',
+	'Message' => '报名成功,请耐心等待短信通知',
+	'Data' => [
+		......
+	]
