@@ -25,7 +25,6 @@ class Index extends Controller{
             'template'   =>   'portal/home/index',
         ];
 
-        Thread::like('');
         /*此处加载网站基本内容*/
         $this->assign([
             'title' => $chunk['name'],

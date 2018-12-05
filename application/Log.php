@@ -9,12 +9,16 @@
  *
  */
 namespace qzxy;
+
 use think\Db;
+use qzxy\Ip;
 
 
 class Log {
     /*存储log*/
     public static function updata_log($log = 0){
+        /* 插入 XX 来避免未获取到IP信息而弹错 */
+
         if(!$log){return null;}
         if(
             Db::execute("INSERT INTO 
@@ -35,17 +39,17 @@ class Log {
             )
             VALUES (
                  '" . time() . "',
-                 '" . $log['ip'] . "', 
-                 '" . $log['country'] . "',
-                 '" . $log['area'] . "',
-                 '" . $log['city'] . "',
-                 '" . $log['region'] . "',
-                 '" . $log['county'] . "',
+                 '" . Qhelp::dss(@$log['ip'], Ip::getip()) . "', 
+                 '" . Qhelp::dss(@$log['country'],'Unfind') . "',
+                 '" . Qhelp::dss(@$log['area'],'Unfind') . "',
+                 '" . Qhelp::dss(@$log['city'],'Unfind') . "',
+                 '" . Qhelp::dss(@$log['region'],'Unfind') . "',
+                 '" . Qhelp::dss(@$log['county'],'Unfind') . "',
                  '" . $log['target'] . "', 
                  '" . $log['get'] . "', 
                  '" . $log['post'] . "',
                  '" . $log['data'] . "',
-                 '" . $log['isp'] . "', 
+                 '" . Qhelp::dss(@$log['isp'],'Unfind'). "', 
                  '" . $log['func'] . "'
             )
         ")){

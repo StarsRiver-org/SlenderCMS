@@ -27,9 +27,6 @@ class Filter {
         return array_filter($array);
     }
 
-    static function de_json($url) { /*将json转为数组*/
-        return json_decode(file_get_contents($url), true);
-    }
     static function sample($arr,$key) { /*数组参数采样*/
         $res = [];
         foreach ($arr as $k=>$value){

@@ -45,11 +45,11 @@ class Qhelp{
     }
 
     /* 字符安全性清理，防止数据库注入 */
-    public static function dss($str){
-        if(get_magic_quotes_gpc()){
-            return $str;
-        } else {
-            return addslashes($str);
+    public static function dss($str, $def = NULL){
+        if (!empty($str)){
+            if(get_magic_quotes_gpc()){return $str;} else {return addslashes($str);}
+        } else{
+            return $def;
         }
     }
     /* 检查是否为正整型字符 */

@@ -11,7 +11,7 @@
 namespace qzxy;
 
 class Curl {
-    public static function post($url = '', $post_data = array()) {
+    public static function post($url = '', $post_data = []) {
         if (empty($url) || empty($post_data)) {
             return Qhelp::json_en([
 				'Stat' => 'error',
@@ -51,5 +51,24 @@ class Curl {
         $data = curl_exec($ch);//运行curl
         curl_close($ch);
         return $data;
+    }
+
+    public static function get($url,$datatype){
+        $opts = [
+            'http'=>[
+                'method'=>"GET",
+                'timeout'=>10, //十五秒超时
+            ]
+        ];
+        $data = @file_get_contents($url, false, stream_context_create($opts));
+        if(!empty($data)){
+            switch ($datatype){
+                case 'json':return Qhelp::json_de($data);
+                default: return [];
+            }
+        } else {
+            return [];
+        }
+
     }
 }

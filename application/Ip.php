@@ -10,7 +10,9 @@
  */
 namespace qzxy;
 
-class Ip {
+use qzxy\api\Controller\Taobao; //淘宝接口格式化调用
+
+class Ip{
     public static function getip() {
 
         if (isset($_SERVER)) {
@@ -31,45 +33,33 @@ class Ip {
             }
         }
 
-        /*匹配IP是否规范，否则返回 2.2.2.2 记录用IP*/
+        /*匹配IP是否规范，否则返回 0.0.0.0 记录用IP*/
         if(filter_var($ip,FILTER_VALIDATE_IP)){
             return $ip;
         } else {
-            return '2.2.2.2';
+            return '0.0.0.0';
         }
     }
 
-    public static function localsaveip($ip = 0){
-        $ip = $ip ? $ip : Ip::getip();
-        $data = Filter::de_json('http://ip.taobao.com/service/getIpInfo.php?ip=' . $ip);
-        return $data['code'] !== '1' ? Cookie::savecookie('ipinfo', $data) : 0;
-    }
 
     public static function ipinfo($ip = 0) {
+        /* 目前基于PHP请求IP信息，安全性强 */
+        /* 如果为了快速，建议通过JS设置客户端IP来处理信息 - 直接增加 ipinfo cookie项 （将json字符串中的 ， 替换为 %2*2%）*/
+
         $ip = $ip ? $ip : Ip::getip();
-        if($ip !== '127.0.0.1'){
-            if(isset($_COOKIE['ipinfo']) && Cookie::getcookie('ipinfo')['data']['ip'] == $ip) {
-                $data = Cookie::getcookie('ipinfo');
-            } else {
-                $data = self::localsaveip();
-            }
-            return $data["data"];
+
+        if ($ip == '0.0.0.0') {return ["ip" => "0.0.0.0", "country" => "", "area" => "", "region" => "", "city" => "", "county" => "", "isp" => "",];}
+        if ($ip == '127.0.0.1') {return ["ip" => "127.0.0.1", "country" => "", "area" => "", "region" => "", "city" => "", "county" => "", "isp" => "",];}
+
+        if (isset($_COOKIE['ipinfo']) && Cookie::getcookie('ipinfo')['ip'] == $ip) {
+            return Cookie::getcookie('ipinfo');
         } else {
-            return [
-                "ip" => "127.0.0.1",
-                "country" =>  "localhost",
-                "country_id" => "localhost",
-                "area" => "localhost",
-                "area_id" => "localhost",
-                "region" => "localhost",
-                "region_id" => "localhost",
-                "city" => "localhost",
-                "city_id" => "localhost",
-                "county" => "localhost",
-                "county_id" => "localhost",
-                "isp" => "localhost",
-                "isp_id" => "localhost",
-            ];
+
+            $data = Qhelp::json_de(Taobao::ipinfo($ip)); //获取IP信息，内网服务器需要更改为静态IP解析器
+
+            if (empty($data) || $data['Stat'] !== 'OK') {return [];}
+            Cookie::savecookie('ipinfo', $data['Data']);
+            return $data['Data'];
         }
     }
 }

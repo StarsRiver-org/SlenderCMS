@@ -12,9 +12,9 @@ namespace qzxy;
 
 class Cookie {
 
-    static function savecookie($key, $content, $path = '/'){
+    static function savecookie($key, $content, $path = '/',$unsafe = 'false'){
         $data = str_replace(',','%2*2%',json_encode($content,JSON_UNESCAPED_UNICODE));
-        setrawcookie($key,$data,time()+3600*24*7,$path,null,null,true);
+        setrawcookie($key,$data,time()+3600*24*7,$path,null,null,$unsafe ? '' : true);
         return $content;
     }
 
