@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2018-11-10 23:17:22
+Date: 2018-12-05 22:32:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -110,27 +110,6 @@ INSERT INTO `qzlit_config` VALUES ('17', 'Enroll', 'startdate', '20180911', '190
 INSERT INTO `qzlit_config` VALUES ('18', 'Enroll', 'enddate', '20180926', '19000101', '面试结束时间 / 2016年2月13日 写作 20160213 ', null, null);
 INSERT INTO `qzlit_config` VALUES ('19', 'Info', 'campus', '{&quot;1&quot;:&quot;明向校区&quot;,&quot;2&quot;:&quot;迎西校区&quot;,&quot;3&quot;:&quot;虎峪校区&quot;}', '{&quot;1&quot;:&quot;明向校区&quot;,&quot;2&quot;:&quot;迎西校区&quot;,&quot;3&quot;:&quot;虎峪校区&quot;}', '校区', null, null);
 INSERT INTO `qzlit_config` VALUES ('20', 'Info', 'party', '{&quot;1&quot;:&quot;运营部（办公室）&quot;,&quot;2&quot;:&quot;卡乐坊&quot;,&quot;3&quot;:&quot;新闻中心&quot;,&quot;4&quot;:&quot;清泽微视&quot;,&quot;5&quot;:&quot;综合媒体&quot;,&quot;6&quot;:&quot;公关策划部&quot;,&quot;7&quot;:&quot;UED[体验设计]&quot;,&quot;8&quot;:&quot;蓝之青[网络安全]&quot;}', '{&quot;1&quot;:&quot;运营部&quot;,&quot;2&quot;:&quot;卡乐坊&quot;,&quot;3&quot;:&quot;新闻中心&quot;,&quot;4&quot;:&quot;清泽微视&quot;,&quot;5&quot;:&quot;综合媒体&quot;,&quot;6&quot;:&quot;公关策划部&quot;,&quot;7&quot;:&quot;UED[体验设计]&quot;,&quot;8&quot;:&quot;蓝之青[网络安全]&quot;}', '部门类型', null, null);
-
--- ----------------------------
--- Table structure for qzlit_feedback
--- ----------------------------
-DROP TABLE IF EXISTS `qzlit_feedback`;
-CREATE TABLE `qzlit_feedback` (
-  `fid` int(20) NOT NULL AUTO_INCREMENT,
-  `type` int(1) DEFAULT NULL,
-  `aid` varchar(12) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `ip` varchar(64) DEFAULT NULL,
-  `message` varchar(4096) DEFAULT NULL,
-  `phone` varchar(18) DEFAULT NULL,
-  `email` varchar(64) DEFAULT NULL,
-  `time` int(12) DEFAULT NULL,
-  PRIMARY KEY (`fid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of qzlit_feedback
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for qzlit_group
@@ -360,6 +339,27 @@ CREATE TABLE `sms_log` (
 INSERT INTO `sms_log` VALUES ('1', '1531640174', '15536368637', 'SMS_139239203', 'OK', '759309831640173854^0', '45F5DB2A-3355-4CA9-B5CE-A4CA3EC1478E');
 INSERT INTO `sms_log` VALUES ('2', '1531654837', '13233177025', 'SMS_139239203', 'OK', '614420031654836935^0', '416458FB-8F8F-4D39-AEA3-AAD558148F2E');
 INSERT INTO `sms_log` VALUES ('3', '1531654859', '15536368637', 'SMS_139239203', 'OK', '996909431654859770^0', '46BDA6C4-DBE3-42CB-9943-DE7E73C14EE9');
+
+-- ----------------------------
+-- Table structure for tool_feedback
+-- ----------------------------
+DROP TABLE IF EXISTS `tool_feedback`;
+CREATE TABLE `tool_feedback` (
+  `fid` int(20) NOT NULL AUTO_INCREMENT,
+  `type` int(1) DEFAULT NULL,
+  `aid` varchar(12) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `ip` varchar(64) DEFAULT NULL,
+  `message` varchar(4096) DEFAULT NULL,
+  `phone` varchar(18) DEFAULT NULL,
+  `email` varchar(64) DEFAULT NULL,
+  `time` int(12) DEFAULT NULL,
+  PRIMARY KEY (`fid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tool_feedback
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tool_quesbank
