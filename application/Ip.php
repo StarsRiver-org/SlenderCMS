@@ -10,7 +10,7 @@
  */
 namespace qzxy;
 
-use qzxy\api\Controller\Taobao; //淘宝接口格式化调用
+use qzxy\api\controller\Taobao; //淘宝接口格式化调用
 
 class Ip{
     public static function getip() {
@@ -48,18 +48,59 @@ class Ip{
 
         $ip = $ip ? $ip : Ip::getip();
 
-        if ($ip == '0.0.0.0') {return ["ip" => "0.0.0.0", "country" => "", "area" => "", "region" => "", "city" => "", "county" => "", "isp" => "",];}
-        if ($ip == '127.0.0.1') {return ["ip" => "127.0.0.1", "country" => "", "area" => "", "region" => "", "city" => "", "county" => "", "isp" => "",];}
+        $cook = Cookie::getcookie('ipinfo') ? Cookie::getcookie('ipinfo') : [] ;
 
-        if (isset($_COOKIE['ipinfo']) && Cookie::getcookie('ipinfo')['ip'] == $ip) {
-            return Cookie::getcookie('ipinfo');
-        } else {
+        /*
+         * 初始化IP信息数组
+         *
+         * 默认提取Cookie内容
+         * 否则用 XX 填充
+         */
+        $data = (
+            count($cook,COUNT_RECURSIVE) == 7 &&
+            !empty($cook['ip']) && $cook['ip'] == $ip &&
+            isset($cook['country']) &&
+            isset($cook['area']) &&
+            isset($cook['county']) &&
+            isset($cook['region']) &&
+            isset($cook['isp']) &&
+            isset($cook['city'])
+        ) ? [
+            "ip" => "$ip",
+            "country" => Qhelp::dss($cook['country'],'XX'),
+            "area" => Qhelp::dss($cook['area'],'XX'),
+            "region" => Qhelp::dss($cook['region'],'XX'),
+            "city" => Qhelp::dss($cook['city'],'XX'),
+            "county" => Qhelp::dss($cook['county'],'XX'),
+            "isp" => Qhelp::dss($cook['isp'],'XX')
+        ] : [
+            "ip" => "",
+            "country" => "XX",
+            "area" => "XX",
+            "region" => "XX",
+            "city" => "XX",
+            "county" => "XX",
+            "isp" => "XX"
+        ];
 
-            $data = Qhelp::json_de(Taobao::ipinfo($ip)); //获取IP信息，内网服务器需要更改为静态IP解析器
+        if ($ip == '127.0.0.1') {
 
-            if (empty($data) || $data['Stat'] !== 'OK') {return [];}
-            Cookie::savecookie('ipinfo', $data['Data']);
-            return $data['Data'];
+            $data['ip'] = '127.0.0.1';
+            dump(Qhelp::json_de(Taobao::ipinfo($ip)));
+
+        } elseif (@empty($cook['ip']) || $cook['ip'] !== $ip || @empty($cook['country']) || @empty($cook['isp'])) { //判断IP信息是否正确完整 四个条件一个不能少
+
+            $get = Qhelp::json_de(Taobao::ipinfo($ip)); //获取IP信息，内网服务器需要更改为静态IP数据库
+
+            if (!empty($get) && $get['Stat'] == 'OK') {
+                Cookie::savecookie('ipinfo', $get['Data']);
+                $data = $get['Data'];
+            } else {
+                $data['ip'] = '0.0.0.0'; //未获取到IP信息，用0.0.0.0标记
+            }
+
         }
+
+        return $data;
     }
 }

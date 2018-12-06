@@ -39,17 +39,17 @@ class Log {
             )
             VALUES (
                  '" . time() . "',
-                 '" . Qhelp::dss(@$log['ip'], Ip::getip()) . "', 
-                 '" . Qhelp::dss(@$log['country'],'Unfind') . "',
-                 '" . Qhelp::dss(@$log['area'],'Unfind') . "',
-                 '" . Qhelp::dss(@$log['city'],'Unfind') . "',
-                 '" . Qhelp::dss(@$log['region'],'Unfind') . "',
-                 '" . Qhelp::dss(@$log['county'],'Unfind') . "',
+                 '" . $log['ip'] . "', 
+                 '" . $log['country'] . "',
+                 '" . $log['area'] . "',
+                 '" . $log['city'] . "',
+                 '" . $log['region'] . "',
+                 '" . $log['county'] . "',
                  '" . $log['target'] . "', 
                  '" . $log['get'] . "', 
                  '" . $log['post'] . "',
                  '" . $log['data'] . "',
-                 '" . Qhelp::dss(@$log['isp'],'Unfind'). "', 
+                 '" . $log['isp']. "', 
                  '" . $log['func'] . "'
             )
         ")){
