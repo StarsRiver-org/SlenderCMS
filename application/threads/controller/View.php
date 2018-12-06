@@ -27,7 +27,7 @@ class View extends Controller{
             if(!empty($_GET['from']) && Qhelp::chk_pint($_GET['from'])){
                 $this->assign(['banners'=>Chunk::loadbanner($_GET['from'])]);
             }
-            return view('common/common_article'); /*这里是文章显示模板，可用于自定义你的模板文件*/
+            return view('portal/thread_article'); /*这里是文章显示模板，可用于自定义你的模板文件*/
         }
         $this->error('您要查看的内容不存在');
     }

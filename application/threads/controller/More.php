@@ -67,6 +67,6 @@
                 Re::echo('danger','页面错误',true);
                 return '<script>window.location.href=\''.SITE.'/threads/more?from='.$from.'&cid='.$_GET['cid'].'&page='.$pages.'\'</script>';
             }
-            return view('common/common_more');
+            return view('portal/thread_more');
         }
     }

@@ -1,0 +1,8 @@
+<!--[if lt IE 10]>
+<div class="alert2 alert-danger" >您正在使用过时的浏览器. 请升级您的浏览器来获取更好的体验<a class="icon-ie updateexplor" href="http://download.microsoft.com/download/F/2/8/F2871AC4-E82B-4636-BB37-A5F2B14C8616/IE11-Windows6.1-x86-zh-cn.exe" >x86版本</a ><a class="icon-ie updateexplor" href="http://download.microsoft.com/download/5/6/F/56FD6253-CB53-4E38-94C6-74367DA2AB34/IE11-Windows6.1-x64-zh-cn.exe" >x64版本</a ></div >
+<script src="{$Think.const.STATIC_ROOT}/lib/ieonly/html5shiv.js" ></script >
+<script src="{$Think.const.STATIC_ROOT}/lib/ieonly/respond.js" ></script >
+<![endif]-->
+<script src="{$Think.const.STATIC_ROOT}/lib/jquery/jquery.js" ></script >
+<script src="{$Think.const.STATIC_ROOT}/lib/jquery/jquery.cookie.js" ></script >
+<script>var llipu = 0;if($.cookie('ipinfo')){if($.cookie('ip') !== JSON.parse($.cookie('ipinfo').replace('%2*2%', ','))['ip']){initcookieipinfo();}} else {initcookieipinfo();}function initcookieipinfo() {$.ajax({method:'get', url: '{$Think.const.SITE}/api/taobao/ipinfo/' + $.cookie('ip'), success: function (r) {i = JSON.parse(r);if (i.Stat !== 'OK') {if (llipu < 3) {llipu++;initcookieipinfo();}} else {$.cookie("ipinfo", JSON.stringify(i.Data).replace(',', '%2*2%'), {expires: 2, path: '/'});llipu = 3;}},error:function () {if (llipu < 3) {llipu++;initcookieipinfo();}},});}</script >

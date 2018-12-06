@@ -1,7 +1,7 @@
 {extend name="portal/frame" /}
 
 {block name="style"}
-    {include file="common/common_ext_style" /}
+    {include file="portal/common_ext_style" /}
     {if isset($extcss)}<link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/{$extcss}.css"/>{/if}
     <link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/common_article.css"/>
 {/block}

@@ -14,16 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/common_header.css"/>
     <link rel="stylesheet" type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/portal/common_footer.css"/>
     <title>{if isset($title)}{$title}{elseif isset($thread['title'])}清泽心雨 - {$thread.title}{else}太原理工大学 - 清泽心雨{/if}</title>
-    <!--[if lt IE 10]>
-        <div class="alert2 alert-danger">
-            您正在使用过时的浏览器. 请升级您的浏览器来获取更好的体验
-            <a class="icon-ie updateexplor" href="http://download.microsoft.com/download/F/2/8/F2871AC4-E82B-4636-BB37-A5F2B14C8616/IE11-Windows6.1-x86-zh-cn.exe">x86版本</a>
-            <a class="icon-ie updateexplor" href="http://download.microsoft.com/download/5/6/F/56FD6253-CB53-4E38-94C6-74367DA2AB34/IE11-Windows6.1-x64-zh-cn.exe">x64版本</a>
-        </div>
-        <script src="{$Think.const.STATIC_ROOT}/lib/ieonly/html5shiv.js"></script>
-        <script src="{$Think.const.STATIC_ROOT}/lib/ieonly/respond.js"></script>
-    <![endif]-->
-    <script src="{$Think.const.STATIC_ROOT}/js/jquery.js"></script>
+    {include file="common/eccens_js"}
 </head>
 <body>
     <div class="header">

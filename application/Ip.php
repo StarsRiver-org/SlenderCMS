@@ -47,7 +47,7 @@ class Ip{
         /* 如果为了快速，建议通过JS设置客户端IP来处理信息 - 直接增加 ipinfo cookie项 （将json字符串中的 ， 替换为 %2*2%）*/
 
         $ip = $ip ? $ip : Ip::getip();
-
+        Cookie::savecookie('ip', $ip,'/',true);
         $cook = Cookie::getcookie('ipinfo') ? Cookie::getcookie('ipinfo') : [] ;
 
         /*
@@ -84,21 +84,29 @@ class Ip{
         ];
 
         if ($ip == '127.0.0.1') {
-
             $data['ip'] = '127.0.0.1';
-            dump(Qhelp::json_de(Taobao::ipinfo($ip)));
-
-        } elseif (@empty($cook['ip']) || $cook['ip'] !== $ip || @empty($cook['country']) || @empty($cook['isp'])) { //判断IP信息是否正确完整 四个条件一个不能少
+        } elseif (
+            /* 安全性检查 - 信息长度及特殊字符检查 */
+            count($cook,COUNT_RECURSIVE) !== 7 &&
+            @empty($cook['ip']) || $cook['ip'] !== $ip ||
+            @empty($cook['country']) ||
+            @empty($cook['isp']) ||
+            Qhelp::chk_specal_char($cook['country']) ||
+            Qhelp::chk_specal_char($cook['area']) ||
+            Qhelp::chk_specal_char($cook['region']) ||
+            Qhelp::chk_specal_char($cook['county']) ||
+            Qhelp::chk_specal_char($cook['city'])
+        ) {
 
             $get = Qhelp::json_de(Taobao::ipinfo($ip)); //获取IP信息，内网服务器需要更改为静态IP数据库
 
             if (!empty($get) && $get['Stat'] == 'OK') {
-                Cookie::savecookie('ipinfo', $get['Data']);
+                Cookie::savecookie('ipinfo', $get['Data'],'/',true);
                 $data = $get['Data'];
             } else {
-                $data['ip'] = '0.0.0.0'; //未获取到IP信息，用0.0.0.0标记
+                //未获取到IP信息，用0.0.0.0标记
+                $data = ["ip" => "0.0.0.0", "country" => "XX", "area" => "XX", "region" => "XX", "city" => "XX", "county" => "XX", "isp" => "XX"];;
             }
-
         }
 
         return $data;
