@@ -25,6 +25,7 @@
         }
         public function main() {
             /* 文章统计 */
+            Log::visit("consoleboard", "home", "watch");
             $article_all  = Db::query("select `thread_ptime` from qzlit_thread WHERE hk_mode = '2' ORDER By thread_ptime DESC ");
             $article_like = Db::query("select `ore_degree` from qzlit_thread WHERE ore_degree != ''");
             $article_view = Db::query("select `ore_view` from qzlit_thread WHERE ore_view != ''");

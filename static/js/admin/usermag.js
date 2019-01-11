@@ -297,7 +297,7 @@ var UserInfoMag = {
             },
         })
     }
-}
+};
 
 var PageInit = {
     refrashnum : function () {

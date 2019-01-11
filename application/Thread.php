@@ -118,9 +118,8 @@ class Thread extends Controller {
                 return "修改成功";
             }
 
-        } else {
-            return '页面出错，请重重刷新页面再次尝试';
         }
+        return '页面出错，请重重刷新页面再次尝试';
     }
 
     /* 载入某篇文章 , 注意在使用该函数的地方进行安全性检查
@@ -196,14 +195,17 @@ class Thread extends Controller {
         $logs = Db::query("select * from qzlit_log where ip = '".htmlspecialchars(Qhelp::dss(Ip::getip()),ENT_QUOTES)."' AND target = 'article' AND `data` = '".$cuid."' AND `time` > '".(time() - 3600*24)."' AND `func` = '".$func."' ORDER BY `time` DESC");
         /*每个ip每天可以让浏览量+1*/
         if(empty($logs) || time() - $logs[0]['time'] > 3600*24){
-            $view = Db::query("select * from qzlit_thread where cuid = '".$cuid."'")[0]['ore_view'];
-            if(!$view){
-                $view = 1;
-            } else{
-                $view +=1;
+            $data = Db::query("select `ore_view` from qzlit_thread where cuid = '".$cuid."'");
+            if($data) {
+                $view = $data[0]['ore_view'];
+                if(!$view){
+                    $view = 1;
+                } else{
+                    $view +=1;
+                }
+                Db::execute("update qzlit_thread set `ore_view` = '" . $view . "' where cuid = '" . $cuid . "'");
+                Log::visit("article", "$cuid", "$func");
             }
-            Db::execute("update qzlit_thread set `ore_view` = '" . $view . "' where cuid = '" . $cuid . "'");
-            Log::visit("article", "$cuid", "$func");
         } else {
             Log::visit("article", "$cuid", "");
         }
@@ -241,8 +243,12 @@ class Thread extends Controller {
     }
 
     /*最新文章*/
-    public static function newest(){
-        $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 ORDER BY thread_ptime DESC LIMIT 8");
+    public static function newest($cuid = null){
+        if(!$cuid){
+            $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 ORDER BY thread_ptime DESC LIMIT 8");
+        } else {
+            $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 AND hk_sort = $cuid ORDER BY thread_ptime DESC LIMIT 8");
+        }
         $data = [];
         for ($i = 0 ; $i < count($res); $i++){
             $data[$i] = Thread::format($res[$i]);

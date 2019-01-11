@@ -30,9 +30,29 @@
     */
 ?>
 <script >
-    const ipapiurl=[
-        '//qzxy.starsriver.club/api/taobao/ipinfo/',
-        '{$Think.const.SITE}/api/taobao/ipinfo/',
+    const apiurl = [
+        '//qzxy.starsriver.club',
+        '//www.tyutjohn.com',
+        '{$Think.const.SITE}',
     ];
-    let iprequeryloop=3;let llipu =-1;if(!$.cookie('ipinfo')||$.cookie('ip')!==JSON.parse($.cookie('ipinfo').replace('%2*2%',','))['ip']){initcookieipinfo();}function initcookieipinfo(){llipu++;$.ajax({method:'get', url:ipapiurl[llipu%2]+$.cookie('ip'), error:function(){llipu<ipapiurl.length*iprequeryloop?initcookieipinfo():'';}, success:function(r){i=JSON.parse(r);(i.Stat!=='OK'&&llipu<ipapiurl.length*iprequeryloop)?initcookieipinfo():$.cookie("ipinfo",JSON.stringify(i.Data).replace(',','%2*2%'),{expires:2,path:'/'});},});}
+    let iprequeryloop = 3;
+    let llipu = -1;
+    if (!$.cookie('ipinfo') || $.cookie('ip') !== JSON.parse($.cookie('ipinfo').replace('%2*2%', ','))['ip']) {
+        initcookieipinfo();
+    }
+
+    function initcookieipinfo() {
+        llipu++;
+        $.ajax({
+            method: 'get', url: apiurl[llipu % 2] + '/api/taobao/ipinfo/' + $.cookie('ip'), error: function () {
+                llipu < apiurl.length * iprequeryloop ? initcookieipinfo() : '';
+            }, success: function (r) {
+                i = JSON.parse(r);
+                (i.Stat !== 'OK' && llipu < apiurl.length * iprequeryloop) ? initcookieipinfo() : $.cookie("ipinfo", JSON.stringify(i.Data).replace(',', '%2*2%'), {
+                    expires: 2,
+                    path: '/',
+                });
+            },
+        });
+    }
 </script >
