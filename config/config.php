@@ -162,10 +162,10 @@
             503 =>  TPL_PATH.'error/503.html',
         ],
         // 异常页面的模板文?
-        'exception_tmpl'         => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',
+        'exception_tmpl'         => TPL_PATH.'error/debug.html',
 
         // 错误显示信息,非调试模式有?
-        'error_message'          => '页面错误！请稍后再试?',
+        'error_message'          => '页面不存在',
         // 显示错误信息
         'show_error_msg'         => false,
         // 异常处理handle? 留空使用 \think\exception\Handle
