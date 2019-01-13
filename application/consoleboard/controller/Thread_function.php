@@ -27,9 +27,9 @@
                 $res = Db::query("SELECT ".$arg." FROM qzlit_thread order by thread_ptime desc limit ".$limit."");
                 foreach ($res as $t ){
                     if($t['hk_mode'] == 3) {
-                        array_push($trash , Thread::format($t));
+                        array_push($trash , Thread::format($t,'sample'));
                     } else {
-                        array_push($threads , Thread::format($t));
+                        array_push($threads , Thread::format($t,'sample'));
                     }
                 }
             } else {
@@ -39,9 +39,9 @@
                         $res = Db::query("SELECT ".$arg." FROM qzlit_thread WHERE hk_sort = ".$k['id']." order by thread_ptime desc  limit ".($limit/5)."");
                         foreach ($res as $t){
                             if($t['hk_mode'] == 3) {
-                                array_push($trash , Thread::format($t));
+                                array_push($trash , Thread::format($t,'sample'));
                             } else {
-                                array_push($threads , Thread::format($t));
+                                array_push($threads , Thread::format($t,'sample'));
                             }
                         }
                     }

@@ -58,7 +58,7 @@ class Chunk extends Controller {
         }
         $chunklv = Chunk::getchunk_lv($chunkid);
         $chunk = Chunk::loadchunk($chunkid);
-        $argumets = '`cuid`, `thread_title`, `thread_author`, `thread_editor`, `thread_coverimg`,`thread_htime`,`thread_ctime`, `thread_ptime`, `hk_sort`,`hk_mode`, `hk_descrip`,`hk_keywords`,`ore_degree`,`ore_view`';
+        $argumets = '`cuid`, `thread_title`, `thread_author`, `thread_editor`, `thread_coverimg`,`thread_htime`,`thread_ctime`, `thread_ptime`, `hk_sort`, `hk_descrip`,`hk_keywords`,`ore_degree`,`ore_view`';
         $thread = [];
         $threadlist = [];
         if ($chunklv == 1) {
@@ -99,7 +99,7 @@ class Chunk extends Controller {
             $thread = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $chunkid $face_to_user order by thread_ptime desc limit 3000");
         }
         foreach ($thread as $u) {
-            array_push($threadlist, Thread::format($u));
+            array_push($threadlist, Thread::format($u,'more'));
         }
         return $threadlist;
     }

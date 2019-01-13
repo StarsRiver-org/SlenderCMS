@@ -196,7 +196,7 @@ class User extends Controller {
         /* 你可以在 pml_setting 里面添加新的条目来为用户添加新的权限值。注意按照规则来写。
          * 添加的权限需要在 has_pm 里面写入判定规则，请务必小心！
          * ------------------------------------------------------------------
-         * 权限基本设定 type，pmin使用该权限的最低值，psolid高于该权限必拥有*/
+         * 权限基本设定 type权限存储类型，pmin使用该权限的最低值，psolid高于该权限必拥有*/
         'site_visite'=>     ['type' => 'boolean', 'name'=>'访问网站',    'pmin' => '0',  'psolid' => '700','df' => false],
         'thread_visite'=>   ['type' => 'boolean', 'name'=>'查看文章',    'pmin' => '0',  'psolid' => '700','df' => false],
         'thread_subscrib'=> ['type' => 'boolean', 'name'=>'评论文章',    'pmin' => '0',  'psolid' => '700','df' => false],
@@ -260,7 +260,8 @@ class User extends Controller {
                 /* 需要同时拥有 增删改文章 权限 */
                 if ($upm >= $pm_std){
                     return 1;
-                } elseif ($upm >= $pm_min){
+                }
+                if ($upm >= $pm_min){
                     $cid = $data;
                     $tes = []; /* keep foreach to run normarly */
                     $tes = array_merge($tes,explode(',',$res['value']));
@@ -274,12 +275,9 @@ class User extends Controller {
                     }
                     if(in_array($cid,$tes) && self::has_pm('thread_mag')){
                         return 1;
-                    } else {
-                        return 0;
                     }
-                } else {
-                    return 0;
                 }
+                return 0;
                 break;
             default: return 0;
         }

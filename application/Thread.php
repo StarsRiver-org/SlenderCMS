@@ -132,7 +132,7 @@ class Thread extends Controller {
         }
         $res = Db::query("SELECT * FROM qzlit_thread WHERE cuid = '" . $cuid . "'");
         if(!empty($res)){
-            return self::format($res[0]);
+            return self::format($res[0],'all');
         } else {
             return null;
         }
@@ -146,44 +146,86 @@ class Thread extends Controller {
             foreach ($arr as $key=>$val){
                 $res = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $val AND hk_mode = 2 order by thread_ptime desc limit $limit");
                 foreach($res as $l){
-                    $list[$key][] = self::format($l);
+                    $list[$key][] = self::format($l,'more');
                 }
             }
         } else {
             $res = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $arr AND hk_mode = 2 order by thread_ptime desc limit $limit");
             foreach($res as $l){
-                $list[] = self::format($l);
+                $list[] = self::format($l,'more');
             }
         }
         return $list;
     }
 
-    /* 格式化文章内容 */
-    public static function format($res){
+    /* 格式化文章内容
+        param [$type == 0]     => 默认模式，全部格式化：用于文章展示
+        param [$type == 'sim'] => 后台统计时使用,节约开销
+    */
+    public static function format($res, $type = 0){
         @$date = $res['thread_htime'] ? $res['thread_htime'] : ($res['thread_ctime'] ? $res['thread_ctime'] : $res['thread_ptime']);
         $ut = Db::query("SELECT * FROM qzlit_group WHERE uid = '" . $res['thread_editor'] . "'");
         $ut = !empty($ut) ? $ut[0] : $ut =['name' => '匿名','username' => '匿名'];
-        $like = Db::query("select `func` from qzlit_log where ip = '".htmlspecialchars(Qhelp::dss(Ip::getip()),ENT_QUOTES)."' AND target = 'article' AND `data` = '".$res['cuid']."'  AND func like '%like%' order by time DESC limit 1");
-        $liked = false;
-        if($like && $like[0]['func'] == 'like'){$liked = true;}
-        return [
-            'id' => $res['cuid'],
-            'title' => !empty($res['thread_title']) ? htmlspecialchars_decode($res['thread_title'],ENT_QUOTES) : '',
-            'time' => date('Y-m-d H:i', $date),
-            'timestamp' => $date,
-            'coverimg' =>  @Qhelp::checkpic($res['thread_coverimg']) ? File::fetchimg($res['thread_coverimg']) : STATIC_ROOT.'/img/common/no-img-1.svg',
-            'content' => !empty($res['thread_context']) ? htmlspecialchars_decode($res['thread_context'],ENT_QUOTES) : '',
-            'keyword' => !empty($res['hk_keywords']) ? htmlspecialchars_decode($res['hk_keywords'],ENT_QUOTES) : '',
-            'descrip' => !empty($res['hk_descrip']) ? htmlspecialchars_decode($res['hk_descrip'],ENT_QUOTES) : '',
-            'sort' => !empty($res['hk_sort']) ? $res['hk_sort'] : '',
-            'hot' => !empty($res['ore_hot']) ? $res['ore_hot'] : 0,
-            'view' => !empty($res['ore_view']) ? $res['ore_view'] : 0,
-            'deg' => !empty($res['ore_degree']) ? $res['ore_degree'] :0,
-            'mode' => !empty($res['hk_mode']) ? $res['hk_mode'] : '' ,
-            'author' => !empty($res['thread_author']) ? $res['thread_author'] : ($ut['name'] ? $ut['name'] : $ut['username']),
-            'editor' => $ut['username'],
-            'liked' => $liked
-        ];
+
+        switch ($type){
+            case 'sample':
+                $return = [
+                    'id' => $res['cuid'],
+                    'title' => !empty($res['thread_title']) ? htmlspecialchars_decode($res['thread_title'],ENT_QUOTES) : '',
+                    'time' => date('Y-m-d H:i', $date),
+                    'timestamp' => $date,
+                    'sort' => !empty($res['hk_sort']) ? $res['hk_sort'] : '',
+                    'mode' => !empty($res['hk_mode']) ? $res['hk_mode'] : '' ,
+                    'editor' => $ut['username'],
+                ];
+                break;
+
+            case 'more':
+                $return = [
+                    'id' => $res['cuid'],
+                    'title' => !empty($res['thread_title']) ? htmlspecialchars_decode($res['thread_title'],ENT_QUOTES) : '',
+                    'time' => date('Y-m-d H:i', $date),
+                    'timestamp' => $date,
+                    'coverimg' =>  @Qhelp::checkpic($res['thread_coverimg']) ? File::fetchimg($res['thread_coverimg']) : STATIC_ROOT.'/img/common/no-img-1.svg',
+                    'keyword' => !empty($res['hk_keywords']) ? htmlspecialchars_decode($res['hk_keywords'],ENT_QUOTES) : '',
+                    'descrip' => !empty($res['hk_descrip']) ? htmlspecialchars_decode($res['hk_descrip'],ENT_QUOTES) : '',
+                    'sort' => !empty($res['hk_sort']) ? $res['hk_sort'] : '',
+                    'hot' => !empty($res['ore_hot']) ? $res['ore_hot'] : 0,
+                    'view' => !empty($res['ore_view']) ? $res['ore_view'] : 0,
+                    'deg' => !empty($res['ore_degree']) ? $res['ore_degree'] :0,
+                    'mode' => !empty($res['hk_mode']) ? $res['hk_mode'] : '' ,
+                    'author' => !empty($res['thread_author']) ? $res['thread_author'] : ($ut['name'] ? $ut['name'] : $ut['username']),
+                    'editor' => $ut['username'],
+                ];
+                break;
+
+            case 'all':
+                $like = Db::query("select `func` from qzlit_log where ip = '" . htmlspecialchars(Qhelp::dss(Ip::getip()), ENT_QUOTES) . "' AND target = 'article' AND `data` = '" . $res['cuid'] . "'  AND func like '%like%' order by time DESC limit 1");
+                $liked = false;
+                if ($like && $like[0]['func'] == 'like') {
+                    $liked = true;
+                }
+                $return =[
+                    'id' => $res['cuid'],
+                    'title' => !empty($res['thread_title']) ? htmlspecialchars_decode($res['thread_title'],ENT_QUOTES) : '',
+                    'time' => date('Y-m-d H:i', $date),
+                    'timestamp' => $date,
+                    'coverimg' =>  @Qhelp::checkpic($res['thread_coverimg']) ? File::fetchimg($res['thread_coverimg']) : STATIC_ROOT.'/img/common/no-img-1.svg',
+                    'content' => !empty($res['thread_context']) ? htmlspecialchars_decode($res['thread_context'],ENT_QUOTES) : '',
+                    'keyword' => !empty($res['hk_keywords']) ? htmlspecialchars_decode($res['hk_keywords'],ENT_QUOTES) : '',
+                    'descrip' => !empty($res['hk_descrip']) ? htmlspecialchars_decode($res['hk_descrip'],ENT_QUOTES) : '',
+                    'sort' => !empty($res['hk_sort']) ? $res['hk_sort'] : '',
+                    'hot' => !empty($res['ore_hot']) ? $res['ore_hot'] : 0,
+                    'view' => !empty($res['ore_view']) ? $res['ore_view'] : 0,
+                    'deg' => !empty($res['ore_degree']) ? $res['ore_degree'] :0,
+                    'mode' => !empty($res['hk_mode']) ? $res['hk_mode'] : '' ,
+                    'author' => !empty($res['thread_author']) ? $res['thread_author'] : ($ut['name'] ? $ut['name'] : $ut['username']),
+                    'editor' => $ut['username'],
+                    'like'=> $liked,
+                ];
+
+        }
+        return $return;
     }
 
     /* 文章浏览+1, 注意在使用该函数的地方进行安全性检查
@@ -251,7 +293,7 @@ class Thread extends Controller {
         }
         $data = [];
         for ($i = 0 ; $i < count($res); $i++){
-            $data[$i] = Thread::format($res[$i]);
+            $data[$i] = Thread::format($res[$i],'more');
         }
         return $data;
     }

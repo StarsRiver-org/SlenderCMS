@@ -37,10 +37,6 @@
     ];
     let iprequeryloop = 3;
     let llipu = -1;
-    if (!$.cookie('ipinfo') || $.cookie('ip') !== JSON.parse($.cookie('ipinfo').replace('%2*2%', ','))['ip']) {
-        initcookieipinfo();
-    }
-
     function initcookieipinfo() {
         llipu++;
         $.ajax({
@@ -55,4 +51,10 @@
             },
         });
     }
+    function initcookieipinfostart(){
+        if (!$.cookie('ipinfo') || $.cookie('ip') !== JSON.parse($.cookie('ipinfo').replace('%2*2%', ','))['ip']) {
+            initcookieipinfo();
+        }
+    }
+    window.addEventListener('load',initcookieipinfostart,false);
 </script >
