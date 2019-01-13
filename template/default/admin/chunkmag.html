@@ -52,7 +52,7 @@
                                         <h4 class="modal-title">注意：</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                        <p class="text-warning">删除 该版块/子版块/分区 会导致该版块下的 子板块/分区及其内部的文章 一并删除且无法恢复。<br>而且板块ID无法修改。如果板块被删除，只有通过修改数据库的方法才能将板块及其ID恢复。<br>如果你想要保留这下面的文章，可以试试合并版块。<br><br>该操作不可撤销，是否继续</p>
                                     </div>
                                     <form class="modal-footer" method="post">
                                         <input type="hidden" name="del_chunk" value="{$lv1.id}">
@@ -116,10 +116,10 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header text-danger">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                                                            <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                                            <h4 class="modal-title">警告</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                                            <p class="text-warning">删除 该版块/子版块/分区 会导致该版块下的 子板块/分区及其内部的文章 一并删除且无法恢复。<br>而且板块ID无法修改。如果板块被删除，只有通过修改数据库的方法才能将板块及其ID恢复。<br>如果你想要保留这下面的文章，可以试试合并版块。<br><br>该操作不可撤销，是否继续</p>
                                                         </div>
                                                         <form class="modal-footer" method="post">
                                                             <input type="hidden" name="del_chunk" value="{$lv2.id}">
@@ -190,10 +190,10 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header text-danger">
                                                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                                                                    <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                                                    <h4 class="modal-title">警告</h4>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                                                    <p class="text-warning">删除 该版块/子版块/分区 会导致该版块下的 子板块/分区及其内部的文章 一并删除且无法恢复。<br>而且板块ID无法修改。如果板块被删除，只有通过修改数据库的方法才能将板块及其ID恢复。<br>如果你想要保留这下面的文章，可以试试合并版块。<br><br>该操作不可撤销，是否继续</p>
                                                                 </div>
                                                                 <form class="modal-footer" method="post">
                                                                     <input type="hidden" name="del_chunk" value="{$lv3.id}">
@@ -237,7 +237,7 @@
     </div>
     <div class="tab-pane fade" id="chunk-comb">
         <div class="alert alert-warning">
-            {$Think.lang.chunkinfo}
+            版块一共有三层，第一层为主版块，第二层为子版块，第三层为子版块下分类。每一层级都拥有独立的文章空间，可以随意合并，合并版块操作会将被合并版块及子版块的全部文章转移到合并的版块中。合并以及对版块的删除操作都是是不可逆的，慎重考虑。
         </div>
         <form method="post" class="chunk_comb">
             <div class="cclock">
@@ -363,10 +363,10 @@
                                 <div class="modal-content">
                                     <div class="modal-header text-danger">
                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                                        <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                        <h4 class="modal-title">警告</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                        <p class="text-warning">删除 该版块/子版块/分区 会导致该版块下的 子板块/分区及其内部的文章 一并删除且无法恢复。<br>而且板块ID无法修改。如果板块被删除，只有通过修改数据库的方法才能将板块及其ID恢复。<br>如果你想要保留这下面的文章，可以试试合并版块。<br><br>该操作不可撤销，是否继续</p>
                                     </div>
                                     <form class="modal-footer" method="post">
                                         <input type="hidden" name="del_chunk" value="{$lv1.id}">
@@ -408,10 +408,10 @@
                                     <div class="modal-content">
                                         <div class="modal-header text-danger">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                                            <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                            <h4 class="modal-title">警告</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
+                                            <p class="text-warning">删除 该版块/子版块/分区 会导致该版块下的 子板块/分区及其内部的文章 一并删除且无法恢复。<br>而且板块ID无法修改。如果板块被删除，只有通过修改数据库的方法才能将板块及其ID恢复。<br>如果你想要保留这下面的文章，可以试试合并版块。<br><br>该操作不可撤销，是否继续</p>
                                         </div>
                                         <form class="modal-footer" method="post">
                                             <input type="hidden" name="del_chunk" value="{$lv2.id}">
