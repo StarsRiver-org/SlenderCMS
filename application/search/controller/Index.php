@@ -37,7 +37,6 @@ class Index extends Controller{
             $data[$i] = Thread::format($res['res'][$i],'more');
             $data[$i]['title'] = str_replace($keyword,"<em>$keyword</em>",$data[$i]['title']);
             $data[$i]['descrip'] = str_replace($keyword,"<em>$keyword</em>",$data[$i]['descrip']);
-            $data[$i]['content'] = str_replace($keyword,"<em>$keyword</em>",$data[$i]['content']);
         }
         $count = $res['count'];
         $pages = ceil($count/$perpage);
