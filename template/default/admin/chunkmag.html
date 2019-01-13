@@ -21,20 +21,20 @@
                     <form class="modal-content" id="add_mainchunk" method="post">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                            <h4 class="modal-title">{$Think.lang.chunk_add}</h4>
+                            <h4 class="modal-title">添加</h4>
                         </div>
                         <div class="modal-body chunk_input">
                             <input type="hidden" name="add_chunk" value="lv1">
                             <cite>板块名称：</cite><input type="text" name="chunk_name">
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                            <button type="submit" class="btn btn-primary">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <button type="button"  data-toggle="modal" data-target="#addmainchunk" style="margin-bottom:12px"  class="btn btn-success w">{$Think.lang.chunk_add}</button>
+            <button type="button"  data-toggle="modal" data-target="#addmainchunk" style="margin-bottom:12px"  class="btn btn-success w">新增板块</button>
 
             {volist name="chunklv1" id="lv1" empty="没有板块"}
                 <div class="panel panel-default">
@@ -42,22 +42,22 @@
                         <a class="panel-title" href="#{$lv1.id}" data-toggle="collapse" data-parent="#chunk" >
                             #{$lv1.id} &nbsp;{$lv1.chunk_name}
                         </a>
-                        <button type="button" class="btn btn-sm btn-danger r" data-toggle="modal" data-target="#del{$lv1.id}">{$Think.lang.del}</button>
+                        <button type="button" class="btn btn-sm btn-danger r" data-toggle="modal" data-target="#del{$lv1.id}">删除</button>
                         <button class="btn btn-sm btn-success r"  data-toggle="modal" data-target="#rename{$lv1.id}" >重命名</button>
                         <div class="modal fade" id="del{$lv1.id}">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header text-danger">
                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                                        <h4 class="modal-title">{$Think.lang.warning}</h4>
+                                        <h4 class="modal-title">注意：</h4>
                                     </div>
                                     <div class="modal-body">
                                         <p class="text-warning">{$Think.lang.chunk_del_waring}</p>
                                     </div>
                                     <form class="modal-footer" method="post">
                                         <input type="hidden" name="del_chunk" value="{$lv1.id}">
-                                        <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
-                                        <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                        <button type="submit" class="btn btn-danger">确定</button>
+                                        <button type="button" class="btn btn-default long" data-dismiss="modal">取消</button>
                                     </form>
                                 </div>
                             </div>
@@ -74,8 +74,8 @@
                                         <cite>新名称:</cite><input type="text" name="new_name" value="{$lv1.chunk_name}">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                        <button type="submit" class="btn btn-primary">确定</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                     </div>
                                 </form>
                             </div>
@@ -105,8 +105,8 @@
                                                             <cite>新名称:</cite><input type="text" name="new_name" value="{$lv2.chunk_name}">
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                            <button type="submit" class="btn btn-primary">确定</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -123,8 +123,8 @@
                                                         </div>
                                                         <form class="modal-footer" method="post">
                                                             <input type="hidden" name="del_chunk" value="{$lv2.id}">
-                                                            <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
-                                                            <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                            <button type="submit" class="btn btn-danger">确定</button>
+                                                            <button type="button" class="btn btn-default long" data-dismiss="modal">取消</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -133,13 +133,13 @@
                                     {/if}
                                 {/volist}
                                 <li>
-                                    <button type="button"  data-toggle="modal" data-target="#addto_{$lv1.id}"  class="do">{$Think.lang.chunk_addchild}</button>
+                                    <button type="button"  data-toggle="modal" data-target="#addto_{$lv1.id}"  class="do">新栏目</button>
                                     <div class="modal fade" id="addto_{$lv1.id}">
                                         <div class="modal-dialog">
                                             <form class="modal-content" method="post">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                                                    <h4 class="modal-title">{$Think.lang.chunk_add}</h4>
+                                                    <h4 class="modal-title">添加</h4>
                                                 </div>
                                                 <div class="modal-body chunk_input">
                                                     <input type="hidden" name="add_chunk" value="lv2">
@@ -147,8 +147,8 @@
                                                     <cite>子板块名称：</cite><input type="text" name="chunk_name">
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                    <button type="submit" class="btn btn-primary">确定</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -179,8 +179,8 @@
                                                                     <cite>新名称：</cite><input type="text" name="new_name" value="{$lv3.chunk_name}">
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                                    <button type="submit" class="btn btn-primary">确定</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -197,21 +197,21 @@
                                                                 </div>
                                                                 <form class="modal-footer" method="post">
                                                                     <input type="hidden" name="del_chunk" value="{$lv3.id}">
-                                                                    <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
-                                                                    <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                                    <button type="submit" class="btn btn-danger">确定</button>
+                                                                    <button type="button" class="btn btn-default long" data-dismiss="modal">取消</button>
                                                                 </form>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 {/if}
                                             {/volist}
-                                            <button type="button"  data-toggle="modal" data-target="#addto_{$lv2.id}"  class="do">{$Think.lang.newsort}</button>
+                                            <button type="button"  data-toggle="modal" data-target="#addto_{$lv2.id}"  class="do">新分类</button>
                                             <div class="modal fade" id="addto_{$lv2.id}">
                                                 <div class="modal-dialog">
                                                     <form class="modal-content" method="post">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                                                            <h4 class="modal-title">{$Think.lang.chunk_add}</h4>
+                                                            <h4 class="modal-title">添加</h4>
                                                         </div>
                                                         <div class="modal-body chunk_input">
                                                             <input type="hidden" name="add_chunk" value="lv3">
@@ -219,8 +219,8 @@
                                                             <cite>分类名称</cite><input type="text" name="chunk_name">
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                                            <button type="submit" class="btn btn-primary">确定</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -300,8 +300,8 @@
                                         <cite>专题名称：</cite><input type="text" name="chunk_name">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                        <button type="submit" class="btn btn-primary">确定</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                     </div>
                                 </form>
                             </div>
@@ -333,8 +333,8 @@
                                         <cite>分类名称：</cite><input type="text" name="chunk_name">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                        <button type="submit" class="btn btn-primary">确定</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                     </div>
                                 </form>
                             </div>
@@ -352,8 +352,8 @@
                                         <cite>新名称：</cite><input type="text" name="new_name" value="{$lv1.chunk_name}">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                        <button type="submit" class="btn btn-primary">确定</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                     </div>
                                 </form>
                             </div>
@@ -370,8 +370,8 @@
                                     </div>
                                     <form class="modal-footer" method="post">
                                         <input type="hidden" name="del_chunk" value="{$lv1.id}">
-                                        <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
-                                        <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                        <button type="submit" class="btn btn-danger">确定</button>
+                                        <button type="button" class="btn btn-default long" data-dismiss="modal">取消</button>
                                     </form>
                                 </div>
                             </div>
@@ -397,8 +397,8 @@
                                             <cite>新名称：</cite><input type="text" name="new_name" value="{$lv2.chunk_name}">
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">{$Think.lang.confirm}</button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                            <button type="submit" class="btn btn-primary">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </form>
                                 </div>
@@ -415,8 +415,8 @@
                                         </div>
                                         <form class="modal-footer" method="post">
                                             <input type="hidden" name="del_chunk" value="{$lv2.id}">
-                                            <button type="submit" class="btn btn-danger">{$Think.lang.confirm}</button>
-                                            <button type="button" class="btn btn-default long" data-dismiss="modal">{$Think.lang.cancel}</button>
+                                            <button type="submit" class="btn btn-danger">确定</button>
+                                            <button type="button" class="btn btn-default long" data-dismiss="modal">取消</button>
                                         </form>
                                     </div>
                                 </div>
