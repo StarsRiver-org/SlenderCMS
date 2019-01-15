@@ -186,7 +186,7 @@
 
         /* 获取某部门的面试时间点 */
         static function getftime($m){
-            $campus = Qhelp::json_de(Qhelp::json_de(Config::getconf('Info','campus'))['Data']);
+            $campus = Qhelp::json_de(Config::getconf('Info','campus'));
             if(Qhelp::chk_pint($m) && $m > 0){
                 $tce = Db::query("select `ftime`,`campus` from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = $m order by ftime " );
                 $ftimes = [];

@@ -14,6 +14,7 @@ use qzxy\Thread;
 use qzxy\Chunk;
 use qzxy\Log;
 use qzxy\Qhelp;
+use qzxy\common\controller\Admincheck;
 use think\Controller;
 
 class More extends Controller{
@@ -34,7 +35,7 @@ class More extends Controller{
             'title' => $chunk['name'],
             'base' => Base::baseinfo(),
         ]);
-        return view($chunk['template']);
+        return Admincheck::view($chunk['template']);
     }
 
     public function loader($chunkid) {

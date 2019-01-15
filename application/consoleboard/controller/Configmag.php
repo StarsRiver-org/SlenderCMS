@@ -38,10 +38,10 @@
 
             if(!empty($_POST['getconf'])){
                 switch ($_POST['getconf']){
-                    case 'base': return Config::getconf('Info') ;break;
-                    case 'enroll': return Config::getconf('Enroll') ;break;
-                    case 'sms': return Config::getconf('SmsService') ;break;
-                    case 'oth': return Config::getconf('Pm') ;break;
+                    case 'base': return Config::getconf('Info','',true) ;break;
+                    case 'enroll': return Config::getconf('Enroll','',true) ;break;
+                    case 'sms': return Config::getconf('SmsService','',true) ;break;
+                    case 'oth': return Config::getconf('Pm','',true) ;break;
                 }
             }
 

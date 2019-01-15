@@ -27,8 +27,8 @@
             }
 
 
-            $starttime = Qhelp::json_de(Config::getconf('Enroll','startdate'))['Data'];
-            $endtime = Qhelp::json_de(Config::getconf('Enroll','enddate'))['Data'];
+            $starttime = Config::getconf('Enroll','startdate');
+            $endtime = Config::getconf('Enroll','enddate');
             if(!Qhelp::chk_pint($starttime) || !Qhelp::chk_pint($endtime) || strlen($starttime) != 8 || strlen($starttime) != 8){
                 return Qhelp::json_en(['Stat' => 'error', "Message" => '服务器配置出错！']);
             }

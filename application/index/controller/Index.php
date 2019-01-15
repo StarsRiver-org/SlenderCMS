@@ -10,7 +10,6 @@
  */
 namespace qzxy\index\controller;
 use think\Controller;
-use think\Db;
 class Index extends Controller{
     public function main() {
         $lock = ROOT_PATH.'install/install.lock';

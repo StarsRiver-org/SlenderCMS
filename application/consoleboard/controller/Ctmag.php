@@ -19,7 +19,7 @@ use qzxy\Qhelp;
 use think\Db;
 use think\Controller;
 
-class Threadmag extends Controller {
+class Ctmag extends Controller {
     public function _initialize() {
         new Init();
         if(!User::has_pm('is_admin')){
@@ -27,11 +27,11 @@ class Threadmag extends Controller {
             return null;
         }
         $this->assign([
-            'chunklv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 1")),
-            'chunklv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 2")),
-            'chunklv3' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 3")),
-            'splv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 1")),
-            'splv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2")),
+            'chunklv1' => Ct_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 1")),
+            'chunklv2' => Ct_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 2")),
+            'chunklv3' => Ct_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 3")),
+            'splv1' => Ct_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 1")),
+            'splv2' => Ct_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2")),
             'splv3' => [],
         ]);
     }
@@ -41,11 +41,11 @@ class Threadmag extends Controller {
         if (isset($_POST['newthread'])) {
             return Thread::sender();
         } else {
-            $threads = Thread_function::loadlist();
+            $threads = Ct_function::loadlist();
             $this->assign([
                 'threadmag' => 'active',
-                'threaddata' => Thread_function::get_threads($threads, "thread"),
-                'trashdata' => Thread_function::get_threads($threads, "trash"),
+                'threaddata' => Ct_function::get_threads($threads, "thread"),
+                'trashdata' => Ct_function::get_threads($threads, "trash"),
                 'editor' => User::ufetch(),
                 ]);
 
@@ -54,7 +54,7 @@ class Threadmag extends Controller {
     }
 
     function logic(){
-        if(Thread_function::check_has_thread_pm($_POST['tid'])){
+        if(Ct_function::check_has_thread_pm($_POST['tid'])){
             return Qhelp::json_en(["Stat" => 'error', "Message" => "权限不足"]);
         }
         if(!Qhelp::chk_pint($_POST['tid']) || $_POST['tid'] < 1){
@@ -62,11 +62,11 @@ class Threadmag extends Controller {
         }
         if(!empty($_POST['med'])){
             switch ($_POST['med']){
-                case 'trashthread': return Thread_function::trashthread($_POST['tid']) ;break;
-                case 'pushthread': return Thread_function::pushthread($_POST['tid']) ;break;
-                case 'dpushthread': return Thread_function::dpushthread($_POST['tid']) ;break;
-                case 'recoverthread':return Thread_function::recoverthread($_POST['tid']) ;break;
-                case 'delthread': return Thread_function::delthread($_POST['tid']) ;break;
+                case 'trashthread': return Ct_function::trashthread($_POST['tid']) ;break;
+                case 'pushthread': return Ct_function::pushthread($_POST['tid']) ;break;
+                case 'dpushthread': return Ct_function::dpushthread($_POST['tid']) ;break;
+                case 'recoverthread':return Ct_function::recoverthread($_POST['tid']) ;break;
+                case 'delthread': return Ct_function::delthread($_POST['tid']) ;break;
                 default: return Qhelp::json_en(["Stat" => 'error', "Message" => "参数错误"]);
             }
         }
@@ -78,7 +78,7 @@ class Threadmag extends Controller {
         if(!Qhelp::chk_pint($threadid) || $threadid < 1){
             $this->error('参数错误');
         }
-        Thread_function::check_has_thread_pm($threadid);
+        Ct_function::check_has_thread_pm($threadid);
         /* 保存文章程序 */
         if (isset($_POST['renewthread'])) {
             return Thread::sender();

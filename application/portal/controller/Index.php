@@ -9,15 +9,18 @@
  *
  */
 namespace qzxy\portal\Controller;
+
 use qzxy\Base;
 use qzxy\Log;
 use qzxy\Chunk;
 use qzxy\Thread;
+use qzxy\common\controller\Admincheck;
 use think\Controller;
-use think\Db;
 
 class Index extends Controller{
+
     public function main(){
+
         Log::visit("portal","home","");
         $chunk = [
             'id'         =>   1,
@@ -35,7 +38,7 @@ class Index extends Controller{
         $this->loader($chunk['id']);
 
         /*渲染模板，输出*/
-        return view($chunk['template']);
+        return Admincheck::view($chunk['template']);
     }
 
     public function loader($chunkid){

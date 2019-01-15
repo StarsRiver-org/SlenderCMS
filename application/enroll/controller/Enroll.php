@@ -13,6 +13,7 @@ namespace qzxy\enroll\controller;
 
 use qzxy\Config;
 use qzxy\Qhelp;
+use qzxy\common\controller\Admincheck;
 use think\Controller;
 use think\Db;
 
@@ -20,7 +21,7 @@ use think\Db;
 class Enroll extends Controller {
 
     public function main() {
-        return view('enroll/enroll');
+        return Admincheck::view('enroll/enroll');
     }
 
     public function check() {
@@ -37,7 +38,7 @@ class Enroll extends Controller {
             8 => '906759599',  //--蓝之青
         ];
 
-        $plist = Qhelp::json_de(Config::getconf('Info', 'party'))['Data'];
+        $plist = Config::getconf('Info', 'party');
 
 
         if (empty($_POST['name'])) {

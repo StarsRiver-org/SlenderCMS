@@ -7,11 +7,15 @@
  *      CreateDate:   2018-08-05
  *
  */
+
 var Threadmag = {
+
+    link: SiteUrl +'/consoleboard/ctmag/logic.html',
+
     setstat : function (med,val) {
         var eventobj = getEventobj();
         $.ajax({
-            url : SiteUrl +'/consoleboard/threadmag/logic.html',
+            url : this.link,
             type:'POST',
             data:{
                 'med' : med,

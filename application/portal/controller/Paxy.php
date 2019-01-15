@@ -15,8 +15,8 @@ use qzxy\Base;
 use qzxy\Log;
 use qzxy\Chunk;
 use qzxy\Thread;
+use qzxy\common\controller\Admincheck;
 use think\Controller;
-use think\Db;
 
 class Paxy extends Controller{
     public function main(){
@@ -31,7 +31,7 @@ class Paxy extends Controller{
             'title' => $chunk['name'],
             'base' => Base::baseinfo(),
         ]);
-        return view($chunk['template']);
+        return Admincheck::view($chunk['template']);
     }
 
     public function loader($chunkid){

@@ -84,21 +84,21 @@
         {volist name="chunklv1" id="lv1"}
             {if $lv1['hpm']}
                 <div class="banner-show">
-                    <a class="title" href="{$Think.const.SITE}/consoleboard/threadmag/setbanner/{$lv1['id']}.html">{$lv1.chunk_name}</a>
+                    <a class="title" href="{$Think.const.SITE}/consoleboard/ctmag/setbanner/{$lv1['id']}.html">{$lv1.chunk_name}</a>
                 </div>
             {/if}
             {volist name="chunklv2" id="lv2"}
                 {if $lv2['chunk_below'] == $lv1['id']}
                     {if  $lv2['hpm']}
                         <div class="banner-show">
-                            <a class="title"  href="{$Think.const.SITE}/consoleboard/threadmag/setbanner/{$lv2['id']}.html">{$lv2.chunk_name}</a>
+                            <a class="title"  href="{$Think.const.SITE}/consoleboard/ctmag/setbanner/{$lv2['id']}.html">{$lv2.chunk_name}</a>
                         </div>
                     {/if}
                     {volist name="chunklv3" id="lv3"}
                         {if $lv3['chunk_below'] == $lv2['id']}
                             {if  $lv3['hpm']}
                                 <div class="banner-show">
-                                    <a class="title"  href="{$Think.const.SITE}/consoleboard/threadmag/setbanner/{$lv3['id']}.html">{$lv3.chunk_name}</a>
+                                    <a class="title"  href="{$Think.const.SITE}/consoleboard/ctmag/setbanner/{$lv3['id']}.html">{$lv3.chunk_name}</a>
                                 </div>
                             {/if}
                         {/if}

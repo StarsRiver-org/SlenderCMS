@@ -45,7 +45,7 @@
                             `bel` ='" . (int)$i['bel']. "',
                             `name` ='" . htmlspecialchars(Qhelp::dss($i['name']),ENT_QUOTES) . "',
                             `key` ='" . htmlspecialchars(Qhelp::dss($i['key']),ENT_QUOTES) . "',
-                            `blank` ='" . htmlspecialchars(Qhelp::dss($i['blank']),ENT_QUOTES) . "',
+                            `blank` ='" . (int)($i['blank']) . "',
                             `url` ='" . htmlspecialchars(Qhelp::dss($i['url']),ENT_QUOTES) . "',
                             `active` ='" . (int)$i['active'] . "'
                             where id = '" . (int)$i['id'] . "'");
@@ -55,7 +55,7 @@
                         `order` = '" . (int)$i['order'] . "', 
                         `name` ='" . htmlspecialchars(Qhelp::dss($i['name']),ENT_QUOTES) . "',
                         `key` ='" . htmlspecialchars(Qhelp::dss($i['key']),ENT_QUOTES) . "',
-                        `blank` ='" . htmlspecialchars(Qhelp::dss($i['blank']),ENT_QUOTES) . "',
+                        `blank` ='" . (int)($i['blank']) . "',
                         `active` ='" . (int)$i['active'] . "'
                         where id = '" . (int)$i['id'] . "'");
                     }
@@ -76,7 +76,7 @@
                      '" . (int)$i['bel'] . "',
                      '" . htmlspecialchars(Qhelp::dss($i['name']),ENT_QUOTES) . "',
                      '" . htmlspecialchars(Qhelp::dss($i['key']),ENT_QUOTES) . "',
-                     '" . htmlspecialchars(Qhelp::dss($i['blank']),ENT_QUOTES) . "',
+                     '" . (int)($i['blank']) . "',
                      '" . htmlspecialchars(Qhelp::dss($i['url']),ENT_QUOTES) . "'
                     )");
                 }
