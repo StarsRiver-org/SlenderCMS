@@ -10,7 +10,7 @@
 
 var Threadmag = {
 
-    link: SiteUrl +'/consoleboard/ctmag/logic.html',
+    link: SiteUrl +'/consoleboard/threadmag/logic.html',
 
     setstat : function (med,val) {
         var eventobj = getEventobj();

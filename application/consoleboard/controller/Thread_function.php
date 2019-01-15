@@ -14,7 +14,7 @@
     use qzxy\User;
     use qzxy\Qhelp;
     use qzxy\Log;
-    class Ct_function{
+    class Thread_function{
 
         /* 获取用户可管理的文章 */
         static function loadlist() {
@@ -68,7 +68,7 @@
                     case 1:
                     case 2:
                         $arr[$i]['func'] = '
-                            <a class="threadfuncicon icon-edit text-primary" href="' . SITE . '/consoleboard/ctmag/renewthread/' . $arr[$i]["id"] . '.html" title="编辑文章" target="_blank"></a>
+                            <a class="threadfuncicon icon-edit text-primary" href="' . SITE . '/consoleboard/threadmag/renewthread/' . $arr[$i]["id"] . '.html" title="编辑文章" target="_blank"></a>
                             <a class="threadfuncicon icon-trash text-warning" onclick="Threadmag.setstat(\'trashthread\',' . $arr[$i]["id"] . ')" title="回收文章"></a>';
 
                         $temp = $arr[$i]['mode'] == 1 ? '<a class="threadfuncicon icon-eye-close text-danger" onclick="Threadmag.setstat(\'pushthread\',' . $arr[$i]["id"] . ')" title="推送文章"></a>' : '<a class="threadfuncicon icon-eye-open text-success" onclick="Threadmag.setstat(\'dpushthread\',' . $arr[$i]["id"] . ')" title="取消推送""></a>';
