@@ -29,12 +29,12 @@
 .conf-list li .discrib{
     font-size: 12px;
     color: #8a8a8a;
-    width: 160px;
+    width: 210px;
     word-break: break-all;
     padding: 0 10px 0 0;
 }
 .conf-list li .data{
-    width: calc(100% - 420px);
+    width: calc(100% - 470px);
 }
 .conf-list li .data .input-modal,
 .conf-list li .data textarea,

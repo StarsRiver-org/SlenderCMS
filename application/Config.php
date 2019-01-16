@@ -19,7 +19,7 @@ class Config extends Controller{
 
         if($json){
             if(empty($name)){
-                $res = Db::query("select `name`, `data`,`descrip`, `issolid` from qzlit_config where `type`='".$type."'");
+                $res = Db::query("select `name`, `data`,`descrip`, `issolid` from qzlit_config where `type`='".$type."' order by `order`");
             } else {
                 $res = Db::query("select `data` from qzlit_config where `type`='".$type."' AND `name`='".$name."' ");
                 if(!empty($res)){

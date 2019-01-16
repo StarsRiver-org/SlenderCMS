@@ -83,11 +83,12 @@ class Ip{
             "isp" => "XX"
         ];
 
+
         if ($ip == '127.0.0.1') {
             $data['ip'] = '127.0.0.1';
         } elseif (
-            /* 安全性检查 - 信息长度及特殊字符检查 */
-            count($cook,COUNT_RECURSIVE) !== 7 &&
+            /* 安全性检查 - 信息长度及特殊字符检查，如果信息有问题，则通过后台来检测IP*/
+            count($cook,COUNT_RECURSIVE) !== 7 ||
             @empty($cook['ip']) || $cook['ip'] !== $ip ||
             @empty($cook['country']) ||
             @empty($cook['isp']) ||
@@ -97,15 +98,17 @@ class Ip{
             Qhelp::chk_specal_char($cook['county']) ||
             Qhelp::chk_specal_char($cook['city'])
         ) {
+            /* 预设IP信息默认值 */
+            $data = ["ip" => "0.0.0.0", "country" => "XX", "area" => "XX", "region" => "XX", "city" => "XX", "county" => "XX", "isp" => "XX"];
 
-            $get = Qhelp::json_de(Taobao::ipinfo($ip)); //获取IP信息，内网服务器需要更改为静态IP数据库
-
-            if (!empty($get) && $get['Stat'] == 'OK') {
-                Cookie::savecookie('ipinfo', $get['Data'],'/',true);
-                $data = $get['Data'];
-            } else {
-                //未获取到IP信息，用0.0.0.0标记
-                $data = ["ip" => "0.0.0.0", "country" => "XX", "area" => "XX", "region" => "XX", "city" => "XX", "county" => "XX", "isp" => "XX"];;
+            /* 检测是否开启后台检查IP功能 */
+            $getAddr = Config::getconf('info','getAddr');
+            if($getAddr == 'on'){
+                $get = Qhelp::json_de(Taobao::ipinfo($ip)); //获取IP信息，内网服务器需要更改为静态IP数据库
+                if (!empty($get) && $get['Stat'] == 'OK') {
+                    Cookie::savecookie('ipinfo', $get['Data'],'/',true);
+                    $data = $get['Data'];
+                }
             }
         }
 
