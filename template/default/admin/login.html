@@ -2,23 +2,30 @@
 <html lang="en">
 <style>
     body{
-        background: rgba(130, 130, 130, 0.12) !important;
+        background: #f5f6f7 !important;
         min-width: 360px !important;
     }
     .login_form {
         background: #ffffff;
         height: auto;
-        width: 360px;
+        width: 320px;
         margin: 120px auto;
-        -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
-        -moz-box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
+        -moz-box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
         overflow: hidden;
         padding-bottom: 15px;
     }
+	
+	@media (max-width:380px){
+		.login_form {
+			width:calc(100% - 36px);
+			margin: 80px 18px;
+		}
+	}
 
     .login_form .head {
         box-sizing: border-box;
@@ -91,6 +98,7 @@
 <head>
     <meta charset="UTF-8">
     <title>清泽心雨后台登陆</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/base.css" rel="stylesheet">
     <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/admin.css" rel="stylesheet">
 
