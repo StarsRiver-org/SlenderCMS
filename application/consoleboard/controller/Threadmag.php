@@ -41,15 +41,32 @@ class Threadmag extends Controller {
         if (isset($_POST['newthread'])) {
             return Thread::sender();
         } else {
-            $threads = Thread_function::loadlist();
             $this->assign([
                 'threadmag' => 'active',
-                'threaddata' => Thread_function::get_threads($threads, "thread"),
-                'trashdata' => Thread_function::get_threads($threads, "trash"),
                 'editor' => User::ufetch(),
                 ]);
 
             return view('admin/threadmag');
+        }
+    }
+
+    public function gettreaddata(){
+        $type = $_POST['type'];
+        switch ($type){
+            case 'thread': $data = Thread_function::get_threads("thread"); break;
+            case 'trash': $data = Thread_function::get_threads("trash"); break;
+        }
+        if(!empty($data)){
+            return Qhelp::json_en([
+                'Stat' => 'OK',
+                'Message' => '数据已刷新',
+                'Data' => $data
+            ]);
+        } else {
+            return Qhelp::json_en([
+                'Stat' => 'error',
+                'Message' => '数据为空',
+            ]);
         }
     }
 

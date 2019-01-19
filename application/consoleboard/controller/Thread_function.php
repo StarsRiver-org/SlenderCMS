@@ -17,46 +17,39 @@
     class Thread_function{
 
         /* 获取用户可管理的文章 */
-        static function loadlist() {
-            $arg = '`cuid`,`thread_title`,`thread_ptime`,`thread_editor`,`hk_sort`,`hk_mode`';
+        /* 处理文章信息 */
+        static function get_threads($type) {
             $M = User::ufetch();
-            $limit = 1000;
-            $threads = [];
-            $trash = [];
+            $limit = 5000;
+
+            $arg = '`cuid`,`thread_title`,`thread_ptime`,`thread_editor`,`hk_sort`,`hk_mode`';
+
+            switch ($type){
+                case 'trash': $argS = 'hk_mode = 3'; break;
+                case 'thread': $argS = '(hk_mode = 1 OR hk_mode = 2)'; break;
+                default : $argS = '0';
+            }
+
+            $arr = [];
             if($M['pm'] >= User::$pml_setting['chunk_ct_mag']['psolid']){
-                $res = Db::query("SELECT ".$arg." FROM qzlit_thread order by thread_ptime desc limit ".$limit."");
+                $res = Db::query("SELECT ".$arg." FROM qzlit_thread WHERE ".$argS." order by thread_ptime desc limit ".$limit."");
                 foreach ($res as $t ){
-                    if($t['hk_mode'] == 3) {
-                        array_push($trash , Thread::format($t,'sample'));
-                    } else {
-                        array_push($threads , Thread::format($t,'sample'));
-                    }
+                    array_push($arr , Thread::format($t,'sample'));
                 }
             } else {
                 $chunks = Db::query("select `id` from qzlit_chunk");
                 foreach ($chunks as $k){
                     if(User::has_pm('chunk_ct_mag',$k['id'])){
-                        $res = Db::query("SELECT ".$arg." FROM qzlit_thread WHERE hk_sort = ".$k['id']." order by thread_ptime desc  limit ".($limit/5)."");
+                        $res = Db::query("SELECT ".$arg." FROM qzlit_thread WHERE hk_sort = ".$k['id']." AND  ".$argS." order by thread_ptime desc  limit ".($limit/5)."");
                         foreach ($res as $t){
-                            if($t['hk_mode'] == 3) {
-                                array_push($trash , Thread::format($t,'sample'));
-                            } else {
-                                array_push($threads , Thread::format($t,'sample'));
-                            }
+                            array_push($arr , Thread::format($t,'sample'));
                         }
                     }
                 }
             }
-            return [
-                'thread' => $threads,
-                'trash'   => $trash,
-            ];
-        }
 
-        /* 过滤分类用户可管理的文章 */
-        static function get_threads($threads, $type) {
             $chunk = Db::query("select * from qzlit_chunk");
-            $arr = $threads[$type];
+
             for ($i = 0; $i < count($arr); $i++) {
                 foreach ($chunk as $value) {
                     if ($value['id'] == $arr[$i]['sort']) {
@@ -81,7 +74,7 @@
                         break;
                 }
             }
-            return json_encode($arr);
+            return $arr;
         }
 
         /* 获取用户管理的板块 */
