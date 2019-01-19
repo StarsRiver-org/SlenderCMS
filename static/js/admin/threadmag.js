@@ -14,6 +14,16 @@ var Threadtable = {
     data: [],
 
     Tryget : function (type) {
+
+        var table;
+        switch (type) {
+            case 'thread':table = '#thread_table';break;
+            case 'trash': table = '#trash_table'; break;
+        }
+
+        var tablee = $(table).data('zui.datagrid');
+        tablee.renderLoading(1);
+
         var that = this;
         $.ajax({
             url : this.link,
@@ -22,10 +32,8 @@ var Threadtable = {
             success:function (res) {
                 var data = JSON.parse(res);
                 that.data = data.Data;
-                switch (type) {
-                    case 'thread': that.renew('#thread_table',1); break;
-                    case 'trash': that.renew('#trash_table',1); break;
-                }
+                that.renew(table);
+                tablee.renderLoading(0);
                 setTimeout(
                     function () {
                         new $.zui.Messager(data.Message, {
@@ -33,19 +41,28 @@ var Threadtable = {
                             type: data.Stat === 'OK' ? 'success' : 'danger',
                             placement: 'bottom-left',
                         }).show();
-                    },600
+                    },300
                 );
-
             },
+            error: function () {
+                tablee.renderLoading(0);
+                setTimeout(
+                    function () {
+                        new $.zui.Messager('加载失败，请重试', {
+                            icon: 'bell',
+                            type: 'danger',
+                            placement: 'bottom-left',
+                        }).show();
+                    },300
+                );
+            }
         })
     },
 
-    renew : function (e,cp = 0) {
+    renew : function (e) {
         var elm = $(e).data('zui.datagrid');
-        if(cp){elm.renderLoading('刷新中...');}
         elm.setDataSource(this.data);
         elm.render();
-        if(cp){elm.renderLoading(0);}
     }
 };
 
