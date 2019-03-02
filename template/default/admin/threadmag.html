@@ -1,5 +1,5 @@
 <!-- 文章管理列表 -->
-{extend name="admin/frame" /}
+{extend name="default/admin/frame" /}
 {block name="nav"}
     <li class="nav-parent show"><a><i class="icon icon-file"></i>文章管理</a>
         <ul class="nav">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="tab-pane fade " id="thread-add">
-        {include file="common/thread_sender" /}
+        {include file="default/common/thread_sender" /}
     </div>
     <div class="tab-pane fade" id="thread-trash">
 

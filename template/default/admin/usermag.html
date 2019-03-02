@@ -1,5 +1,5 @@
 <!-- 用户管理列表 -->
-{extend name="admin/frame" /}
+{extend name="default/admin/frame" /}
 {block name="nav"}
     <script>
         var appm = {$appm};
@@ -74,7 +74,7 @@
         <div id="ud_list_4">
         </div>
     </div>
-    {include file="admin/usermag_modal"}
+    {include file="default/admin/usermag_modal"}
     <div class="loading">
         <img src="{$Think.const.STATIC_ROOT}/img/common/loading.gif">
     </div>

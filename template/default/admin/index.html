@@ -1,4 +1,4 @@
-{extend name="admin/frame" /}
+{extend name="default/admin/frame" /}
 
 
 {block name="nav"}
@@ -38,7 +38,7 @@
                     <div class="chart-mid">
                         <span class="title">管理员近期操作次数</span>
                         <?php $mod = ["管理员访问","consoleboard","allsite","day","12"]; ?>
-                        {include file="admin/mod_single_count"}
+                        {include file="default/admin/mod_single_count"}
                     </div>
                 </div>
             </div>
@@ -47,28 +47,28 @@
             <div class="chart-big">
                 <span class="title">今日访问（时）</span>
                 <?php $mod = [["主页访问","文章浏览"],["portal","article"],["allsite","allsite"],"hour"]; ?>
-                {include file="admin/mod_double_count"}
+                {include file="default/admin/mod_double_count"}
             </div>
         </div>
         <div class="card">
             <div class="chart-big">
                 <span class="title">最近月内访问（日）</span>
                 <?php $mod = [["主页访问","文章浏览"],["portal","article"],["allsite","allsite"],"day"]; ?>
-                {include file="admin/mod_double_count"}
+                {include file="default/admin/mod_double_count"}
             </div>
         </div>
         <div class="card">
             <div class="chart-big">
                 <span class="title">一季度访问（周）</span>
                 <?php $mod = [["主页访问","文章浏览"],["portal","article"],["allsite","allsite"],"week"]; ?>
-                {include file="admin/mod_double_count"}
+                {include file="default/admin/mod_double_count"}
             </div>
         </div>
         <div class="card">
             <div class="chart-big">
                 <span class="title">一年期内访问（月）</span>
                 <?php $mod = [["主页访问","文章浏览"],["portal","article"],["allsite","allsite"],"moon"]; ?>
-                {include file="admin/mod_double_count"}
+                {include file="default/admin/mod_double_count"}
             </div>
         </div>
     </div>
