@@ -112,6 +112,7 @@ INSERT INTO `qzlit_config` VALUES ('Pm', 'df_user', '19', '{&quot;site_visite&qu
 INSERT INTO `qzlit_config` VALUES ('Enroll', 'startdate', '20', '19000101', '19000101', '面试开始时间 / 2016年2月13日 写作 20160213 ', null, null);
 INSERT INTO `qzlit_config` VALUES ('Enroll', 'enddate', '21', '19000101', '19000101', '面试结束时间 / 2016年2月13日 写作 20160213 ', null, null);
 INSERT INTO `qzlit_config` VALUES ('info', 'autologin', '3', 'off', 'off', '开启/关闭网站的自动登陆功能', null, null);
+INSERT INTO `qzlit_config` VALUES ('info', 'mobiletpl', '1', 'on', 'off', '开启移动端模板的使用', null, null);
 
 -- ----------------------------
 -- Table structure for qzlit_group
