@@ -14,6 +14,7 @@
     use qzxy\Log;
     use qzxy\Re;
     use think\Db;
+	use qzxy\common\controller\Template;
 
     class Login extends Controller{
         public function _initialize(){
@@ -65,6 +66,6 @@
         }
 
         public function main(){
-            return view('admin/login');
+            return Template::view('admin/login');
         }
     }

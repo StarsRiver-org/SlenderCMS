@@ -15,7 +15,7 @@ use qzxy\Qpage;
 use qzxy\Thread;
 use think\Controller;
 use qzxy\Search;
-use qzxy\common\controller\Admincheck;
+use qzxy\common\controller\Template;
 
 class Index extends Controller{
     public function main() {
@@ -54,6 +54,6 @@ class Index extends Controller{
             'new' => Thread::newest(),
 			'base' => Base::baseinfo(),
         ]);
-        return Admincheck::view('search/search');
+        return Template::view('search/search');
     }
 }

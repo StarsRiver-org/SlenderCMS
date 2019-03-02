@@ -17,7 +17,7 @@ use qzxy\Log;
 use qzxy\Chunk;
 use qzxy\Thread;
 use think\Controller;
-use qzxy\common\controller\Admincheck;
+use qzxy\common\controller\Template;
 
 
 class Xskj extends Controller{
@@ -33,7 +33,7 @@ class Xskj extends Controller{
             'title' => $chunk['name'],
             'base' => Base::baseinfo(),
         ]);
-        return Admincheck::view($chunk['template']);
+        return Template::view($chunk['template']);
     }
 
     public function loader($chunkid){

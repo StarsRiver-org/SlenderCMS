@@ -13,7 +13,7 @@ use qzxy\Base;
 use qzxy\Thread;
 use qzxy\Chunk;
 use qzxy\Log;
-use qzxy\common\controller\Admincheck;
+use qzxy\common\controller\Template;
 use think\Controller;
 
 class Hottopic extends Controller{
@@ -29,7 +29,7 @@ class Hottopic extends Controller{
             'title' => $chunk['name'],
             'base' => Base::baseinfo(),
         ]);
-        return Admincheck::view($chunk['template']);
+        return Template::view($chunk['template']);
     }
 
     public function loader($chunkid) {

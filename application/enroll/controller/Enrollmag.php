@@ -16,6 +16,7 @@
     use qzxy\User;
     use think\Controller;
     use think\Db;
+	use qzxy\common\controller\Template;
 
 
     class Enrollmag extends Controller
@@ -37,7 +38,7 @@
                 'en' => count(Db::query("select id from qzlit_usenroll where `aim` = '".User::ufetch()['party']."'")),
                 'en2' => count(Db::query("select id from qzlit_usenroll where `aim2` = '".User::ufetch()['party']."'"))
             ]);
-            return view('enroll/enrollmag');
+            return Template::view('enroll/enrollmag');
         }
 
         /* 面试通知发送 */ //OK

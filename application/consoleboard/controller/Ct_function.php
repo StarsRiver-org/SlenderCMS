@@ -14,42 +14,49 @@
     use qzxy\User;
     use qzxy\Qhelp;
     use qzxy\Log;
-    class Thread_function{
+    class Ct_function{
 
         /* 获取用户可管理的文章 */
-        /* 处理文章信息 */
-        static function get_threads($type) {
-            $M = User::ufetch();
-            $limit = 5000;
-
+        static function loadlist() {
             $arg = '`cuid`,`thread_title`,`thread_ptime`,`thread_editor`,`hk_sort`,`hk_mode`';
-
-            switch ($type){
-                case 'trash': $argS = 'hk_mode = 3'; break;
-                case 'thread': $argS = '(hk_mode = 1 OR hk_mode = 2)'; break;
-                default : $argS = '0';
-            }
-
-            $arr = [];
+            $M = User::ufetch();
+            $limit = 1000;
+            $threads = [];
+            $trash = [];
             if($M['pm'] >= User::$pml_setting['chunk_ct_mag']['psolid']){
-                $res = Db::query("SELECT ".$arg." FROM qzlit_thread WHERE ".$argS." order by thread_ptime desc limit ".$limit."");
+                $res = Db::query("SELECT ".$arg." FROM qzlit_thread order by thread_ptime desc limit ".$limit."");
                 foreach ($res as $t ){
-                    array_push($arr , Thread::format($t,'sample'));
+                    if($t['hk_mode'] == 3) {
+                        array_push($trash , Thread::format($t,'sample'));
+                    } else {
+                        array_push($threads , Thread::format($t,'sample'));
+                    }
                 }
             } else {
                 $chunks = Db::query("select `id` from qzlit_chunk");
                 foreach ($chunks as $k){
                     if(User::has_pm('chunk_ct_mag',$k['id'])){
-                        $res = Db::query("SELECT ".$arg." FROM qzlit_thread WHERE hk_sort = ".$k['id']." AND  ".$argS." order by thread_ptime desc  limit ".($limit/5)."");
+                        $res = Db::query("SELECT ".$arg." FROM qzlit_thread WHERE hk_sort = ".$k['id']." order by thread_ptime desc  limit ".($limit/5)."");
                         foreach ($res as $t){
-                            array_push($arr , Thread::format($t,'sample'));
+                            if($t['hk_mode'] == 3) {
+                                array_push($trash , Thread::format($t,'sample'));
+                            } else {
+                                array_push($threads , Thread::format($t,'sample'));
+                            }
                         }
                     }
                 }
             }
+            return [
+                'thread' => $threads,
+                'trash'   => $trash,
+            ];
+        }
 
+        /* 过滤分类用户可管理的文章 */
+        static function get_threads($threads, $type) {
             $chunk = Db::query("select * from qzlit_chunk");
-
+            $arr = $threads[$type];
             for ($i = 0; $i < count($arr); $i++) {
                 foreach ($chunk as $value) {
                     if ($value['id'] == $arr[$i]['sort']) {
@@ -61,7 +68,7 @@
                     case 1:
                     case 2:
                         $arr[$i]['func'] = '
-                            <a class="threadfuncicon icon-edit text-primary" href="' . SITE . '/consoleboard/threadmag/renewthread/' . $arr[$i]["id"] . '.html" title="编辑文章" target="_blank"></a>
+                            <a class="threadfuncicon icon-edit text-primary" href="' . SITE . '/consoleboard/ctmag/renewthread/' . $arr[$i]["id"] . '.html" title="编辑文章" target="_blank"></a>
                             <a class="threadfuncicon icon-trash text-warning" onclick="Threadmag.setstat(\'trashthread\',' . $arr[$i]["id"] . ')" title="回收文章"></a>';
 
                         $temp = $arr[$i]['mode'] == 1 ? '<a class="threadfuncicon icon-eye-close text-danger" onclick="Threadmag.setstat(\'pushthread\',' . $arr[$i]["id"] . ')" title="推送文章"></a>' : '<a class="threadfuncicon icon-eye-open text-success" onclick="Threadmag.setstat(\'dpushthread\',' . $arr[$i]["id"] . ')" title="取消推送""></a>';
@@ -74,7 +81,7 @@
                         break;
                 }
             }
-            return $arr;
+            return json_encode($arr);
         }
 
         /* 获取用户管理的板块 */

@@ -14,7 +14,7 @@ use qzxy\Base;
 use qzxy\Log;
 use qzxy\Chunk;
 use qzxy\Thread;
-use qzxy\common\controller\Admincheck;
+use qzxy\common\controller\Template;
 use think\Controller;
 
 class Index extends Controller{
@@ -38,7 +38,7 @@ class Index extends Controller{
         $this->loader($chunk['id']);
 
         /*渲染模板，输出*/
-        return Admincheck::view($chunk['template']);
+        return Template::view($chunk['template']);
     }
 
     public function loader($chunkid){

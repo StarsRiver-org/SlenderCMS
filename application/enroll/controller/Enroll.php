@@ -13,7 +13,7 @@ namespace qzxy\enroll\controller;
 
 use qzxy\Config;
 use qzxy\Qhelp;
-use qzxy\common\controller\Admincheck;
+use qzxy\common\controller\Template;
 use think\Controller;
 use think\Db;
 
@@ -21,7 +21,7 @@ use think\Db;
 class Enroll extends Controller {
 
     public function main() {
-        return Admincheck::view('enroll/enroll');
+        return Template::view('enroll/enroll');
     }
 
     public function check() {

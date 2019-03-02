@@ -12,6 +12,7 @@
     use think\Controller;
     use think\Db;
     use qzxy\User;
+	use qzxy\common\controller\Template;
 
     class Navmag extends Controller{
         public function _initialize() {
@@ -36,7 +37,7 @@
                     'searchnav' => $searchnav,
                     'foonav' => $foonav,
                 ]);
-                return view('admin/navmag');
+                return Template::view('admin/navmag');
             }
         }
     }

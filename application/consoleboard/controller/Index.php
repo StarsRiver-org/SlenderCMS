@@ -13,6 +13,7 @@
     use qzxy\User;
     use think\Controller;
     use think\Db;
+	use qzxy\common\controller\Template;
 
     class Index extends Controller{
 
@@ -88,6 +89,6 @@
                 'info_visit' => $visit_log,
                 'index' => 'active',
             ]);
-            return view('admin/index');
+            return Template::view('admin/index');
         }
     }

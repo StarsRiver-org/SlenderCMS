@@ -14,6 +14,7 @@ use qzxy\Base;
 use qzxy\Thread;
 use qzxy\Qhelp;
 use think\Controller;
+use qzxy\common\controller\Template;
 
 class View extends Controller{
     public function main(){
@@ -29,7 +30,7 @@ class View extends Controller{
                 if(!empty($_GET['from']) && Qhelp::chk_pint($_GET['from'])){
                     $this->assign(['banners'=>Chunk::loadbanner($_GET['from'])]);
                 }
-                return view('portal/thread_article'); /*这里是文章显示模板，可用于自定义你的模板文件*/
+                return Template::view('portal/thread_article'); /*这里是文章显示模板，可用于自定义你的模板文件*/
             } else {
                 $this->error('您要查看的内容不存在');
             }

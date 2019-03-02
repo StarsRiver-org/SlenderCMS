@@ -15,6 +15,7 @@
     use think\Db;
     use qzxy\Re;
     use qzxy\User;
+	use qzxy\common\controller\Template;
 
     class Chunkmag extends Controller{
         public function _initialize() {
@@ -49,7 +50,7 @@
                 'splv2' => Db::query("select `id`, `chunk_name`, `chunk_below`,`chunk_lv`  from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2"),
             ]);
             $this->assign(['chunkmag'   => 'active',]);
-            return view('admin/chunkmag');
+            return Template::view('admin/chunkmag');
         }
     }
     

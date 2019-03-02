@@ -15,6 +15,7 @@
     use qzxy\Qhelp;
     use qzxy\Config;
     use think\Db;
+	use qzxy\common\controller\Template;
 
     class Configmag extends Controller{
         public function _initialize() {
@@ -28,7 +29,7 @@
         public function main(){
 
             $this->assign(['configmag'   => 'active',]);
-            return view('admin/configmag');
+            return Template::view('admin/configmag');
         }
 
         public function logic(){

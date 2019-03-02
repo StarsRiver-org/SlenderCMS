@@ -14,6 +14,7 @@
     use qzxy\Qhelp;
     use think\Db;
     use think\Controller;
+	use qzxy\common\controller\Template;
 
 
     class Usermag extends Controller {
@@ -31,7 +32,7 @@
                 'usermag' => 'active',
                 'appm' => User::ufetch()['pm'],
             ]);
-            return view('admin/usermag');
+            return Template::view('admin/usermag');
         }
 
         public function get_usernum(){

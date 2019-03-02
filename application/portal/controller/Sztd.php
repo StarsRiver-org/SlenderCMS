@@ -16,7 +16,7 @@ use qzxy\Log;
 use qzxy\Chunk;
 use qzxy\Thread;
 use think\Controller;
-use qzxy\common\controller\Admincheck;
+use qzxy\common\controller\Template;
 
 class Sztd extends Controller{
     public function main(){
@@ -31,7 +31,7 @@ class Sztd extends Controller{
             'title' => $chunk['name'],
             'base' => Base::baseinfo(),
         ]);
-        return Admincheck::view($chunk['template']);
+        return Template::view($chunk['template']);
     }
 
     public function loader($chunkid){

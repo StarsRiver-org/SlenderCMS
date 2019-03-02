@@ -15,6 +15,7 @@
     use qzxy\Qpage;
     use qzxy\Re;
     use qzxy\Thread;
+	use qzxy\common\controller\Template;
     use think\Controller;
     class More extends Controller{
         function main(){
@@ -67,6 +68,6 @@
                 Re::echo('danger','页面错误',true);
                 return '<script>window.location.href=\''.SITE.'/threads/more?from='.$from.'&cid='.$_GET['cid'].'&page='.$pages.'\'</script>';
             }
-            return view('portal/thread_more');
+            return Template::view('portal/thread_more');
         }
     }
