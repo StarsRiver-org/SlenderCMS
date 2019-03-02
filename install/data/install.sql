@@ -91,7 +91,7 @@ CREATE TABLE `qzlit_config` (
 -- Records of qzlit_config
 -- ----------------------------
 INSERT INTO `qzlit_config` VALUES ('Info', 'webkey', '0', '5f5a0ecbb31ef7860c8d8aec79a23777', null, '接口密匙，外部程序访问本机接口时的对接口令。', null, '1');
-INSERT INTO `qzlit_config` VALUES ('Info', 'open', '1', 'on', '1', '设置为 off 时，只有管理员可以访问网站', null, null);
+INSERT INTO `qzlit_config` VALUES ('Info', 'open', '1', 'on', 'on', '设置为 off 时，只有管理员可以访问网站', null, null);
 INSERT INTO `qzlit_config` VALUES ('info', 'getAddr', '2', 'on', 'on', '通过系统来获取用户IP地理信息（可以提高准确性，但会影响网站性能.需要网站能够请求淘宝接口）', null, null);
 INSERT INTO `qzlit_config` VALUES ('Info', 'campus', '4', '{&quot;1&quot;:&quot;明向&quot;,&quot;2&quot;:&quot;迎西&quot;,&quot;3&quot;:&quot;虎峪&quot;}', '{&quot;1&quot;:&quot;明向校区&quot;,&quot;2&quot;:&quot;迎西校区&quot;,&quot;3&quot;:&quot;虎峪校区&quot;}', '校区', null, null);
 INSERT INTO `qzlit_config` VALUES ('Info', 'party', '5', '{&quot;1&quot;:&quot;运营部（办公室）&quot;,&quot;2&quot;:&quot;卡乐坊&quot;,&quot;3&quot;:&quot;新闻中心&quot;,&quot;4&quot;:&quot;清泽微视&quot;,&quot;5&quot;:&quot;综合媒体&quot;,&quot;6&quot;:&quot;公关策划部&quot;,&quot;7&quot;:&quot;UED[体验设计]&quot;,&quot;8&quot;:&quot;蓝之青[网络安全]&quot;}', '{&quot;1&quot;:&quot;运营部&quot;,&quot;2&quot;:&quot;卡乐坊&quot;,&quot;3&quot;:&quot;新闻中心&quot;,&quot;4&quot;:&quot;清泽微视&quot;,&quot;5&quot;:&quot;综合媒体&quot;,&quot;6&quot;:&quot;公关策划部&quot;,&quot;7&quot;:&quot;UED[体验设计]&quot;,&quot;8&quot;:&quot;蓝之青[网络安全]&quot;}', '部门类型', null, null);
