@@ -18,8 +18,8 @@
 		
         public static function view($tpl) { /*管理员登陆检查*/
 
-			if( self::amending()  //网站关闭检测
-				&& User::has_pm('is_admin')  //管理员登陆检测
+			if( !self::amending()  //网站关闭检测
+				|| User::has_pm('is_admin')  //管理员登陆检测
 				|| in_array(explode('/',$_SERVER['REQUEST_URI'])[1],['consoleboard','enroll'])//访问后台检测
 			){
 				/* 正常访问 */
