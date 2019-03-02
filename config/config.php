@@ -8,8 +8,8 @@
     define('ADDON_ROOT','http:'.SITE.'/application/addons');
 
 /* 网站模板配置 */
-    $TPLT = 'default';
-    defined('TPL_PATH') or define('TPL_PATH', ROOT_PATH.'/template/'.$TPLT . DS);
+
+    defined('TPL_PATH') or define('TPL_PATH', ROOT_PATH.'/template/' . DS);
 
     return [
         // +----------------------------------------------------------------------
