@@ -25,7 +25,6 @@
         }
 
         public function logincheck() { /*管理员登陆检查*/
-            Log::visit("consoleboard", "home", "logincheck");
             session_start();
             if(empty($_SESSION['uid'])){$this->error('请先登陆', SITE . "/consoleboard/login.html");}
             session_write_close();
