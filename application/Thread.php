@@ -55,6 +55,8 @@ class Thread extends Controller {
             } elseif (!empty($_POST['renewthread'])) {
                 $coverimg = Db::query("select thread_coverimg from qzlit_thread WHERE cuid = '" . (int)$_POST['renewthread'] . "'")[0]['thread_coverimg'];
             }
+			
+			
 
             @$thread = [
                 'title' => htmlspecialchars(Qhelp::dss($_POST['title']),ENT_QUOTES),
@@ -63,7 +65,7 @@ class Thread extends Controller {
                 'editor' => $E['uid'],
                 'author' => htmlspecialchars(Qhelp::dss($_POST['author']),ENT_QUOTES),
                 'time' => time(),
-                'htime' => mktime(substr($_POST['htime'],'11','2'),substr($_POST['htime'],'14','2'),0,substr($_POST['htime'],'5','2'),substr($_POST['htime'],'8','2'),substr($_POST['htime'],'0','4')),
+                'htime' => !empty($_POST['htime']) ? mktime(substr($_POST['htime'],'11','2'),substr($_POST['htime'],'14','2'),0,substr($_POST['htime'],'5','2'),substr($_POST['htime'],'8','2'),substr($_POST['htime'],'0','4')) : time(),
                 'keyword' => htmlspecialchars(Qhelp::dss($_POST['keyword']),ENT_QUOTES),
                 'descrip' => htmlspecialchars(Qhelp::dss($_POST['descrip']),ENT_QUOTES),
                 'threadmode' => $_POST['threadmode'],
@@ -144,13 +146,13 @@ class Thread extends Controller {
         $argumets = '`cuid`, `thread_title`, `thread_author`, `thread_editor`, `thread_coverimg`,`thread_htime`,`thread_ctime`, `thread_ptime`, `hk_sort`,`hk_mode`, `hk_descrip`,`hk_keywords`,`ore_degree`,`ore_view`';
         if(is_array($arr)){
             foreach ($arr as $key=>$val){
-                $res = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $val AND hk_mode = 2 order by thread_ptime desc limit $limit");
+                $res = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $val AND hk_mode = 2 order by thread_htime desc limit $limit");
                 foreach($res as $l){
                     $list[$key][] = self::format($l,'more');
                 }
             }
         } else {
-            $res = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $arr AND hk_mode = 2 order by thread_ptime desc limit $limit");
+            $res = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $arr AND hk_mode = 2 order by thread_htime desc limit $limit");
             foreach($res as $l){
                 $list[] = self::format($l,'more');
             }
@@ -287,9 +289,9 @@ class Thread extends Controller {
     /*最新文章*/
     public static function newest($cuid = null){
         if(!$cuid){
-            $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 ORDER BY thread_ptime DESC LIMIT 8");
+            $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 ORDER BY thread_htime DESC LIMIT 8");
         } else {
-            $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 AND hk_sort = $cuid ORDER BY thread_ptime DESC LIMIT 8");
+            $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 AND hk_sort = $cuid ORDER BY thread_htime DESC LIMIT 8");
         }
         $data = [];
         for ($i = 0 ; $i < count($res); $i++){
