@@ -36,42 +36,35 @@
         , toolbars: [[
             /*'fullscreen', */
 
-			'undo', 'redo', '|',
+			'undo', 'redo','|', 'cleardoc', 'removeformat','pasteplain','|',  'autotypeset', 
+			
+			'customstyle', 'paragraph', 'fontfamily', 'fontsize',
+			
+            'template',  'formatmatch', 'selectall', 'blockquote','|', 'forecolor', 'backcolor','bold', 
+			
+			'italic', 'underline', 'fontborder', 'strikethrough','superscript', 'subscript', 
+			
+            'directionalityltr', 'directionalityrtl', 'indent','justifyleft', 'justifycenter', 'justifyright', 'justifyjustify',
 
-            'bold', 'italic', 'underline', 'fontborder', 'strikethrough',
-			'superscript', 'subscript', 'removeformat', 'formatmatch',
-			'autotypeset', 'blockquote', 'pasteplain', '|',
+			'insertorderedlist','insertunorderedlist', 'rowspacingtop', 'rowspacingbottom', 'lineheight', 
+
+			'inserttable', 'deletetable', 'insertparagraphbeforetable','insertrow', 'deleterow', 'insertcol', 'deletecol',
+			
+			'mergecells', 'mergeright', 'mergedown', 'splittocells','splittorows', 'splittocols', 'charts', 
 
 
-			/*'forecolor', 'backcolor',*/ 'insertorderedlist',
-			'insertunorderedlist', 'selectall', 'cleardoc', '|',
+			'touppercase', 'tolowercase', 'link', 'unlink', 'attachment', 'spechars','horizontal',
+			
+			'emotion','simpleupload', 'insertimage','insertvideo','map', 'webapp','insertframe',
 
-            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+			/*'imagenone', 'imageleft', 'imageright', 'imagecenter',*//*'anchor',*/
 
-            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+             /*'scrawl',*/
+			 /*'music', */ /*'gmap',
+			 'insertcode',  'pagebreak',*/
+			/*'background', */
 
-            'directionalityltr', 'directionalityrtl', 'indent', '|',
-
-            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
-
-			'touppercase', 'tolowercase', '|',
-
-            'link', 'unlink', /*'anchor',*/
-
-			/*'imagenone', 'imageleft', 'imageright', 'imagecenter',*/ '|',
-
-            'simpleupload', 'insertimage', 'emotion', /*'scrawl',*/
-			'insertvideo', /*'music', */'attachment', /*'map', 'gmap',
-			'insertframe', 'insertcode', 'webapp',*/ 'pagebreak',
-			'template', /*'background', */'|',
-
-            'horizontal',  /*'date', 'time',*/'spechars', /*'snapscreen',*/
-			'wordimage', '|',
-
-            'inserttable', 'deletetable', 'insertparagraphbeforetable',
-			'insertrow', 'deleterow', 'insertcol', 'deletecol',
-			'mergecells', 'mergeright', 'mergedown', 'splittocells',
-			'splittorows', 'splittocols', 'charts', '|',
+            /*'date', 'time',*/ /*'snapscreen','wordimage', */
 
             /*'print',*/ 'preview', 'searchreplace', 'drafts','source' /*,'help'*/
         ]]
@@ -87,8 +80,8 @@
 
         //主题配置项,默认是default。有需要的话也可以使用如下这样的方式来自动多主题切换，当然，前提条件是themes文件夹下存在对应的主题文件：
         //现有如下皮肤:default
-        //,theme:'default'
-        //,themePath:URL +"themes/"
+        ,theme:'gray'
+        ,themePath:URL +"themes/"
 
         //,zIndex : 900     //编辑器层级的基数,默认是900
 
