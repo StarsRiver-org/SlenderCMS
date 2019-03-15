@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<!--
+
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *      Date:   2018-11-06
+ *
+ */
+
+-->
+<head>
+	<meta charset="utf-8" />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+	<title>题库查询</title>
+
+	<!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+ 	<script>ApiUrl = window.location.protocol+"//"+window.location.host;</script>
+</head>
+
+<body>
+	<div class="container">
+		<form class="search" style="text-align: center">
+			<input class="kw" id="qkey" name="key" type="text" placeholder="在这里输入关键词来匹配内容"/>
+			<button class="sc" type="button">搜索</button>
+			<div style="text-align: center">
+				<div class="input"><label for="qcourse">课程</label><select id="qcourse"  name="course" ></select></div>
+				<div class="input"><label for="qname">年度</label><select id="qname" name="year" ></select></div>
+				<div class="input"><label for="qchapter">章节</label><select id="qchapter"  name="chapter" ></select></div>
+				<div class="input"><label for="qtype">题型</label><select id="qtype"  name="type" ></select></div>
+			</div>
+			<input type="hidden" name="hash" value="5f5a0ecbb31ef7860c8d8aec79a23777"/>
+		</form>
+
+		<div id="qlist">
+		</div>
+		<div id="state">
+			<div id="fail" class="hide">加载失败，重新加载？</div>
+			<div id="more" class="hide">加载更多</div>
+			<div id="end" class="hide">已经到底了</div>
+			<div id="nothing" class="hide">补充索引信息，查询更多内容</div>
+			<div id="loadon" class="hide" style="line-height: 0; padding: 5px 0 6px 0">
+				<section class="line-scale-pulse-out-rapid">
+				  <div></div>
+				  <div></div>
+				  <div></div>
+				  <div></div>
+				  <div></div>
+				</section>
+			</div>
+			<p id="start" class="hide">在上面填入匹配信息即可查询已有的题库内容</p>
+		</div>
+	</div>
+</body>
+	<script src="assets/js/jquery-2.2.4.min.js"></script>
+	<script src="assets/js/main.js"></script>
+</html>

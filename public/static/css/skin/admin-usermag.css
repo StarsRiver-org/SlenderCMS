@@ -1,0 +1,89 @@
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *
+ */
+#user-pms em{
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    font-style: normal;
+}
+#user-pms > div{
+    margin-bottom: 15px;
+}
+#user-pms .item{
+    display: inline-block;
+    margin: 3px 5px;
+}
+#user-pms input[type = 'checkbox']{
+    display: none;
+}
+#user-pms input[type = 'text']{
+    display: inline-block;
+    margin-left: 8px;
+    padding: 0 5px;
+    color: #fff;
+    border-radius: 6px;
+    width: 130px;
+}
+#user-pms label{
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 200;
+    text-shadow: 0 0 0;
+    border: 1px solid;
+}
+#user-pms input[type = 'checkbox'] + label{
+    opacity: .39;
+    transition: .1s cubic-bezier(0, 0.44, 0.2, 1);
+    border: 1px dotted;
+}
+#user-pms input[type = 'checkbox']:checked + label{
+    opacity: 1;
+    border: 1px solid;
+}
+#user-pms  input:disabled + label{
+    pointer-events: none !important;
+    cursor: default !important;
+    border-color: #bbb;
+    background: #ddd;
+    color: #000;
+}
+
+#user-pms input[type = 'checkbox']:checked:disabled + label{
+    color: #fff !important;
+}
+
+#user-pms .user-pm label{
+    color: #567bee;
+}
+#user-pms .user-pm input[type = 'checkbox']:checked:disabled + label{
+    background: #567bee;
+    border-color: #567bee;
+}
+
+#user-pms .admin-pm label{
+    color: #ee6852;
+}
+#user-pms .admin-pm input[type = 'checkbox']:checked:disabled + label{
+    background: #ee6852;
+    border-color: #ee6852;
+}
+
+#user-pms .admin-pm input[type = 'text'] {
+    background: rgba(255, 255, 255, .39);
+    border: 1px solid rgba(238, 104, 82, 0.39);
+    color: #ee6852;
+}
+#user-pms .admin-pm input[type = 'text']:disabled {
+    background: rgba(238, 104, 82, 0.13);
+}

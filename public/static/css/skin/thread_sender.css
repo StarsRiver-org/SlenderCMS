@@ -1,0 +1,265 @@
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *
+ */
+
+/*  文章发布器样式  */
+    #forum_sender{
+        min-width: 720px;
+     }
+    #forum_sender form .edui-editor,
+    #forum_sender form .edui-editor-iframeholder,
+    #forum_sender form .edui-editor-toolbarbox{
+        width:auto !important;
+    }
+    #forum_sender form{
+        width:100%;
+        box-sizing: border-box;
+        border: 1px solid #d4d4d4;
+        background: #fff;
+        overflow: visible;
+        float: right;
+
+    }
+
+    #forum_sender #bar{
+        z-index: 2;
+        height:1px;
+        width:100%;
+        background: #d4d4d4;
+        float: left;
+    }
+    #forum_sender *{
+        font-size: 14px;
+    }
+    #forum_sender button{
+        font-size: 14px;
+    }
+    #forum_sender .ic{
+        height:42px;
+        box-sizing: border-box;
+        display: inline-block;
+        width:100%;
+        font-size: 0;
+    }
+    #forum_sender > *{
+        vertical-align: top;
+    }
+    #forum_sender .ic b{
+        width:80px;
+        text-align: center;
+        line-height: 42px;
+        padding: 0 10px ;
+        box-sizing: border-box;
+        background: #f8f8f8;
+        border-right: 1px solid #d4d4d4 !important;
+    }
+    #forum_sender .ic.s{
+        position: relative;
+        width: 269px;
+        border-right: 1px solid #d4d4d4;
+    }
+    #forum_sender .ic.s input{
+        display: inline-block;
+        width: calc(100% - 80px);
+    }
+    #forum_sender .btn {
+        width:100px;
+        text-align: center;
+        line-height: 42px;
+        padding: 0 10px ;
+        background: #fa7469;
+        border:none;
+        color: #fff;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        border-radius:0;
+        text-shadow: none;
+    }
+    #forum_sender .btn:hover {
+        cursor: pointer;
+        background: #fa1615;
+    }
+    #forum_sender a.btn:hover {
+        cursor: pointer;
+        background: #b8b8b8;
+    }
+    #forum_sender a.btn{
+        background: #d1d1d1;
+    }
+    #forum_sender .ic #keyword,
+    #forum_sender .ic #descrip,
+    #forum_sender .ic #author {
+        width:calc(100% - 80px);
+    }
+    #threadtype{
+        width: 140px;
+        border-right: 1px solid #d4d4d4 !important;
+    }
+    #threadmode{
+        width:80px;
+        border-left: 1px solid #d4d4d4 !important;
+    }
+    #forum_sender .ic #title{
+        width:calc(100% - 280px);
+    }
+    #forum_sender input {
+        border:none;
+        height:42px;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: none;
+        outline: none;
+    }
+    #forum_sender select{
+        display: none;
+    }
+    #forum_sender select::-ms-expand {
+        display: none;
+    }
+    #forum_sender .infobox{
+        width: calc(100% - 199px);
+        border-right: 1px solid #d4d4d4;
+        display: inline-block;
+    }
+    #forum_sender .coverimg{
+        position: relative;
+        display: inline-block;
+        width:198px;
+        height:85px;
+        overflow: hidden;
+    }
+    #forum_sender .coverimg img{
+        position:relative;
+        display: block;
+        z-index: 1;
+        width:100%;
+        height:auto;
+        margin: 0 auto;
+    }
+    #forum_sender .coverimg .preview{
+        width:199px;
+        height:85px;
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: 2;
+    }
+    #forum_sender .coverimg input{
+        cursor: pointer;
+        position: absolute;
+        left:0;
+        bottom:0;
+        z-index: 3;
+        width:200px;
+        height:85px;
+        opacity: 0;
+    }
+/* select美化 */
+.cs-select {
+    vertical-align: middle;
+    position: relative;
+    text-align: left;
+    background: #fff;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.cs-skin-border {
+    font-size: 14px;
+    display: inline-block;
+    overflow: visible;
+    z-index: 1000 !important;
+}
+.cs-skin-border > span,
+.cs-skin-border.cs-active > span {
+    z-index: 100;
+    display: inline-block;
+    height:42px;
+    width:140px;
+    line-height: 42px;
+    background: #f1f1f1;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border-right: 1px solid #d4d4d4;
+    border-left: 1px solid #d4d4d4;
+    -webkit-transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s, border-color 0.2s;
+}
+.cs-skin-border.cs-active > span {
+    background: #fff;
+}
+.cs-skin-border .cs-options {
+    display: block;
+    width:140px;
+    box-sizing: border-box;
+    border:1px solid #d4d4d4;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    background: #fff;
+    -webkit-transition: opacity 0.2s, visibility 0s 0.2s;
+    transition: opacity 0.2s, visibility 0s 0.2s;
+    overflow: hidden;
+}
+.cs-skin-border.cs-active .cs-options {
+    z-index: 200;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
+.cs-skin-border ul{
+    padding: 0;
+    margin: 0;
+}
+
+.cs-skin-border ul li.disabled{
+    background:#eee;
+    color:#aaa;
+    display: none;
+}
+.cs-skin-border .cs-optgroup{
+    display: block;
+    overflow: auto;
+    max-height: 300px !important;
+    padding: 0 !important;
+}
+.cs-skin-border .cs-optgroup > span{
+    width: 100%;
+    text-align: center;
+    background: #e2e2e2;
+    position: absolute;
+    box-shadow: 0 2px 2px rgba(0,0,0,.3);
+}
+.cs-skin-border .cs-optgroup > ul{
+    margin-top: 26px;
+}
+
+.cs-skin-border ul [data-option]{
+    box-sizing: border-box;
+    padding: 0 10px;
+    display: block;
+    line-height: 26px;
+    height: 26px;
+    list-style: none;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+.cs-skin-border ul [data-option]:hover{
+     background: #f0f0f0;
+}
+.cs-skin-border ul [data-option] span{
+    font-size: 13px !important;
+    white-space: nowrap;
+}

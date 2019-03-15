@@ -1,0 +1,73 @@
+/*
+ * 引入这个css文件是非主页(home)的头部部分,短高度风格的
+ * 没有颜色,需要再设置
+ */
+
+.header,
+.header .container .empty {
+	height: 100px;
+}
+.header .container .searchBox {
+	margin-left: 16px;
+}
+.header .container .searchBox .qzSearch {
+	display: inline-block;
+	vertical-align: middle;
+	width: 180px;
+	height: 40px;
+	border-radius: 4px;
+	background-color: #6c1012;
+}
+.header .container .searchBox .qzSearch input {
+	margin-top: 6px;
+	padding-left: 6px;
+	margin-left: 6px;
+	width: 136px;
+	height: 28px;
+	background-color: #fff9fa;
+	color: #000;
+	font-size: 14px;
+}
+.header .container .searchBox .searchMenu {
+	display: inline-block;
+	margin-top: 0;
+}
+.header .container .searchBox .searchMenu a {
+	margin-left: 8px;
+}
+.header .container .searchBox .searchMenu a:first-child {
+	margin-left: 4px;
+}
+@media (min-width: 1500px) {
+	.header .container .nav li {
+		margin-left: 10px;
+	}
+	.header .container .nav li > a:after {
+		right: 0;
+	}
+	.header .container .searchBox {
+		margin-left: 10px;
+	}
+	.header .container .searchBox .searchMenu a {
+		margin-right: 0;
+	}
+}
+@media (min-width: 2400px) {
+	.header .container .searchBox {
+		margin-left: 100px;
+	}
+	.header .container .searchBox .searchMenu {
+		display: none;
+	}
+}
+@media (max-width: 1280px) {
+	.header .container .searchBox .searchMenu {
+		display: none;
+	}
+}
+@media (max-width: 993px) {
+    .header,
+    .header .container .empty {
+    	height: 140px;
+    }
+}

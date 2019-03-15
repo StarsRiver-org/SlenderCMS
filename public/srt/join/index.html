@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+	<title>清泽心雨 - 报名入口</title>
+
+	<!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/css/paper-bootstrap-wizard.css" rel="stylesheet" />
+	<link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/cropper.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+ 	<script>ApiUrl = window.location.protocol+"//"+window.location.host;</script>
+</head>
+
+<body>
+	<div class="image-container set-full-height" style="background-image: url('assets/img/paper-1.jpeg')">
+	    <div class="container">
+	        <div class="row">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <div class="wizard-container">
+		                <div class="card wizard-card" data-color="green" id="wizard">
+		                	<form method="post" class="deliver">
+								<input type="hidden" name="hash" value="5f5a0ecbb31ef7860c8d8aec79a23777"/>
+		                    	<div class="wizard-header">
+		                        	<h3 class="wizard-title">清泽心雨报名入口</h3>
+		                        	<p class="category">一个简单的报名入口,别想在这里了解什么。</p>
+		                    	</div>
+								<div class="wizard-navigation">
+									<div class="progress-with-circle">
+									    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 15%;"></div>
+									</div>
+									<ul>
+			                            <li>
+											<a href="#location" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-light-bulb"></i>
+												</div>
+												基本信息
+											</a>
+										</li>
+			                            <li>
+											<a href="#type" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-info"></i>
+												</div>
+												学籍信息
+											</a>
+										</li>
+			                            <li>
+											<a href="#facilities" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-location-arrow"></i>
+												</div>
+												报名志向
+											</a>
+										</li>
+			                            <li>
+											<a href="#description" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-image"></i>
+												</div>
+												上传照片
+											</a>
+										</li>
+			                        </ul>
+								</div>
+		                        <div class="tab-content">
+		                            <div class="tab-pane" id="location">
+		                            	<div class="row">
+		                                	<div class="col-sm-12">
+		                                    	<h5 class="info-text">请认真输入，不然我们就找不到你了哦！</h5>
+		                            		</div>
+		                                	<div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group solid-80">
+		                                        	<label>姓名</label>
+		                                        	<input type="text" class="form-control" name="name" autocomplete="name" placeholder="姓名" value="" required>
+		                                    	</div>
+		                                	</div>
+		                                	<div class="col-sm-5">
+		                                    	<div class="form-group solid-80">
+		                                            <label>性别</label><br>
+		                                            <select name="sex" class="form-control" autocomplete="sex" required>
+														<option selected disabled>请选择性别</option>
+														<option  value="1">男</option>
+														<option value="2">女</option>
+													</select>
+		                                        </div>
+		                                	</div>
+		                                	<div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group solid-80">
+		                                        	<label>电话</label>
+		                                        	<input type="number" class="form-control" name="phone" autocomplete="phone" placeholder="电话号码" value="" required>
+		                                    	</div>
+		                                	</div>
+		                                	<div class="col-sm-5">
+		                                    	<div class="form-group solid-80">
+		                                        	<label>邮箱</label>
+		                                            <input type="email" class="form-control" name="email" autocomplete="email" placeholder="邮箱" value="" required>
+		                                    	</div>
+		                                	</div>
+		                            	</div>
+		                            </div>
+		                            <div class="tab-pane" id="type">
+		                                <div class="row">
+		                                	<div class="col-sm-12">
+		                                    	<h5 class="info-text">这些内容很关键</h5>
+		                            		</div>
+		                                	<div class="col-sm-10 col-sm-offset-1">
+		                                    	<div class="form-group solid-80">
+													<label>校区</label><br>
+													<select class="form-control" name="campus" datatype="campus" required></select>
+		                                    	</div>
+		                                	</div>
+		                                	<div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group solid-80">
+													<label>学院</label><br>
+		                                            <input type="text" class="form-control" name="college" autocomplete="college" placeholder="学院" value="" required>
+		                                    	</div>
+		                                	</div>
+		                                	<div class="col-sm-5">
+		                                    	<div class="form-group solid-80">
+													<label>专业</label>
+		                                        	<input type="text" class="form-control" name="major" autocomplete="major" placeholder="专业" value="" required>
+		                                        </div>
+		                                	</div>
+		                                	<div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group solid-80">
+													<label>班级</label>
+		                                            <input type="number" class="form-control" name="class" autocomplete="class" placeholder="班级" value="" required>
+		                                    	</div>
+		                                	</div>
+		                                	<div class="col-sm-5">
+		                                    	<div class="form-group solid-80">
+													<label>学号</label>
+		                                        	<input type="number" class="form-control" name="studentid" autocomplete="studentid" placeholder="学号" value="" required>
+		                                    	</div>
+		                                	</div>
+		                            	</div>
+		                            </div>
+		                            <div class="tab-pane" id="facilities">
+		                                <h5 class="info-text">在这里选择你想要报的部门</h5>
+										<div class="alert alert-danger">注意：由于布局问题，建工，国教的小伙伴请不要选择【卡乐坊】</div>
+		                                <div class="row">
+		                                    <div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group solid-80">
+		                                        	<label>第一志愿</label>
+		                                        	<select class="form-control" name="aim" datatype="aim" required></select>
+		                                    	</div>
+		                                    </div>
+		                                    <div class="col-sm-5">
+		                                    	<div class="form-group solid-80">
+		                                        	<label>第二志愿(可选)</label>
+		                                        	<select class="form-control" name="aim2" datatype="aim"></select>
+		                                    	</div>
+		                                    </div>
+		                                    <div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group solid-80">
+		                                        	<label>理由（第一志愿）</label>
+		                                        	<textarea class="form-control" name="reasion" placeholder="请在这里诉说你的故事" required></textarea>
+		                                    	</div>
+		                                    </div>
+		                                    <div class="col-sm-5">
+		                                    	<div class="form-group solid-80">
+		                                        	<label>理由(可选)（第二志愿）</label>
+		                                        	<textarea class="form-control" name="reasion2" placeholder="请在这里诉说你的故事"></textarea>
+		                                    	</div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="tab-pane" id="description">
+		                                <div class="row">
+		                                    <h5 class="info-text">上传靓照可以大大提高面试通过率！</h5>
+											<div class="form-group">
+												<label class="preview label" data-toggle="tooltip" title="Change your avatar">
+													<img class="rounded" id="avatar" src="assets/img/icon.png" alt="avatar">
+													<input type="file" class="sr-only" id="input" name="image" accept="image/*">
+												</label>
+											</div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="wizard-footer">
+	                            	<div class="pull-right">
+	                                    <input type='button' class='btn btn-next btn-fill btn-success btn-wd' name='next' value='下一步' />
+	                                    <input type='button' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='提交' id="poster" />
+									</div>
+	                                <div class="pull-left">
+										<input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='上一步' />
+	                                </div>
+	                                <div class="clearfix"></div>
+		                        </div>
+		                    </form>
+		                </div>
+		            </div> <!-- wizard container -->
+		        </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!--[照片选区]-->
+	<div class="modal fade" id="modal" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span id="modalLabel">裁剪照片</span>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="img-container">
+						<img id="image" src="">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="crop">裁剪</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--[返回值显示]-->
+	<div class="modal fade" id="alert" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					提示
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="loading">
+		<div class="loader JS_on">
+			<span class="binary"></span>
+			<span class="binary"></span>
+			<span class="getting-there">数据处理中...</span>
+		</div>
+	</div>
+
+</body>
+
+	<!--   Core JS Files   -->
+	<script src="assets/js/jquery-2.2.4.min.js"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+
+	<script src="assets/js/cropper.js"></script>
+	<!--  Plugin for the Wizard -->
+	<script src="assets/js/paper-bootstrap-wizard.js" type="text/javascript"></script>
+
+	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+	<script src="assets/js/jquery.validate.min.js" type="text/javascript"></script>
+
+	<script src="assets/js/main.js"></script>
+</html>

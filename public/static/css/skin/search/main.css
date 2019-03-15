@@ -1,0 +1,319 @@
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *
+ */
+/* 搜索结果 css （包括无搜索结果） */
+
+input,button {
+	padding: 0;
+	border: 0;
+}
+
+/* header & footer */
+.header,
+.footer {
+	background-color: #891619;
+}
+.header .container .searchBox .searchMenu a {
+    color: #f2f2f2;
+}
+
+.footer .quickLink .container .leftLink >li>a,
+.footer .quickLink .container .rightLink >li>a {
+    color: #efefef;
+}
+
+.footer .copyright p,
+.footer .copyright p a {
+    color: #efefef;
+}
+
+.o__searchBar .container,
+.o__main .container {
+	padding-left: 30px;
+	box-sizing: border-box;
+}
+
+/* o__searchBar */
+.o__searchBar {
+	height: 100px;
+	background-color: #891619;
+}
+
+.o__searchBar .container .searchBox {
+	display: block;
+	padding-top: 28px;
+	float: none;
+}
+
+.o__searchBar .container .searchBox .searchContent {
+	display: inline-block;
+	vertical-align: top;
+}
+.o__searchBar .container .searchBox .searchContent input {
+	height: 45px;
+	width: 750px;
+	display: inline-block;
+	font-size: 22px;
+	line-height: 45px;
+	white-space: nowrap;
+	color: #000;
+	padding-left: 12px;
+	box-sizing: border-box;
+	border: none;
+}
+/* 取消按钮 */
+.o__searchBar .container .searchBox .searchContent input[type=search]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	margin-right: 10px;
+	background: url('../img/portal/home/cancel.png');
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+}
+.o__searchBar .container .searchBox .searchbtn {
+	display: inline-block;
+	vertical-align: top;
+	height: 45px;
+	width: 110px;
+	background-color: #65080a;
+	font-size: 16px;
+	color: #fff;
+	cursor: pointer;
+	margin-left: -3px;
+}
+
+.o__searchBar .container,
+.o__main .container {
+    width: 1240px;
+}
+/* o__main */
+/* other main */
+.o__main,
+.o__main .container,
+.o__main .container .listContent,
+.o__main .container .listRight {
+	/*min-height: 462.2px;*/
+	/*姑且先这样*/
+	min-height: 900px;
+    height: auto;
+}
+
+.o__main {
+    background-color: #ebefed;
+}
+
+.o__main .container {
+    background-color: #fff;
+}
+
+.o__main img {
+    background-color: #f5f5f5;
+}
+.o__main .container .listContent {
+	width: 815px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* searchResult */
+.o__main .container .listContent .searchResult {
+	padding-top: 16px;
+	padding-bottom: 10px;
+}
+.o__main .container .listContent .searchResult p {
+	font-size: 14px;
+	color: #cbcbcb;
+}
+/* listContentItem */
+.o__main .container .listContent .listContentItem {
+	margin-top: 20px;
+	margin-right: 28px;
+	padding: 5px 0 15px 0;
+	border-bottom: 1px solid #e2e5e2;
+}
+.o__main .container .listContent .listContentItem .coverimg{
+	width: 150px;
+	height: 115px;
+	float: left;
+	overflow: hidden;
+	margin-right: 15px;
+	background: #f5f5f5;
+	vertical-align: middle;
+	line-height: 115px;
+	position: relative;
+}
+.o__main .container .listContent .listContentItem .coverimg img{
+	width: 100%;
+	position: absolute;
+	transform: translateY(-50%);
+	margin-top: 35%;
+}
+}
+.o__main .container .listContent .listContentItem em {
+	color: #fe292e;
+	font-style: normal;
+	text-decoration: none;
+}
+.o__main .container .listContent .listContentItem .itemTitle {
+	font-size: 22px;
+	color: #4c4c4c;
+	margin-bottom: 10px;
+}
+.o__main .container .listContent .listContentItem .itemTitle a {
+	font-size: 22px;
+	color: #4c4c4c;
+	width: calc(100% - 165px);
+	white-space: nowrap;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.o__main .container .listContent .listContentItem .itemInfo {
+	width: auto;
+	line-height: 20px;
+	height: 40px;
+	color: #808080;
+	font-size: 16px;
+	word-wrap: break-word;
+	overflow: hidden;
+}
+.o__main .container .listContent .listContentItem .itemInfoFooter {
+	margin-top: 10px;
+}
+.o__main .container .listContent .listContentItem .itemInfoFooter span {
+	color: #c6c6c6;
+	font-size: 14px;
+}
+.o__main .container .listContent .listContentItem .itemInfoFooter span:first-child + span {
+	float: right;
+}
+
+/* listRight */
+.o__main .container .listRight {
+	float: right;
+}
+.o__main .container .listRight .listRightHead {
+    height: 55px;
+    line-height: 55px;
+    margin-bottom: 6px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #dbdbdb;
+}
+.o__main .container .listRight .listRightHead h2 {
+    font-size: 18px;
+    display: inline-block;
+    padding-left: 0;
+    text-align: center;
+    background-color: #fff;
+    width: 132px;
+    color: #65080a;
+    border-top: 2px solid #65080a;
+    border-right: 1px solid #dbdbdb;
+}
+.o__main .container .listRight .listRightHead .formore {
+    float: right;
+    display: inline-block;
+    margin-right: 30px;
+    font-size: 16px;
+    color: #808080;
+}
+.o__main .container .listRight .listRightHead .formore:after {
+	content: url('../../../img/portal/home/formore.png');
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+/* listRightItem */
+.o__main .container .listRight .listRightContent {
+	margin-left: 18px;
+	margin-right: 18px;
+}
+.o__main .container .listRight .listRightContent .listRightItem {
+	margin-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 20px;
+	border-bottom: 1px solid #e2e5e2;
+}
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__coverimg {
+	width: 122px;
+	height: 82px;
+	overflow: hidden;
+}
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__coverimg img {
+	max-width: 122px;
+	max-height: 82px;
+	height: 82px;
+}
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__coverimg,
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content {
+	display: inline-block;
+	vertical-align: top;
+}
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content {
+	margin-left: 12px;
+}
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content .listRightItem__tit {
+	color: #000;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 24px;
+	height: 48px;
+	width: 200px;
+	word-wrap: break-word;
+	overflow: hidden;
+	display: block;
+}
+.o__main .container .listRight .listRightContent .listRightItem .listRightItem__content .listRightItem__date {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #8d8d8d;
+}
+
+/* .pager.pager-pills */
+.o__main .container .pager.pager-pills {
+	display: block;
+	margin-top: 50px;
+	margin-left: 100px;
+	padding-bottom: 100px;
+}
+.o__main .container .pager.pager-pills li {
+	display: inline-block;
+	margin-right: 14px;
+	border: 1px solid #eaeaea;
+}
+.o__main .container .pager.pager-pills li.active {
+	border: none;
+}
+.o__main .container .pager.pager-pills li a {
+	display: block;
+	width: 35px;
+	height: 36px;
+	line-height: 36px;
+	color: #65080a;
+	font-size: 14px;
+	text-align: center;
+}
+.o__main .container .pager.pager-pills li.active a {
+	font-weight: bold;
+	cursor: default;
+}
+.o__main .container .pager.pager-pills li.previous a,
+.o__main .container .pager.pager-pills li.next a {
+	width: 80px;
+}
+
+/* content_none */
+.o__main .container .listContent .content_none {
+	margin: 160px 0;
+}
+.o__main .container .listContent .content_none p {
+	color: #999;
+	font-size: 20px;
+	text-align: center;
+}

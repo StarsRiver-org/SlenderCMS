@@ -1,0 +1,431 @@
+/**
+ *      [Starsriver] (C)2014-2099.
+ *      This is NOT a freeware, follows Apache2.0 licence
+ *
+ *      Author: 张宇
+ *      Email:  starsriver@yahoo.com
+ *
+ */
+.datatable {
+    height: calc(100% - 150px);
+    display: block;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    position: relative;
+
+}
+.datatable .loading {
+    position: absolute !important;
+}
+
+.datahead {
+    height: 36px;
+    line-height: 36px;
+    background: #eeeeee;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+}
+
+.datalist {
+    overflow: auto;
+    overflow-x: hidden;
+    height: calc(100% - 36px);
+}
+
+.datalist ul {
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+}
+
+.datahead .item {
+    height: 36px !important;
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    line-height: inherit !important;
+}
+
+.item {
+    box-sizing: content-box;
+    display: block;
+    width: 100%;
+    font-size: 13px;
+    height: 32px;
+    line-height: 32px;
+    white-space: nowrap;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    z-index: 222;
+    cursor: pointer;
+}
+
+.item:hover {
+    background: rgba(0,0,0,.03);
+}
+
+.item.active {
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    z-index: 233;
+    margin-top: -1px;
+}
+.item.active *{
+    box-sizing: border-box;
+    border-color: #ff0000;
+}
+.item.active *:first-child{
+    margin-left: -1px;
+}
+.item.highlight-absence {
+    background: rgba(245, 237, 5, 0.2);
+}
+.item .icon-coffee {
+    color: #ec5d5d;
+}
+
+.item > * {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 8.6%;
+    height: inherit;
+    line-height: inherit;
+    overflow: hidden;
+    vertical-align: top;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-right: 1px solid #ddd;
+    padding: 0 7px;
+}
+
+.item > .chk {
+    width: 40px;
+    text-align: center
+}
+.item > .back {
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+.item > .sug {
+    width: auto;
+    border: none;
+}
+
+.item > .name {
+    width: 75px;
+}
+
+.item > .sex {
+    width: 50px;
+    text-align: center
+}
+
+.item > .college {
+    width: 125px;
+}
+
+.item > .major {
+    width: 125px;
+}
+
+.item > .class {
+    width: 50px;
+}
+
+.item > .studentid {
+    width: 100px;
+}
+
+.item > .aim {
+    width: 150px;
+    zoom: .6;
+}
+.item > .phone {
+    width: 100px;
+    font-size: 12px
+}
+
+.item > .stat {
+    width: 140px;
+}
+
+#enroll_mmb .chk,
+#enroll_mmb .stat
+    {display: none}
+
+#enroll_mmb .aim {
+    width: 160px;
+    zoom: 1;
+}
+#enroll_mmb .studentid {
+    width: 160px;
+}
+#enroll_mmb .phone {
+    width: 160px;
+    font-size: 14px;
+}
+
+#enroll_mmb .college {
+    width: 160px
+}
+
+.input-group {
+    width: 100%;
+    height: 120px;
+    margin-top: 10px;
+}
+
+
+.solid-area{
+    display: inline-block;
+}
+
+.solid-area em{
+    display: block;
+    font-size: 16px;
+    font-style: normal;
+    color: darkred;
+    width: 100%;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+.solid-area > input {
+    width: 150px;
+    margin-bottom: 8px;
+    padding:2px 5px;
+    font-size: 13px;
+    margin-right: 6px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #ddd;
+}
+.solid-area > input:hover {
+    border: 1px solid #cd8b91;
+    color: #cd8b91;
+}
+.solid-area > input:focus {
+    border: 1px solid darkred;
+    color: darkred;
+}
+
+.btn-block{
+    width: 160px;
+}
+
+.btn-group{
+    float: right;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 102px;
+}
+.btn-group button{
+    width: 90px;
+    height: 46px;
+    border: 1px solid #ccc;
+    background: none;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.btn-group .submit{
+    width: 102px;
+    height: 102px;
+    border: none;
+    background: #b41927;
+    color: #fff;
+    font-size: 22px;
+}
+.btn-group .submit:hover{
+    background: #fc2d41;
+}
+.fadeout{
+    pointer-events: none !important;
+    transition: .7s ease-in-out;
+    height: 0;
+}
+
+.modal-content .nav-tabs {
+    line-height: 32px;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+.modal-content .nav-tabs li {
+    cursor: pointer;
+
+}
+.modal-content .nav-tabs li.active {
+    background: #ea644a;
+    color: #fff !important;
+    border: 1px solid #e53d1c;
+    margin: -1px 0;
+}
+.modal-content .nav-tabs li.active a {
+    color: #fff !important;
+}
+
+.radio{
+    display: inline-block;
+    position: relative;
+    line-height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    width: 23%;
+}
+.radio input{
+    display: none;
+}
+.radio .radio-bg{
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+    padding: 0;
+    background-color: #ff7c7c;
+    border-radius: 100%;
+    vertical-align: top;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.radio .radio-on{
+    display: none;
+}
+.radio input:checked + span.radio-on{
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border-radius: 100%;
+    background: #FFFFFF;
+    top: 4px;
+    left: 4px;
+    display: inline-block;
+    box-shadow: 0 0 0 2px #ff7c7c, 0 0 0 4px #fff, 0 0 0 6px #ff7c7c;
+}
+.btn-lock{
+    display: none;
+}
+.btn-lock + label{
+    padding: 0 10px;
+    background: #f36449;
+    color: #fff;
+    height: 32px;
+    border-radius: 5px;
+    margin-right: 3px;
+    line-height: 32px;
+    text-align: center;
+}
+.btn-lock + label + button{
+    pointer-events: none;
+    opacity: .5;
+}
+.btn-lock:checked + label  + button{
+    pointer-events: auto;
+    opacity: 1;
+}
+.token{
+    cursor: pointer;
+    color: #9a9a9a;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    padding: 0 6px;
+    line-height: 26px;
+    border: 1px solid;
+}
+.token.active{
+    color: #e23214;
+}
+.e_info{
+    overflow: hidden;
+}
+.e_pho{
+    float: left;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 240px;
+    height: 320px;
+    box-shadow: 0 0 2px rgba(0,0,0,.15);
+}
+.e_name{
+    max-width: 90px;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.e_info i{
+    width: 75px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-left: 20px;
+    display: inline-block;
+    text-align: justify;
+    text-align-last: justify;
+    margin-top: 10px;
+    color: #7d8082;
+}
+.e_info i::after{
+    content: ':';
+}
+.e_info span{
+    display: inline-block;
+    width: calc(100% - 360px);
+    font-size: 14px;
+    margin-left: 20px;
+    margin-top: 10px;
+    vertical-align: top;
+    max-height: 88px;
+    overflow: auto;
+    word-break: break-all;
+}
+
+.cp{
+    display: inline-block;
+    width: 500px;
+}
+.cp div{
+    display: inline-block;
+    width: calc(100% - 240px);
+    float: right;
+}
+.cp i{
+    width: 60px;
+}
+.cp span{
+    width: auto;
+    display: inline-block;
+}
+.fp{
+    width: calc(100% - 500px);
+    display: inline-block;
+    height: 350px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    box-shadow: 0 0 9px rgba(0,0,0,.2);
+}
+.fp i{
+    font-size: 15px;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    text-align-last: left;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+.fp input,
+.fp textarea{
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+    resize: none;
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,.1);
+    background: rgba(0,0,0,.03);
+}
+.fp input:focus,
+.fp textarea:focus{
+    background: #fff;
+}

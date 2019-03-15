@@ -1,0 +1,103 @@
+*{
+    font-family: "Microsoft YaHei";
+}
+/* common */
+
+[disabled],
+.disabled ,
+.disabled *{
+    pointer-events: none;
+    opacity: .5;
+}
+
+html {
+    font-size: 62.5%;/*设置rem与px的换算*/
+}
+
+body,p,span,ul,li,div,img,a,h1,h2,h3,h4,h5,h6,i {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family:"Microsoft YaHei";
+}
+
+body {
+    filter: none;
+    overflow-x: hidden;
+}
+
+div {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    display: inline;
+    color: #000;
+}
+
+ol,ul,li{
+    list-style: none;
+    display: inline;
+}
+img {
+    display: block;
+    overflow: hidden;
+}
+
+a img {
+    display: block;
+}
+
+.clearfloat {
+    /*清除浮动*/
+    zoom: 1;
+}
+
+.clearfloat:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+
+.container {
+    width: 1240px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1280px) {
+    .container {
+        width: 970px;
+    }
+}
+@media (max-width: 993px) {
+    .container {
+        width: 100%;
+    }
+}
+
+/* sp last */
+.last {
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+.alert2{
+    font-size: 16px;
+    padding: 0 50px;
+    background: rgb(90, 0, 0);
+    color: #fff;
+    line-height: 56px;
+}
+.alert2 a {
+    float: right;
+    color: #fff;
+    display: inline-block;
+    padding: 0 14px;
+    background: rgb(80, 0, 0);
+    vertical-align: top;
+    margin: 0 5px;
+    line-height: 56px;
+}

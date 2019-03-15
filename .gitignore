@@ -1,11 +1,5 @@
-/composer.json
-/composer.lock
-/tests/
-/data/catch/
-/config/
+/config/database.php
 /.idea/
 /.git/
 /runtime/
-/public/
-/thinkphp/
-/vendor/
+/public/data/catch/temp
