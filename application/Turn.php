@@ -8,7 +8,7 @@
  *      CreateDate:   2017-06-17
  *
  */
-namespace qzxy;
+namespace app;
 
 class Turn { /* 当页面刷新跳回后要加载的动作 */
     public static function echo($word) {

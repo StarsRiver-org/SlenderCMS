@@ -8,14 +8,14 @@
  *      CreateDate:   2017-08-05
  *
  */
-    namespace qzxy\threads\controller;
-    use qzxy\Chunk;
-    use qzxy\Base;
-    use qzxy\Qhelp;
-    use qzxy\Qpage;
-    use qzxy\Re;
-    use qzxy\Thread;
-	use qzxy\common\controller\Template;
+    namespace app\threads\controller;
+    use app\Chunk;
+    use app\Base;
+    use app\Qhelp;
+    use app\Qpage;
+    use app\Re;
+    use app\Thread;
+	use app\common\controller\Template;
     use think\Controller;
     class More extends Controller{
         function main(){

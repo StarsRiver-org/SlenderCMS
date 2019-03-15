@@ -10,13 +10,13 @@
  */
 
 
-namespace qzxy\portal\Controller;
-use qzxy\Base;
-use qzxy\Log;
-use qzxy\Chunk;
-use qzxy\Thread;
+namespace app\portal\Controller;
+use app\Base;
+use app\Log;
+use app\Chunk;
+use app\Thread;
 use think\Controller;
-use qzxy\common\controller\Template;
+use app\common\controller\Template;
 
 class Sztd extends Controller{
     public function main(){

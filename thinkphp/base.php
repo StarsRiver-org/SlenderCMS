@@ -9,7 +9,7 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-define('THINK_VERSION', '5.0.5');
+define('THINK_VERSION', '5.0.24');
 define('THINK_START_TIME', microtime(true));
 define('THINK_START_MEM', memory_get_usage());
 define('EXT', '.php');
@@ -42,6 +42,7 @@ if (is_file(ROOT_PATH . '.env')) {
     $env = parse_ini_file(ROOT_PATH . '.env', true);
     foreach ($env as $key => $val) {
         $name = ENV_PREFIX . strtoupper($key);
+
         if (is_array($val)) {
             foreach ($val as $k => $v) {
                 $item = $name . '_' . strtoupper($k);

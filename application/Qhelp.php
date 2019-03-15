@@ -8,7 +8,7 @@
  *      CreateDate:   2017-08-05
  *
  */
-namespace qzxy;
+namespace app;
 
 class Qhelp{
     public static function receive($key ,$defaultvalue = NULL){
@@ -16,7 +16,7 @@ class Qhelp{
     }
 
     public static function checkpic($imglog){
-        if(!empty($imglog) && $imglog != 0 && file_exists(ROOT_PATH . 'data/catch/temp/img/' . substr($imglog, 0, 8) . '/' . substr($imglog, 8))){
+        if(!empty($imglog) && $imglog != 0 && file_exists(ROOT_PATH . 'public/data/catch/temp/img/' . substr($imglog, 0, 8) . '/' . substr($imglog, 8))){
             return 1;
         } else {
             return null;

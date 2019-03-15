@@ -8,9 +8,9 @@
  *      CreateDate:   2018-11-06
  *
  */
-namespace qzxy\api\controller;
+namespace app\api\controller;
 
-use qzxy\Qhelp;
+use app\Qhelp;
 use think\Controller;
 use think\Db;
 

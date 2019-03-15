@@ -8,14 +8,14 @@
  *      CreateDate:   2018-03-24
  *
  */
-    namespace qzxy\consoleboard\controller;
+    namespace app\consoleboard\controller;
 
     use think\Controller;
-    use qzxy\User;
-    use qzxy\Qhelp;
-    use qzxy\Config;
+    use app\User;
+    use app\Qhelp;
+    use app\Config;
     use think\Db;
-	use qzxy\common\controller\Template;
+	use app\common\controller\Template;
 
     class Configmag extends Controller{
         public function _initialize() {

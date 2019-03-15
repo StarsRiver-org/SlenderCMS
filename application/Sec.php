@@ -8,7 +8,7 @@
  *      CreateDate:   2017-06-15
  *
  */
-namespace qzxy;
+namespace app;
 use think\Db;
 
 class Sec {

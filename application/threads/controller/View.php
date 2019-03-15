@@ -8,13 +8,13 @@
  *      CreateDate:   2017-08-21
  *
  */
-namespace qzxy\threads\Controller;
-use qzxy\Chunk;
-use qzxy\Base;
-use qzxy\Thread;
-use qzxy\Qhelp;
+namespace app\threads\Controller;
+use app\Chunk;
+use app\Base;
+use app\Thread;
+use app\Qhelp;
 use think\Controller;
-use qzxy\common\controller\Template;
+use app\common\controller\Template;
 
 class View extends Controller{
     public function main(){

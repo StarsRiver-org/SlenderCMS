@@ -8,9 +8,9 @@
  *      CreateDate:   2017-09-04
  *
  */
-namespace qzxy;
+namespace app;
 
-use qzxy\api\controller\Taobao; //淘宝接口格式化调用
+use app\api\controller\Taobao; //淘宝接口格式化调用
 
 class Ip{
     public static function getip() {

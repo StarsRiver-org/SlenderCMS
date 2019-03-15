@@ -8,7 +8,7 @@
  *      CreateDate:   2017-12-18
  *
  */
-namespace qzxy;
+namespace app;
 
 class Qpage{
 

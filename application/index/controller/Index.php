@@ -8,8 +8,10 @@
  *      CreateDate:   2017-06-25
  *
  */
-namespace qzxy\index\controller;
+namespace app\index\controller;
+
 use think\Controller;
+
 class Index extends Controller{
     public function main() {
         $lock = ROOT_PATH.'install/install.lock';

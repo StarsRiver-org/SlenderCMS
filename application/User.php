@@ -8,7 +8,7 @@
  *      CreateDate:   2017-06-21
  *
  */
-namespace qzxy;
+namespace app;
 use think\Controller;
 use think\Db;
 

@@ -8,12 +8,12 @@
  *      CreateDate:   2018-08-07
  *
  */
-    namespace qzxy\api\controller;
-    use qzxy\Config;
-    use qzxy\File;
-    use qzxy\Ip;
-    use qzxy\Qhelp;
-    use qzxy\User;
+    namespace app\api\controller;
+    use app\Config;
+    use app\File;
+    use app\Ip;
+    use app\Qhelp;
+    use app\User;
     use think\Controller;
     use think\Db;
 

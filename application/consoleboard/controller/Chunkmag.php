@@ -8,14 +8,14 @@
  *      CreateDate:   2017-08-05
  *
  */
-    namespace qzxy\consoleboard\controller;
+    namespace app\consoleboard\controller;
 
-    use qzxy\Chunk;
+    use app\Chunk;
     use think\Controller;
     use think\Db;
-    use qzxy\Re;
-    use qzxy\User;
-	use qzxy\common\controller\Template;
+    use app\Re;
+    use app\User;
+	use app\common\controller\Template;
 
     class Chunkmag extends Controller{
         public function _initialize() {

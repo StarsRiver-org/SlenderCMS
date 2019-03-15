@@ -8,7 +8,7 @@
  *      CreateDate:   2017-10-18
  *
  */
-namespace qzxy;
+namespace app;
 
 class Filter {
     static function filt_array($array) {/*过滤数组中相同项*/

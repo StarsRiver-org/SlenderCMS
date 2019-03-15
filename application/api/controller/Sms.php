@@ -8,9 +8,9 @@
  *      CreateDate:   2018-08-12
  *
  */
-    namespace qzxy\api\controller;
-    use qzxy\Qhelp;
-    use qzxy\User;
+    namespace app\api\controller;
+    use app\Qhelp;
+    use app\User;
     use think\Controller;
 
     use Aliyun\Core\Config;

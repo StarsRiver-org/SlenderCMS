@@ -8,12 +8,12 @@
  *      CreateDate:   2017-10-05
  *
  */
-namespace qzxy\portal\Controller;
-use qzxy\Base;
-use qzxy\Log;
-use qzxy\Chunk;
-use qzxy\Thread;
-use qzxy\common\controller\Template;
+namespace app\portal\Controller;
+use app\Base;
+use app\Log;
+use app\Chunk;
+use app\Thread;
+use app\common\controller\Template;
 use think\Controller;
 
 class Xygj extends Controller{

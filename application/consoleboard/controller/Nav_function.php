@@ -8,8 +8,8 @@
  *      CreateDate:   2018-03-02
  *
  */
-    namespace qzxy\consoleboard\controller;
-    use qzxy\Qhelp;
+    namespace app\consoleboard\controller;
+    use app\Qhelp;
     use think\Controller;
     use think\Db;
 

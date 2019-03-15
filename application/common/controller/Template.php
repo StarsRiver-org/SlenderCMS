@@ -8,10 +8,10 @@
  *      CreateDate:   2019-3-2
  *
  */
-    namespace qzxy\common\controller;
-    use qzxy\Log;
-    use qzxy\Config;
-    use qzxy\User;
+    namespace app\common\controller;
+    use app\Log;
+    use app\Config;
+    use app\User;
     use think\Controller;
 	
     class Template extends Controller {

@@ -8,11 +8,11 @@
  *      CreateDate:   2018-03-02
  *
  */
-    namespace qzxy\consoleboard\controller;
+    namespace app\consoleboard\controller;
     use think\Controller;
     use think\Db;
-    use qzxy\User;
-	use qzxy\common\controller\Template;
+    use app\User;
+	use app\common\controller\Template;
 
     class Navmag extends Controller{
         public function _initialize() {

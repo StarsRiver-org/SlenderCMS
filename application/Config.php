@@ -8,10 +8,10 @@
  *      CreateDate:   2018-03-14
  *
  */
-namespace qzxy;
+namespace app;
 
 use think\Controller;
-use qzxy\Qhelp;
+use app\Qhelp;
 use think\Db;
 
 class Config extends Controller{

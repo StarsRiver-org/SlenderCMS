@@ -8,22 +8,22 @@
  *      CreateDate:   2018-07-15
  *
  */
- namespace qzxy\enroll\controller;
+ namespace app\enroll\controller;
 
-    use qzxy\Config;
-    use qzxy\File;
-    use qzxy\Qhelp;
-    use qzxy\User;
+    use app\Config;
+    use app\File;
+    use app\Qhelp;
+    use app\User;
     use think\Controller;
     use think\Db;
-	use qzxy\common\controller\Template;
+	use app\common\controller\Template;
 
 
     class Enrollmag extends Controller
     {
         public function _initialize(){
 
-            new \qzxy\consoleboard\controller\Init();
+            new \app\consoleboard\controller\Init();
 
             if(!User::has_pm('enroll_use')) {
                 $this->error('操作错误，您未获得该操作权限');

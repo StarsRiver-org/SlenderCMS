@@ -9,11 +9,11 @@
  *
  */
 
-namespace qzxy\enroll\controller;
+namespace app\enroll\controller;
 
-use qzxy\Config;
-use qzxy\Qhelp;
-use qzxy\common\controller\Template;
+use app\Config;
+use app\Qhelp;
+use app\common\controller\Template;
 use think\Controller;
 use think\Db;
 

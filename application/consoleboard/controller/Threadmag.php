@@ -8,17 +8,17 @@
  *      CreateDate:   2017-07-05
  *
  */
-namespace qzxy\consoleboard\controller;
+namespace app\consoleboard\controller;
 
-use qzxy\Chunk;
-use qzxy\Thread;
-use qzxy\Re;
-use qzxy\User;
-use qzxy\Log;
-use qzxy\Qhelp;
+use app\Chunk;
+use app\Thread;
+use app\Re;
+use app\User;
+use app\Log;
+use app\Qhelp;
 use think\Db;
 use think\Controller;
-use qzxy\common\controller\Template;
+use app\common\controller\Template;
 
 class Threadmag extends Controller {
     public function _initialize() {
@@ -152,7 +152,7 @@ class Threadmag extends Controller {
 
             for ($i = 0; $i < $maxnum; $i++) {
                 if ($imgs[$i] != '') {
-                    $info = $imgs[$i]->validate(['size' => 20480000, 'ext' => 'jpg,png,gif'])->move(ROOT_PATH . 'data/catch/temp/img');
+                    $info = $imgs[$i]->validate(['size' => 20480000, 'ext' => 'jpg,png,gif'])->move(ROOT_PATH . 'public/data/catch/temp/img');
                     if ($info) {
                         $tmp = $info->getSaveName();
                         $banners[$i] = substr($tmp, 0, 8) . substr($tmp, 9);

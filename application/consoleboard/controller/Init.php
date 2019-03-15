@@ -8,11 +8,11 @@
  *      CreateDate:   2017-06-25
  *
  */
-    namespace qzxy\consoleboard\controller;
-    use qzxy\Re;
-    use qzxy\User;
-    use qzxy\Log;
-    use qzxy\Qhelp;
+    namespace app\consoleboard\controller;
+    use app\Re;
+    use app\User;
+    use app\Log;
+    use app\Qhelp;
     use think\Controller;
 
     class Init extends Controller {

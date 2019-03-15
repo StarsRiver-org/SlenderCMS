@@ -8,9 +8,9 @@
  *      CreateDate:   2018-08-12
  *
  */
-    namespace qzxy\api\controller;
-    use qzxy\Curl;
-    use qzxy\Qhelp;
+    namespace app\api\controller;
+    use app\Curl;
+    use app\Qhelp;
     use think\Controller;
 
 

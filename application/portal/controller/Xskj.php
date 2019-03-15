@@ -10,14 +10,14 @@
  *
  */
 
-namespace qzxy\portal\Controller;
+namespace app\portal\Controller;
 
-use qzxy\Base;
-use qzxy\Log;
-use qzxy\Chunk;
-use qzxy\Thread;
+use app\Base;
+use app\Log;
+use app\Chunk;
+use app\Thread;
 use think\Controller;
-use qzxy\common\controller\Template;
+use app\common\controller\Template;
 
 
 class Xskj extends Controller{

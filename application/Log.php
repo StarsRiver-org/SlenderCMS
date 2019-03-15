@@ -8,10 +8,10 @@
  *      CreateDate:   2018-03-25
  *
  */
-namespace qzxy;
+namespace app;
 
 use think\Db;
-use qzxy\Ip;
+use app\Ip;
 
 
 class Log {

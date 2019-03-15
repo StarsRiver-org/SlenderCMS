@@ -8,10 +8,10 @@
  *      CreateDate:   2018-03-24
  *
  */
-    namespace qzxy\consoleboard\controller;
+    namespace app\consoleboard\controller;
 
     use think\Controller;
-    use qzxy\Qhelp;
+    use app\Qhelp;
     use think\Db;
 
     class Configmag_function extends Controller{

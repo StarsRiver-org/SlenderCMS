@@ -8,11 +8,11 @@
  *      CreateDate:   2017-08-05
  *
  */
-namespace qzxy\consoleboard\controller;
+namespace app\consoleboard\controller;
 
-use qzxy\Log;
-use qzxy\Re;
-use qzxy\Qhelp;
+use app\Log;
+use app\Re;
+use app\Qhelp;
 use think\Controller;
 use think\Db;
 

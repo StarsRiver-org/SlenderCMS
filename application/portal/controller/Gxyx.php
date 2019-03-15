@@ -8,13 +8,13 @@
  *      CreateDate:   2017-10-02
  *
  */
-namespace qzxy\portal\Controller;
+namespace app\portal\Controller;
 
-use qzxy\Base;
-use qzxy\Log;
-use qzxy\Chunk;
-use qzxy\Thread;
-use qzxy\common\controller\Template;
+use app\Base;
+use app\Log;
+use app\Chunk;
+use app\Thread;
+use app\common\controller\Template;
 use think\Controller;
 
 class Gxyx extends Controller{

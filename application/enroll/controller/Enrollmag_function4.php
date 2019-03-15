@@ -8,11 +8,11 @@
  *      CreateDate:   2018-07-15
  *
  */
- namespace qzxy\enroll\controller;
+ namespace app\enroll\controller;
 
-    use qzxy\Curl;
-    use qzxy\Qhelp;
-    use qzxy\User;
+    use app\Curl;
+    use app\Qhelp;
+    use app\User;
     use think\Controller;
     use think\Db;
 

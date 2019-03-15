@@ -8,12 +8,12 @@
  *      CreateDate:   2017-07-05
  *
  */
-    namespace qzxy\consoleboard\controller;
-    use qzxy\Thread;
+    namespace app\consoleboard\controller;
+    use app\Thread;
     use think\Db;
-    use qzxy\User;
-    use qzxy\Qhelp;
-    use qzxy\Log;
+    use app\User;
+    use app\Qhelp;
+    use app\Log;
     class Thread_function{
 
         /* 获取用户可管理的文章 */

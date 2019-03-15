@@ -8,14 +8,14 @@
  *      CreateDate:   2017-11-24
  *
  */
-namespace qzxy\search\controller;
-use qzxy\Base;
-use qzxy\Qhelp;
-use qzxy\Qpage;
-use qzxy\Thread;
+namespace app\search\controller;
+use app\Base;
+use app\Qhelp;
+use app\Qpage;
+use app\Thread;
 use think\Controller;
-use qzxy\Search;
-use qzxy\common\controller\Template;
+use app\Search;
+use app\common\controller\Template;
 
 class Index extends Controller{
     public function main() {

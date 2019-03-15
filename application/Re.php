@@ -8,7 +8,7 @@
  *      CreateDate:   2017-07-12
  *
  */
-namespace qzxy;
+namespace app;
 
 class Re { /* 用于页面刷新更新 */
     public static function refrash() {

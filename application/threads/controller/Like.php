@@ -8,10 +8,10 @@
  *      CreateDate:   2017-10-02
  *
  */
-namespace qzxy\threads\Controller;
+namespace app\threads\Controller;
 
-use qzxy\consoleboard\controller\Admincheck;
-use qzxy\Thread;
+use app\consoleboard\controller\Admincheck;
+use app\Thread;
 use think\Controller;
 
 class Like extends Controller{

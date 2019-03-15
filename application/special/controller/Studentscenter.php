@@ -8,12 +8,12 @@
  *      CreateDate:   2017-08-05
  *
  */
-namespace qzxy\special\Controller;
-use qzxy\Base;
-use qzxy\Thread;
-use qzxy\Chunk;
-use qzxy\Log;
-use qzxy\common\controller\Template;
+namespace app\special\Controller;
+use app\Base;
+use app\Thread;
+use app\Chunk;
+use app\Log;
+use app\common\controller\Template;
 use think\Controller;
 
 class Studentscenter extends Controller{

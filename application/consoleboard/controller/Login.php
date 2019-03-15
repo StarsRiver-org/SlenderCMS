@@ -8,13 +8,13 @@
  *      CreateDate:   2017-06-25
  *
  */
-    namespace qzxy\consoleboard\controller;
+    namespace app\consoleboard\controller;
     use think\Controller;
-    use qzxy\Sec;
-    use qzxy\Log;
-    use qzxy\Re;
+    use app\Sec;
+    use app\Log;
+    use app\Re;
     use think\Db;
-	use qzxy\common\controller\Template;
+	use app\common\controller\Template;
 
     class Login extends Controller{
         public function _initialize(){

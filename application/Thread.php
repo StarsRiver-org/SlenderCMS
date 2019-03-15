@@ -8,7 +8,7 @@
  *      CreateDate:   2017-08-05
  *
  */
-namespace qzxy;
+namespace app;
 use think\Controller;
 use think\Db;
 
@@ -42,7 +42,7 @@ class Thread extends Controller {
                 if (!empty($_POST['renewthread']) && !empty($_POST['has_coverimg'])) { /* update cover */
                     $img = Db::query("select thread_coverimg from qzlit_thread WHERE cuid = '" . (int)$_POST['renewthread'] . "'")[0]['thread_coverimg'];
                     if (!empty($img)) {
-                        @unlink(ROOT_PATH . 'data/catch/temp/img/' . substr($img, 0, 8) . '/' . substr($img, 8));
+                        @unlink(ROOT_PATH . 'public/data/catch/temp/img/' . substr($img, 0, 8) . '/' . substr($img, 8));
                     }
                     Db::execute("update qzlit_thread set thread_coverimg = NUll WHERE cuid = '" . (int)$_POST['renewthread'] . "'");
                 }

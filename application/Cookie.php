@@ -8,7 +8,7 @@
  *      CreateDate:   2018-02-09
  *
  */
-namespace qzxy;
+namespace app;
 
 class Cookie {
 

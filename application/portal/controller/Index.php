@@ -8,13 +8,13 @@
  *      CreateDate:   2017-08-05
  *
  */
-namespace qzxy\portal\Controller;
+namespace app\portal\Controller;
 
-use qzxy\Base;
-use qzxy\Log;
-use qzxy\Chunk;
-use qzxy\Thread;
-use qzxy\common\controller\Template;
+use app\Base;
+use app\Log;
+use app\Chunk;
+use app\Thread;
+use app\common\controller\Template;
 use think\Controller;
 
 class Index extends Controller{
