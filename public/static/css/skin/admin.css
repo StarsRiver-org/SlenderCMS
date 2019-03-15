@@ -240,6 +240,7 @@ div{
     .globle-status {
         width: 920px;
         display: inline-block;
+		font-size:0;
     }
     .globle-status .block{
         width:460px;
@@ -328,6 +329,7 @@ div{
     .card .chart-big{
         width:910px;
         height:220px;
+		font-size: 0;
     }
     .card .chart-big > .title{
         color: #444;
@@ -938,11 +940,16 @@ tr > td > .icon-cogs {
     padding: 0;
 }
 .navform li{
-    font-size: 14px;
     width: 100%;
     line-height: 36px;
     border-bottom: 1px solid #ccc;
+	font-size:0;
 }
+
+.navform li *{
+    font-size: 14px;
+}
+
 .navform li.tt,
 .navform li.cf{
     background-color: #f6f6f6;
@@ -1016,7 +1023,11 @@ tr > td > .icon-cogs {
     border-top: 1px solid #ccc;
 }
 .navform li ul li{
+	font-size:0;
     border-color: #f8f8f8 !important;
+}
+.navform li ul li *{
+	font-size:14px;
 }
 #hnav > li.item > *{
     font-weight: 700 !important;
