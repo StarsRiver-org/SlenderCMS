@@ -25112,6 +25112,8 @@ UE.ui = baidu.editor.ui = {};
                 layer.style.top = '0';
                 layer.style.width = '0';
                 layer.style.height = '0';
+                layer.style.zIndex = '9999';
+				
             }
             return layer;
         },
@@ -25517,7 +25519,7 @@ UE.ui = baidu.editor.ui = {};
             popEl.className += ' ' + ANCHOR_CLASSES[(sideUp ? 1 : 0) * 2 + (sideLeft ? 1 : 0)];
             if(this.editor){
                 popEl.style.zIndex = this.editor.container.style.zIndex * 1 + 10;
-                baidu.editor.ui.uiUtils.getFixedLayer().style.zIndex = popEl.style.zIndex - 1;
+                baidu.editor.ui.uiUtils.getFixedLayer().style.zIndex = 2000;
             }
             this.getDom().style.visibility = 'visible';
 
@@ -27277,7 +27279,7 @@ UE.ui = baidu.editor.ui = {};
                 this.editor.container.style.zIndex && (this.getDom().style.zIndex = this.editor.container.style.zIndex * 1 + 10);
                 this._hidden = false;
                 this.fireEvent('show');
-                baidu.editor.ui.uiUtils.getFixedLayer().style.zIndex = this.getDom().style.zIndex - 4;
+                baidu.editor.ui.uiUtils.getFixedLayer().style.zIndex = 2000;
             }
         },
         isHidden: function (){
