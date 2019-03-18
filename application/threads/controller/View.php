@@ -17,6 +17,10 @@ use think\Controller;
 use app\common\controller\Template;
 
 class View extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
         if(!empty($_GET['id']) && Qhelp::chk_pint($_GET['id'])){
             $thread = Thread::loadone($_GET['id']);

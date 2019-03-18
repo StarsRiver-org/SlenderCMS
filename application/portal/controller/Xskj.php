@@ -21,6 +21,10 @@ use app\common\controller\Template;
 
 
 class Xskj extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
         Log::visit("portal","xskj","");
         $chunk = [

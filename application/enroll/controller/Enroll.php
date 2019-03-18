@@ -19,6 +19,10 @@ use think\Db;
 
 
 class Enroll extends Controller {
+	function _initialize() {
+		new \app\Start();
+	}
+	
 
     public function main() {
         return Template::view('enroll/enroll');

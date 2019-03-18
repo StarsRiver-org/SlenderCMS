@@ -18,6 +18,10 @@ use app\common\controller\Template;
 use think\Controller;
 
 class More extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
 
         if(empty($_GET['sid']) || !Qhelp::chk_pint($_GET['sid'])){

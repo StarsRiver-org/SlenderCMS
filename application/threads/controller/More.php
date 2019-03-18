@@ -18,6 +18,10 @@
 	use app\common\controller\Template;
     use think\Controller;
     class More extends Controller{
+		function _initialize() {
+			new \app\Start();
+		}
+	
         function main(){
             $this->assign([
                 'new' => Thread::newest(),

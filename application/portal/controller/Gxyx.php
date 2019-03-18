@@ -18,6 +18,10 @@ use app\common\controller\Template;
 use think\Controller;
 
 class Gxyx extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
         Log::visit("portal","gxyx","");
         $chunk = [

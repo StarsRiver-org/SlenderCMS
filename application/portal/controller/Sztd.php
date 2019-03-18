@@ -19,6 +19,10 @@ use think\Controller;
 use app\common\controller\Template;
 
 class Sztd extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
         Log::visit("portal","sztd","");
         $chunk = [

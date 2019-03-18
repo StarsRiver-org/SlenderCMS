@@ -10,12 +10,12 @@
  */
  namespace app\enroll\controller;
 
+	use think\Controller;
+    use think\Db;
     use app\Config;
     use app\File;
     use app\Qhelp;
     use app\User;
-    use think\Controller;
-    use think\Db;
 	use app\common\controller\Template;
 
 

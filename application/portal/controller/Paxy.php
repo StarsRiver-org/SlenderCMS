@@ -19,6 +19,10 @@ use app\common\controller\Template;
 use think\Controller;
 
 class Paxy extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
         Log::visit("portal","sztd","");
         $chunk = [

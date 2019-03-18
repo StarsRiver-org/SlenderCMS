@@ -64,13 +64,13 @@ class Log {
         data  门户名      文章id         管理类型
         func  无         like/visit     add/del/renew
     */
-    public static function visit($page = 0, $data = '', $func='') {
+    public static function visit($page = 0, $data = '', $func='', $get='', $post = '') {
         $log = Ip::ipinfo();
         $log['target'] = $page ? $page : 'home' ;
         $log['data'] = $data ;
         $log['func'] = $func ;
-        $log['get'] = '' ;
-        $log['post'] = '' ;
+        $log['get'] = $get ;
+        $log['post'] = $post ;
         Log::updata_log($log);
         return null;
     }

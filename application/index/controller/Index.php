@@ -13,6 +13,10 @@ namespace app\index\controller;
 use think\Controller;
 
 class Index extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main() {
         $lock = ROOT_PATH.'install/install.lock';
         if(!file_exists($lock)){

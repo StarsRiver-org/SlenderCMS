@@ -17,6 +17,10 @@ use app\common\controller\Template;
 use think\Controller;
 
 class Xygj extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
         Log::visit("portal","xygj","");
         $chunk = [

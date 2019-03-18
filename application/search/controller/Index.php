@@ -13,11 +13,16 @@ use app\Base;
 use app\Qhelp;
 use app\Qpage;
 use app\Thread;
-use think\Controller;
+use app\Log;
 use app\Search;
 use app\common\controller\Template;
+use think\Controller;
 
 class Index extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main() {
 
         $page = (int)Qhelp::receive('page',1) ;
@@ -31,7 +36,9 @@ class Index extends Controller{
         }
 
         $keyword = Qhelp::receive('keyword','');
-
+		
+		Log::visit("search","thread_search","search",'',$keyword);
+		
         $res = Search::getall($page, $perpage,$keyword,'desc','thread_ptime');
         $data = [];
         for($i = 0; $i < count($res['res']); $i++){

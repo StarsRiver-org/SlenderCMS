@@ -15,7 +15,11 @@ use app\Thread;
 use think\Controller;
 
 class Like extends Controller{
-
+	
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
         return Thread::like($_GET['id']);
     }

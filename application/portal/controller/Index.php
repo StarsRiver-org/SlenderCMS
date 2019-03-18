@@ -17,10 +17,13 @@ use app\Thread;
 use app\common\controller\Template;
 use think\Controller;
 
+
 class Index extends Controller{
-
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
-
         Log::visit("portal","home","");
         $chunk = [
             'id'         =>   1,

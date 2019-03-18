@@ -17,47 +17,22 @@
 	
     class Template extends Controller {
 		
-        public static function view($tpl) { /*管理员登陆检查*/
-			
-			if(Limit::ban() && !User::has_pm('is_admin')){ /*限制访问*/
-				return self::returnTpl('error/toofast');
-			}
-			
-			if( !self::amending()  //网站关闭检测
-				|| User::has_pm('is_admin')  //管理员登陆检测
-				|| in_array(explode('/',$_SERVER['REQUEST_URI'])[1],['consoleboard','enroll'])//访问后台检测
-			){
-				/* 正常访问 */
-				return self::returnTpl($tpl);
-				
-			} else {
-				/* 提示维护中 */
-				Log::visit("baned", "none", "visit");
-				return self::returnTpl('error/maintenance');
-			}
+		public static function view($tpl, $arg='') {
+			return self::make($tpl, $arg);
         }
 		
-		public static function amending() { /*维护检测*/
-            $is_open = Config::getconf('info','open');
-            if($is_open == 'on'){
-                return 0;
-            } else {
-				return 1;
-			}
-        }
-		
-		public static function returnTpl($tpl){
-			
+		public static function initTpl(){
 			$allow_mobile = Config::getconf('info','mobiletpl');
-		
 			/* 条件检测 */
 			if(@$_GET['device'] == 'm' && $allow_mobile == 'on' && @file_exists(ROOT_PATH.'template'.DS.'mobile'.DS.$tpl.'.html')){
-				$TPLT = 'mobile';
+				return 'mobile';
 			} else {
-				$TPLT = 'default';
+				return 'default';
 			}
-	
-			return view($TPLT.DS.$tpl);
+		}
+		
+		public static function make($tpl, $arg=''){
+			return view(self::initTpl().DS.$tpl, $arg);
 		}
 		
     }

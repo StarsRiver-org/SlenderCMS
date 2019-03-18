@@ -17,6 +17,10 @@ use app\common\controller\Template;
 use think\Controller;
 
 class Studentscenter extends Controller{
+	function _initialize() {
+		new \app\Start();
+	}
+	
     public function main(){
         Log::visit("special","studentscenter","");
         $chunk = [
