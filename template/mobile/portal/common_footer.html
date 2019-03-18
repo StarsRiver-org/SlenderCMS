@@ -1,0 +1,46 @@
+ <div class="footer" style="background: #891619;">
+        <div class="quickLink">
+            <div class="container">
+                <ul class="leftLink clearfloat">
+                    {volist name="base.foonav" id="nav" length="5"}
+                    <li><a target="{if $nav['blank']}_blank{/if}" href="{$nav.url}">{$nav.name}</a></li>
+                    {/volist}
+                </ul>
+                <div class="logo transition__opc__3s">
+                    <a href="#"><img src="{$Think.const.STATIC_ROOT}/img/common/logoo.png" alt="logo"></a>
+                </div>
+                <ul class="rightLink clearfloat">
+                    <li class="icon-location-arrow"><a>山西省太原市迎泽西大街79号</a></li>
+                    <li class="icon-group"><a>太原理工大学学工部（处）</a></li>
+                    <li class="icon-envelope"><a>030024</a></li>
+                    <li class="icon-phone"><a>0351-6014355</a></li>
+                    <li class="icon-globe"><a>qzxy@tyut.edu.cn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="linkicons">
+                <div>
+	                <a class="qq transition__opc__3s" href="#"></a>
+	            </div>
+	            <div>
+	               	<a class="wechat transition__opc__3s" href="#"></a>
+	               	<div class="linkicon__hover"><img src="{$Think.const.STATIC_ROOT}/img/common/wechat__hover.jpg" alt=""></div>
+	            </div>
+	            <div>
+		            <a class="weibo transition__opc__3s" href="#"></a>
+		        </div>
+		        <div>
+	              	<a class="qzvs transition__opc__3s" href="#"></a>
+	            </div>
+            </div>
+            <p>
+			<a href="//qzxy.tyut.edu.cn">Copyright Transfered @2018 太原理工大学 晋ICP证020029号</a><strong>
+			&nbsp;&nbsp;&nbsp; 访问：{$base['allvisite']}</strong>
+			<br />
+			<br />
+			<a href="https://www.starsriver.net">©2016-<?php printf(date('Y',time())) ?> Powered By 星河-StarsRiver</a></p>
+        </div>
+    </div>
+</body>
+</html>

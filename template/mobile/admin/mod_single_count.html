@@ -1,0 +1,20 @@
+<?php
+    $chunk = $mod[1];
+    $child = $mod[2];
+    $timegap = $mod[3];
+    $all = count($info_visit[$chunk][$child][$timegap]) - 1;
+    $num = isset($mod[4]) ? $mod[4] : $all;
+    $loop = $all - $num;
+?>
+<div class="gird-left"><canvas id="linechart_{$chunk}_{$child}_{$timegap}"></canvas></div>
+<script>
+    var data = {
+        labels:[<?php for($i = $loop; $i < $all; $i++){echo $info_visit[$chunk][$child][$timegap][$i]["date"].",";} ?>],
+        datasets: [{
+            label: "{$mod[0]}",
+            color: "#ee7622",
+            data: [<?php for($i = $loop; $i < $all; $i++){echo $info_visit[$chunk][$child][$timegap][$i]["value"].",";} ?>]
+        }]
+    };
+    $("#linechart_{$chunk}_{$child}_{$timegap}").lineChart(data);
+</script>

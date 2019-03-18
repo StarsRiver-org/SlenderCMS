@@ -1,0 +1,22 @@
+<div class="banner">
+    <div class="bannerImgBox">
+        <img src="{$banners.banner.0}"/>
+    </div>
+</div>
+<nav class="o__nav">
+    <div class="o__nav">
+        <div class="container">
+            <div class="navItemContainer">
+                <a href="/portal/xskj.html" class="navItem {if empty($_GET['cid'])}navItem__now{/if} ">首页</a>
+                <a href="/threads/more?from=10&cid=43" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 43}navItem__now{/if} ">新闻动态</a>
+                <a href="/threads/more?from=10&cid=44" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 44}navItem__now{/if} ">通知公告</a>
+                <a href="/threads/more?from=10&cid=45" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 45}navItem__now{/if} ">规章制度</a>
+                <a href="/threads/more?from=10&cid=46" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 46}navItem__now{/if} ">科技比赛</a>
+                <a href="/threads/more?from=10&cid=47" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 47}navItem__now{/if} ">基地建设</a>
+                <a href="/threads/more?from=10&cid=48" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 48}navItem__now{/if} ">师资团队</a>
+                <a href="/threads/more?from=10&cid=49" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 49}navItem__now{/if} ">科技成果</a>
+                <a href="/threads/more?from=10&cid=50" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 50}navItem__now{/if} ">风云人物</a>
+            </div>
+        </div>
+    </div>
+</nav>

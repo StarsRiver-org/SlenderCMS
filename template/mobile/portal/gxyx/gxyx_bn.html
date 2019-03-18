@@ -1,0 +1,22 @@
+<div class="banner">
+    <div class="bannerImgBox">
+        <img src="{$banners.banner.0}"/>
+    </div>
+</div>
+<nav class="o__nav">
+    <div class="o__nav">
+        <div class="container">
+            <div class="navItemContainer">
+                <a href="/portal/gxyx.html" class="navItem {if empty($_GET['cid'])}navItem__now{/if}">首页</a>
+                <a href="/threads/more?from=7&cid=26" class="{if !empty($_GET['cid']) && $_GET['cid'] == 26}navItem__now{/if} navItem">最新资讯</a>
+                <a href="/threads/more?from=7&cid=27" class="{if !empty($_GET['cid']) && $_GET['cid'] == 27}navItem__now{/if} navItem">国学入门</a>
+                <a href="/threads/more?from=7&cid=28" class="{if !empty($_GET['cid']) && $_GET['cid'] == 28}navItem__now{/if} navItem">国学宝典</a>
+                <a href="/threads/more?from=7&cid=29" class="{if !empty($_GET['cid']) && $_GET['cid'] == 29}navItem__now{/if} navItem">历史春秋</a>
+                <a href="/threads/more?from=7&cid=31" class="{if !empty($_GET['cid']) && $_GET['cid'] == 31}navItem__now{/if} navItem">礼乐文明</a>
+                <a href="/threads/more?from=7&cid=32" class="{if !empty($_GET['cid']) && $_GET['cid'] == 32}navItem__now{/if} navItem">国学论坛</a>
+                <a href="/threads/more?from=7&cid=33" class="{if !empty($_GET['cid']) && $_GET['cid'] == 33}navItem__now{/if} navItem">百家争鸣</a>
+                <a href="/threads/more?from=7&cid=34" class="{if !empty($_GET['cid']) && $_GET['cid'] == 34}navItem__now{/if} navItem">同道中人</a>
+            </div>
+        </div>
+    </div>
+</nav>

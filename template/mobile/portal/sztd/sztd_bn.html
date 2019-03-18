@@ -1,0 +1,20 @@
+<div class="banner">
+    <div class="bannerImgBox">
+        <img src="{$banners.banner.0}"/>
+    </div>
+</div>
+<nav class="o__nav">
+    <div class="o__nav">
+        <div class="container">
+            <div class="navItemContainer">
+                <a href="/portal/sztd.html" class="navItem {if empty($_GET['cid'])}navItem__now{/if} ">首页</a>
+                <a href="/threads/more?from=6&cid=60" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 60}navItem__now{/if} ">党史党建</a>
+                <a href="/threads/more?from=6&cid=24" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 24}navItem__now{/if} ">党的知识</a>
+                <a href="/threads/more?from=6&cid=20" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 20}navItem__now{/if} ">理论探索</a>
+                <a href="/threads/more?from=6&cid=59" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 59}navItem__now{/if} ">两课讲堂</a>
+                <a href="/threads/more?from=6&cid=63" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 63}navItem__now{/if} ">国防教育</a>
+                <a href="/threads/more?from=6&cid=23" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 23}navItem__now{/if} ">时代楷模</a>
+            </div>
+        </div>
+    </div>
+</nav>

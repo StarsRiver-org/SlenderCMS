@@ -12,12 +12,17 @@
     use app\Log;
     use app\Config;
     use app\User;
+    use app\Limit;
     use think\Controller;
 	
     class Template extends Controller {
 		
         public static function view($tpl) { /*管理员登陆检查*/
-
+			
+			if(Limit::ban() && !User::has_pm('is_admin')){ /*限制访问*/
+				return self::returnTpl('error/toofast');
+			}
+			
 			if( !self::amending()  //网站关闭检测
 				|| User::has_pm('is_admin')  //管理员登陆检测
 				|| in_array(explode('/',$_SERVER['REQUEST_URI'])[1],['consoleboard','enroll'])//访问后台检测
@@ -27,7 +32,7 @@
 				
 			} else {
 				/* 提示维护中 */
-				Log::visit("baned", "none", "logincheck");
+				Log::visit("baned", "none", "visit");
 				return self::returnTpl('error/maintenance');
 			}
         }

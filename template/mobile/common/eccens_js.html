@@ -1,0 +1,60 @@
+<?php
+    /*
+    * jquery库载入
+    */
+?>
+<!--[if lt IE 10]>
+<div class="alert2 alert-danger" >您正在使用过时的浏览器. 请升级您的浏览器来获取更好的体验<a class="icon-ie updateexplor" href="http://download.microsoft.com/download/F/2/8/F2871AC4-E82B-4636-BB37-A5F2B14C8616/IE11-Windows6.1-x86-zh-cn.exe" >x86版本</a ><a class="icon-ie updateexplor" href="http://download.microsoft.com/download/5/6/F/56FD6253-CB53-4E38-94C6-74367DA2AB34/IE11-Windows6.1-x64-zh-cn.exe" >x64版本</a ></div >
+<script src="{$Think.const.STATIC_ROOT}/lib/ieonly/html5shiv.js" ></script >
+<script src="{$Think.const.STATIC_ROOT}/lib/ieonly/respond.js" ></script >
+<![endif]-->
+<script src="{$Think.const.STATIC_ROOT}/lib/jquery/jquery.js" ></script >
+<script src="{$Think.const.STATIC_ROOT}/lib/jquery/jquery.cookie.js" ></script >
+<?php
+    /*
+    * 轮询请求，该请求会对如下链接进行 loop 次轮询从而获取IP信息来辅助后台获取用户访问信息
+    * 请求结果格式如下
+    {
+        "Stat":"OK",
+        "Message":"成功获取IP信息",
+        "Data":{
+            "ip":"121.2.3.6",
+            "country":"日本",
+            "area":"",
+            "region":"爱知县",
+            "city":"XX",
+            "county":"XX",
+            "isp":"So-Net"
+        }
+    }
+    */
+?>
+<script >
+    const apiurl = [
+        '//qzxy.starsriver.club',
+        '//www.tyutjohn.com',
+        '{$Think.const.SITE}',
+    ];
+    let iprequeryloop = 3;
+    let llipu = -1;
+    function initcookieipinfo() {
+        llipu++;
+        $.ajax({
+            method: 'get', url: apiurl[llipu % 2] + '/api/taobao/ipinfo/' + $.cookie('ip'), error: function () {
+                llipu < apiurl.length * iprequeryloop ? initcookieipinfo() : '';
+            }, success: function (r) {
+                i = JSON.parse(r);
+                (i.Stat !== 'OK' && llipu < apiurl.length * iprequeryloop) ? initcookieipinfo() : $.cookie("ipinfo", JSON.stringify(i.Data).replace(',', '%2*2%'), {
+                    expires: 2,
+                    path: '/',
+                });
+            },
+        });
+    }
+    function initcookieipinfostart(){
+        if (!$.cookie('ipinfo') || $.cookie('ip') !== JSON.parse($.cookie('ipinfo').replace('%2*2%', ','))['ip']) {
+            initcookieipinfo();
+        }
+    }
+    window.addEventListener('load',initcookieipinfostart,false);
+</script >

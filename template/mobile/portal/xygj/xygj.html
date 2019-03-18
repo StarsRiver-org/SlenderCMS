@@ -1,0 +1,230 @@
+<!--使用通用模板-->
+{extend name="default/portal/frame" /}
+
+<!--特殊样式-->
+{block name="style"}
+<link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/skin/portal/xygj.css">
+<link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/lightslider.min.css">
+{/block}
+
+<!--js模块-->
+{block name="js"}{/block}
+
+<!--主体部分-->
+{block name="body"}
+{include file="default/portal/xygj/xygj_bn" /}
+    <script src="{$Think.const.STATIC_ROOT}/js/jquery.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/js/lightslider.min.js"></script>
+    <div class="o__main">
+        <div class="xygj">
+            <div class="container">
+                <section class="xySlider">
+                    <div class="xySlider">
+                        <div class="leftBox">
+                            <div class="sliderBox">
+                                <ul class="sliderMain">
+                                    {if isset($banners['slider'])}
+                                    {volist name="banners.slider" id="t" length='5'}
+                                    {if $t != '/static/img/common/no-img-2.png'}
+                                    <li>
+                                        <img src="{$t}" />
+                                    </li>
+                                    {/if}
+                                    {/volist}{/if}
+                                </ul>
+                                <script>
+                                $(document).ready(function() {
+                                    $('.sliderMain').lightSlider({
+                                        gallery: false,
+                                        item: 1,
+                                        slideMargin: 0,
+                                        speed: 1000,
+                                        pause: 5000,
+                                        auto: true,
+                                        loop: true,
+                                        mode: 'slide',
+                                    });
+                                    $('.lSPager').addClass('opacity');
+                                });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="rightList">
+                            <div class="rightListBox" id="changeColumn-1">
+                                <div class="rightColumnName">
+                                    <span class="ri-current" style="width:100%;">学风建设</span>
+                                </div>
+                                <div class="rightListContent">
+                                    <ul style="display: block;">
+                                        {if isset($threadlist['build'])}
+                                        {volist name="threadlist.build" id="t" offset="0" length="12"}
+                                        <li><a href="/threads/view?id={$t.id}&from=9">{$t.title}</a></li>
+                                        {/volist}{/if}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="xyIntroduct">
+                    <div class="xyIntroduct">
+                        <div class="leftBox">
+                            <div class="leftColumnName">
+                                <a>学院揽胜</a>
+                            </div>
+                            <div class="leftColumnContent">
+                                {if isset($threadlist['show'])}
+                                <div class="leftCardBox">
+                                    {volist name="threadlist.show" id="t" offset="0" length="2"}
+                                    <div class="leftCardItem">
+                                        <a href="/threads/view?id={$t.id}&from=9" class="CardCoverimg"><img src="{$t.coverimg}" alt=""></a>
+                                        <div class="CardIntro">
+                                            <a href="/threads/view?id={$t.id}&from=9" class="Intro_tit">{$t.title}</a>
+                                            <a href="/threads/view?id={$t.id}&from=9" class="Intro_des">{$t.descrip}</a>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                </div>
+                                <div class="leftListBox">
+                                    <ul>
+                                        {volist name="threadlist.show" id="t" offset="2" length="8"}
+                                        <li><a href="/threads/view?id={$t.id}&from=9">{$t.title}</a></li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                                {/if}
+                            </div>
+                        </div>
+                        <div class="rightList">
+                            <div class="rightListBox" id="changeColumn-2">
+                                <div class="rightColumnName">
+                                    <span class="ri-current">校园文化</span>
+                                    <span>校园故事</span>
+                                </div>
+                                <div class="rightListContent">
+                                    <ul style="display: block;">
+                                        {if isset($threadlist['cultural'])}
+                                        {volist name="threadlist.cultural" id="t" offset="0" length="9"}
+                                        <li><a href="/threads/view?id={$t.id}&from=9">{$t.title}</a></li>
+                                        {/volist}{/if}
+                                    </ul>
+                                    <ul style="display: none;">
+                                        {if isset($threadlist['story'])}
+                                        {volist name="threadlist.story" id="t" offset="0" length="9"}
+                                        <li><a href="/threads/view?id={$t.id}&from=9">{$t.title}</a></li>
+                                        {/volist}{/if}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="xyPioneer">
+                    <div class="xyPioneer">
+                        <div class="sliderItem_7">
+                            <div class="fullBox">
+                                <div class="fullColumnName">
+                                    <a>校园先锋</a>
+                                </div>
+                                <div class="fullColumnContent">
+                                    <ul id="xyPioneer">
+                                        {if isset($threadlist['hero'])}
+                                        {volist name="threadlist.hero" id="t" offset="0" length="12"}
+                                        <li>
+                                            <div class="GalleryItem">
+                                                <a href="/threads/view?id={$t.id}&from=9"><img src="{$t.coverimg}" alt="1"></a>
+                                                <a href="/threads/view?id={$t.id}&from=9" class="GalleryItem_des">{$t.title}</a>
+                                            </div>
+                                        </li>
+                                        {/volist}{/if}
+                                    </ul>
+                                    <script>
+                                    $(document).ready(function() {
+                                        $('#xyPioneer').lightSlider({
+                                            slideWidth: 120,
+                                            slideMargin: 45,
+                                            gallery: false,
+                                            item: 7,
+                                            speed: 1000,
+                                            // 设置不自动滚动&不自动循环
+                                            auto: false,
+                                            loop: false,
+                                            slideMove: 1
+                                        })
+                                    })
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="xyTeacher">
+                    <div class="xyTeacher">
+                        <div class="sliderItem_7">
+                            <div class="fullBox">
+                                <div class="fullColumnName">
+                                    <a>教师风采</a>
+                                </div>
+                                <div class="fullColumnContent">
+                                    <ul id="xyTeacher">
+                                        {if isset($threadlist['teacher'])}
+                                        {volist name="threadlist.teacher" id="t" offset="0" length="12"}
+                                        <li>
+                                            <div class="GalleryItem">
+                                                <a href="/threads/view?id={$t.id}&from=9"><img src="{$t.coverimg}" alt="1"></a>
+                                                <a href="/threads/view?id={$t.id}&from=9" class="GalleryItem_des">{$t.title}</a>
+                                            </div>
+                                        </li>
+                                        {/volist}{/if}
+                                    </ul>
+                                    <script>
+                                    $(document).ready(function() {
+                                        $('#xyTeacher').lightSlider({
+                                            slideWidth: 120,
+                                            slideMargin: 45,
+                                            gallery: false,
+                                            item: 7,
+                                            speed: 1000,
+                                            // 设置不自动滚动&不自动循环
+                                            auto: false,
+                                            loop: false,
+                                            slideMove: 1
+                                        })
+                                    })
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- 尾部 -->
+    <script>
+	    window.onload = function() {
+	        var xySliderChange__1 = document.getElementById('changeColumn-1');
+	        var xySliderChange_1_Span = xySliderChange__1.getElementsByTagName('span');
+	        var xySliderChange_1_Ul = xySliderChange__1.getElementsByTagName('ul');
+	        var xySliderChange__2 = document.getElementById('changeColumn-2');
+	        var xySliderChange_2_Span = xySliderChange__2.getElementsByTagName('span');
+	        var xySliderChange_2_Ul = xySliderChange__2.getElementsByTagName('ul');
+
+	        function changeColumn(arrSpan, arrUl) {
+	            for (var i = 0; i < arrSpan.length; i++) {
+	                arrSpan[i].index = i;
+	                arrSpan[i].onclick = function() {
+	                    for (var j = 0; j < arrSpan.length; j++) {
+	                        arrSpan[j].className = '';
+	                        arrUl[j].style.display = 'none';
+	                    }
+	                    this.className = 'ri-current';
+	                    arrUl[this.index].style.display = 'block';
+	                }
+	            }
+	        }
+	        changeColumn(xySliderChange_1_Span, xySliderChange_1_Ul);
+	        changeColumn(xySliderChange_2_Span, xySliderChange_2_Ul);
+	    }
+    </script>
+{/block}

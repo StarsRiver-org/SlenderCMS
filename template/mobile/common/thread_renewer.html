@@ -1,0 +1,128 @@
+<link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/thread_sender.css" rel="stylesheet">
+<link href="{$Think.const.STATIC_ROOT}/lib/datetimepicker/datetimepicker.min.css" rel="stylesheet">
+<script type="text/javascript" src="{$Think.const.STATIC_ROOT}/js/selectFx.js"></script>
+<script type="text/javascript" src="{$Think.const.STATIC_ROOT}/lib/datetimepicker/datetimepicker.min.js"></script>
+<?php
+    $showspc = 0;
+    foreach($splv1 as $splb){if($splb['hpm']) $showspc = 1; break;}
+    foreach($splv2 as $splb){if($splb['hpm']) $showspc = 1; break;}
+    foreach($splv3 as $splb){if($splb['hpm']) $showspc = 1; break;}
+?>
+<div id="forum_sender">
+    <form id="threadform" enctype="multipart/form-data">
+        <input type="hidden" name="renewthread" id="renewthread" value="{$id}">
+        <div class="ic">
+            <select  class="lb cs-select cs-skin-border" name="threadsort" id="threadsort">
+                <optgroup label="板块">
+                {volist name="chunklv1" id="lv1"}
+                    {if $lv1['hpm']}<option value="{$lv1.id}" {if $sort == $lv1['id']}selected{/if} >◆ {$lv1.chunk_name}</option>{/if}
+                    {volist name="chunklv2" id="lv2"}
+                        {if $lv2['chunk_below'] == $lv1['id']}
+                            {if $lv2['hpm']}<option value="{$lv2.id}" {if $sort == $lv2['id']}selected{/if}>&nbsp;&nbsp;&nbsp;&nbsp;◇ {$lv2.chunk_name}</option>{/if}
+                            {volist name="chunklv3" id="lv3"}
+                                {if $lv3['chunk_below'] == $lv2['id'] && $lv3['hpm']}
+                                    {if $lv3['hpm']}<option value="{$lv3.id}" {if $sort == $lv3['id']}selected{/if} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ {$lv3.chunk_name} ]</option>{/if}
+                                {/if}
+                            {/volist}
+                        {/if}
+                    {/volist}
+                {/volist}
+                </optgroup>
+                {if $showspc}
+                <optgroup label="专题">
+                    {volist name="splv1" id="lv1"}
+                        {if $lv1['hpm']}<option value="{$lv1.id}" {if $sort == $lv1['id']}selected{/if}>◆ {$lv1.chunk_name}</option>{/if}
+                        {volist name="splv2" id="lv2"}
+                            {if $lv2['chunk_below'] == $lv1['id']}
+                                {if $lv2['hpm']}<option value="{$lv2.id}" {if $sort == $lv2['id']}selected{/if}>&nbsp;&nbsp;&nbsp;&nbsp;◇ {$lv2.chunk_name}</option>{/if}
+                            {/if}
+                        {/volist}
+                    {/volist}
+                </optgroup>
+                {/if}
+            </select>
+            <select class="rb cs-select cs-skin-border" name="threadmode" id="threadmode">
+                <option value="1" {if $mode == 1} selected {/if} >保存草稿</option>
+                <option value="2" {if $mode == 2} selected {/if} >直接推送</option>
+            </select>
+            <script>(function () {[].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {new SelectFx(el);});})();</script>
+            <input autocomplete="off" type="text" name="title" value="{$title}" id="title" placeholder="标题">
+        </div>
+        <script type="text/javascript" src="{$Think.STATIC_ROOT}/lib/ueditor/ueditor.parse.js"></script>
+        <script type="text/javascript" src="{$Think.STATIC_ROOT}/lib/ueditor/ueditor.config.js"></script>
+        <script type="text/javascript" src="{$Think.STATIC_ROOT}/lib/ueditor/ueditor.all.js"></script>
+        <script id="container" name="content" type="text/plain" style="width: auto"></script>
+        <script type="text/javascript">var ue = UE.getEditor('container');ue.ready(function() {ue.setContent('{$content}');});</script>
+        <div class="infobox l">
+            <div class="ic">
+                <b class="l">描述</b>
+                <input autocomplete="off" type="text" name="descrip" id="descrip" value="{$descrip}">
+            </div>
+            <div id="bar"></div>
+            <div class="ic">
+                <b class="l">关键词</b>
+                <input autocomplete="off" type="text" name="keyword" id="keyword" value="{$keyword}">
+            </div>
+        </div>
+        <div class="coverimg r" >
+            <script language="JavaScript" src="{$Think.STATIC_ROOT}/js/imgpreview.js"></script>
+            <input class="imguper" type="file" onchange="previewImage(this,1)"  name="coverimg" id="coverimg" accept="image/*"/>
+            <input type="hidden" name="has_coverimg" id="has_coverimg" value="{if !empty($coverimg)}1{/if}">
+            <div class="preview" id="preview1">
+                <img src="<?php if(!empty($coverimg)) {echo $coverimg;} else{echo STATIC_ROOT.'/img/common/image.png';} ?>" id="imghead1" />
+            </div>
+        </div>
+        <div id="bar"></div>
+        <div class="l ic s">
+            <b class="l">作者</b>
+            <input type="text" name="author" id="author" value="{$author}" placeholder="留空,作者默认为编辑者">
+        </div>
+        <div class="l ic s">
+            <b class="l">时间</b>
+            <input type="text" name="htime" value="{$time}" id="datetime" placeholder="留空,默认为文章发布日期">
+        </div>
+        <button class="r btn text-danger" type="button" onclick="post()">更新</button>
+        <a href="{$Think.SITE}/consoleboard/threadmag.html" class="r text-danger btn">取消</a>
+        <div id="loading" style="display: none">
+            <img src="/static/img/common/loading.gif">
+        </div>
+    </form>
+    <script>
+
+        function post() {
+            $('#loading').css('display','block');
+            var data = new FormData(document.querySelector('#threadform'));
+            $.ajax({
+                url: location.href,
+                processData:false,
+                contentType:false,
+                cache: false,
+                type: "POST",
+                data: data,
+                success: function (status) {
+                    $('#loading').css('display','none');
+                    new $.zui.Messager(status || '提交成功', {
+                        icon: 'bell',
+                        type: status === '修改成功' ? 'success' :'warning',
+                        placement: 'bottom-left'
+                    }).show();
+                },
+                error: function (res) {
+                    $('#loading').css('display','none');
+                    dump(res);
+                }
+            })
+        }
+        $("#datetime").datetimepicker(
+            {
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1,
+                format: "yyyy-mm-dd hh:ii"
+            });
+    </script>
+</div>

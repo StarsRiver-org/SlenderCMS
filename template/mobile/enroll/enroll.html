@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>清泽心雨 - 面试查询</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/skin/enroll/form-elements.css">
+        <link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/skin/enroll/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script>
+            SiteUrl = "{$Think.const.SITE}";
+            StaticUrl = "{$Think.const.SITE}/static";
+        </script>
+    </head>
+
+    <body style="background: url('{$Think.const.SITE}/static/img/enroll/1.jpg')">
+
+        <!-- Top content -->
+        <div class="top-content">
+        	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>清泽心雨 </strong>- 面试结果查询</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>在这里查询</h3>
+                            		<p>请按要求填写以下信息</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-envelope"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom contact-form">
+			                    <form role="form" action="assets/contact.php" method="post">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="contact-email">姓名</label>
+			                        	<input type="text" name="name" placeholder="姓名" class="contact-email form-control" id="contact-email">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="contact-subject">报名电话</label>
+			                        	<input type="text" name="phone" placeholder="报名电话" class="contact-subject form-control" id="contact-subject">
+			                        </div>
+			                        <button type="submit" class="btn btn-danger" style="width: 100%">查 询</button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="ctr">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                        <h4 class="modal-title">查询结果</h4>
+                    </div>
+                    <div class="modal-body">
+                        短信动态参数不完整
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Javascript -->
+        <script src="{$Think.const.STATIC_ROOT}/js/jquery.js"></script>
+        <script src="{$Think.const.STATIC_ROOT}/js/bootstrap.min.js"></script>
+        <script src="{$Think.const.STATIC_ROOT}/js/jquery.backstretch.min.js"></script>
+        <script src="{$Think.const.STATIC_ROOT}/js/retina-1.1.0.min.js"></script>
+        <script src="{$Think.const.STATIC_ROOT}/js/enroll/enroll-check.js"></script>
+
+        <!--[if lt IE 10]>
+        <script src="{$Think.const.STATIC_ROOT}/js/placeholder.js"></script>
+        <![endif]-->
+    </body>
+
+</html>
+
+
+
+

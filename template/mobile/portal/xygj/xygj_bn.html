@@ -1,0 +1,20 @@
+<div class="banner">
+    <div class="bannerImgBox">
+        <img src="{$banners.banner.0}"/>
+    </div>
+</div>
+<nav class="o__nav">
+    <div class="o__nav">
+        <div class="container">
+            <div class="navItemContainer">
+                <a href="/portal/xygj.html" class="navItem {if empty($_GET['cid'])}navItem__now{/if} ">首页</a>
+                <a href="/threads/more?from=9&cid=35" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 35}navItem__now{/if} ">学院揽胜</a>
+                <a href="/threads/more?from=9&cid=36" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 36}navItem__now{/if} ">校园文化</a>
+                <a href="/threads/more?from=9&cid=37" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 37}navItem__now{/if} ">校园先锋</a>
+                <a href="/threads/more?from=9&cid=38" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 38}navItem__now{/if} ">校园故事</a>
+                <a href="/threads/more?from=9&cid=39" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 39}navItem__now{/if} ">学风建设</a>
+                <a href="/threads/more?from=9&cid=40" class="navItem {if !empty($_GET['cid']) && $_GET['cid'] == 40}navItem__now{/if} ">教师风采</a>
+            </div>
+        </div>
+    </div>
+</nav>

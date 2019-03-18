@@ -1,0 +1,37 @@
+<?php
+    $chunk = $mod[1];
+    $child = $mod[2];
+    $timegap = $mod[3];
+    $all = count($info_visit[$chunk[0]][$child[0]][$timegap]) - 1;
+    $num = isset($mod[4]) ? $mod[4] : $all;
+    $loop = $all - $num;
+?>
+<div class="gird-left"><canvas id="linechart_{$child[0]}_{$child[1]}_{$timegap}"></canvas></div>
+<div class="gird-right"><canvas id="piechart_{$child[0]}_{$child[1]}_{$timegap}"></canvas></div>
+<script>
+    var data = {
+        labels:[<?php for($i = $loop; $i<$num; $i++){echo $info_visit[$chunk[0]][$child[0]][$timegap][$i]["date"].",";} ?>],
+        datasets: [{
+            label: "{$mod[0][0]}",
+            color: "#ff5b34",
+            data: [<?php for($i = $loop; $i<$num; $i++){echo $info_visit[$chunk[0]][$child[0]][$timegap][$i]["value"].",";} ?>]
+            }, {
+            label: "{$mod[0][1]}",
+            color: "#48b35b",
+            data: [<?php for($i = $loop; $i<$num; $i++){echo $info_visit[$chunk[1]][$child[1]][$timegap][$i]["value"].",";} ?>]
+            }
+        ]
+    };
+    var data2 = [{
+        label:"{$mod[0][0]}",
+        value: {$info_visit[$chunk[0]][$child[0]][$timegap]["count"]},
+        color:"#ff5b34"
+    }, {
+        label:"{$mod[0][1]}",
+        value : {$info_visit[$chunk[1]][$child[1]][$timegap]['count']},
+        color : "#48b35b"
+    }
+    ];
+    $("#linechart_{$child[0]}_{$child[1]}_{$timegap}").lineChart(data);
+    $("#piechart_{$child[0]}_{$child[1]}_{$timegap}").doughnutChart(data2,{percentageInnerCutout:50,scaleShowLabels: true,segmentStrokeWidth : 3, scaleLabelPlacement: "inside"});
+</script>
