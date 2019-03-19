@@ -13,6 +13,7 @@ use app\Base;
 use app\Qhelp;
 use app\Qpage;
 use app\Thread;
+use app\Config;
 use app\Log;
 use app\Search;
 use app\common\controller\Template;
@@ -24,6 +25,11 @@ class Index extends Controller{
 	}
 	
     public function main() {
+
+		if(Config::getconf('info','mainsearch') == 'off'){
+			return Template::view('error/cantdo');
+		}
+
 
         $page = (int)Qhelp::receive('page',1) ;
         $perpage = (int)Qhelp::receive('perpage',15);
