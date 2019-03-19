@@ -114,7 +114,8 @@ INSERT INTO `qzlit_config` VALUES ('Enroll', 'enddate', '21', '19000101', '19000
 INSERT INTO `qzlit_config` VALUES ('info', 'autologin', '3', 'off', 'off', '开启/关闭网站的自动登陆功能', null, null);
 INSERT INTO `qzlit_config` VALUES ('info', 'mobiletpl', '1', 'on', 'off', '开启移动端模板的使用', null, null);
 INSERT INTO `qzlit_config` VALUES ('info', 'visitlimit', '0', '2', '2', '访问频率限制，设置为零则不限制。（设置为3，表示允许普通用户最短三秒打开一次访问网页）', null, null);
-	
+INSERT INTO `qzlit_config` VALUES ('info', 'mainsearch', '0', 'on', 'off', '搜索功能开关', null, null);
+
 -- ----------------------------
 -- Table structure for qzlit_group
 -- ----------------------------
