@@ -153,14 +153,14 @@
 		// | 异常及错误设置
 		// +----------------------------------------------------------------------
         'http_exception_template'    =>  [
-            401 =>  TPL_PATH.'error/401.html',
-            400 =>  TPL_PATH.'error/400.html',
-            404 =>  TPL_PATH.'error/404.html',
-            500 =>  TPL_PATH.'error/500.html',
-            503 =>  TPL_PATH.'error/503.html',
+            401 =>  TPL_PATH.'default/error/401.html',
+            400 =>  TPL_PATH.'default/error/400.html',
+            404 =>  TPL_PATH.'default/error/404.html',
+            500 =>  TPL_PATH.'default/error/500.html',
+            503 =>  TPL_PATH.'default/error/503.html',
         ],
         // 异常页面的模板文件
-        'exception_tmpl'         => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',
+        'exception_tmpl'         => TPL_PATH.'default/error/debug.html,
 
 		// 错误显示信息,非调试模式有效	
         'error_message'          => '页面错误！请稍后再试.',
