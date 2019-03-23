@@ -19,10 +19,6 @@
     class Start extends Controller{
 		
 		function _initialize() {
-			echo(123);
-			
-			exit();
-			
 			$this->checkopen();
             $this->checklimit();
         }
