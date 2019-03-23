@@ -21,7 +21,7 @@
 			return self::make($tpl, $arg);
         }
 		
-		public static function initTpl(){
+		public static function initTpl($tpl){
 			$allow_mobile = Config::getconf('info','mobiletpl');
 			/* 条件检测 */
 			if(@$_GET['device'] == 'm' && $allow_mobile == 'on' && @file_exists(ROOT_PATH.'template'.DS.'mobile'.DS.$tpl.'.html')){
@@ -32,7 +32,7 @@
 		}
 		
 		public static function make($tpl, $arg=''){
-			return view(self::initTpl().DS.$tpl, $arg);
+			return view(self::initTpl($tpl).DS.$tpl, $arg);
 		}
 		
     }
