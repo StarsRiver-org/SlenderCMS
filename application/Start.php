@@ -33,7 +33,7 @@
 				&& !in_array(explode('/',$_SERVER['REQUEST_URI'])[1],['consoleboard','enroll'])//访问后台检测
 			){
 				/* 提示维护中 */
-				echo $this->fetch(Template::initTpl().'/error/maintenance');
+				echo $this->fetch(Template::initTpl('error/maintenance').'/error/maintenance');
 				exit;
 			}
         }
@@ -41,7 +41,7 @@
         public function checklimit() { /*三秒内访问次数检查，最短请求间隔三秒*/
 		
 			if(Limit::ban() && !User::has_pm('is_admin')){ /*限制访问*/
-				echo $this->fetch(Template::initTpl().'/error/toofast');
+				echo $this->fetch(Template::initTpl('error/toofast').'/error/toofast');
 				exit;
 			}
 			
