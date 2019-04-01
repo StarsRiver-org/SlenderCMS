@@ -17,22 +17,22 @@
 	
     class Template extends Controller {
 		
-		public static function view($tpl, $arg='') {
-			return self::make($tpl, $arg);
+	public static function view($tpl, $arg='') {
+		return self::make($tpl, $arg);
         }
 		
-		public static function initTpl($tpl){
-			$allow_mobile = Config::getconf('info','mobiletpl');
-			/* 条件检测 */
-			if(@$_GET['device'] == 'm' && $allow_mobile == 'on' && @file_exists(ROOT_PATH.'template'.DS.'mobile'.DS.$tpl.'.html')){
-				return 'mobile';
-			} else {
-				return 'default';
-			}
+	public static function initTpl($tpl){
+		$allow_mobile = Config::getconf('info','mobiletpl');
+		/* 条件检测 */
+		if((@$_GET['device'] == 'm' || Request::instance()->isMobile()) && $allow_mobile == 'on' && @file_exists(ROOT_PATH.'template'.DS.'mobile'.DS.$tpl.'.html')){
+			return 'mobile';
+		} else {
+			return 'default';
 		}
-		
-		public static function make($tpl, $arg=''){
-			return view(self::initTpl($tpl).DS.$tpl, $arg);
-		}
+	}
+
+	public static function make($tpl, $arg=''){
+		return view(self::initTpl($tpl).DS.$tpl, $arg);
+	}
 		
     }
