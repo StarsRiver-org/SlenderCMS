@@ -14,6 +14,7 @@
     use app\User;
     use app\Limit;
     use think\Controller;
+    use think\Request;
 	
     class Template extends Controller {
 		
