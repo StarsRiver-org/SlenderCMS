@@ -1,6 +1,6 @@
 # QzxyWebsite 基于thinkphp5.2
 很简单的内容管理器，稍加修改可以作为自己的博客用。
-
+基础环境 php,mysql,iis/apache/nginx
 # 协议
 * 本程序使用apache2.0开源协议（主要争对 application、template下的程序文件。）
 * 你需要认真了解该协议的具体内容。
