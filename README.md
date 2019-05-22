@@ -1,4 +1,4 @@
-# QzxyWebsite 基于thinkphp5.2
+# SlenderCMS 基于thinkphp5.2
 很简单的内容管理器，稍加修改可以作为自己的博客用。
 基础环境 php,mysql,iis/apache/nginx
 # 协议
