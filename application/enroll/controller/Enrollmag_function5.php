@@ -8,35 +8,29 @@
  *      CreateDate:   2018-07-15
  *
  */
- namespace app\enroll\controller;
 
-    use app\Qhelp;
-    use app\User;
-    use think\Controller;
-    use think\Db;
+namespace app\enroll\controller;
 
-    class Enrollmag_function5 extends Controller {
+use think\Controller;
+use think\Db;
+use app\common\Qhelp;
+use app\common\User;
 
-        static function refresh(){
+class Enrollmag_function5 extends Controller {
 
-            if(Enrollmag::chk_pty()){
-                return Enrollmag::chk_pty();
-            }
+    static function refresh() {
 
-            if(!empty($_POST['campus']) && !Qhelp::chk_pint($_POST['campus'])){
-                return Qhelp::json_en([
-                    'Stat' => 'OK',
-                    'Message' => '校区数据类型错误',
-                ]);
-            }
-            $cps = Qhelp::receive('campus','');
-            $aim = User::ufetch()['party'];
-
-            $res = Db::query("select * from qzlit_usenroll where ".(!empty($cps) ? "campus = $cps AND" : "")." isenrolled = 1 AND hascalled = 3 AND aim = $aim");
-            return Qhelp::json_en([
-                'Stat' => 'OK',
-                'Message' => '数据加载成功',
-                "Data" => Enrollmag::dataFormat($res)
-            ]);
+        if (Enrollmag::chk_pty()) {
+            return Enrollmag::chk_pty();
         }
+
+        if (!empty($_POST['campus']) && !Qhelp::chk_pint($_POST['campus'])) {
+            return Qhelp::json_en(['Stat' => 'OK', 'Message' => '校区数据类型错误',]);
+        }
+        $cps = Qhelp::receive('campus', '');
+        $aim = User::ufetch()['party'];
+
+        $res = Db::query("select * from qzlit_usenroll where " . (!empty($cps) ? "campus = $cps AND" : "") . " isenrolled = 1 AND hascalled = 3 AND aim = $aim");
+        return Qhelp::json_en(['Stat' => 'OK', 'Message' => '数据加载成功', "Data" => Enrollmag::dataFormat($res)]);
     }
+}

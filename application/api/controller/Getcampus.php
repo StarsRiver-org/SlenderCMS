@@ -8,16 +8,17 @@
  *      CreateDate:   2018-08-12
  *
  */
-    namespace app\api\controller;
-    use app\Ip;
-    use app\Qhelp;
-    use think\Controller;
-    use think\Db;
 
+namespace app\api\controller;
 
-    class Getcampus extends Controller {
+use think\Controller;
+use think\Db;
+use app\common\Ip;
+use app\common\Qhelp;
 
-        public function main() {
-            return htmlspecialchars_decode(Db::query("select * from qzlit_config where name = 'campus'")[0]['data'],ENT_QUOTES);
-        }
+class Getcampus extends Controller {
+
+    public function main() {
+        return htmlspecialchars_decode(Db::query("select * from qzlit_config where name = 'campus'")[0]['data'], ENT_QUOTES);
     }
+}

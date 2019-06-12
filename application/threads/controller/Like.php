@@ -8,19 +8,20 @@
  *      CreateDate:   2017-10-02
  *
  */
+
 namespace app\threads\Controller;
 
-use app\consoleboard\controller\Admincheck;
-use app\Thread;
 use think\Controller;
+use app\consoleboard\controller\Admincheck;
+use app\common\Thread;
 
-class Like extends Controller{
-	
-	function _initialize() {
-		new \app\Start();
-	}
-	
-    public function main(){
+class Like extends Controller {
+
+    function _initialize() {
+        new \app\Start();
+    }
+
+    public function main() {
         return Thread::like($_GET['id']);
     }
 }

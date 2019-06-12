@@ -8,74 +8,62 @@
  *      CreateDate:   2018-07-15
  *
  */
- namespace app\enroll\controller;
 
-    use app\Curl;
-    use app\Qhelp;
-    use app\User;
-    use think\Controller;
-    use think\Db;
+namespace app\enroll\controller;
 
-    class Enrollmag_function6 extends Controller
-    {
-        static function refresh($num = 30){
+use think\Controller;
+use think\Db;
+use app\common\Curl;
+use app\common\Qhelp;
+use app\common\User;
 
-            if(Enrollmag::chk_pty()){
-                return Enrollmag::chk_pty();
-            }
+class Enrollmag_function6 extends Controller {
+    static function refresh($num = 30) {
 
-            if(!empty($_POST['campus']) && !Qhelp::chk_pint($_POST['campus'])){
-                return Qhelp::json_en([
-                    'Stat' => 'OK',
-                    'Message' => '校区数据类型错误',
-                ]);
-            }
-            $cps = Qhelp::receive('campus','');
-
-            $aim = User::ufetch()['party'];
-
-            $num = (int)$num < 10 ? 10 : ((int)$num > 99 ? 99 : (int)$num) ;
-            $res = Db::query("select * from qzlit_usenroll WHERE ".(!empty($cps) ? "campus = $cps AND" : "")." `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score limit $num");
-
-            return Qhelp::json_en([
-                'Stat' => 'OK',
-                'Message' => '数据加载成功',
-                "Data" => Enrollmag::dataFormat($res)
-            ]);
+        if (Enrollmag::chk_pty()) {
+            return Enrollmag::chk_pty();
         }
 
-        static function send($id, $phone, $msgtpl, $msgdat){
-            if (!empty($phone) && !empty($id) && Qhelp::chk_pint($phone) && strlen($phone) == 11 && Qhelp::chk_pint($id)) {
+        if (!empty($_POST['campus']) && !Qhelp::chk_pint($_POST['campus'])) {
+            return Qhelp::json_en(['Stat' => 'OK', 'Message' => '校区数据类型错误',]);
+        }
+        $cps = Qhelp::receive('campus', '');
 
-                $res = Db::query("select * from qzlit_usenroll where id = $id");
+        $aim = User::ufetch()['party'];
 
-                if (!empty($res) && $res[0]["phone"] == $phone) {
+        $num = (int)$num < 10 ? 10 : ((int)$num > 99 ? 99 : (int)$num);
+        $res = Db::query("select * from qzlit_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score limit $num");
 
-                    if(Enrollmag::chk_pty($res[0]['aim'])){
-                        return Enrollmag::chk_pty($res[0]['aim']);
-                    }
+        return Qhelp::json_en(['Stat' => 'OK', 'Message' => '数据加载成功', "Data" => Enrollmag::dataFormat($res)]);
+    }
 
-                    if ($res[0]["hascalled"] == 3) {
-                        return Qhelp::json_en(['Stat' => 'error', 'Message' => '拒绝重复发信']);
-                    }
+    static function send($id, $phone, $msgtpl, $msgdat) {
+        if (!empty($phone) && !empty($id) && Qhelp::chk_pint($phone) && strlen($phone) == 11 && Qhelp::chk_pint($id)) {
 
-                    $smsres = Curl::post(SITE.'/api/sms', [
-                        'hash' => SHASH,
-                        'phone' => $phone,
-                        'msgdat' => $msgdat,
-                        'msgtpl' => $msgtpl,
-                    ]);
+            $res = Db::query("select * from qzlit_usenroll where id = $id");
 
-                    if(Qhelp::json_de($smsres)['Message'] == 'OK'){
-                        Db::execute("update qzlit_usenroll set hascalled = 3, isenrolled = '-1', isfaced = 1 where id = $id");
-                    }
+            if (!empty($res) && $res[0]["phone"] == $phone) {
 
-                    return $smsres;
-
+                if (Enrollmag::chk_pty($res[0]['aim'])) {
+                    return Enrollmag::chk_pty($res[0]['aim']);
                 }
-                return Qhelp::json_en(['Stat' => 'error', 'Message' => '数据不存在']);
-            } else {
-                return Qhelp::json_en(['Stat' => 'error', 'Message' => '参数缺失']);
+
+                if ($res[0]["hascalled"] == 3) {
+                    return Qhelp::json_en(['Stat' => 'error', 'Message' => '拒绝重复发信']);
+                }
+
+                $smsres = Curl::post(SITE . '/api/sms', ['hash' => SHASH, 'phone' => $phone, 'msgdat' => $msgdat, 'msgtpl' => $msgtpl,]);
+
+                if (Qhelp::json_de($smsres)['Message'] == 'OK') {
+                    Db::execute("update qzlit_usenroll set hascalled = 3, isenrolled = '-1', isfaced = 1 where id = $id");
+                }
+
+                return $smsres;
+
             }
+            return Qhelp::json_en(['Stat' => 'error', 'Message' => '数据不存在']);
+        } else {
+            return Qhelp::json_en(['Stat' => 'error', 'Message' => '参数缺失']);
         }
     }
+}

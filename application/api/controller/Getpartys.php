@@ -8,16 +8,17 @@
  *      CreateDate:   2018-08-12
  *
  */
-    namespace app\api\controller;
-    use app\Ip;
-    use app\Qhelp;
-    use think\Controller;
-    use think\Db;
 
+namespace app\api\controller;
 
-    class Getpartys extends Controller {
+use think\Controller;
+use think\Db;
+use app\common\Ip;
+use app\common\Qhelp;
 
-        public function main() {
-            return htmlspecialchars_decode(Db::query("select * from qzlit_config where name = 'party'")[0]['data'],ENT_QUOTES);
-        }
+class Getpartys extends Controller {
+
+    public function main() {
+        return htmlspecialchars_decode(Db::query("select * from qzlit_config where name = 'party'")[0]['data'], ENT_QUOTES);
     }
+}

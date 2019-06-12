@@ -8,13 +8,14 @@
  *      CreateDate:   2017-08-05
  *
  */
+
 namespace app\consoleboard\controller;
 
-use app\Log;
-use app\Re;
-use app\Qhelp;
 use think\Controller;
 use think\Db;
+use app\common\Log;
+use app\common\Re;
+use app\common\Qhelp;
 
 class Chunkmag_function extends Controller {
     public static function addchunk() {
@@ -23,45 +24,45 @@ class Chunkmag_function extends Controller {
             if ($_POST['add_chunk'] == 'lv1') {
                 $check = Db::query("select * from qzlit_chunk WHERE `type` = '" . $type . "' AND chunk_name = '" . Qhelp::receive('chunk_name') . "' AND chunk_lv = '1'");
                 if (!empty($check)) {
-                    Re::echo ('warning', '名称不能重复', 0);
+                    Re::echo('warning', '名称不能重复', 0);
                 } else {
                     Db::execute("insert into qzlit_chunk(`type`, chunk_name, chunk_lv) VALUE ('" . $type . "', '" . Qhelp::receive('chunk_name') . "','1')");
                     Log::visit("consoleboard", "managechunk", "add_" . Qhelp::receive('chunk_name'));
-                    Re::echo ('success', '添加成功', 0);
+                    Re::echo('success', '添加成功', 0);
                 }
             } elseif ($_POST['add_chunk'] == 'lv2' && Qhelp::receive('chunk_below')) {
                 $check = Db::query("select * from qzlit_chunk WHERE `type` = '" . $type . "' AND chunk_below='" . Qhelp::receive('chunk_below') . "' AND chunk_name = '" . Qhelp::receive('chunk_name') . "'");
                 if (!empty($check)) {
-                    Re::echo ('warning', '名称不能重复', 0);
+                    Re::echo('warning', '名称不能重复', 0);
                 } else {
                     Db::execute("insert into qzlit_chunk(`type`, chunk_name, chunk_lv, chunk_below) VALUE ('" . $type . "', '" . Qhelp::receive('chunk_name') . "','2' , '" . Qhelp::receive('chunk_below') . "')");
                     Log::visit("consoleboard", "managechunk", "add_" . Qhelp::receive('chunk_name'));
-                    Re::echo ('success', '添加成功', 0);
+                    Re::echo('success', '添加成功', 0);
                 }
             } elseif ($_POST['add_chunk'] == 'lv3' && Qhelp::receive('chunk_below') && !$type) {
                 $check = Db::query("select * from qzlit_chunk WHERE `type` = '" . $type . "' AND chunk_below='" . Qhelp::receive('chunk_below') . "' AND chunk_name = '" . Qhelp::receive('chunk_name') . "'");
                 if (!empty($check)) {
-                    Re::echo ('warning', '名称不能重复', 0);
+                    Re::echo('warning', '名称不能重复', 0);
                 } else {
                     Db::execute("insert into qzlit_chunk(`type`, chunk_name, chunk_lv, chunk_below) VALUE ('" . $type . "', '" . Qhelp::receive('chunk_name') . "','3', '" . Qhelp::receive('chunk_below') . "')");
                     Log::visit("consoleboard", "managechunk", "add_" . Qhelp::receive('chunk_name'));
-                    Re::echo ('success', '添加成功', 0);
+                    Re::echo('success', '添加成功', 0);
                 }
             } else {
-                Re::echo ('warning', "数据错误", 0);
+                Re::echo('warning', "数据错误", 0);
             }
         } else {
-            Re::echo ('warning', "数据错误", 0);
+            Re::echo('warning', "数据错误", 0);
         }
     }
 
     public static function delchunk() {
-        if(empty($_POST['del_chunk']) || Qhelp::chk_pint($_POST['del_chunk']) || $_POST['del_chunk'] < 1 ){
-            Re::echo ('danger', '参数错误', 0);
+        if (empty($_POST['del_chunk']) || Qhelp::chk_pint($_POST['del_chunk']) || $_POST['del_chunk'] < 1) {
+            Re::echo('danger', '参数错误', 0);
         }
 
         $pr = Db::query("select * from qzlit_chunk WHERE id = '" . $_POST['del_chunk'] . "'");
-        if(!empty($pr)){
+        if (!empty($pr)) {
             if ($pr[0]['chunk_lv'] == 1) {
                 $chunk_lv2 = Db::query("select * from qzlit_chunk WHERE chunk_below = '" . $_POST['del_chunk'] . "'");
                 foreach ($chunk_lv2 as $value) {
@@ -76,7 +77,7 @@ class Chunkmag_function extends Controller {
                 Chunkmag_function::del_thread($_POST['del_chunk']);
                 Db::execute("delete from qzlit_chunk WHERE id = '" . $_POST['del_chunk'] . "'");
                 Log::visit("consoleboard", "managechunk", "del_" . $_POST['del_chunk']);
-                Re::echo ('success', '删除成功', 0);
+                Re::echo('success', '删除成功', 0);
             } elseif ($pr[0]['chunk_lv'] == 2) {
                 $chunk_lv3 = Db::query("select * from qzlit_chunk WHERE chunk_below = '" . $_POST['del_chunk'] . "'");
                 foreach ($chunk_lv3 as $value) {
@@ -86,29 +87,26 @@ class Chunkmag_function extends Controller {
                 Chunkmag_function::del_thread($_POST['del_chunk']);
                 Db::execute("delete from qzlit_chunk WHERE id = '" . $_POST['del_chunk'] . "'");
                 Log::visit("consoleboard", "managechunk", "del_" . $_POST['del_chunk']);
-                Re::echo ('success', '删除成功', 0);
+                Re::echo('success', '删除成功', 0);
             } elseif ($pr[0]['chunk_lv'] == 3) {
                 Chunkmag_function::del_thread($_POST['del_chunk']);
                 Db::execute("delete from qzlit_chunk WHERE id = '" . $_POST['del_chunk'] . "'");
                 Log::visit("consoleboard", "managechunk", "del_" . $_POST['del_chunk']);
-                Re::echo ('success', '删除成功', 0);
+                Re::echo('success', '删除成功', 0);
             }
         } else {
-            Re::echo ('danger', '板块不存在', 0);
+            Re::echo('danger', '板块不存在', 0);
         }
     }
 
     public static function combchunk() {
-        if(
-            (empty($_POST['chunk_comber']) || Qhelp::chk_pint($_POST['chunk_comber']) || $_POST['chunk_comber'] < 1) ||
-            (empty($_POST['chunk_becomb']) || Qhelp::chk_pint($_POST['chunk_becomb']) || $_POST['chunk_becomb'] < 1)
-        ){
-            Re::echo ('danger', '参数错误', 0);
+        if ((empty($_POST['chunk_comber']) || Qhelp::chk_pint($_POST['chunk_comber']) || $_POST['chunk_comber'] < 1) || (empty($_POST['chunk_becomb']) || Qhelp::chk_pint($_POST['chunk_becomb']) || $_POST['chunk_becomb'] < 1)) {
+            Re::echo('danger', '参数错误', 0);
         }
 
         $cb = Db::query("select chunk_lv from qzlit_chunk WHERE id = '" . $_POST['chunk_comber'] . "'");
         $bc = Db::query("select chunk_lv from qzlit_chunk WHERE id = '" . $_POST['chunk_becomb'] . "'");
-        if(!empty($cb) && !empty($bc)){
+        if (!empty($cb) && !empty($bc)) {
             if (Qhelp::receive('chunk_becomb') != Qhelp::receive('chunk_comber')) {
                 $chunk_lv = $bc[0]['chunk_lv'];
                 if ($chunk_lv == 1) {
@@ -125,7 +123,7 @@ class Chunkmag_function extends Controller {
                     Chunkmag_function::comb_thread(Qhelp::receive('chunk_becomb'), Qhelp::receive('chunk_comber'));
                     Db::execute("delete from qzlit_chunk WHERE id = '" . Qhelp::receive('chunk_becomb') . "'");
                     Log::visit("consoleboard", "managechunk", "comb_" . Qhelp::receive('chunk_becomb') . "_TO_" . Qhelp::receive('chunk_comber'));
-                    Re::echo ('success', '合并成功', 0);
+                    Re::echo('success', '合并成功', 0);
                 } elseif ($chunk_lv == 2) {
                     $chunk_lv3 = Db::query("select * from qzlit_chunk WHERE chunk_below = '" . Qhelp::receive('chunk_becomb') . "'");
                     foreach ($chunk_lv3 as $value) {
@@ -135,18 +133,18 @@ class Chunkmag_function extends Controller {
                     Chunkmag_function::comb_thread(Qhelp::receive('chunk_becomb'), Qhelp::receive('chunk_comber'));
                     Db::execute("delete from qzlit_chunk WHERE id = '" . Qhelp::receive('chunk_becomb') . "'");
                     Log::visit("consoleboard", "managechunk", "comb_" . Qhelp::receive('chunk_becomb') . "_TO_" . Qhelp::receive('chunk_comber'));
-                    Re::echo ('success', '合并成功', 0);
+                    Re::echo('success', '合并成功', 0);
                 } elseif ($chunk_lv == 3) {
                     Chunkmag_function::comb_thread(Qhelp::receive('chunk_becomb'), Qhelp::receive('chunk_comber'));
                     Db::execute("delete from qzlit_chunk WHERE id = '" . Qhelp::receive('chunk_becomb') . "'");
                     Log::visit("consoleboard", "managechunk", "comb_" . Qhelp::receive('chunk_becomb') . "_TO_" . Qhelp::receive('chunk_comber'));
-                    Re::echo ('success', '合并成功', 0);
+                    Re::echo('success', '合并成功', 0);
                 }
             } else {
-                Re::echo ('danger', '请选择两个不同的版块', 0);
+                Re::echo('danger', '请选择两个不同的版块', 0);
             }
         } else {
-            Re::echo ('danger', '参数错误', 0);
+            Re::echo('danger', '参数错误', 0);
         }
     }
 
@@ -156,7 +154,7 @@ class Chunkmag_function extends Controller {
             $pr = Db::query("select * from qzlit_chunk WHERE `type` = '" . $type . "' AND id = '" . Qhelp::receive('chunk_rename') . "'");
             if (!empty($pr)) {
                 if (Qhelp::receive('new_name') == $pr[0]['chunk_name']) {
-                    Re::echo ('warning', '名称未修改', 0);
+                    Re::echo('warning', '名称未修改', 0);
                 } else {
                     if ($pr[0]['chunk_lv'] == 1) {
                         $regd = Db::query("select * from qzlit_chunk WHERE `type` = '" . $type . "' AND chunk_lv =  1 AND chunk_name = '" . Qhelp::receive('new_name') . "'");
@@ -166,20 +164,20 @@ class Chunkmag_function extends Controller {
                     if (empty($regd)) {
                         Db::execute("update qzlit_chunk set `chunk_name` = '" . Qhelp::receive('new_name') . "' where id = '" . Qhelp::receive('chunk_rename') . "'");
                         Log::visit("consoleboard", "managechunk", "rename_" . Qhelp::receive('new_name'));
-                        Re::echo ('success', '修改成功', 0);
+                        Re::echo('success', '修改成功', 0);
                     } else {
-                        Re::echo ('warning', '同级专题名不能重复', 0);
+                        Re::echo('warning', '同级专题名不能重复', 0);
                     }
                 }
             }
         } else {
-            Re::echo ('danger', '参数不足', 0);
+            Re::echo('danger', '参数不足', 0);
         }
     }
 
     public static function del_thread($sort) {
-        if(!Qhelp::chk_pint($sort) || $sort < 1){
-            Re::echo ('danger', '参数错误', 0);
+        if (!Qhelp::chk_pint($sort) || $sort < 1) {
+            Re::echo('danger', '参数错误', 0);
         }
         $img = Db::query("select thread_coverimg from qzlit_thread WHERE hk_sort = $sort");
         foreach ($img as $value) {
@@ -191,11 +189,8 @@ class Chunkmag_function extends Controller {
     }
 
     public static function comb_thread($becomb, $comber) {
-        if(
-            (empty($becomb) || Qhelp::chk_pint($becomb) || $becomb < 1) ||
-            (empty($comber) || Qhelp::chk_pint($comber) || $comber < 1)
-        ){
-            Re::echo ('danger', '参数错误', 0);
+        if ((empty($becomb) || Qhelp::chk_pint($becomb) || $becomb < 1) || (empty($comber) || Qhelp::chk_pint($comber) || $comber < 1)) {
+            Re::echo('danger', '参数错误', 0);
         }
 
         Db::execute("update qzlit_thread set hk_sort = '" . $comber . "' where hk_sort = $becomb");

@@ -8,33 +8,27 @@
  *      CreateDate:   2017-07-05
  *
  */
+
 namespace app\consoleboard\controller;
 
-use app\Chunk;
-use app\Thread;
-use app\Re;
-use app\User;
-use app\Log;
-use app\Qhelp;
 use think\Db;
 use think\Controller;
-use app\common\controller\Template;
+use app\common\Template;
+use app\common\Chunk;
+use app\common\Thread;
+use app\common\Re;
+use app\common\User;
+use app\common\Log;
+use app\common\Qhelp;
 
 class Threadmag extends Controller {
     public function _initialize() {
         new Init();
-        if(!User::has_pm('is_admin')){
+        if (!User::has_pm('is_admin')) {
             $this->error('操作错误，您未获得该操作权限');
             return null;
         }
-        $this->assign([
-            'chunklv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 1")),
-            'chunklv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 2")),
-            'chunklv3' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 3")),
-            'splv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 1")),
-            'splv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2")),
-            'splv3' => [],
-        ]);
+        $this->assign(['chunklv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 1")), 'chunklv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 2")), 'chunklv3' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 3")), 'splv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 1")), 'splv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2")), 'splv3' => [],]);
     }
 
     public function main() {
@@ -42,50 +36,55 @@ class Threadmag extends Controller {
         if (isset($_POST['newthread'])) {
             return Thread::sender();
         } else {
-            $this->assign([
-                'threadmag' => 'active',
-                'editor' => User::ufetch(),
-                ]);
+            $this->assign(['threadmag' => 'active', 'editor' => User::ufetch(),]);
 
             return Template::view('admin/threadmag');
         }
     }
 
-    public function gettreaddata(){
+    public function gettreaddata() {
         $type = $_POST['type'];
-        switch ($type){
-            case 'thread': $data = Thread_function::get_threads("thread"); break;
-            case 'trash': $data = Thread_function::get_threads("trash"); break;
+        switch ($type) {
+            case 'thread':
+                $data = Thread_function::get_threads("thread");
+                break;
+            case 'trash':
+                $data = Thread_function::get_threads("trash");
+                break;
         }
-        if(!empty($data)){
-            return Qhelp::json_en([
-                'Stat' => 'OK',
-                'Message' => '数据已刷新',
-                'Data' => $data
-            ]);
+        if (!empty($data)) {
+            return Qhelp::json_en(['Stat' => 'OK', 'Message' => '数据已刷新', 'Data' => $data]);
         } else {
-            return Qhelp::json_en([
-                'Stat' => 'error',
-                'Message' => '数据为空',
-            ]);
+            return Qhelp::json_en(['Stat' => 'error', 'Message' => '数据为空',]);
         }
     }
 
-    function logic(){
-        if(Thread_function::check_has_thread_pm($_POST['tid'])){
+    function logic() {
+        if (Thread_function::check_has_thread_pm($_POST['tid'])) {
             return Qhelp::json_en(["Stat" => 'error', "Message" => "权限不足"]);
         }
-        if(!Qhelp::chk_pint($_POST['tid']) || $_POST['tid'] < 1){
+        if (!Qhelp::chk_pint($_POST['tid']) || $_POST['tid'] < 1) {
             return Qhelp::json_en(["Stat" => 'error', "Message" => "参数错误"]);
         }
-        if(!empty($_POST['med'])){
-            switch ($_POST['med']){
-                case 'trashthread': return Thread_function::trashthread($_POST['tid']) ;break;
-                case 'pushthread': return Thread_function::pushthread($_POST['tid']) ;break;
-                case 'dpushthread': return Thread_function::dpushthread($_POST['tid']) ;break;
-                case 'recoverthread':return Thread_function::recoverthread($_POST['tid']) ;break;
-                case 'delthread': return Thread_function::delthread($_POST['tid']) ;break;
-                default: return Qhelp::json_en(["Stat" => 'error', "Message" => "参数错误"]);
+        if (!empty($_POST['med'])) {
+            switch ($_POST['med']) {
+                case 'trashthread':
+                    return Thread_function::trashthread($_POST['tid']);
+                    break;
+                case 'pushthread':
+                    return Thread_function::pushthread($_POST['tid']);
+                    break;
+                case 'dpushthread':
+                    return Thread_function::dpushthread($_POST['tid']);
+                    break;
+                case 'recoverthread':
+                    return Thread_function::recoverthread($_POST['tid']);
+                    break;
+                case 'delthread':
+                    return Thread_function::delthread($_POST['tid']);
+                    break;
+                default:
+                    return Qhelp::json_en(["Stat" => 'error', "Message" => "参数错误"]);
             }
         }
         return Qhelp::json_en(["Stat" => 'error', "Message" => "参数不足，当前行为无法理解"]);
@@ -93,7 +92,7 @@ class Threadmag extends Controller {
 
     /* 更新文章 */
     function renewthread($threadid) {
-        if(!Qhelp::chk_pint($threadid) || $threadid < 1){
+        if (!Qhelp::chk_pint($threadid) || $threadid < 1) {
             $this->error('参数错误');
         }
         Thread_function::check_has_thread_pm($threadid);
@@ -109,26 +108,20 @@ class Threadmag extends Controller {
     }
 
     function setbanner($chunk_id) {
-        if(!Qhelp::chk_pint($chunk_id) || $chunk_id < 1){
+        if (!Qhelp::chk_pint($chunk_id) || $chunk_id < 1) {
             $this->error('操作错误，参数类型错误');
             return null;
         }
         $M = User::ufetch();
 
-        if (!User::has_pm('chunk_ct_mag',$chunk_id)) {
+        if (!User::has_pm('chunk_ct_mag', $chunk_id)) {
             $this->error('操作错误，您未获得该操作权限');
             return null;
         }
         $banner_perfix = 'b';
         $maxnum = 10;
         $cb = Chunk::loadbanner($chunk_id);
-        $this->assign([
-            'other' => 'active',
-            'editor' => $M,
-            'chunk' => $chunk_id,
-            'slider' => $cb['slider'],
-            'banner' => $cb['banner'],
-        ]);
+        $this->assign(['other' => 'active', 'editor' => $M, 'chunk' => $chunk_id, 'slider' => $cb['slider'], 'banner' => $cb['banner'],]);
         if (isset($_POST['updata'])) {
             $fail = 0;
             $cut = 0;

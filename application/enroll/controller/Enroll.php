@@ -11,18 +11,16 @@
 
 namespace app\enroll\controller;
 
-use app\Config;
-use app\Qhelp;
-use app\common\controller\Template;
 use think\Controller;
 use think\Db;
-
+use app\common\Config;
+use app\common\Qhelp;
+use app\common\Template;
 
 class Enroll extends Controller {
-	function _initialize() {
-		new \app\Start();
-	}
-	
+    function _initialize() {
+        new \app\Start();
+    }
 
     public function main() {
         return Template::view('enroll/enroll');
@@ -31,8 +29,7 @@ class Enroll extends Controller {
     public function check() {
 
         /* 号码顺序按部门顺序来填写 */
-        $qqlist = [
-            1 => '904254887',  //--运营
+        $qqlist = [1 => '904254887',  //--运营
             2 => '879014365',  //--卡乐坊
             3 => '720127750',  //--新闻中心
             4 => '721406851',  //--清泽微视

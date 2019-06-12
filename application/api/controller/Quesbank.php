@@ -8,12 +8,12 @@
  *      CreateDate:   2018-11-06
  *
  */
+
 namespace app\api\controller;
 
-use app\Qhelp;
 use think\Controller;
 use think\Db;
-
+use app\common\Qhelp;
 
 class Quesbank extends Controller {
 
@@ -21,16 +21,7 @@ class Quesbank extends Controller {
         if (empty($_POST['hash']) || (!empty($_POST['hash']) && $_POST['hash'] != SHASH)) {
             return Qhelp::json_en(['Stat' => 'error', "Message" => "您无权使用本接口"]);
         }
-        return Qhelp::json_en([
-            'Stat' => 'OK',
-            'Data' => [
-                'years' => self::getYears(@Qhelp::dss($_POST['course'])),
-                'courses' => self::getCourses(),
-                'chapters' => self::getChapters(@Qhelp::dss($_POST['year']), @Qhelp::dss($_POST['course'])),
-                'type' => self::getType(@Qhelp::dss($_POST['year']), @Qhelp::dss($_POST['course']), @Qhelp::dss($_POST['chapter'])),
-                'ques' => self::getQues(@Qhelp::dss($_POST['year']), @Qhelp::dss($_POST['course']), @Qhelp::dss($_POST['chapter']), @Qhelp::dss($_POST['type']), @Qhelp::dss($_POST['key']), @Qhelp::dss($_POST['page'])),
-                ]
-        ]);
+        return Qhelp::json_en(['Stat' => 'OK', 'Data' => ['years' => self::getYears(@Qhelp::dss($_POST['course'])), 'courses' => self::getCourses(), 'chapters' => self::getChapters(@Qhelp::dss($_POST['year']), @Qhelp::dss($_POST['course'])), 'type' => self::getType(@Qhelp::dss($_POST['year']), @Qhelp::dss($_POST['course']), @Qhelp::dss($_POST['chapter'])), 'ques' => self::getQues(@Qhelp::dss($_POST['year']), @Qhelp::dss($_POST['course']), @Qhelp::dss($_POST['chapter']), @Qhelp::dss($_POST['type']), @Qhelp::dss($_POST['key']), @Qhelp::dss($_POST['page'])),]]);
     }
 
     protected function getCourses() {
@@ -73,7 +64,7 @@ class Quesbank extends Controller {
     protected function getType($year = null, $course = null, $chapter = null) {
         $cp_temp = $cp = [];
         if ($year && $course) {
-            $cp_temp = Db::query("select `type` from tool_quesbank where `year` = '" . $year . "' AND course = '" . $course . "' ".($chapter ? 'AND chapter = \''.$chapter.'\'' : '')."");
+            $cp_temp = Db::query("select `type` from tool_quesbank where `year` = '" . $year . "' AND course = '" . $course . "' " . ($chapter ? 'AND chapter = \'' . $chapter . '\'' : '') . "");
         }
         foreach ($cp_temp as $v) {
             if (!in_array($v['type'], $cp)) {
@@ -87,25 +78,16 @@ class Quesbank extends Controller {
         $p = $pf = [];
         $intv = 15;
         $st = 0;
-        if($start && Qhelp::chk_pint($start)){
-            $st = $start*$intv;
+        if ($start && Qhelp::chk_pint($start)) {
+            $st = $start * $intv;
         }
         if ($year && $course) {
-            $p = Db::query("select * from tool_quesbank where `year` = '".$year."' AND course = '".$course."' ".($type ? 'AND type = \''.$type.'\'' : '').($chapter ? 'AND chapter = \''.$chapter.'\'' : '').($key ? 'AND ques like \'%'.$key.'%\'' : '')." ORDER by type DESC limit ".$st.','.$intv."");
-        } elseif($key) {
-            $p = Db::query("select * from tool_quesbank where ques like '%".$key."%'  ORDER by type DESC limit ".$st.','.$intv."");
+            $p = Db::query("select * from tool_quesbank where `year` = '" . $year . "' AND course = '" . $course . "' " . ($type ? 'AND type = \'' . $type . '\'' : '') . ($chapter ? 'AND chapter = \'' . $chapter . '\'' : '') . ($key ? 'AND ques like \'%' . $key . '%\'' : '') . " ORDER by type DESC limit " . $st . ',' . $intv . "");
+        } elseif ($key) {
+            $p = Db::query("select * from tool_quesbank where ques like '%" . $key . "%'  ORDER by type DESC limit " . $st . ',' . $intv . "");
         }
         foreach ($p as $v) {
-            $pf[] = [
-                'ques' => $v['ques'],
-                'ans' => $v['ans'],
-                'note' => $v['note'],
-                'type' => $v['type'],
-                'chos' => [
-                    'A' => $v['A'], 'B' => $v['B'], 'C' => $v['C'], 'D' => $v['D'], 'E' => $v['E'],
-                    'F' => $v['F'], 'G' => $v['G'], 'H' => $v['H'], 'I' => $v['I'], 'J' => $v['J'],
-                    ],
-                ];
+            $pf[] = ['ques' => $v['ques'], 'ans' => $v['ans'], 'note' => $v['note'], 'type' => $v['type'], 'chos' => ['A' => $v['A'], 'B' => $v['B'], 'C' => $v['C'], 'D' => $v['D'], 'E' => $v['E'], 'F' => $v['F'], 'G' => $v['G'], 'H' => $v['H'], 'I' => $v['I'], 'J' => $v['J'],],];
         }
         return $pf;
     }

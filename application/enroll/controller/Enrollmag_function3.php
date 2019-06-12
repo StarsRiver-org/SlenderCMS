@@ -8,71 +8,64 @@
  *      CreateDate:   2018-07-15
  *
  */
- namespace app\enroll\controller;
 
-    use app\Qhelp;
-    use app\Qpage;
-    use app\User;
-    use think\Controller;
-    use think\Db;
+namespace app\enroll\controller;
 
-    class Enrollmag_function3 extends Controller {
-        static function refresh($perpage = 30,$page){
+use think\Controller;
+use think\Db;
+use app\common\Qhelp;
+use app\common\Qpage;
+use app\common\User;
 
-            if(Enrollmag::chk_pty()){
-                return Enrollmag::chk_pty();
-            }
+class Enrollmag_function3 extends Controller {
+    static function refresh($perpage = 30, $page) {
 
-            if(!empty($_POST['campus']) && !Qhelp::chk_pint($_POST['campus'])){
-                return Qhelp::json_en([
-                    'Stat' => 'OK',
-                    'Message' => '校区数据类型错误',
-                ]);
-            }
-            $cps = Qhelp::receive('campus','');
-            $aim = User::ufetch()['party'];
-
-            $page = (!empty($page) && Qhelp::chk_pint($page)) ? $page : 1;
-            $perpage = (int)$perpage < 10 ? 10 : ((int)$perpage > 99 ? 99 : (int)$perpage);
-            $count = count(Db::query("select id from qzlit_usenroll WHERE ".(!empty($cps) ? "campus = $cps AND" : "")." `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim"));
-            $pages = ceil($count/$perpage);
-            $from = ($page-1)*$perpage - 1 >=0 ? ($page-1)*$perpage : 0 ;
-
-
-            $res = Db::query("select * from qzlit_usenroll WHERE ".(!empty($cps) ? "campus = $cps AND" : "")." `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit ".(int)$from.",".(int)$perpage);
-            if(empty($res)){
-                $from = 0 ;
-                $page = 1;
-                $res = Db::query("select * from qzlit_usenroll WHERE ".(!empty($cps) ? "campus = $cps AND" : "")." `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit ".(int)$from.",".(int)$perpage);
-            }
-
-            return Qhelp::json_en([
-                'Stat' => 'OK',
-                'Message' => '数据加载成功',
-                "Data" => Enrollmag::dataFormat($res),
-                'Pages' => Qpage::page($pages,$page,'#page='),
-            ]);
+        if (Enrollmag::chk_pty()) {
+            return Enrollmag::chk_pty();
         }
 
-        static function enroll($id, $phone){
-            if (!empty($phone) && !empty($id) && Qhelp::chk_pint($phone) && strlen($phone) == 11 && Qhelp::chk_pint($id)) {
+        if (!empty($_POST['campus']) && !Qhelp::chk_pint($_POST['campus'])) {
+            return Qhelp::json_en(['Stat' => 'OK', 'Message' => '校区数据类型错误',]);
+        }
+        $cps = Qhelp::receive('campus', '');
+        $aim = User::ufetch()['party'];
 
-                $res = Db::query("select * from qzlit_usenroll where id = $id");
+        $page = (!empty($page) && Qhelp::chk_pint($page)) ? $page : 1;
+        $perpage = (int)$perpage < 10 ? 10 : ((int)$perpage > 99 ? 99 : (int)$perpage);
+        $count = count(Db::query("select id from qzlit_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim"));
+        $pages = ceil($count / $perpage);
+        $from = ($page - 1) * $perpage - 1 >= 0 ? ($page - 1) * $perpage : 0;
 
-                if (!empty($res) && $res[0]["phone"] == $phone) {
 
-                    if(Enrollmag::chk_pty($res[0]['aim'])){
-                        return Enrollmag::chk_pty($res[0]['aim']);
-                    }
+        $res = Db::query("select * from qzlit_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit " . (int)$from . "," . (int)$perpage);
+        if (empty($res)) {
+            $from = 0;
+            $page = 1;
+            $res = Db::query("select * from qzlit_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit " . (int)$from . "," . (int)$perpage);
+        }
 
-                    Db::execute("update qzlit_usenroll set isenrolled = 1, isfaced = 1 where id = $id");
-                    return Qhelp::json_en(['Stat' => 'OK', 'Message' => '已加入到录取名单']);
+        return Qhelp::json_en(['Stat' => 'OK', 'Message' => '数据加载成功', "Data" => Enrollmag::dataFormat($res), 'Pages' => Qpage::page($pages, $page, '#page='),]);
+    }
+
+    static function enroll($id, $phone) {
+        if (!empty($phone) && !empty($id) && Qhelp::chk_pint($phone) && strlen($phone) == 11 && Qhelp::chk_pint($id)) {
+
+            $res = Db::query("select * from qzlit_usenroll where id = $id");
+
+            if (!empty($res) && $res[0]["phone"] == $phone) {
+
+                if (Enrollmag::chk_pty($res[0]['aim'])) {
+                    return Enrollmag::chk_pty($res[0]['aim']);
                 }
-                return Qhelp::json_en(['Stat' => 'error', 'Message' => '数据不存在']);
-            } else {
-                return Qhelp::json_en(['Stat' => 'error', 'Message' => '参数缺失']);
-            }
 
+                Db::execute("update qzlit_usenroll set isenrolled = 1, isfaced = 1 where id = $id");
+                return Qhelp::json_en(['Stat' => 'OK', 'Message' => '已加入到录取名单']);
+            }
+            return Qhelp::json_en(['Stat' => 'error', 'Message' => '数据不存在']);
+        } else {
+            return Qhelp::json_en(['Stat' => 'error', 'Message' => '参数缺失']);
         }
 
     }
+
+}
