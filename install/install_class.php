@@ -137,7 +137,7 @@
             $roomtemp = $roomtemp / 1024 / 1024 / 1024;
             $room     = substr($roomtemp, 0, 5);
 
-            $testfile   = '../favicon.ico';
+            $testfile   = '../public/favicon.ico';
             $phpable    = $reqphp < PHP_VERSION ? '<a class="ok r">通过</a>' : '<a class="error r">错误：php版本过低</a>';
             $apacheable = $reqapache < $apacheversion ? '<a class="ok r">通过</a>' : '<a class="error r">错误：apache版本过低</a>'.$apacheversion;
             $mysqlable  = $reqmysql < $mv ? '<a class="ok r">通过</a>' : '<a class="error r">错误，数据库访问失败</a>';
