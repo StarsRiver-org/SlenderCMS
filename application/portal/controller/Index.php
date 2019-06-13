@@ -12,7 +12,7 @@
 namespace app\portal\Controller;
 
 use think\Controller;
-use app\common\Base;
+use app\common\controller\Base;
 use app\common\Log;
 use app\common\Chunk;
 use app\common\Thread;

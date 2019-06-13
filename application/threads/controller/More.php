@@ -13,7 +13,7 @@ namespace app\threads\controller;
 
 use think\Controller;
 use app\common\Chunk;
-use app\common\Base;
+use app\common\controller\Base;
 use app\common\Qhelp;
 use app\common\Qpage;
 use app\common\Re;

@@ -12,7 +12,7 @@
 namespace app\special\Controller;
 
 use think\Controller;
-use app\common\Base;
+use app\common\controller\Base;
 use app\common\Thread;
 use app\common\Chunk;
 use app\common\Log;

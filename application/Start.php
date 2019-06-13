@@ -11,6 +11,7 @@
 
 namespace app;
 
+use app\common\Cookie;
 use think\Controller;
 use app\common\Limit;
 use app\common\Config;
@@ -20,6 +21,12 @@ use app\common\Template;
 class Start extends Controller {
 
     function _initialize() {
+        /*开启会话*/
+        if(!isset($_COOKIE['deviceid'])){
+            Cookie::savecookie('deviceid',bin2hex(random_bytes(16)));
+        }
+
+        /*限制检查*/
         $this->checkopen();
         $this->checklimit();
     }

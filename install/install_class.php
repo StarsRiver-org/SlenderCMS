@@ -52,14 +52,6 @@
                     echo '<a class="btn r cover">' . $lang['waiting'] . '</a>';
                     $__config   =
                         '<?php
-    // 直接引用设置
-    define( \'DB_host\' ,\'' . $_POST['pdbhost'] . '\');
-    define( \'DB_user\' ,\'' . $_POST['pdbuser'] . '\');
-    define( \'DB_name\' ,\'' . $_POST['pdbname'] . '\');
-    define( \'DB_pass\' ,\'' . $_POST['pdbpass'] . '\');
-    define( \'DB_perfix\' ,\'qzlit_\');
-    define( \'DB_haset\' ,\'utf8\');
-
     return [
         // 数据库类型
         \'type\'            => \'mysql\',

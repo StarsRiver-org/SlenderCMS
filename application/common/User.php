@@ -16,15 +16,72 @@ use think\Db;
 
 class User extends Controller {
 
-    /* 获取当前管理员权限 */
-    public static function ufetch() {
-        session_start();
-        if (!empty($_SESSION['uid'])) {
-            $user = Db::query("select * from qzlit_group where uid= '" . $_SESSION['uid'] . "'")[0];
-            session_write_close();
-            return ['uid' => $user['uid'], 'username' => $user['username'], 'party' => $user['party'], 'pm' => $user['promise'], 'pml' => Qhelp::json_de(htmlspecialchars_decode($user['pml'], ENT_QUOTES)), 'ban' => $user['unreg']];
+    /* 获取当前用户会话 */
+    public static function getSession($uuid,$session_id) {
+        $session = Db::query("select `session` from qzlit_group where uid= '" . $uuid . "'");
+        if(!empty($session[0]['session'])){
+            $session = Qhelp::json_de(htmlspecialchars_decode($session[0]['session']));
+            if(isset($session[$session_id])){
+                return $session[$session_id];
+            }
+            return [];
         } else {
-            session_write_close();
+            return [];
+        }
+    }
+
+    /* 保存用户会话 */
+    public static function updateSession($uuid,$session_id,$data) {
+        $session = Db::query("select `session` from qzlit_group where uid= '" . $uuid . "'");
+        if(!empty($session[0]['session'])){
+            $session = Qhelp::json_de(htmlspecialchars_decode($session[0]['session']));
+        } else {
+            $session = [];
+        }
+        foreach ($data as $key => $value){
+            $session[$session_id][$key] = $value;
+        }
+        $session[$session_id]['lastactive'] = time();
+
+        /*清理无效数据*/
+        foreach ($session as $item => $value){
+            if(time() - (isset($session[$item]['lastactive']) ? $session[$item]['lastactive'] : 0) >= 3600*24*30){
+                unset($session[$item]);
+            }
+        }
+
+        /*保存*/
+        $session = htmlspecialchars(Qhelp::json_en($session));
+        $res = Db::execute("update qzlit_group set `session` = '".$session."' where `uid` = $uuid");
+        return $res;
+    }
+
+    /*销毁会话*/
+    public static function unsetSession($uuid,$session_id) {
+        $session = Db::query("select `session` from qzlit_group where uid= '" . $uuid . "'");
+        if(!empty($session[0]['session'])){
+            $session = Qhelp::json_de(htmlspecialchars_decode($session[0]['session']));
+        } else {
+            $session = [];
+        }
+        unset($session[$session_id]);
+
+        /*保存*/
+        $session = htmlspecialchars(Qhelp::json_en($session));
+        $res = Db::execute("update qzlit_group set `session` = '".$session."' where `uid` = $uuid");
+        return $res;
+    }
+
+    /* 获取当前用户信息 */
+    public static function ufetch() {
+        if (isset($_COOKIE['uuid'])) {
+            $user = Db::query("select * from qzlit_group where uid= '" . $_COOKIE['uuid'] . "'")[0];
+            if(!empty($user)){
+                return ['uid' => $user['uid'], 'username' => $user['username'], 'party' => $user['party'], 'pm' => $user['promise'], 'pml' => Qhelp::json_de(htmlspecialchars_decode($user['pml'], ENT_QUOTES)), 'ban' => $user['unreg']];
+            } else {
+                return 0;
+            }
+        } else {
             return 0;
         }
     }
@@ -185,9 +242,20 @@ class User extends Controller {
          * 添加的权限需要在 has_pm 里面写入判定规则，请务必小心！
          * ------------------------------------------------------------------
          * 权限基本设定 type权限存储类型，pmin使用该权限的最低值，psolid高于该权限必拥有*/
-        'site_visite' => ['type' => 'boolean', 'name' => '访问网站', 'pmin' => '0', 'psolid' => '700', 'df' => false], 'thread_visite' => ['type' => 'boolean', 'name' => '查看文章', 'pmin' => '0', 'psolid' => '700', 'df' => false], 'thread_subscrib' => ['type' => 'boolean', 'name' => '评论文章', 'pmin' => '0', 'psolid' => '700', 'df' => false], 'user_subscrip' => ['type' => 'boolean', 'name' => '评论用户评论', 'pmin' => '0', 'psolid' => '700', 'df' => false],
+        'site_visite' => ['type' => 'boolean', 'name' => '访问网站', 'pmin' => '0', 'psolid' => '700', 'df' => false],
+        'thread_visite' => ['type' => 'boolean', 'name' => '查看文章', 'pmin' => '0', 'psolid' => '700', 'df' => false],
+        'thread_subscrib' => ['type' => 'boolean', 'name' => '评论文章', 'pmin' => '0', 'psolid' => '700', 'df' => false],
+        'user_subscrip' => ['type' => 'boolean', 'name' => '评论用户评论', 'pmin' => '0', 'psolid' => '700', 'df' => false],
 
-        'thread_mag' => ['type' => 'boolean', 'name' => '增改文章', 'pmin' => '700', 'psolid' => '800', 'df' => false], 'user_mag' => ['type' => 'boolean', 'name' => '管理用户', 'pmin' => '800', 'psolid' => '900', 'df' => false], 'chunk_mag' => ['type' => 'boolean', 'name' => '板块管理', 'pmin' => '900', 'psolid' => '999', 'df' => false], 'nav_mag' => ['type' => 'boolean', 'name' => '修改导航', 'pmin' => '900', 'psolid' => '999', 'df' => false], 'sms_use' => ['type' => 'boolean', 'name' => '发送短信', 'pmin' => '800', 'psolid' => '999', 'df' => false], 'enroll_use' => ['type' => 'boolean', 'name' => '使用报名系统', 'pmin' => '800', 'psolid' => '999', 'df' => false], 'config_mag' => ['type' => 'boolean', 'name' => '修改网站配置', 'pmin' => '900', 'psolid' => '999', 'df' => false], 'chunk_ct_mag' => ['type' => 'char', 'name' => '管理板块内容', 'pmin' => '700', 'psolid' => '800', 'df' => '']];
+        'thread_mag' => ['type' => 'boolean', 'name' => '增改文章', 'pmin' => '700', 'psolid' => '800', 'df' => false],
+        'user_mag' => ['type' => 'boolean', 'name' => '管理用户', 'pmin' => '800', 'psolid' => '900', 'df' => false],
+        'chunk_mag' => ['type' => 'boolean', 'name' => '板块管理', 'pmin' => '900', 'psolid' => '999', 'df' => false],
+        'nav_mag' => ['type' => 'boolean', 'name' => '修改导航', 'pmin' => '900', 'psolid' => '999', 'df' => false],
+        'sms_use' => ['type' => 'boolean', 'name' => '发送短信', 'pmin' => '800', 'psolid' => '999', 'df' => false],
+        'enroll_use' => ['type' => 'boolean', 'name' => '使用报名系统', 'pmin' => '800', 'psolid' => '999', 'df' => false],
+        'config_mag' => ['type' => 'boolean', 'name' => '修改网站配置', 'pmin' => '900', 'psolid' => '999', 'df' => false],
+        'chunk_ct_mag' => ['type' => 'char', 'name' => '管理板块内容', 'pmin' => '700', 'psolid' => '800', 'df' => '']
+    ];
 
     /* 检查用户权限 */
     public static function has_pm($pname, $data = 0) {

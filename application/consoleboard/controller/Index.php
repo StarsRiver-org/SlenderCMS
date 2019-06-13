@@ -11,6 +11,7 @@
 
 namespace app\consoleboard\controller;
 
+use app\common\Lang;
 use think\Controller;
 use think\Db;
 use app\common\Template;
@@ -54,8 +55,42 @@ class Index extends Controller {
 
         $visit_log_consoleboard = ['all' => $visit_log_consoleboard,];
 
-        $visit_log = ['portal' => ['allsite' => ['all' => count($visit_log_portal['all']), 'hour' => Log::count_by_timegap($visit_log_portal['all'], "hour"), 'day' => Log::count_by_timegap($visit_log_portal['all'], "day"), 'week' => Log::count_by_timegap($visit_log_portal['all'], "week"), 'moon' => Log::count_by_timegap($visit_log_portal['all'], "moon"),],], 'article' => ['allsite' => ['all' => count($visit_log_article), 'hour' => Log::count_by_timegap($visit_log_article, "hour"), 'day' => Log::count_by_timegap($visit_log_article, "day"), 'week' => Log::count_by_timegap($visit_log_article, "week"), 'moon' => Log::count_by_timegap($visit_log_article, "moon"),],], 'consoleboard' => ['allsite' => ['all' => count($visit_log_consoleboard['all']), 'hour' => Log::count_by_timegap($visit_log_consoleboard['all'], "hour"), 'day' => Log::count_by_timegap($visit_log_consoleboard['all'], "day"), 'week' => Log::count_by_timegap($visit_log_consoleboard['all'], "week"), 'moon' => Log::count_by_timegap($visit_log_consoleboard['all'], "moon"),],],];
-        $this->assign(['info_article' => $info_article, 'info_visit' => $visit_log, 'index' => 'active',]);
+        $visit_log = [
+            'portal' => [
+                'allsite' => [
+                    'all' => count($visit_log_portal['all']),
+                    'hour' => Log::count_by_timegap($visit_log_portal['all'], "hour"),
+                    'day' => Log::count_by_timegap($visit_log_portal['all'], "day"),
+                    'week' => Log::count_by_timegap($visit_log_portal['all'], "week"),
+                    'moon' => Log::count_by_timegap($visit_log_portal['all'], "moon"),],
+                ],
+            'article' => [
+                'allsite' => ['all' => count($visit_log_article),
+                    'hour' => Log::count_by_timegap($visit_log_article, "hour"),
+                    'day' => Log::count_by_timegap($visit_log_article, "day"),
+                    'week' => Log::count_by_timegap($visit_log_article, "week"),
+                    'moon' => Log::count_by_timegap($visit_log_article, "moon"),],
+                ],
+            'consoleboard' => [
+                'allsite' => [
+                    'all' => count($visit_log_consoleboard['all']),
+                    'hour' => Log::count_by_timegap($visit_log_consoleboard['all'], "hour"),
+                    'day' => Log::count_by_timegap($visit_log_consoleboard['all'], "day"),
+                    'week' => Log::count_by_timegap($visit_log_consoleboard['all'], "week"),
+                    'moon' => Log::count_by_timegap($visit_log_consoleboard['all'], "moon"),
+                    ],
+                ],
+            ];
+        $this->assign([
+            'info_article' => $info_article,
+            'info_visit' => $visit_log,
+            'index' => 'active',
+            'lang' => Lang::load('consoleboard'),
+            ]
+        );
+
+
+
         return Template::view('admin/index');
     }
 }

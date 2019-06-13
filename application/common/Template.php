@@ -35,6 +35,9 @@ class Template extends Controller {
     }
 
     public static function make($tpl, $arg = '') {
+
+
+
         return view(self::initTpl($tpl) . DS . $tpl, $arg);
     }
 

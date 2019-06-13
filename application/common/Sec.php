@@ -17,28 +17,22 @@ class Sec {
     /* 验证登陆操作 */
     public static function passcheck($method, $usermark, $password) {
         /* 判断登陆方式，并返回用户信息 */
-        if ($method == 'username') {
-            $pick = Db::query("select `uid`,`unreg`,`username`,`promise`,`salt`,`key`,`phone`,`email` from qzlit_group WHERE username = '" . htmlspecialchars(Qhelp::dss($usermark), ENT_QUOTES) . "'");
-        } elseif ($method == 'email') {
-            $pick = Db::query("select `uid`,`unreg`,`username`,`promise`,`salt`,`key`,`phone`,`email` from qzlit_group WHERE email = '" . htmlspecialchars(Qhelp::dss($usermark), ENT_QUOTES) . "'");
-        } elseif ($method == 'phone') {
-            $pick = Db::query("select `uid`,`unreg`,`username`,`promise`,`salt`,`key`,`phone`,`email` from qzlit_group WHERE phone = '" . htmlspecialchars(Qhelp::dss($usermark), ENT_QUOTES) . "'");
-        } else {
-            Re::echo('danger', "致命错误！", 0);
+        switch ($method){
+            case 'username' :$pick = Db::query("select `salt`,`key` from qzlit_group WHERE username = '" . $usermark . "'"); break;
+            case 'email'    :$pick = Db::query("select `salt`,`key` from qzlit_group WHERE email = '" . $usermark . "'"); break;
+            case 'phone'    :$pick = Db::query("select `salt`,`key` from qzlit_group WHERE phone = '" . $usermark . "'"); break;
+            default:Re::echo('danger', "致命错误！", 0); return;
         }
         /* 判断是否存在用户 */
         if (empty($pick)) {
-            return null;  /* 未查询到数据，用户不存在 */
+            return false;  /* 未查询到数据，用户不存在 */
+        }
+
+        /* 判断密码是否正确 */
+        if ($pick['0']['key'] == Sec::mdpass($pick['0']['salt'], $password)) {
+            return true;
         } else {
-            /* 判断密码是否正确 */
-            if ($pick['0']['unreg']) { //判断是否用户被注销
-                return 'unreg'; /* 信息匹配错误，密码或用户名错误 */
-            }
-            if ($pick['0'][$method] == htmlspecialchars(Qhelp::dss($usermark), ENT_QUOTES) && $pick['0']['key'] == Sec::mdpass($pick['0']['salt'], $password)) {
-                return ['uid' => $pick['0']['uid'], 'promise' => $pick['0']['promise'],]; //判断正确，返回用户 uid 和 权限值
-            } else {
-                return 'error'; /* 信息匹配错误，密码或用户名错误 */
-            }
+            return false;
         }
     }
 

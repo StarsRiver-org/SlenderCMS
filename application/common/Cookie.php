@@ -13,15 +13,25 @@ namespace app\common;
 
 class Cookie {
 
-    static function savecookie($key, $content, $path = '/', $unsafe) {
-        $data = str_replace(',', '%2*2%', json_encode($content, JSON_UNESCAPED_UNICODE));
-        setrawcookie($key, $data, time() + 3600 * 24 * 7, $path, null, null, $unsafe ? 0 : true);
+    static function savecookie($key, $content, $path = '/', $unsafe = '0') {
+        if(is_array($content)){
+            $data = 'isserial*'.str_replace(',', '%2*2%', json_encode($content, JSON_UNESCAPED_UNICODE));
+        } else {
+            $data = $content;
+        }
+        setrawcookie($key, $data, time() + 3600 * 24 * 30, $path, null, null, $unsafe ? 0 : true);
         return $content;
     }
 
     static function getcookie($key) {
         if (isset($_COOKIE[$key])) {
-            return json_decode(str_replace('%2*2%', ',', $_COOKIE[$key]), true);
+            if(substr($_COOKIE[$key],0,9) == 'isserial*'){
+                return json_decode(str_replace('%2*2%', ',', substr($_COOKIE[$key],9)), true);
+            } else {
+                return $_COOKIE[$key];
+            }
+        } else {
+            return 0;
         }
     }
 }

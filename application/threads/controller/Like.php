@@ -12,7 +12,6 @@
 namespace app\threads\Controller;
 
 use think\Controller;
-use app\consoleboard\controller\Admincheck;
 use app\common\Thread;
 
 class Like extends Controller {

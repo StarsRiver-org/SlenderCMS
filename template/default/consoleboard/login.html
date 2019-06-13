@@ -1,0 +1,38 @@
+{extend name="default/base" /}
+{block name="title"}{$webbase.webname} - {$lang.signin}{$lang.to}{$lang.consoleboard}{/block}
+
+{block name="css"}
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/consoleboard/login.css" rel="stylesheet">
+{/block}
+
+{block name="body"}
+    <div class="bak" style="background-image: url(//sc.localhost.com/static/img/consoleboard/bg1.jpg);"></div>
+    <div class="login-form">
+        <div class="head">
+            <p>{$lang.signin}{$lang.to}{$lang.consoleboard}</p>
+        </div>
+        <form method="post" >
+            <p class="input-head">{$lang.account}：</p>
+            <div style="font-size: 0">
+                <i class="iconl icon-angle-down"></i>
+                <select name="method" style="width: 80px; padding: 5px">
+                    <option value="username">{$lang.username}</option>
+                    <option value="email">{$lang.email}</option>
+                    <option value="phone">{$lang.phone}</option>
+                </select>
+                <input name="usermark" type="text" placeholder="" style="width: calc(100% - 80px); border-left: none !important;">
+            </div>
+
+            <p class="input-head">{$lang.pswd}：</p>
+            <input name="password" type="password" placeholder="">
+
+            <!--p class="input-head">{$lang.vcode}：</p>
+            <input name="seccode" placeholder="" type="text"-->
+
+            <span class="tip" style="float: right; margin-left: 10px; ">{$lang.autosignin}</span>
+            <input name="keeplogin" type="checkbox" value="true" placeholder="" >
+
+            <button name="button" type="submit">{$lang.signin}</button>
+        </form>
+    </div>
+{/block}

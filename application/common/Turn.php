@@ -14,9 +14,9 @@ namespace app\common;
 class Turn { /* 当页面刷新跳回后要加载的动作 */
     public static function echo($word) {
         session_start();
-        $lel = $_SESSION['lel'];
-        $_SESSION['lel'] = '';
+        $warnlevel = $_SESSION['warnlevel'];
+        $_SESSION['warnlevel'] = '';
         session_write_close();
-        echo "<div class='poptip " . $lel . " shadow1'>" . $word . "</div>";
+        echo "<div class='poptip " . $warnlevel . " shadow1'>" . $word . "</div>";
     }
 }

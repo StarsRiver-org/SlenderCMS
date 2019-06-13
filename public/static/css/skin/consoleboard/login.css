@@ -1,0 +1,98 @@
+.bak {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.login-form {
+    float: right;
+    position: relative;
+    display: block;
+    background: #fff;
+    height: auto;
+    width: 320px;
+    margin: 120px 64px 0 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
+    overflow: hidden;
+}
+.login-form p{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 480px) {
+    .login-form {
+        width: calc(100% - 36px);
+        margin: 80px 18px;
+    }
+}
+
+.login-form .head {
+    box-sizing: border-box;
+    padding: 20px;
+    display: block;
+    width: 100%;
+    background: #fff;
+    margin: 0 auto;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.login-form form {
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.login-form form .input-head {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+}
+
+.login-form form input[type='text'],
+.login-form form input[type='password'],
+.login-form form select {
+    font-size: 14px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(0, 0, 0, .1) !important;
+    background: #fff;
+    outline: none !important;
+    box-shadow: inset 0 0 0 1000px #fff;
+}
+
+.login-form form input[type='checkbox'] {
+    position: relative;
+    margin: 5px 0;
+    float: right;
+}
+
+.login-form form .tip {
+    font-size: 14px;
+}
+
+.login-form form button {
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    border: none;
+    background: #39c5bb;
+    color: #fff;
+    margin-top: 15px;
+}
+
+.login-form form button:hover {
+    background: #34b2a8;
+    cursor: pointer;
+}

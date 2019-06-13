@@ -44,7 +44,7 @@
                 llipu < apiurl.length * iprequeryloop ? initcookieipinfo() : '';
             }, success: function (r) {
                 i = JSON.parse(r);
-                (i.Stat !== 'OK' && llipu < apiurl.length * iprequeryloop) ? initcookieipinfo() : $.cookie("ipinfo", JSON.stringify(i.Data).replace(',', '%2*2%'), {
+                (i.Stat !== 'OK' && llipu < apiurl.length * iprequeryloop) ? initcookieipinfo() : $.cookie("ipinfo", 'isserial*' + JSON.stringify(i.Data).replace(',', '%2*2%'), {
                     expires: 2,
                     path: '/',
                 });

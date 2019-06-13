@@ -12,7 +12,7 @@
 namespace app\search\controller;
 
 use think\Controller;
-use app\common\Base;
+use app\common\controller\Base;
 use app\common\Qhelp;
 use app\common\Qpage;
 use app\common\Thread;

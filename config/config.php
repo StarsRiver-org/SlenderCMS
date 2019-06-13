@@ -4,6 +4,7 @@
     define('SITE','//'.$_SERVER['SERVER_NAME']);
     define('SHASH','5f5a0ecbb31ef7860c8d8aec79a23777');
     define('STATIC_ROOT', SITE.'/static');
+
 	//注意 请求会发送到 public,所以DATA_ROOT的根目录为public而不是网站根目录
     define('DATA_ROOT', SITE.'/data'); 
     define('ADDON_ROOT','http:'.SITE.'/application/addons');
