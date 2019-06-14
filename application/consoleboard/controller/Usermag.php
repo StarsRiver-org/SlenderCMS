@@ -30,7 +30,7 @@ class Usermag extends Controller {
     public function main() {
 
         $this->assign(['usermag' => 'active', 'appm' => User::ufetch()['pm'],]);
-        return Template::view('admin/usermag');
+        return Template::view('consoleboard/usermag');
     }
 
     public function get_usernum() {

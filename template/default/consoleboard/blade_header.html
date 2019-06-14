@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/zui.css" rel="stylesheet">
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/zui_fonts.css" rel="stylesheet">
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/norm.css" rel="stylesheet">
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/consoleboard/main.css" rel="stylesheet">
+
+    <script>
+        SiteUrl = "{$Think.const.SITE}";
+        StaticUrl = "{$Think.const.SITE}/static";
+    </script>
+    <script src="{$Think.const.STATIC_ROOT}/lib/jquery/jquery.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/lib/jquery/jquery.jsonp.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/lib/jquery/jquery.cookie.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/js/zui.min.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/js/classie.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/js/clipboard.min.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/js/common.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/lib/chart/zui.chart.min.js"></script>
+
+    {include file="default/common/compatible"}
+    <title>{$webbase.webname} - {$lang.consoleboard}</title>
+</head>
+<body>
+    <div class="background"></div>
+    <header>
+        <div class="logo">
+            <p style="margin: 0;
+                     color: #fff;
+                     font-size: 24px;
+                     font-weight: 700;"
+            >SlenderCMS</p>
+        </div>
+        <ul class="nav nav-tabs headnav">
+            <li class="{$index}"><a class="icon-home" href="{$Think.const.SITE}/consoleboard/index.html" data-target="#homepage">首页</a></li>
+            <li class="{$threadmag}"><a href="{$Think.const.SITE}/consoleboard/threadmag.html" data-target="#threadmanager">内容管理</a></li>
+            <li class="{$navmag}"><a href="{$Think.const.SITE}/consoleboard/navmag.html" data-target="#threadmanager">导航管理</a></li>
+            <li class="{$chunkmag}"><a href="{$Think.const.SITE}/consoleboard/chunkmag.html" data-target="#threadmanager">板块管理</a></li>
+            <li class="{$usermag}"><a href="{$Think.const.SITE}/consoleboard/usermag.html" data-target="#usermanager">用户中心</a></li>
+            <li class="{$enrollmag}"><a href="{$Think.const.SITE}/enroll/enrollmag.html" data-target="#usermanager">报名管理</a></li>
+            <li class="{$configmag}"><a href="{$Think.const.SITE}/consoleboard/configmag.html" data-target="#usermanager">系统配置</a></li>
+            <li class="hidden {$other}"><a>其他</a></li>
+        </ul>
+        <form method="post" class="admin_exit">
+            <input type="hidden" name="exit" value="confirm">
+            <button type="submit" class=" icon-signout " title="安全登出"></button>
+        </form>
+    </header>

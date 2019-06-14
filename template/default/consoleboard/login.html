@@ -1,8 +1,10 @@
-{extend name="default/base" /}
+{extend name="default/consoleboard/ancenstor_single" /}
 {block name="title"}{$webbase.webname} - {$lang.signin}{$lang.to}{$lang.consoleboard}{/block}
 
 {block name="css"}
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/consoleboard/main.css" rel="stylesheet">
     <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/skin/consoleboard/login.css" rel="stylesheet">
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/css/zui_fonts.css" rel="stylesheet">
 {/block}
 
 {block name="body"}
@@ -13,7 +15,7 @@
         </div>
         <form method="post" >
             <p class="input-head">{$lang.account}：</p>
-            <div style="font-size: 0">
+            <div style="font-size: 0 ; position:relative;">
                 <i class="iconl icon-angle-down"></i>
                 <select name="method" style="width: 80px; padding: 5px">
                     <option value="username">{$lang.username}</option>
@@ -29,7 +31,7 @@
             <!--p class="input-head">{$lang.vcode}：</p>
             <input name="seccode" placeholder="" type="text"-->
 
-            <span class="tip" style="float: right; margin-left: 10px; ">{$lang.autosignin}</span>
+            <span class="onlytext" style="float: right; margin-left: 10px; ">{$lang.autosignin}</span>
             <input name="keeplogin" type="checkbox" value="true" placeholder="" >
 
             <button name="button" type="submit">{$lang.signin}</button>

@@ -1,0 +1,108 @@
+{extend name="default/consoleboard/ancenstor_board" /}
+{block name="nav"}
+    <li class="nav-parent show"><a><i class="icon icon-file"></i>文章管理</a>
+        <i class="arrow icon-chevron-right"></i>
+        <ul class="nav">
+            <li class="active"><a data-target="#thread-all" data-toggle="tab" href="javascript:;" onclick="Threadtable.Tryget('thread')">全部文章</a></li>
+            <li><a data-target="#thread-add" data-toggle="tab" href="javascript:;">添加文章</a></li>
+            <li><a data-target="#thread-trash" data-toggle="tab" href="javascript:;" onclick="Threadtable.Tryget('trash')">回收站</a></li>
+        </ul>
+    </li>
+    <li class="nav-parent show"><a><i class="icon icon-columns "></i>幻灯管理</a>
+        <i class="arrow icon-chevron-right"></i>
+        <ul class="nav">
+            <li><a data-target="#thread-banner" data-toggle="tab" href="javascript:;" >管理幻灯图片</a></li>
+        </ul>
+    </li>
+{/block}
+{block name="section"}
+    <link type="text/css" href="{$Think.const.STATIC_ROOT}/lib/datagrid/zui.datagrid.css" rel="stylesheet">
+    <script src="{$Think.const.STATIC_ROOT}/lib/datagrid/zui.datagrid.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/js/consoleboard/threadmag.js"></script>
+    <div class="tab-pane fade active in" id="thread-all">
+        <div id="thread_table" class="datagrid">
+            <div class="datagrid-container"></div>
+            <div class="pager"></div>
+            <div class="input-control search-box search-box-circle has-icon-left has-icon-right" style="margin-top:10px; width: 80px;">
+                <input id="thread_table_search" type="search" class="form-control search-input" placeholder="搜索">
+                <label for="thread_table_search" class="input-control-icon-left search-icon"><i class="icon icon-search"></i></label>
+                <a href="#" class="input-control-icon-right search-clear-btn"><i class="icon icon-remove"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade " id="thread-add">
+        {include file="default/common/thread_sender" /}
+    </div>
+    <div class="tab-pane fade" id="thread-trash">
+
+        <div id="trash_table" class="datagrid">
+            <div class="datagrid-container"></div>
+            <div class="pager"></div>
+            <div class="input-control search-box search-box-circle has-icon-left has-icon-right" style="margin-top:10px; width: 80px;">
+                <input id="trash_table_search" type="search" class="form-control search-input" placeholder="搜索">
+                <label for="trash_table_search" class="input-control-icon-left search-icon"><i class="icon icon-search"></i></label>
+                <a href="#" class="input-control-icon-right search-clear-btn"><i class="icon icon-remove"></i></a>
+            </div>
+        </div>
+        <script>
+
+            var cols = [
+                {name: 'id', label: '编号', width: 80},
+                {name: 'title', label: '标题'},
+                {name: 'editor', label: '编辑人', width:100},
+                {name: 'time', label: '发布时间', width: 150},
+                {name: 'sort', label: '分类', width: 100},
+                {name: 'func', label: '操作', width: 90,html:true,}
+            ];
+
+            $('#thread_table').datagrid({
+                dataSource:{
+                    cols:cols,
+                    arrat: [],
+                },
+                states: {pager: {page: 1, recPerPage: 15}},
+                height: 'page',
+                sortable: true
+            });
+
+            $('#trash_table').datagrid({
+                dataSource:{
+                    cols:cols,
+                    arrat: [],
+                },
+                states: {pager: {page: 1, recPerPage: 15}},
+                height: 'page',
+                sortable: true
+            });
+
+            window.addEventListener('onload',Threadtable.Tryget('thread'),false);
+        </script>
+    </div>
+    <div class="tab-pane fade " id="thread-banner">
+        {volist name="chunklv1" id="lv1"}
+            {if $lv1['hpm']}
+                <div class="banner-show">
+                    <a class="title" href="{$Think.const.SITE}/consoleboard/threadmag/setbanner/{$lv1['id']}.html">{$lv1.chunk_name}</a>
+                </div>
+            {/if}
+            {volist name="chunklv2" id="lv2"}
+                {if $lv2['chunk_below'] == $lv1['id']}
+                    {if  $lv2['hpm']}
+                        <div class="banner-show">
+                            <a class="title"  href="{$Think.const.SITE}/consoleboard/threadmag/setbanner/{$lv2['id']}.html">{$lv2.chunk_name}</a>
+                        </div>
+                    {/if}
+                    {volist name="chunklv3" id="lv3"}
+                        {if $lv3['chunk_below'] == $lv2['id']}
+                            {if  $lv3['hpm']}
+                                <div class="banner-show">
+                                    <a class="title"  href="{$Think.const.SITE}/consoleboard/threadmag/setbanner/{$lv3['id']}.html">{$lv3.chunk_name}</a>
+                                </div>
+                            {/if}
+                        {/if}
+                    {/volist}
+                {/if}
+            {/volist}
+        {/volist}
+    </div>
+{/block}

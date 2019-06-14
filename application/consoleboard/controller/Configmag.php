@@ -29,7 +29,7 @@ class Configmag extends Controller {
     public function main() {
 
         $this->assign(['configmag' => 'active',]);
-        return Template::view('admin/configmag');
+        return Template::view('consoleboard/configmag');
     }
 
     public function logic() {

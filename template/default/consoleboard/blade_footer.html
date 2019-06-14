@@ -1,0 +1,16 @@
+    </body>
+    <script>
+        $('.menu .nav-parent > a').on('click', function(event) {
+            event.stopPropagation();
+            var $this = $(this.parentElement);
+            if($this.hasClass('show')) $this.removeClass('show');
+            else $this.addClass('show');
+        });
+
+        $('.menu .nav').on('click', function(event) {
+            var $this = $(this);
+            $('.menu .nav .active').removeClass('active');
+            $this.closest('li').addClass('active');
+        });
+    </script>
+</html>

@@ -11,21 +11,23 @@
 
 namespace app\consoleboard\controller;
 
+use app\common\controller\Base;
 use app\common\Cookie;
 use think\Controller;
 use app\common\Re;
 use app\common\User;
 use app\common\Log;
+use app\common\Lang;
 
 class Init extends Controller {
     public function _initialize() {
 
         new \app\Start();
 
+        $this->cbexit();
         $this->logincheck();
         $this->nav();
         Re::showecho();
-        $this->cbexit();
     }
 
     public function logincheck() { /*管理员登陆检查*/
@@ -54,7 +56,9 @@ class Init extends Controller {
 
     public function nav() { /*初始化导航*/
         $G_ = User::ufetch();
+        $this->assign('lang', Lang::load('consoleboard'));
         $this->assign([
+            'webbase' => Base::baseinfo(false),
             'index' => $G_['pm'] >= 700 ? 'denny' : 'hidden', 'chunkmag' => User::has_pm('chunk_mag') ? 'denny' : 'hidden',
             'threadmag' => $G_['pm'] >= 700 ? 'denny' : 'hidden', 'navmag' => User::has_pm('nav_mag') ? 'denny' : 'hidden',
             'usermag' => User::has_pm('user_mag') ? 'denny' : 'hidden',

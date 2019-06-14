@@ -34,7 +34,7 @@ class Navmag extends Controller {
             $searchnav = Db::query("select * from qzlit_nav WHERE type = '2' ORDER BY `order` ASC ");
             $foonav = Db::query("select * from qzlit_nav WHERE type = '3' ORDER BY `order` ASC ");
             $this->assign(['navmag' => 'active', 'mainnav' => $mainnav, 'searchnav' => $searchnav, 'foonav' => $foonav,]);
-            return Template::view('admin/navmag');
+            return Template::view('consoleboard/navmag');
         }
     }
 }

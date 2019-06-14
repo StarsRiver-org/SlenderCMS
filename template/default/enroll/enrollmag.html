@@ -1,4 +1,4 @@
-{extend name="default/admin/frame" /}
+{extend name="default/consoleboard/ancenstor_board" /}
 {block name="nav"}
     <li class="nav-parent show"><a><i class="icon icon-file"></i>面试管理控制台</a>
         <ul class="nav">
@@ -17,27 +17,21 @@
             <li><a data-target="#enroll_mmb" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_mmb');">已录取成员</a></li>
         </ul>
     </li>
-    <div class="ext">
-        <select style="
-                    width: 181px;
-                    height: 50px;
-                    padding: 0 10px;
-                    font-size: 16px;
-                    border: 1px solid #d2d2d2;
-                    text-align: center;
-                    position: fixed;
-                    bottom: 106px;"
-            data-type="campus" name="campus">
-        </select>
-    </div>
 {/block}
 {block name="section"}
     <link href="{$Think.const.STATIC_ROOT}/lib/datetimepicker/datetimepicker.min.css" rel="stylesheet">
-    <script src="{$Think.const.STATIC_ROOT}/lib/datetimepicker/datetimepicker.min.js"></script>
-    <link href="{$Think.const.STATIC_ROOT}/css/skin/admin-enroll.css" rel="stylesheet">
-    <script src="{$Think.const.STATIC_ROOT}/js/admin/enroll.js"></script>
-
-
+    <link href="{$Think.const.STATIC_ROOT}/css/skin/enroll/enrollmag.css" rel="stylesheet">
+    <select style="
+                width: 181px;
+                height: 50px;
+                padding: 0 10px;
+                font-size: 16px;
+                border: 1px solid #d2d2d2;
+                text-align: center;
+                position: fixed;
+                right: 38px;"
+            data-type="campus" name="campus">
+    </select>
     <div class="tab-pane fade active in" id="enroll_fs" data-url="logic_1" style="height:100%">
         <span class="title">通知短信发送控制台</span>
         <div class="datatable">
@@ -286,12 +280,22 @@
         </div>
     </div>
 
-    <span style="position: fixed; bottom: 36px; left: 10px;color: #999;">
+    <span style="
+        width: 181px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        color: #999;
+        background: #fff;
+        padding: 10px;"
+    >
         全站报名人数：{$enall}<br />
         志愿一填报数：{$en}<br />
         志愿二填报数：{$en2}
     </span>
 
+    <script src="{$Think.const.STATIC_ROOT}/lib/datetimepicker/datetimepicker.min.js"></script>
+    <script src="{$Think.const.STATIC_ROOT}/js/enroll/enrollmag.js"></script>
     <script>
         Sms.init('#enroll_fs');
         $("#timeselector1").datetimepicker({

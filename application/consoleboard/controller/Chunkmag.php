@@ -45,7 +45,7 @@ class Chunkmag extends Controller {
 
             'splv1' => Db::query("select `id`, `chunk_name`, `chunk_below`,`chunk_lv`  from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 1"), 'splv2' => Db::query("select `id`, `chunk_name`, `chunk_below`,`chunk_lv`  from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2"),]);
         $this->assign(['chunkmag' => 'active',]);
-        return Template::view('admin/chunkmag');
+        return Template::view('consoleboard/chunkmag');
     }
 }
     

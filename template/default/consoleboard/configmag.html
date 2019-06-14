@@ -1,0 +1,28 @@
+{extend name="default/consoleboard/ancenstor_board" /}
+
+{block name="nav"}
+    <li class="nav-parent show"><a><i class="icon icon-file"></i>配置管理</a>
+        <i class="arrow icon-chevron-right"></i>
+        <ul class="nav">
+            <li class="active"><a data-target="#base" data-toggle="tab" href="javascript:;"  onclick="Confio.initdata('#base');">基本配置</a></li>
+            <li><a data-target="#enroll" data-toggle="tab" href="javascript:;"  onclick="Confio.initdata('#enroll');">面试相关</a></li>
+            <li><a data-target="#sms" data-toggle="tab" href="javascript:;" onclick="Confio.initdata('#sms');">SMS相关</a></li>
+            <li><a data-target="#oth" data-toggle="tab" href="javascript:;" onclick="Confio.initdata('#oth');">等级权限</a></li>
+        </ul>
+    </li>
+{/block}
+{block name="section"}
+    <link rel="stylesheet" href="{$Think.const.STATIC_ROOT}/css/skin/consoleboard/confmag.css">
+    <script src="{$Think.const.STATIC_ROOT}/js/consoleboard/confmag.js"></script>
+    <div class="tab-pane fade active in" id="base" data-type="base">
+    </div>
+    <div class="tab-pane fade" id="enroll" data-type="enroll">
+    </div>
+    <div class="tab-pane fade" id="sms" data-type="sms">
+    </div>
+    <div class="tab-pane fade " id="oth" data-type="oth">
+    </div>
+<script>
+    Confio.initdata('#base');
+</script>
+{/block}

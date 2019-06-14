@@ -2,4 +2,18 @@
     padding: 0;
     margin: 0;
     vertical-align: top;
+    font-family: "Microsoft YaHei";
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select::after {
+
+}
+
+select::-ms-expand {
+    display: none
 }

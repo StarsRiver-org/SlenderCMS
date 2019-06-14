@@ -89,8 +89,6 @@ class Index extends Controller {
             ]
         );
 
-
-
-        return Template::view('admin/index');
+        return Template::view('consoleboard/index');
     }
 }

@@ -642,6 +642,7 @@ class Template
                 array_multisort($keys, $result);
             }
         }
+
         return $result;
     }
 

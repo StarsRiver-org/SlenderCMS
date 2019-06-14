@@ -38,7 +38,7 @@ class Threadmag extends Controller {
         } else {
             $this->assign(['threadmag' => 'active', 'editor' => User::ufetch(),]);
 
-            return Template::view('admin/threadmag');
+            return Template::view('consoleboard/threadmag');
         }
     }
 
@@ -103,7 +103,7 @@ class Threadmag extends Controller {
             $res = Thread::loadone($threadid);
             /* 获取文章信息 */
             $this->assign(['other' => 'active', 'id' => $res['id'], 'title' => $res['title'], 'coverimg' => $res['coverimg'], 'content' => $res['content'], 'author' => $res['author'], 'time' => $res['time'], 'keyword' => $res['keyword'], 'descrip' => $res['descrip'], 'sort' => $res['sort'], 'mode' => $res['mode'], 'editor' => User::ufetch(),]);
-            return Template::view('admin/threadmag_updatathread');
+            return Template::view('consoleboard/threadmag_updatathread');
         }
     }
 
@@ -160,6 +160,6 @@ class Threadmag extends Controller {
             Re::echo('success', "文件上传结束，共修改 $num 张图片，有 $fail 张上传失败，(请上传小于20M的图片)", 0);
 
         }
-        return Template::view('admin/threadmag_setbanner');
+        return Template::view('consoleboard/threadmag_setbanner');
     }
 }
