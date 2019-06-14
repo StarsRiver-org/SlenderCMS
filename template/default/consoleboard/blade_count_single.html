@@ -12,9 +12,9 @@
         labels:[<?php for($i = $loop; $i < $all; $i++){echo $info_visit[$chunk][$child][$timegap][$i]["date"].",";} ?>],
     datasets: [{
         label: "{$mod[0]}",
-        color: "#ee7622",
+        color: "#c665ff",
         data: [<?php for($i = $loop; $i < $all; $i++){echo $info_visit[$chunk][$child][$timegap][$i]["value"].",";} ?>]
     }]
     };
-    $("#linechart_{$chunk}_{$child}_{$timegap}").lineChart(data);
+    $("#linechart_{$chunk}_{$child}_{$timegap}").lineChart(data,$.extend(chart_line,chart_common));
 </script>

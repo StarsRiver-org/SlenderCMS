@@ -1,4 +1,34 @@
 {include file="default/consoleboard/blade_header"}
+<script>
+    //chartjs settings
+    var chart_common = {
+        animationEasing:'easeOutQuart',
+        animationSteps:20,
+        multiTooltipKeyBackground:"#fff",
+        tooltipCornerRadius: 0,
+        tooltipCaretSize: 0,
+        tooltipFillColor: '#000000aa',
+    };
+    var chart_line = {
+        scaleGridLineColor:'#39c5bb39',
+        scaleShowVerticalLines:false,
+        scaleLineColor:'#39c5bb88',
+        scaleLineWidth:2,
+        pointHitDetectionRadius: 10,
+        pointDotStrokeWidth: 0.1,
+        pointDotRadius: 2,
+        bezierCurve: true,
+        bezierCurveTension:.39,
+        datasetStrokeWidth: 1,
+        datasetFill: true,
+    };
+    var chart_pie = {
+        percentageInnerCutout:60,
+        scaleShowLabels: true,
+        segmentStrokeWidth : 1,
+        scaleLabelPlacement: "inside"
+    };
+</script>
 <nav class="menu col-xs-0 sidenav" data-ride="menu">
     <ul class="nav" style="padding-bottom: 120px">
         {block name="nav"}{/block}
