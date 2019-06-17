@@ -110,7 +110,7 @@
 
         public static function checkev() {
             include('int_lang.php');
-            include('../config/database.php');
+            $dbd = require('../config/database.php');
 
             $reqphp    = '5.3';
             $reqapache = '2';
@@ -121,8 +121,8 @@
             $apacheinfo    = apache_get_version();
             $apacheversion =  $apacheinfo ;
 
-            $link   = @mysqli_connect(DB_host, DB_user, DB_pass);
-            $mvtemp = @sprintf("Server version:%s\n", mysqli_get_server_info($link));
+            $link   = mysqli_connect($dbd['hostname'], $dbd['username'], $dbd['password']);
+            $mvtemp = sprintf("Server version:%s\n", mysqli_get_server_info($link));
             $mv     = substr($mvtemp, 15, 20);
 
             $roomtemp = disk_free_space("../");
@@ -137,8 +137,8 @@
             $read       = is_readable($testfile) ? '<a class="ok r">可写</a>' : '<a class="error r">错误：程序没有写入权限</a>';
             $wite       = is_writable($testfile) ? '<a class="ok r">可读</a>' : '<a class="error r">错误：程序没有读取权限</a>';
             $GD         = function_exists('gd_info') ? '<a class="ok r">可用</a>' : '<a class="error r">请开启GD库</a>';
-            $pdo_mysql  = @ new pdo('mysql:host = ' . DB_host . '', DB_user, DB_pass);
-            $PDO        = @ $pdo_mysql ? '<a class="ok r">可用</a>' : '<a class="error r">请开启PDO支持</a>';
+            $pdo_mysql  =  new pdo('mysql:host = ' . $dbd['hostname'] . '', $dbd['username'], $dbd['password']);
+            $PDO        =  $pdo_mysql ? '<a class="ok r">可用</a>' : '<a class="error r">请开启PDO支持</a>';
     
             echo '<a class="tb">' . $lang['phpversion'] . '</a>  <a class="tb">' . $lang['prev'] . PHP_VERSION . '</a>' . $phpable . '</br>';
             echo '<a class="tb">' . $lang['mysqlversion'] . '</a><a class="tb">' . $lang['prev'] . $mv . '</a>' . $mysqlable . '</br>';
@@ -173,13 +173,13 @@
 
         public static function insert() {
             include 'int_lang.php';
-            include '../config/database.php';
-            $connection = new pdo('mysql:host=' . DB_host . '', DB_user, DB_pass);
-            $db         = 'create database ' . DB_name;
+            $dbd = require('../config/database.php');
+            $connection = new pdo('mysql:host=' . $dbd['hostname'] . '', $dbd['username'], $dbd['password']);
+            $db         = 'create database ' . $dbd['database'];
             $connection->exec("$db");
             echo '<div class = "lic">正在检查数据库...</br>';
-            $dns        = 'mysql:host=' . DB_host . ';dbname=' . DB_name;
-            $connection = new pdo("$dns", DB_user, DB_pass);
+            $dns        = 'mysql:host=' . $dbd['hostname'] . ';dbname=' . $dbd['database'];
+            $connection = new pdo("$dns", $dbd['username'], $dbd['password']);
             $_sql       = file_get_contents('data/install.sql');
             $_arr       = explode(';'.PHP_EOL, $_sql);
             echo '正在写入数据库关键信息</br>';
@@ -195,7 +195,7 @@
         }
 
         public static function addadmin() {
-            include '../config/database.php';
+            $dbd = require('../config/database.php');
             echo '<form method="post" class="lic">
                     <a class="perbox">管理员昵称</a><input name="admin" type="text"><a class="tip">用户名登陆也是作为登陆的一种类型</a><br/>
                     <a class="perbox">管理员密码</a><input name="pass" type="password"><a class="tip">由于管理员账号的特殊性，这里不对密码进行安全性检验，请自行使用复杂密码</a><br/>
@@ -213,8 +213,8 @@
                     $salt   = $salt . $letter;
                 }
                 $mdpass = md5(md5($salt . $_POST['pass'] . 'tyutqzxy'));
-                $dns        = 'mysql:host=' . DB_host . ';dbname=' . DB_name;
-                $connection = new pdo("$dns", DB_user, DB_pass);
+                $dns        = 'mysql:host=' . $dbd['hostname'] . ';dbname=' . $dbd['database'];
+                $connection = new pdo("$dns", $dbd['username'], $dbd['password']);
                 $res = $connection -> exec("UPDATE `qzlit_group` SET `username`='".$_POST['admin']."', `salt` = '".$salt."', `key`= '".$mdpass."', `email`= '".$_POST['email']."',phone= '".$_POST['phone']."', name= '".$_POST['name']."' WHERE username = 'admin'");
 
                 setrawcookie('progress', 5);
