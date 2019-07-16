@@ -32,16 +32,16 @@ class Enrollmag_function3 extends Controller {
 
         $page = (!empty($page) && Qhelp::chk_pint($page)) ? $page : 1;
         $perpage = (int)$perpage < 10 ? 10 : ((int)$perpage > 99 ? 99 : (int)$perpage);
-        $count = count(Db::query("select id from qzlit_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim"));
+        $count = count(Db::query("select id from slender_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim"));
         $pages = ceil($count / $perpage);
         $from = ($page - 1) * $perpage - 1 >= 0 ? ($page - 1) * $perpage : 0;
 
 
-        $res = Db::query("select * from qzlit_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit " . (int)$from . "," . (int)$perpage);
+        $res = Db::query("select * from slender_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit " . (int)$from . "," . (int)$perpage);
         if (empty($res)) {
             $from = 0;
             $page = 1;
-            $res = Db::query("select * from qzlit_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit " . (int)$from . "," . (int)$perpage);
+            $res = Db::query("select * from slender_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score DESC limit " . (int)$from . "," . (int)$perpage);
         }
 
         return Qhelp::json_en(['Stat' => 'OK', 'Message' => '数据加载成功', "Data" => Enrollmag::dataFormat($res), 'Pages' => Qpage::page($pages, $page, '#page='),]);
@@ -50,7 +50,7 @@ class Enrollmag_function3 extends Controller {
     static function enroll($id, $phone) {
         if (!empty($phone) && !empty($id) && Qhelp::chk_pint($phone) && strlen($phone) == 11 && Qhelp::chk_pint($id)) {
 
-            $res = Db::query("select * from qzlit_usenroll where id = $id");
+            $res = Db::query("select * from slender_usenroll where id = $id");
 
             if (!empty($res) && $res[0]["phone"] == $phone) {
 
@@ -58,7 +58,7 @@ class Enrollmag_function3 extends Controller {
                     return Enrollmag::chk_pty($res[0]['aim']);
                 }
 
-                Db::execute("update qzlit_usenroll set isenrolled = 1, isfaced = 1 where id = $id");
+                Db::execute("update slender_usenroll set isenrolled = 1, isfaced = 1 where id = $id");
                 return Qhelp::json_en(['Stat' => 'OK', 'Message' => '已加入到录取名单']);
             }
             return Qhelp::json_en(['Stat' => 'error', 'Message' => '数据不存在']);

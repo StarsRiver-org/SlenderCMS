@@ -1,12 +1,16 @@
 {extend name="default/consoleboard/ancenstor_board" /}
 {block name="nav"}
-    <li class="nav-parent show"><a><i class="icon icon-file"></i>面试管理控制台</a>
+    <li class="nav-parent show">
+		<a><i class="icon icon-file"></i>面试管理控制台</a>
+		<i class="arrow icon-chevron-right"></i>
         <ul class="nav">
             <li class="active"><a data-target="#enroll_fs" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_fs');">通知短信发送</a></li>
             <li><a data-target="#enroll_mag" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_mag');">面试控制台</a></li>
         </ul>
     </li>
-    <li class="nav-parent show"><a><i class="icon icon-file"></i>录取管理控制台</a>
+    <li class="nav-parent show">
+		<a><i class="icon icon-file"></i>录取管理控制台</a>
+		<i class="arrow icon-chevron-right"></i>
         <ul class="nav">
             <li><a data-target="#enroll_act" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_act');">录取筛选管理</a></li>
             <li><a data-target="#enroll_ener" data-toggle="tab" href="javascript:;" onclick="Sms.init('#enroll_ener');">录取通知发送</a>

@@ -62,8 +62,8 @@
     box-sizing: border-box;
     width: 100%;
     height: 42px;
-    line-height: 42px;
-    padding: 0 15px !important;
+    line-height: 40px;
+    padding: 0 10px !important;
     margin: 10px 0;
     border: 1px solid rgba(0, 0, 0, .1) !important;
     background: #fff;
@@ -104,4 +104,6 @@
     font-size: 18px;
     top: 22px;
     left: 60px;
+    display: inline-block;
+    width: 18px;
 }

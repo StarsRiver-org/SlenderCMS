@@ -9,13 +9,8 @@
 
 .edui-editor-toolbarboxouter {
     padding: 4px;
-    position: fixed !important;
-    width: 180px !important;
-    left: 0 !important;
-    bottom: 25px !important;
-    background: #fff !important;
-    border-top: 1px solid #bbb !important;
-    border-bottom: 1px solid #bbb !important;
+    background: #f1f3f6 !important;
+    border-bottom: 1px dashed #ccc !important;
 }
 
 [class^="icon-for"]:before, 
@@ -28,8 +23,6 @@
 /*基础UI构建
 */
 .edui-gray .edui-editor {
-    border: 1px solid #d4d4d4;
-    background-color: white;
     position: relative;
     overflow: visible;
 }
@@ -71,6 +64,7 @@ div.edui-box {
 .edui-dialog div {
     width: auto;
 }
+
 .edui-toolbar,
 .edui-popup.edui-menu,
 .edui-dialog-titlebar {
@@ -79,12 +73,6 @@ div.edui-box {
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-.edui-gray .edui-editor-toolbarbox {
-    position: relative;
-    zoom: 1;
-    border-bottom: 1px solid #d4d4d4;
-    background-color: #f5f5f5;
 }
 
 .edui-gray .edui-splitbutton .edui-splitbutton-body,
@@ -140,7 +128,7 @@ div.edui-box {
 .edui-gray .edui-toolbar .edui-combox .edui-combox-body {
     height: 20px;
     padding: 0 5px;
-    margin: 1px;
+    margin: 5px;
     background-color: #ffffff;
     color: #515151;
     border-radius: 1px;
@@ -149,7 +137,6 @@ div.edui-box {
     font-size: 12px;
     cursor: pointer;
     box-sizing: content-box;
-    width: 70px;
 }
 
 .edui-toolbar .edui-state-opened .edui-combox-body {
@@ -177,6 +164,7 @@ div.edui-box {
     height: 0;
     overflow: hidden;
     border-spacing: 0;
+	display:none;
 }
 .edui-gray .edui-editor-bottomContainer td {
     white-space: nowrap;
@@ -715,7 +703,6 @@ div.edui-box {
 .edui-gray .edui-popup-content {
     border: 1px solid rgba(0, 0, 0, 0.2);
     background: #ffffff;
-	max-height: 150px;
     overflow: auto;
 	padding:5px;
 }

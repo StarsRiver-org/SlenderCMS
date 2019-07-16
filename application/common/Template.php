@@ -17,6 +17,7 @@ use app\common\Log;
 use app\common\Config;
 use app\common\User;
 use app\common\Limit;
+use app\common\controller\Base;
 
 class Template extends Controller {
 
@@ -35,9 +36,6 @@ class Template extends Controller {
     }
 
     public static function make($tpl, $arg = '') {
-
-
-
         return view(self::initTpl($tpl) . DS . $tpl, $arg);
     }
 

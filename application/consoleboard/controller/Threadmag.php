@@ -28,7 +28,7 @@ class Threadmag extends Controller {
             $this->error('操作错误，您未获得该操作权限');
             return null;
         }
-        $this->assign(['chunklv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 1")), 'chunklv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 2")), 'chunklv3' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 3")), 'splv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 1")), 'splv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2")), 'splv3' => [],]);
+        $this->assign(['chunklv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from slender_chunk WHERE `type` = 0 AND chunk_lv = 1")), 'chunklv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from slender_chunk WHERE `type` = 0 AND chunk_lv = 2")), 'chunklv3' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from slender_chunk WHERE `type` = 0 AND chunk_lv = 3")), 'splv1' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from slender_chunk WHERE `type` = 1 AND chunk_lv = 1")), 'splv2' => Thread_function::get_chunks(Db::query("select `id`, `chunk_name`, `chunk_below` from slender_chunk WHERE `type` = 1 AND chunk_lv = 2")), 'splv3' => [],]);
     }
 
     public function main() {
@@ -137,7 +137,7 @@ class Threadmag extends Controller {
                 };
             }
 
-            if (!$imgdata = Db::query("select banner from qzlit_chunk WHERE id = '" . $chunk_id . "'")[0]['banner']) {
+            if (!$imgdata = Db::query("select banner from slender_chunk WHERE id = '" . $chunk_id . "'")[0]['banner']) {
                 $banners = [];
             } else {
                 $banners = json_decode($imgdata, true);
@@ -155,7 +155,7 @@ class Threadmag extends Controller {
                 }
             }
             $bdata = Qhelp::json_en($banners);
-            Db::execute("update qzlit_chunk set banner = '$bdata' where id = $chunk_id");
+            Db::execute("update slender_chunk set banner = '$bdata' where id = $chunk_id");
             Log::visit("consoleboard", "banner", "renew_chunk_" . $chunk_id);
             Re::echo('success', "文件上传结束，共修改 $num 张图片，有 $fail 张上传失败，(请上传小于20M的图片)", 0);
 

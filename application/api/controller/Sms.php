@@ -88,7 +88,7 @@ class Sms extends Controller {
     }
 
     function getSmsConfig201807151515() {
-        $data = Db::query("select name, data from qzlit_config where `type` = 'SmsService'");
+        $data = Db::query("select name, data from slender_config where `type` = 'SmsService'");
         foreach ($data as $k) {
             $res[$k['name']] = $k['data'];
         }

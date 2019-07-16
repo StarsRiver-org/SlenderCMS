@@ -17532,7 +17532,6 @@ UE.plugins['autofloat'] = function() {
         var toobarBoxPos = domUtils.getXY(toolbarBox),
             origalFloat = domUtils.getComputedStyle(toolbarBox,'position'),
             origalLeft = domUtils.getComputedStyle(toolbarBox,'left');
-        toolbarBox.style.width = toolbarBox.offsetWidth + 'px';
         toolbarBox.style.zIndex = me.options.zIndex * 1 + 1;
         toolbarBox.parentNode.insertBefore(placeHolder, toolbarBox);
         if (LteIE6 || (quirks && browser.ie)) {
@@ -17547,7 +17546,7 @@ UE.plugins['autofloat'] = function() {
             }
             if(toolbarBox.style.position != 'fixed'){
                 toolbarBox.style.position = 'fixed';
-                toolbarBox.style.top = topOffset +"px";
+                toolbarBox.style.top = document.querySelector('header').offsetHeight +"px";
                 ((origalFloat == 'absolute' || origalFloat == 'relative') && parseFloat(origalLeft)) && (toolbarBox.style.left = toobarBoxPos.x + 'px');
             }
         }
@@ -17562,6 +17561,7 @@ UE.plugins['autofloat'] = function() {
     }
 
     function updateFloating(){
+		toolbarBox.style.width = document.querySelector('#container').getBoundingClientRect().width - 2 + "px";
         var rect3 = getPosition(me.container);
         var offset=me.options.toolbarTopOffset||0;
         if (rect3.top < 0 && rect3.bottom - toolbarBox.offsetHeight > offset) {
@@ -17594,6 +17594,8 @@ UE.plugins['autofloat'] = function() {
                 fixIE6FixedPos();
             }
             domUtils.on(window, ['scroll','resize'], updateFloating);
+			domUtils.on(document.querySelector('section'), ['scroll','resize'], updateFloating);
+
             me.addListener('keydown', defer_updateFloating);
 
             me.addListener('beforefullscreenchange', function (t, enabled){
@@ -29421,7 +29423,6 @@ UE.ui = baidu.editor.ui = {};
                     if(holder.style.height){
                         holder.style.height = ''
                     }
-                    editor.container.style.width = opt.initialFrameWidth + (/%$/.test(opt.initialFrameWidth) ? '' : 'px');
                     editor.container.style.zIndex = opt.zIndex;
                     oldRender.call(editor, editor.ui.getDom('iframeholder'));
                     editor.fireEvent("afteruiready");

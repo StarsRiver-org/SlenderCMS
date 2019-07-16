@@ -41,9 +41,9 @@ class Chunkmag extends Controller {
             }
         }
         /* 循环赋值 */
-        $this->assign(['chunklv1' => Db::query("select `id`, `chunk_name`, `chunk_below` ,`chunk_lv` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 1"), 'chunklv2' => Db::query("select `id`, `chunk_name`, `chunk_below` ,`chunk_lv` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 2"), 'chunklv3' => Db::query("select `id`, `chunk_name`, `chunk_below` ,`chunk_lv` from qzlit_chunk WHERE `type` = 0 AND chunk_lv = 3"),
+        $this->assign(['chunklv1' => Db::query("select `id`, `chunk_name`, `chunk_below` ,`chunk_lv` from slender_chunk WHERE `type` = 0 AND chunk_lv = 1"), 'chunklv2' => Db::query("select `id`, `chunk_name`, `chunk_below` ,`chunk_lv` from slender_chunk WHERE `type` = 0 AND chunk_lv = 2"), 'chunklv3' => Db::query("select `id`, `chunk_name`, `chunk_below` ,`chunk_lv` from slender_chunk WHERE `type` = 0 AND chunk_lv = 3"),
 
-            'splv1' => Db::query("select `id`, `chunk_name`, `chunk_below`,`chunk_lv`  from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 1"), 'splv2' => Db::query("select `id`, `chunk_name`, `chunk_below`,`chunk_lv`  from qzlit_chunk WHERE `type` = 1 AND chunk_lv = 2"),]);
+            'splv1' => Db::query("select `id`, `chunk_name`, `chunk_below`,`chunk_lv`  from slender_chunk WHERE `type` = 1 AND chunk_lv = 1"), 'splv2' => Db::query("select `id`, `chunk_name`, `chunk_below`,`chunk_lv`  from slender_chunk WHERE `type` = 1 AND chunk_lv = 2"),]);
         $this->assign(['chunkmag' => 'active',]);
         return Template::view('consoleboard/chunkmag');
     }

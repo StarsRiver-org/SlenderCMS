@@ -20,9 +20,9 @@ class Config extends Controller {
 
         if ($json) {
             if (empty($name)) {
-                $res = Db::query("select `name`, `data`,`descrip`, `issolid` from qzlit_config where `type`='" . $type . "' order by `order`");
+                $res = Db::query("select `name`, `data`,`descrip`, `issolid` from slender_config where `type`='" . $type . "' order by `order`");
             } else {
-                $res = Db::query("select `data` from qzlit_config where `type`='" . $type . "' AND `name`='" . $name . "' ");
+                $res = Db::query("select `data` from slender_config where `type`='" . $type . "' AND `name`='" . $name . "' ");
                 if (!empty($res)) {
                     $res = htmlspecialchars_decode($res[0]['data']);
                 }
@@ -34,7 +34,7 @@ class Config extends Controller {
                 return Qhelp::json_en(['Stat' => 'error', 'Message' => '没有相关配置',]);
             }
         } else {
-            $res = Db::query("select `data` from qzlit_config where `type`='" . $type . "' AND `name`='" . $name . "' ");
+            $res = Db::query("select `data` from slender_config where `type`='" . $type . "' AND `name`='" . $name . "' ");
             if ($res) {
                 return $res[0]['data'];
             } else {

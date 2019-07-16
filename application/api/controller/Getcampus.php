@@ -19,6 +19,6 @@ use app\common\Qhelp;
 class Getcampus extends Controller {
 
     public function main() {
-        return htmlspecialchars_decode(Db::query("select * from qzlit_config where name = 'campus'")[0]['data'], ENT_QUOTES);
+        return htmlspecialchars_decode(Db::query("select * from slender_config where name = 'campus'")[0]['data'], ENT_QUOTES);
     }
 }

@@ -53,7 +53,7 @@ class Enroll extends Controller {
         $name = Qhelp::dss($_POST['name']);
         $phone = Qhelp::dss($_POST['phone']);
 
-        $res = Db::query("select * from qzlit_usenroll where name = '" . $name . "' AND phone= '" . $phone . "'");
+        $res = Db::query("select * from slender_usenroll where name = '" . $name . "' AND phone= '" . $phone . "'");
 
 
         if (empty($res)) {

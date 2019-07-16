@@ -32,7 +32,7 @@ class Enrollmag_function6 extends Controller {
         $aim = User::ufetch()['party'];
 
         $num = (int)$num < 10 ? 10 : ((int)$num > 99 ? 99 : (int)$num);
-        $res = Db::query("select * from qzlit_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score limit $num");
+        $res = Db::query("select * from slender_usenroll WHERE " . (!empty($cps) ? "campus = $cps AND" : "") . " `hascalled` != 3 AND `isfaced` = 1 AND `isenrolled` = 0 AND `aim`=$aim order by score limit $num");
 
         return Qhelp::json_en(['Stat' => 'OK', 'Message' => '数据加载成功', "Data" => Enrollmag::dataFormat($res)]);
     }
@@ -40,7 +40,7 @@ class Enrollmag_function6 extends Controller {
     static function send($id, $phone, $msgtpl, $msgdat) {
         if (!empty($phone) && !empty($id) && Qhelp::chk_pint($phone) && strlen($phone) == 11 && Qhelp::chk_pint($id)) {
 
-            $res = Db::query("select * from qzlit_usenroll where id = $id");
+            $res = Db::query("select * from slender_usenroll where id = $id");
 
             if (!empty($res) && $res[0]["phone"] == $phone) {
 
@@ -55,7 +55,7 @@ class Enrollmag_function6 extends Controller {
                 $smsres = Curl::post(SITE . '/api/sms', ['hash' => SHASH, 'phone' => $phone, 'msgdat' => $msgdat, 'msgtpl' => $msgtpl,]);
 
                 if (Qhelp::json_de($smsres)['Message'] == 'OK') {
-                    Db::execute("update qzlit_usenroll set hascalled = 3, isenrolled = '-1', isfaced = 1 where id = $id");
+                    Db::execute("update slender_usenroll set hascalled = 3, isenrolled = '-1', isfaced = 1 where id = $id");
                 }
 
                 return $smsres;

@@ -48,8 +48,13 @@ class Index extends Controller {
          * */
         $threadlist = Thread::loadlist(['top' => 1, 'new' => 2, 'info' => 3, 'xwjj' => 17]);
 
-        $this->assign(['new' => isset($threadlist['new']) ? $threadlist['new'] : [], 'info' => isset($threadlist['info']) ? $threadlist['info'] : [], 'sp' => Chunk::load_specials([85, 68, 71, 81]), //这里的id是专题 id
-            'xwjj' => isset($threadlist['xwjj']) ? $threadlist['xwjj'] : [], 'banners' => Chunk::loadbanner($chunkid),]);
+        $this->assign([
+			'new' => isset($threadlist['new']) ? $threadlist['new'] : [], 
+			'info' => isset($threadlist['info']) ? $threadlist['info'] : [], 
+			'sp' => Chunk::load_specials([85, 68, 71, 81]), //这里的id是专题 id
+            'xwjj' => isset($threadlist['xwjj']) ? $threadlist['xwjj'] : [], 
+			'banners' => Chunk::loadbanner($chunkid),
+		]);
     }
 
 }

@@ -72,7 +72,7 @@ class Usermag extends Controller {
     public function logic() {
         if (!empty($_POST['uid']) && is_numeric($_POST['uid']) && $_POST['uid'] > 0) { //判断是否发送了UID
             $current_user_pm = User::ufetch()['pm'];
-            $beopped_user_pm = Db::query("select `promise` from qzlit_group where uid = '" . $_POST['uid'] . "'");
+            $beopped_user_pm = Db::query("select `promise` from slender_group where uid = '" . $_POST['uid'] . "'");
             if (!empty($beopped_user_pm)) { //判断是否在操作用户对象
                 if ($current_user_pm > $beopped_user_pm[0]['promise']) { //判断自身权限是否高于被操作用户权限  （用于只能由高于被操作者的权限者操作的信息）
 

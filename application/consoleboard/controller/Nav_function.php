@@ -28,13 +28,13 @@ class Nav_function extends Controller {
             }
 
             if (!empty($i['id'])) {
-                $chksys = Db::query("select `system` from qzlit_nav where id = '" . $i['id'] . "'")[0]['system'];
+                $chksys = Db::query("select `system` from slender_nav where id = '" . $i['id'] . "'")[0]['system'];
                 if (!$chksys) {
                     if ($i['del']) {
-                        Db::execute("delete from qzlit_nav WHERE id = '" . $i['id'] . "'");
-                        Db::execute("delete from qzlit_nav WHERE bel = '" . $i['id'] . "'");
+                        Db::execute("delete from slender_nav WHERE id = '" . $i['id'] . "'");
+                        Db::execute("delete from slender_nav WHERE bel = '" . $i['id'] . "'");
                     } else {
-                        Db::execute("update qzlit_nav set
+                        Db::execute("update slender_nav set
                             `order` = '" . (int)$i['order'] . "', 
                             `type` = '" . (int)$i['type'] . "',  
                             `bel` ='" . (int)$i['bel'] . "',
@@ -46,7 +46,7 @@ class Nav_function extends Controller {
                             where id = '" . (int)$i['id'] . "'");
                     }
                 } else {
-                    Db::execute("update qzlit_nav set
+                    Db::execute("update slender_nav set
                         `order` = '" . (int)$i['order'] . "', 
                         `name` ='" . htmlspecialchars(Qhelp::dss($i['name']), ENT_QUOTES) . "',
                         `key` ='" . htmlspecialchars(Qhelp::dss($i['key']), ENT_QUOTES) . "',
@@ -56,7 +56,7 @@ class Nav_function extends Controller {
                 }
             } else {
                 Db::execute("insert into 
-                    qzlit_nav (
+                    slender_nav (
                         `order`, 
                         `type`,  
                         `bel`,

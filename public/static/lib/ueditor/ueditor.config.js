@@ -60,8 +60,8 @@
 			/*'imagenone', 'imageleft', 'imageright', 'imagecenter',*//*'anchor',*/
 
              /*'scrawl',*/
-			 /*'music', */ /*'gmap',
-			 'insertcode',  'pagebreak',*/
+			 /*'music', */ /*'gmap', 'pagebreak',*/
+			 'insertcode', 
 			/*'background', */
 
             /*'date', 'time',*/ /*'snapscreen','wordimage', */

@@ -17,3 +17,7 @@ select::after {
 select::-ms-expand {
     display: none
 }
+
+*:disabled {
+	cursor: not-allowed !important;
+}

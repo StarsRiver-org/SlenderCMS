@@ -30,9 +30,9 @@ class Navmag extends Controller {
         if (!empty($_POST['navdata'])) {
             return Nav_function::update($_POST['navdata']);
         } else {
-            $mainnav = Db::query("select * from qzlit_nav WHERE type = '1' ORDER BY `order` ASC ");
-            $searchnav = Db::query("select * from qzlit_nav WHERE type = '2' ORDER BY `order` ASC ");
-            $foonav = Db::query("select * from qzlit_nav WHERE type = '3' ORDER BY `order` ASC ");
+            $mainnav = Db::query("select * from slender_nav WHERE type = '1' ORDER BY `order` ASC ");
+            $searchnav = Db::query("select * from slender_nav WHERE type = '2' ORDER BY `order` ASC ");
+            $foonav = Db::query("select * from slender_nav WHERE type = '3' ORDER BY `order` ASC ");
             $this->assign(['navmag' => 'active', 'mainnav' => $mainnav, 'searchnav' => $searchnav, 'foonav' => $foonav,]);
             return Template::view('consoleboard/navmag');
         }

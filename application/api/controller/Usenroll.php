@@ -34,7 +34,7 @@ class Usenroll extends Controller {
             return Qhelp::json_en(['Stat' => 'error', "Message" => '服务器配置出错！']);
         }
 
-        $rpip = Db::query("select * from qzlit_usenroll where ip = '" . htmlspecialchars(Qhelp::dss(Ip::getip()), ENT_QUOTES) . "' ORDER by time DESC limit 11");
+        $rpip = Db::query("select * from slender_usenroll where ip = '" . htmlspecialchars(Qhelp::dss(Ip::getip()), ENT_QUOTES) . "' ORDER by time DESC limit 11");
         $ipcount = count($rpip);
         if ($ipcount >= 10 && time() - 60 * 15 < $rpip[$ipcount - 1]['time']) {
             return Qhelp::json_en(['Stat' => 'error', "Message" => '同一IP操作过于频繁，请15分钟后再试。']);
@@ -67,7 +67,7 @@ class Usenroll extends Controller {
             return Qhelp::json_en(['Stat' => 'error', "Message" => '请准确填写你的常用联系方式，不然就找不了哟']);
         }
 
-        $rrep = Db::query("select * from qzlit_usenroll where phone = '" . $_POST['phone'] . "'");
+        $rrep = Db::query("select * from slender_usenroll where phone = '" . $_POST['phone'] . "'");
         if (!empty($rrep)) {
             return Qhelp::json_en(['Stat' => 'error', "Message" => '你已经报名过了，请耐心等待结果']);
         }
@@ -104,7 +104,7 @@ class Usenroll extends Controller {
         }
 
         $dbres = Db::execute("INSERT INTO 
-            qzlit_usenroll (
+            slender_usenroll (
                     `sex`,
                     `name`,
                     `phone`,

@@ -30,7 +30,7 @@ class Enrollmag_function5 extends Controller {
         $cps = Qhelp::receive('campus', '');
         $aim = User::ufetch()['party'];
 
-        $res = Db::query("select * from qzlit_usenroll where " . (!empty($cps) ? "campus = $cps AND" : "") . " isenrolled = 1 AND hascalled = 3 AND aim = $aim");
+        $res = Db::query("select * from slender_usenroll where " . (!empty($cps) ? "campus = $cps AND" : "") . " isenrolled = 1 AND hascalled = 3 AND aim = $aim");
         return Qhelp::json_en(['Stat' => 'OK', 'Message' => '数据加载成功', "Data" => Enrollmag::dataFormat($res)]);
     }
 }

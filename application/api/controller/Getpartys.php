@@ -19,6 +19,6 @@ use app\common\Qhelp;
 class Getpartys extends Controller {
 
     public function main() {
-        return htmlspecialchars_decode(Db::query("select * from qzlit_config where name = 'party'")[0]['data'], ENT_QUOTES);
+        return htmlspecialchars_decode(Db::query("select * from slender_config where name = 'party'")[0]['data'], ENT_QUOTES);
     }
 }

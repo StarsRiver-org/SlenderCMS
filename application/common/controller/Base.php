@@ -24,11 +24,11 @@ class Base extends Controller {
         ];
 
         if($more){
-            $allvisite = count(Db::query("select vid from qzlit_log"));
+            $allvisite = count(Db::query("select vid from slender_log"));
             $navarg = '`id`, `name`, `bel`, `url`, `key`,`blank`';
-            $mainnav = Db::query("select " . $navarg . " from qzlit_nav WHERE active != 0 AND type = '1' ORDER BY `order` ASC ");
-            $searchnav = Db::query("select " . $navarg . "  from qzlit_nav WHERE active != 0 AND type = '2' ORDER BY `order` ASC ");
-            $foonav = Db::query("select " . $navarg . "  from qzlit_nav WHERE active != 0 AND type = '3' ORDER BY `order` ASC ");
+            $mainnav = Db::query("select " . $navarg . " from slender_nav WHERE active != 0 AND type = '1' ORDER BY `order` ASC ");
+            $searchnav = Db::query("select " . $navarg . "  from slender_nav WHERE active != 0 AND type = '2' ORDER BY `order` ASC ");
+            $foonav = Db::query("select " . $navarg . "  from slender_nav WHERE active != 0 AND type = '3' ORDER BY `order` ASC ");
 
             $data += [
                 'allvisite' => $allvisite,

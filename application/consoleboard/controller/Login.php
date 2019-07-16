@@ -66,9 +66,9 @@ class Login extends Controller {
             }
 
             switch ($this->method){
-                case 'username' :$pick = Db::query("select `uid`,`promise` from qzlit_group WHERE username = '" . $this->umark . "'"); break;
-                case 'email'    :$pick = Db::query("select `uid`,`promise` from qzlit_group WHERE email = '" . $this->umark . "'"); break;
-                case 'phone'    :$pick = Db::query("select `uid`,`promise` from qzlit_group WHERE phone = '" . $this->umark . "'"); break;
+                case 'username' :$pick = Db::query("select `uid`,`promise` from slender_group WHERE username = '" . $this->umark . "'"); break;
+                case 'email'    :$pick = Db::query("select `uid`,`promise` from slender_group WHERE email = '" . $this->umark . "'"); break;
+                case 'phone'    :$pick = Db::query("select `uid`,`promise` from slender_group WHERE phone = '" . $this->umark . "'"); break;
                 default         :Re::echo('danger', "致命错误！", 0);return;
             }
 
@@ -159,7 +159,7 @@ class Login extends Controller {
                 'end_time' => time()+$this->prelong,
             ]);
 
-            Db::execute("update qzlit_group set `lastlogin` = '" . date('YmdHi', time()) . "', `lastip` ='" . $_SERVER['REMOTE_ADDR'] . "' where uid = '" . $this->uid . "'");
+            Db::execute("update slender_group set `lastlogin` = '" . date('YmdHi', time()) . "', `lastip` ='" . $_SERVER['REMOTE_ADDR'] . "' where uid = '" . $this->uid . "'");
             Log::visit("consoleboard", "home", "log_in");
             Re::echo('success', "欢迎登陆", 1);
             echo '<script>window.location.href=\'' . SITE . '/consoleboard/index.html\'</script>';

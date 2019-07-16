@@ -32,7 +32,7 @@ class Enrollmag extends Controller {
     }
 
     public function main() {
-        $this->assign(['enrollmag' => 'active', 'enall' => count(Db::query("select id from qzlit_usenroll")), 'en' => count(Db::query("select id from qzlit_usenroll where `aim` = '" . User::ufetch()['party'] . "'")), 'en2' => count(Db::query("select id from qzlit_usenroll where `aim2` = '" . User::ufetch()['party'] . "'"))]);
+        $this->assign(['enrollmag' => 'active', 'enall' => count(Db::query("select id from slender_usenroll")), 'en' => count(Db::query("select id from slender_usenroll where `aim` = '" . User::ufetch()['party'] . "'")), 'en2' => count(Db::query("select id from slender_usenroll where `aim2` = '" . User::ufetch()['party'] . "'"))]);
         return Template::view('enroll/enrollmag');
     }
 
@@ -128,7 +128,7 @@ class Enrollmag extends Controller {
 
     /* 整理返回数据 */
     public static function dataFormat($res) {
-        $party = Qhelp::json_de(htmlspecialchars_decode(Db::query("select * from qzlit_config where `name` = 'party'")[0]['data'], ENT_QUOTES));
+        $party = Qhelp::json_de(htmlspecialchars_decode(Db::query("select * from slender_config where `name` = 'party'")[0]['data'], ENT_QUOTES));
         $rt = [];
         foreach ($res as $v) {
             $v['aim'] = $party[$v['aim']];
@@ -154,7 +154,7 @@ class Enrollmag extends Controller {
     /* 获取面试者信息 */
     public function ei() {
         if (!empty($_POST['id']) && Qhelp::chk_pint($_POST['id']) && !empty($_POST['phone']) && Qhelp::chk_pint($_POST['phone']) && strlen($_POST['phone']) == 11) {
-            $res = Db::query("select * from qzlit_usenroll where id = '" . $_POST['id'] . "'");
+            $res = Db::query("select * from slender_usenroll where id = '" . $_POST['id'] . "'");
 
             if (Enrollmag::chk_pty($res[0]['aim'])) {
                 return Enrollmag::chk_pty($res[0]['aim']);
@@ -172,7 +172,7 @@ class Enrollmag extends Controller {
     static function getftime($m) {
         $campus = Qhelp::json_de(Config::getconf('Info', 'campus'));
         if (Qhelp::chk_pint($m) && $m > 0) {
-            $tce = Db::query("select `ftime`,`campus` from qzlit_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = $m order by ftime ");
+            $tce = Db::query("select `ftime`,`campus` from slender_usenroll where (hascalled = 1 OR hascalled = 2) AND isfaced = 0 AND isenrolled = 0 AND `aim` = $m order by ftime ");
             $ftimes = [];
             foreach ($tce as $value) {
                 if (!empty($value['ftime']) && !in_array(['cp' => $campus[$value['campus']], 'cpid' => $value['campus'], 'ft' => $value['ftime']], $ftimes)) {
@@ -191,7 +191,7 @@ class Enrollmag extends Controller {
     /* 获取部门名称 */
     static function getpartyname($m) {
         if (Qhelp::chk_pint($m) && $m > 0) {
-            $party = Qhelp::json_de(htmlspecialchars_decode(Db::query("select * from qzlit_config where `name` = 'party'")[0]['data'], ENT_QUOTES))[$m];
+            $party = Qhelp::json_de(htmlspecialchars_decode(Db::query("select * from slender_config where `name` = 'party'")[0]['data'], ENT_QUOTES))[$m];
             return $party;
         } else {
             return Qhelp::json_en(['Stat' => 'error', 'Message' => '参数类型错误，应该为<int>']);

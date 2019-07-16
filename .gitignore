@@ -1,9 +1,6 @@
-/.idea/
-/.git/
+
 /config/database.php
 /runtime/
-/public/data/catch/temp
-/config/database*
-/inatall/install.lock
-desktop.ini
-install/install.lock
+/.idea/
+/install/install.lock
+/public/data/catch/

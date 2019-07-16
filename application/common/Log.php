@@ -24,7 +24,7 @@ class Log {
             return null;
         }
         if (Db::execute("INSERT INTO 
-            qzlit_log (
+            slender_log (
                     `time`, 
                     `ip`, 
                     `country`,

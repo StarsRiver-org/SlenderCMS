@@ -31,7 +31,7 @@ class Enrollmag_function4 extends Controller {
         $aim = User::ufetch()['party'];
 
         $num = (int)$num < 10 ? 10 : ((int)$num > 99 ? 99 : (int)$num);
-        $res = Db::query("select * from qzlit_usenroll where " . (!empty($cps) ? "campus = $cps AND" : "") . " isenrolled = 1 AND hascalled != 3 AND isfaced = 1 AND aim = $aim order by score DESC  limit $num");
+        $res = Db::query("select * from slender_usenroll where " . (!empty($cps) ? "campus = $cps AND" : "") . " isenrolled = 1 AND hascalled != 3 AND isfaced = 1 AND aim = $aim order by score DESC  limit $num");
 
         return Qhelp::json_en(['Stat' => 'OK', 'Message' => '数据加载成功', "Data" => Enrollmag::dataFormat($res)]);
     }
@@ -39,7 +39,7 @@ class Enrollmag_function4 extends Controller {
     static function send($id, $phone, $msgtpl, $msgdat) {
         if (!empty($phone) && !empty($id) && Qhelp::chk_pint($phone) && strlen($phone) == 11 && Qhelp::chk_pint($id)) {
 
-            $res = Db::query("select * from qzlit_usenroll where id = $id");
+            $res = Db::query("select * from slender_usenroll where id = $id");
 
             if (!empty($res) && $res[0]["phone"] == $phone) {
 
@@ -54,7 +54,7 @@ class Enrollmag_function4 extends Controller {
                 $smsres = Curl::post(SITE . '/api/sms', ['hash' => SHASH, 'phone' => $phone, 'msgdat' => $msgdat, 'msgtpl' => $msgtpl,]);
 
                 if (Qhelp::json_de($smsres)['Message'] == 'OK') {
-                    Db::execute("update qzlit_usenroll set hascalled = 3, isenrolled = 1, isfaced = 1 where id = $id");
+                    Db::execute("update slender_usenroll set hascalled = 3, isenrolled = 1, isfaced = 1 where id = $id");
                 }
 
                 return $smsres;
@@ -68,7 +68,7 @@ class Enrollmag_function4 extends Controller {
 
     static function unenroll($id, $phone) {
         if (!empty($phone) && !empty($id) && Qhelp::chk_pint($phone) && strlen($phone) == 11 && Qhelp::chk_pint($id)) {
-            $res = Db::query("select * from qzlit_usenroll where id = $id");
+            $res = Db::query("select * from slender_usenroll where id = $id");
 
             if (!empty($res) && $res[0]["phone"] == $phone) {
 
@@ -76,7 +76,7 @@ class Enrollmag_function4 extends Controller {
                     return Enrollmag::chk_pty($res[0]['aim']);
                 }
 
-                Db::execute("update qzlit_usenroll set isenrolled = 0, isfaced = 1 where id = $id");
+                Db::execute("update slender_usenroll set isenrolled = 0, isfaced = 1 where id = $id");
                 return Qhelp::json_en(['Stat' => 'OK', 'Message' => '这位稍后考虑...']);
             }
             return Qhelp::json_en(['Stat' => 'error', 'Message' => '数据不存在']);

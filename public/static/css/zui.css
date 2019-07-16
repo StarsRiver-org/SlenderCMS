@@ -832,14 +832,6 @@ button, input, select, textarea {
     line-height: inherit
 }
 
-a {
-    color:darkred;
-    text-decoration: none;
-    -webkit-transition: all .1s cubic-bezier(.175, .885, .32, 1);
-    -o-transition: all .1s cubic-bezier(.175, .885, .32, 1);
-    transition: all .1s cubic-bezier(.175, .885, .32, 1)
-}
-
 a:focus, a:hover {
     color: #0d3d88;
     text-decoration: underline
@@ -955,10 +947,10 @@ ol, ul {
 }
 .col-xs--1{
     width:calc(100% - 180px);
-    padding: 20px;
+    padding: 10px;
 }
 .col-xs--1 > div{
-    padding: 10px;
+    padding: 5px;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -7156,7 +7148,6 @@ body.article-content {
     padding: 0;
     margin-bottom: 20px;
     overflow: hidden;
-    border: 1px solid #ddd;
     -webkit-transition: all .4s cubic-bezier(.175, .885, .32, 1);
     -o-transition: all .4s cubic-bezier(.175, .885, .32, 1);
     transition: all .4s cubic-bezier(.175, .885, .32, 1)

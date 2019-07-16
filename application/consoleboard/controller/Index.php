@@ -31,9 +31,9 @@ class Index extends Controller {
     public function main() {
         /* 文章统计 */
         Log::visit("consoleboard", "home", "watch");
-        $article_all = Db::query("select `thread_ptime` from qzlit_thread WHERE hk_mode = '2' OR hk_mode = '1' ORDER By thread_ptime DESC ");
-        $article_like = Db::query("select `ore_degree` from qzlit_thread WHERE ore_degree != ''");
-        $article_view = Db::query("select `ore_view` from qzlit_thread WHERE ore_view != ''");
+        $article_all = Db::query("select `thread_ptime` from slender_thread WHERE hk_mode = '2' OR hk_mode = '1' ORDER By thread_ptime DESC ");
+        $article_like = Db::query("select `ore_degree` from slender_thread WHERE ore_degree != ''");
+        $article_view = Db::query("select `ore_view` from slender_thread WHERE ore_view != ''");
         $article_today = Log::filt_by_time($article_all, "day");
         $count_view = 0;
         $count_like = 0;
@@ -46,7 +46,7 @@ class Index extends Controller {
         $info_article = ['today' => count($article_today), 'all' => count($article_all), 'visit' => $count_view, 'like' => $count_like,];
 
         /*浏览统计*/
-        $visit_logs = Db::query("select `vid`,`time`,`target`,`data`,`func` from qzlit_log ORDER BY `time` DESC ");
+        $visit_logs = Db::query("select `vid`,`time`,`target`,`data`,`func` from slender_log ORDER BY `time` DESC ");
         $visit_log_portal = Log::filt_by_target($visit_logs, "portal");
         $visit_log_article = Log::filt_by_target($visit_logs, "article");
         $visit_log_consoleboard = Log::filt_by_target($visit_logs, "consoleboard");

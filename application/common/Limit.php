@@ -26,7 +26,7 @@ class Limit {
 
         $len = time() - $sec;
         $ip = Ip::getip();
-        $rec = Db::query("select `vid` from qzlit_log where ip = '" . $ip . "' and time > '" . $len . "' order by vid desc limit 5");
+        $rec = Db::query("select `vid` from slender_log where ip = '" . $ip . "' and time > '" . $len . "' order by vid desc limit 5");
         return (count($rec) > 1) ? 1 : 0;
     }
 }

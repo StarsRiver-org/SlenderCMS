@@ -41,11 +41,11 @@ class Thread extends Controller {
 
             if (request()->file('coverimg')) {/* coverimg */
                 if (!empty($_POST['renewthread']) && !empty($_POST['has_coverimg'])) { /* update cover */
-                    $img = Db::query("select thread_coverimg from qzlit_thread WHERE cuid = '" . (int)$_POST['renewthread'] . "'")[0]['thread_coverimg'];
+                    $img = Db::query("select thread_coverimg from slender_thread WHERE cuid = '" . (int)$_POST['renewthread'] . "'")[0]['thread_coverimg'];
                     if (!empty($img)) {
                         @unlink(ROOT_PATH . 'public/data/catch/temp/img/' . substr($img, 0, 8) . '/' . substr($img, 8));
                     }
-                    Db::execute("update qzlit_thread set thread_coverimg = NUll WHERE cuid = '" . (int)$_POST['renewthread'] . "'");
+                    Db::execute("update slender_thread set thread_coverimg = NUll WHERE cuid = '" . (int)$_POST['renewthread'] . "'");
                 }
                 $newimg = File::saveimg('coverimg');
                 if ($newimg == 0) {
@@ -54,14 +54,14 @@ class Thread extends Controller {
                     $coverimg = $newimg;
                 }
             } elseif (!empty($_POST['renewthread'])) {
-                $coverimg = Db::query("select thread_coverimg from qzlit_thread WHERE cuid = '" . (int)$_POST['renewthread'] . "'")[0]['thread_coverimg'];
+                $coverimg = Db::query("select thread_coverimg from slender_thread WHERE cuid = '" . (int)$_POST['renewthread'] . "'")[0]['thread_coverimg'];
             }
 
 
             @$thread = ['title' => htmlspecialchars(Qhelp::dss($_POST['title']), ENT_QUOTES), 'coverimg' => $coverimg, 'content' => htmlspecialchars(Qhelp::dss($_POST['content']), ENT_QUOTES), 'editor' => $E['uid'], 'author' => htmlspecialchars(Qhelp::dss($_POST['author']), ENT_QUOTES), 'time' => time(), 'htime' => !empty($_POST['htime']) ? mktime(substr($_POST['htime'], '11', '2'), substr($_POST['htime'], '14', '2'), 0, substr($_POST['htime'], '5', '2'), substr($_POST['htime'], '8', '2'), substr($_POST['htime'], '0', '4')) : time(), 'keyword' => htmlspecialchars(Qhelp::dss($_POST['keyword']), ENT_QUOTES), 'descrip' => htmlspecialchars(Qhelp::dss($_POST['descrip']), ENT_QUOTES), 'threadmode' => $_POST['threadmode'], 'threadsort' => $_POST['threadsort'],];
             if (!empty($_POST['newthread'])) { /* 如果发布新文章，收录文章 */
                 Db::execute("INSERT INTO 
-                qzlit_thread (
+                slender_thread (
                         thread_title, 
                         thread_coverimg, 
                         thread_context,
@@ -92,7 +92,7 @@ class Thread extends Controller {
             ");
                 return '成功发布,你可以继续添加或刷新页面查看结果';
             } elseif (!empty($_POST['renewthread'])) {
-                Db::execute("update qzlit_thread set
+                Db::execute("update slender_thread set
                 `thread_title` = '" . $thread['title'] . "', 
                 `thread_coverimg` = '" . $thread['coverimg'] . "',  
                 `thread_context` ='" . $thread['content'] . "',
@@ -120,7 +120,7 @@ class Thread extends Controller {
         if (!Qhelp::chk_pint($cuid) || $cuid <= 0) {
             return null;
         }
-        $res = Db::query("SELECT * FROM qzlit_thread WHERE cuid = '" . $cuid . "'");
+        $res = Db::query("SELECT * FROM slender_thread WHERE cuid = '" . $cuid . "'");
         if (!empty($res)) {
             return self::format($res[0], 'all');
         } else {
@@ -134,13 +134,13 @@ class Thread extends Controller {
         $argumets = '`cuid`, `thread_title`, `thread_author`, `thread_editor`, `thread_coverimg`,`thread_htime`,`thread_ctime`, `thread_ptime`, `hk_sort`,`hk_mode`, `hk_descrip`,`hk_keywords`,`ore_degree`,`ore_view`';
         if (is_array($arr)) {
             foreach ($arr as $key => $val) {
-                $res = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $val AND hk_mode = 2 order by thread_htime desc limit $limit");
+                $res = Db::query("select $argumets from slender_thread WHERE hk_sort = $val AND hk_mode = 2 order by thread_htime desc limit $limit");
                 foreach ($res as $l) {
                     $list[$key][] = self::format($l, 'more');
                 }
             }
         } else {
-            $res = Db::query("select $argumets from qzlit_thread WHERE hk_sort = $arr AND hk_mode = 2 order by thread_htime desc limit $limit");
+            $res = Db::query("select $argumets from slender_thread WHERE hk_sort = $arr AND hk_mode = 2 order by thread_htime desc limit $limit");
             foreach ($res as $l) {
                 $list[] = self::format($l, 'more');
             }
@@ -154,7 +154,7 @@ class Thread extends Controller {
     */
     public static function format($res, $type = 0) {
         @$date = $res['thread_htime'] ? $res['thread_htime'] : ($res['thread_ctime'] ? $res['thread_ctime'] : $res['thread_ptime']);
-        $ut = Db::query("SELECT * FROM qzlit_group WHERE uid = '" . $res['thread_editor'] . "'");
+        $ut = Db::query("SELECT * FROM slender_group WHERE uid = '" . $res['thread_editor'] . "'");
         $ut = !empty($ut) ? $ut[0] : $ut = ['name' => '匿名', 'username' => '匿名'];
 
         switch ($type) {
@@ -167,7 +167,7 @@ class Thread extends Controller {
                 break;
 
             case 'all':
-                $like = Db::query("select `func` from qzlit_log where ip = '" . htmlspecialchars(Qhelp::dss(Ip::getip()), ENT_QUOTES) . "' AND target = 'article' AND `data` = '" . $res['cuid'] . "'  AND func like '%like%' order by time DESC limit 1");
+                $like = Db::query("select `func` from slender_log where ip = '" . htmlspecialchars(Qhelp::dss(Ip::getip()), ENT_QUOTES) . "' AND target = 'article' AND `data` = '" . $res['cuid'] . "'  AND func like '%like%' order by time DESC limit 1");
                 $liked = false;
                 if ($like && $like[0]['func'] == 'like') {
                     $liked = true;
@@ -184,10 +184,10 @@ class Thread extends Controller {
      */
     public static function visit($cuid) {
         $func = 'visit';
-        $logs = Db::query("select * from qzlit_log where ip = '" . htmlspecialchars(Qhelp::dss(Ip::getip()), ENT_QUOTES) . "' AND target = 'article' AND `data` = '" . $cuid . "' AND `time` > '" . (time() - 3600 * 24) . "' AND `func` = '" . $func . "' ORDER BY `time` DESC");
+        $logs = Db::query("select * from slender_log where ip = '" . htmlspecialchars(Qhelp::dss(Ip::getip()), ENT_QUOTES) . "' AND target = 'article' AND `data` = '" . $cuid . "' AND `time` > '" . (time() - 3600 * 24) . "' AND `func` = '" . $func . "' ORDER BY `time` DESC");
         /*每个ip每天可以让浏览量+1*/
         if (empty($logs) || time() - $logs[0]['time'] > 3600 * 24) {
-            $data = Db::query("select `ore_view` from qzlit_thread where cuid = '" . $cuid . "'");
+            $data = Db::query("select `ore_view` from slender_thread where cuid = '" . $cuid . "'");
             if ($data) {
                 $view = $data[0]['ore_view'];
                 if (!$view) {
@@ -195,7 +195,7 @@ class Thread extends Controller {
                 } else {
                     $view += 1;
                 }
-                Db::execute("update qzlit_thread set `ore_view` = '" . $view . "' where cuid = '" . $cuid . "'");
+                Db::execute("update slender_thread set `ore_view` = '" . $view . "' where cuid = '" . $cuid . "'");
                 Log::visit("article", "$cuid", "$func");
             }
         } else {
@@ -208,9 +208,9 @@ class Thread extends Controller {
      * @parse cuid (int)
      */
     public static function like($cuid) {
-        $logs = Db::query("select `time`,`func` from qzlit_log where ip = '" . Ip::getip() . "' AND target = 'article' AND `data` = '" . $cuid . "'  AND func like '%like%' ORDER BY time DESC limit 1");
+        $logs = Db::query("select `time`,`func` from slender_log where ip = '" . Ip::getip() . "' AND target = 'article' AND `data` = '" . $cuid . "'  AND func like '%like%' ORDER BY time DESC limit 1");
         if (!$logs || $logs[0]['time'] + 3 < time()) {
-            $query = Db::query("select `ore_degree` from qzlit_thread where cuid = '" . $cuid . "'");
+            $query = Db::query("select `ore_degree` from slender_thread where cuid = '" . $cuid . "'");
             $like = $query ? $query[0]['ore_degree'] : 0;
             $log = Ip::ipinfo();
             $log['target'] = "article";
@@ -230,7 +230,7 @@ class Thread extends Controller {
                 }
                 $log['func'] = 'unlike';
             }
-            if (Db::execute("update qzlit_thread set `ore_degree` = '" . $like . "' where cuid = '" . $cuid . "'") && Log::updata_log($log)) {
+            if (Db::execute("update slender_thread set `ore_degree` = '" . $like . "' where cuid = '" . $cuid . "'") && Log::updata_log($log)) {
                 return 'success';
             } else {
                 return 'error';
@@ -243,9 +243,9 @@ class Thread extends Controller {
     /*最新文章*/
     public static function newest($cuid = null) {
         if (!$cuid) {
-            $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 ORDER BY thread_htime DESC LIMIT 8");
+            $res = Db::query("select * from slender_thread WHERE hk_mode = 2 ORDER BY thread_htime DESC LIMIT 8");
         } else {
-            $res = Db::query("select * from qzlit_thread WHERE hk_mode = 2 AND hk_sort = $cuid ORDER BY thread_htime DESC LIMIT 8");
+            $res = Db::query("select * from slender_thread WHERE hk_mode = 2 AND hk_sort = $cuid ORDER BY thread_htime DESC LIMIT 8");
         }
         $data = [];
         for ($i = 0; $i < count($res); $i++) {
